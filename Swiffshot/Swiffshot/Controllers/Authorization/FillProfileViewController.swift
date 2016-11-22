@@ -8,7 +8,7 @@
 
 import UIKit
 
-class FillProfileViewController: UIViewController {
+class FillProfileViewController: AuthorizationViewController {
     
     @IBOutlet weak var avatarBtn: UIButton!
     @IBOutlet weak var nameTxt: UITextField!
@@ -17,13 +17,22 @@ class FillProfileViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        nameTxt.delegate = self
+        nickNameTxt.delegate = self
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    
+    override func viewDidLayoutSubviews() {
+        visualEffects()
+    }
+    
+    private func visualEffects(){
+        avatarBtn.layer.cornerRadius = avatarBtn.frame.size.height/2
+        avatarBtn.clipsToBounds = true
+    }
+    
+    func setEnabledButton(){
+        (nameTxt.text == "" || nickNameTxt.text == "") ? startBtn.setTitleColor(UIColor.lightGray, for: .normal) : startBtn.setTitleColor(UIColor.blue, for: .normal)
+        startBtn.isUserInteractionEnabled = (nameTxt.text != "" && nickNameTxt.text != "")
     }
     
     @IBAction func avatarBtnPressed(_ sender: AnyObject) {
@@ -32,4 +41,10 @@ class FillProfileViewController: UIViewController {
     @IBAction func startBtnPressed(_ sender: AnyObject) {
     }
     
+}
+
+extension FillProfileViewController: UITextFieldDelegate{
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        self.setEnabledButton()
+    }
 }
