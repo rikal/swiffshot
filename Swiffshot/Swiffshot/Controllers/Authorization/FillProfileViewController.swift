@@ -23,12 +23,6 @@ class FillProfileViewController: AuthorizationViewController, UIImagePickerContr
         
         nameTxt.delegate = self
         nickNameTxt.delegate = self
-        
-        imagePicker.delegate = self
-        imagePicker.allowsEditing = false
-        imagePicker.sourceType = .photoLibrary
-        imagePicker.modalPresentationStyle = .overFullScreen
-        imagePicker.navigationBar.isTranslucent = false
     }
     
     override func viewDidLayoutSubviews() {
@@ -46,11 +40,13 @@ class FillProfileViewController: AuthorizationViewController, UIImagePickerContr
     }
     
     @IBAction func avatarBtnPressed(_ sender: AnyObject) {
+        imagePicker.delegate = self
+        imagePicker.allowsEditing = false
+        imagePicker.sourceType = .photoLibrary
+        imagePicker.mediaTypes = UIImagePickerController.availableMediaTypes(for: .photoLibrary)!
+        imagePicker.modalPresentationStyle = .overFullScreen
+        imagePicker.navigationBar.isTranslucent = false
         present(imagePicker, animated: true, completion: nil)
-        let when = DispatchTime.now() + 0.1
-        DispatchQueue.main.asyncAfter(deadline: when) { () -> Void in
-            self.imagePicker.topViewController?.navigationItem.backBarButtonItem = UIBarButtonItem(title: " ", style: .plain, target: nil, action: nil)
-        }
     }
     
     @IBAction func startBtnPressed(_ sender: AnyObject) {
@@ -59,24 +55,16 @@ class FillProfileViewController: AuthorizationViewController, UIImagePickerContr
     }
     
     // MARK: - UIImagePickerControllerDelegate Methods
-    
-    func imagePickerController(picker: UIImagePickerController, didFinishPickingImage image: UIImage, editingInfo: [String : AnyObject]?) {
-        avatarBtn.setImage(image, for: .normal)
-        dismiss(animated: true, completion: nil)
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        let chosenImage = info[UIImagePickerControllerOriginalImage] as! UIImage
+        avatarBtn.setBackgroundImage(UIImage(), for: .normal)
+        avatarBtn.contentMode = .scaleAspectFit
+        avatarBtn.setImage(chosenImage, for: .normal)
+        dismiss(animated:true, completion: nil)
     }
     
-    private func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
-        imageUrl = info[UIImagePickerControllerReferenceURL] as? NSURL
-        avatarBtn.setImage(info[UIImagePickerControllerOriginalImage] as? UIImage, for: .normal)
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         dismiss(animated: true, completion: nil)
-    }
-    
-    private func navigationController(navigationController: UINavigationController, willShowViewController viewController: UIViewController, animated: Bool) {
-        
-        let backItem = UIBarButtonItem()
-        backItem.title = ""
-        navigationController.navigationItem.backBarButtonItem = backItem
-        navigationController.navigationBar.isTranslucent = false
     }
     
 }
