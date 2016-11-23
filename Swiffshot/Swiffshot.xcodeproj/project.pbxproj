@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0A6322441DE5A64A006A0644 /* CameraManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A6322431DE5A64A006A0644 /* CameraManager.swift */; };
+		0A63224B1DE5B89F006A0644 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A6322491DE5B89F006A0644 /* MainViewController.swift */; };
+		0A63224C1DE5B89F006A0644 /* NoNavBarNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A63224A1DE5B89F006A0644 /* NoNavBarNavigationController.swift */; };
 		0AA596091DE4E9CB0005336D /* Defaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AA596081DE4E9CB0005336D /* Defaults.swift */; };
 		0ABB902F1DE422C2009E39E5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ABB902E1DE422C2009E39E5 /* AppDelegate.swift */; };
 		0ABB90341DE422C2009E39E5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0ABB90321DE422C2009E39E5 /* Main.storyboard */; };
@@ -20,6 +23,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0A6322431DE5A64A006A0644 /* CameraManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CameraManager.swift; path = Utilities/CameraManager.swift; sourceTree = "<group>"; };
+		0A6322491DE5B89F006A0644 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MainViewController.swift; path = Controllers/MainScreen/MainViewController.swift; sourceTree = "<group>"; };
+		0A63224A1DE5B89F006A0644 /* NoNavBarNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NoNavBarNavigationController.swift; path = Controllers/MainScreen/NoNavBarNavigationController.swift; sourceTree = "<group>"; };
 		0AA596081DE4E9CB0005336D /* Defaults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Defaults.swift; path = Utilities/Defaults.swift; sourceTree = "<group>"; };
 		0ABB902B1DE422C2009E39E5 /* Swiffshot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Swiffshot.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0ABB902E1DE422C2009E39E5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -48,10 +54,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0A6322481DE5B864006A0644 /* MainScreen */ = {
+			isa = PBXGroup;
+			children = (
+				0A6322491DE5B89F006A0644 /* MainViewController.swift */,
+				0A63224A1DE5B89F006A0644 /* NoNavBarNavigationController.swift */,
+			);
+			name = MainScreen;
+			sourceTree = "<group>";
+		};
 		0AA596051DE4E7180005336D /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
 				0AA596081DE4E9CB0005336D /* Defaults.swift */,
+				0A6322431DE5A64A006A0644 /* CameraManager.swift */,
 			);
 			name = Utilities;
 			sourceTree = "<group>";
@@ -77,9 +93,9 @@
 		0ABB902D1DE422C2009E39E5 /* Swiffshot */ = {
 			isa = PBXGroup;
 			children = (
-				0AA596051DE4E7180005336D /* Utilities */,
 				0ABB90421DE42634009E39E5 /* Controllers */,
 				0ABB90401DE42602009E39E5 /* Resources */,
+				0AA596051DE4E7180005336D /* Utilities */,
 				0ABB90321DE422C2009E39E5 /* Main.storyboard */,
 				0ABB90371DE422C2009E39E5 /* LaunchScreen.storyboard */,
 				0ABB903A1DE422C2009E39E5 /* Info.plist */,
@@ -98,6 +114,7 @@
 		0ABB90421DE42634009E39E5 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				0A6322481DE5B864006A0644 /* MainScreen */,
 				0ABB90431DE4338E009E39E5 /* Authorization */,
 				0ABB902E1DE422C2009E39E5 /* AppDelegate.swift */,
 			);
@@ -257,11 +274,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				0ABB904D1DE439C1009E39E5 /* YourPhoneViewController.swift in Sources */,
+				0A6322441DE5A64A006A0644 /* CameraManager.swift in Sources */,
+				0A63224C1DE5B89F006A0644 /* NoNavBarNavigationController.swift in Sources */,
 				0ABB90471DE433F5009E39E5 /* CheckCodeViewController.swift in Sources */,
 				0ABB90491DE4340E009E39E5 /* FillProfileViewController.swift in Sources */,
 				0AA596091DE4E9CB0005336D /* Defaults.swift in Sources */,
 				0ABB904F1DE44C08009E39E5 /* AuthorizationViewController.swift in Sources */,
 				0ABB902F1DE422C2009E39E5 /* AppDelegate.swift in Sources */,
+				0A63224B1DE5B89F006A0644 /* MainViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

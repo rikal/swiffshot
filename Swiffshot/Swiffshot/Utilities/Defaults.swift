@@ -18,6 +18,7 @@ class Defaults {
         case UserName
         case UserNick
         case UserAvatar
+        case UserLogged
     }
     
     init(defaults: UserDefaults) {
@@ -29,6 +30,7 @@ class Defaults {
             Keys.UserName.rawValue: "",
             Keys.UserNick.rawValue: "",
             Keys.UserAvatar.rawValue: "",
+            Keys.UserLogged.rawValue: false,
         ])
     }
     
@@ -62,6 +64,16 @@ class Defaults {
         }
         set {
             defaults.set(newValue, forKey: Keys.UserAvatar.rawValue)
+            defaults.synchronize()
+        }
+    }
+    
+    var userLogged: Bool {
+        get {
+            return defaults.bool(forKey: Keys.UserLogged.rawValue)
+        }
+        set {
+            defaults.set(newValue, forKey: Keys.UserLogged.rawValue)
             defaults.synchronize()
         }
     }

@@ -52,6 +52,8 @@ class FillProfileViewController: AuthorizationViewController, UIImagePickerContr
     @IBAction func startBtnPressed(_ sender: AnyObject) {
         Defaults.sharedDefaults.userName = nameTxt.text!
         Defaults.sharedDefaults.userNick = nickNameTxt.text!
+        Defaults.sharedDefaults.userLogged = true
+        self.dismiss(animated: true, completion: nil)
     }
     
     // MARK: - UIImagePickerControllerDelegate Methods
