@@ -31,7 +31,7 @@
                         <viewControllerLayoutGuide type="bottom" id="vha-0T-o3W"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="th8-bo-Hgw">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome to SwiffShot! Please, enter your phone number to sing up!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PrT-4k-Hhq">
@@ -107,7 +107,7 @@
                         <viewControllerLayoutGuide type="bottom" id="uCK-Jo-xZR"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Ell-VG-afj">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TzW-2q-t3v">
@@ -130,18 +130,70 @@
                                 </state>
                             </button>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="f8Q-nZ-xAV">
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="Ldz-hc-fs1">
                                     <size key="itemSize" width="100" height="100"/>
-                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="headerReferenceSize" width="0.0" height="40"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="20" maxX="0.0" maxY="20"/>
                                 </collectionViewFlowLayout>
-                                <cells/>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="streamCell" id="DiQ-J1-EM6" customClass="LatestStreamCollectionViewCell" customModule="Swiffshot" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="60" width="100" height="100"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3hR-r7-eMF">
+                                                    <color key="backgroundColor" red="0.90588235289999997" green="0.1960784314" blue="0.1960784314" alpha="1" colorSpace="calibratedRGB"/>
+                                                </view>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="avatar_1" translatesAutoresizingMaskIntoConstraints="NO" id="IuO-H5-idp">
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="90" id="imM-Ei-dbC"/>
+                                                        <constraint firstAttribute="width" constant="90" id="ydG-2C-EB8"/>
+                                                    </constraints>
+                                                </imageView>
+                                            </subviews>
+                                        </view>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="3hR-r7-eMF" secondAttribute="trailing" id="Bci-XH-285"/>
+                                            <constraint firstAttribute="bottom" secondItem="3hR-r7-eMF" secondAttribute="bottom" id="ULT-bx-zNM"/>
+                                            <constraint firstItem="IuO-H5-idp" firstAttribute="centerY" secondItem="3hR-r7-eMF" secondAttribute="centerY" id="d6o-N2-s2g"/>
+                                            <constraint firstItem="3hR-r7-eMF" firstAttribute="top" secondItem="DiQ-J1-EM6" secondAttribute="top" id="e5Y-D7-dkh"/>
+                                            <constraint firstItem="IuO-H5-idp" firstAttribute="centerX" secondItem="3hR-r7-eMF" secondAttribute="centerX" id="iZw-Vc-1uJ"/>
+                                            <constraint firstItem="3hR-r7-eMF" firstAttribute="leading" secondItem="DiQ-J1-EM6" secondAttribute="leading" id="kLB-4K-w89"/>
+                                        </constraints>
+                                        <size key="customSize" width="100" height="100"/>
+                                        <connections>
+                                            <outlet property="avatarImg" destination="IuO-H5-idp" id="gRu-1N-Xve"/>
+                                            <outlet property="onlineStreamIndicatorView" destination="3hR-r7-eMF" id="OlX-pa-UjB"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                                <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="HeaderView" id="LRM-CD-f3a" customClass="HeaderView" customModule="Swiffshot" customModuleProvider="target">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="40"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Caption" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="51l-FP-n1s">
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="51l-FP-n1s" firstAttribute="leading" secondItem="LRM-CD-f3a" secondAttribute="leading" id="M8B-GI-Tg4"/>
+                                        <constraint firstAttribute="bottom" secondItem="51l-FP-n1s" secondAttribute="bottom" id="PaH-co-Uq0"/>
+                                        <constraint firstAttribute="trailing" secondItem="51l-FP-n1s" secondAttribute="trailing" id="SRv-EM-QbU"/>
+                                        <constraint firstItem="51l-FP-n1s" firstAttribute="top" secondItem="LRM-CD-f3a" secondAttribute="top" id="ZT0-8S-ajx"/>
+                                    </constraints>
+                                    <connections>
+                                        <outlet property="captionLbl" destination="51l-FP-n1s" id="uc6-LY-QBT"/>
+                                    </connections>
+                                </collectionReusableView>
                                 <connections>
                                     <outlet property="dataSource" destination="m8y-4k-Z6C" id="FCK-XQ-bro"/>
                                     <outlet property="delegate" destination="m8y-4k-Z6C" id="FM6-l4-pW1"/>
-                                    <outlet property="prefetchDataSource" destination="m8y-4k-Z6C" id="sGN-Fl-XuZ"/>
                                 </connections>
                             </collectionView>
                         </subviews>
@@ -149,7 +201,7 @@
                         <constraints>
                             <constraint firstItem="f8Q-nZ-xAV" firstAttribute="leading" secondItem="Ell-VG-afj" secondAttribute="leading" id="8Ae-cg-r3F"/>
                             <constraint firstItem="TzW-2q-t3v" firstAttribute="centerX" secondItem="Ell-VG-afj" secondAttribute="centerX" id="MB1-Lp-XOG"/>
-                            <constraint firstItem="f8Q-nZ-xAV" firstAttribute="top" secondItem="Ell-VG-afj" secondAttribute="top" id="Q0J-q1-26E"/>
+                            <constraint firstItem="f8Q-nZ-xAV" firstAttribute="top" secondItem="Ell-VG-afj" secondAttribute="top" constant="70" id="Q0J-q1-26E"/>
                             <constraint firstItem="uCK-Jo-xZR" firstAttribute="top" secondItem="TzW-2q-t3v" secondAttribute="bottom" constant="34" id="avd-Ni-xzF"/>
                             <constraint firstItem="uCK-Jo-xZR" firstAttribute="top" secondItem="f8Q-nZ-xAV" secondAttribute="bottom" id="bVZ-NE-PVx"/>
                             <constraint firstAttribute="trailing" secondItem="f8Q-nZ-xAV" secondAttribute="trailing" id="rQa-h0-WB1"/>
@@ -194,7 +246,7 @@
                         <viewControllerLayoutGuide type="bottom" id="kHX-lf-hYJ"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="VHE-wO-Ipu">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please, enter your code that you've got on your phone!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PFm-s5-zLk">
@@ -300,7 +352,7 @@
                         <viewControllerLayoutGuide type="bottom" id="qSo-NP-Tko"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="ZCh-sj-FeI">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KCf-NE-tDO">
@@ -370,5 +422,6 @@
     </scenes>
     <resources>
         <image name="AvatarPlaceholder" width="64" height="64"/>
+        <image name="avatar_1" width="140" height="140"/>
     </resources>
 </document>

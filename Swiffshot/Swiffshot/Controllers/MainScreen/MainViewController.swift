@@ -16,6 +16,12 @@ class MainViewController: UIViewController {
     var previewLayer : AVCaptureVideoPreviewLayer?
     let camera = CameraManager.sharedCamera
     
+    var latestVideos = [String]()
+    var trendingVideos = [String]()
+    var discoverVideos = [String]()
+    
+    var allVideos = [[String]]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -31,35 +37,54 @@ class MainViewController: UIViewController {
     
     private func visualEffects(){
         takePhotoBtn.layer.cornerRadius = takePhotoBtn.frame.size.height/2
+        let spacing = (self.collectionView.frame.size.width/2 - 100)/2
+        collectionView.contentInset = UIEdgeInsets(top: 0, left: spacing, bottom: 0, right: spacing)
     }
     
     @IBAction func takePhotoPressed(_ sender: AnyObject) {
     }
 }
 
-extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDataSourcePrefetching{
-    
-    func collectionView(_ collectionView: UICollectionView, prefetchItemsAt indexPaths: [IndexPath]){
-        
-    }
-    
+extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSource{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int{
-        return 0
+        return 5//allVideos[section].count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell{
-        let cell = UICollectionViewCell()
+
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "streamCell", for: indexPath) as! LatestStreamCollectionViewCell
+        indexPath.row == 0 ? cell.fillCell(isOnline: true) : cell.fillCell(isOnline: false)
+        
         return cell
     }
     
     
     func numberOfSections(in collectionView: UICollectionView) -> Int{
-        return 0
+        return 3//allVideos.count
     }
     
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView{
-        let header = UICollectionReusableView()
+        var header = UICollectionReusableView()
+        
+        if kind == UICollectionElementKindSectionHeader{
+            
+            let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "HeaderView", for: indexPath) as! HeaderView
+            switch indexPath.section {
+            case 0:
+                headerView.fillHeader(caption: "LATEST")
+            case 1:
+                headerView.fillHeader(caption: "TRANDING")
+            case 2:
+                headerView.fillHeader(caption: "DISCOVERING")
+            default:
+                headerView.fillHeader(caption: "")
+            }
+            
+            header = headerView
+            
+        }
+        
         return header
     }
 }

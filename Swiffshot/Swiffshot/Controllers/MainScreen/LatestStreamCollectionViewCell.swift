@@ -2,7 +2,7 @@
 //  LatestStreamCollectionViewCell.swift
 //  Swiffshot
 //
-//  Created by Dmitry Kuklin on 23.11.16.
+//  Created by Dmitry Kuklin on 24.11.16.
 //  Copyright © 2016 Dmitry Kuklin. All rights reserved.
 //
 
@@ -10,12 +10,15 @@ import UIKit
 
 class LatestStreamCollectionViewCell: UICollectionViewCell {
     
-    @IBOutlet weak var liveStreamIndicatorView: UIView!
+    @IBOutlet weak var onlineStreamIndicatorView: UIView!
     @IBOutlet weak var avatarImg: UIImageView!
-
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        liveStreamIndicatorView.layer.cornerRadius = liveStreamIndicatorView.frame.size.height/2
+    
+    
+    func fillCell(isOnline: Bool){
+        onlineStreamIndicatorView.layer.cornerRadius = 50
+        onlineStreamIndicatorView.isHidden = !isOnline
+        let randomNum:UInt32 = arc4random_uniform(10) + 1
+        let someInt:Int = Int(randomNum)
+        avatarImg.image = UIImage(named: "avatar_\(someInt)")
     }
-
 }
