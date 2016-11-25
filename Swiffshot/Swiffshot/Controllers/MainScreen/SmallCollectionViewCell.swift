@@ -1,21 +1,20 @@
 //
-//  LatestStreamCollectionViewCell.swift
+//  SmallCollectionViewCell.swift
 //  Swiffshot
 //
-//  Created by Dmitry Kuklin on 24.11.16.
+//  Created by Dmitry Kuklin on 25.11.16.
 //  Copyright © 2016 Dmitry Kuklin. All rights reserved.
 //
 
 import UIKit
 
-class LatestStreamCollectionViewCell: UICollectionViewCell {
-    
+class SmallCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var onlineStreamIndicatorView: UIView!
     @IBOutlet weak var avatarImg: UIImageView!
     @IBOutlet weak var nameLbl: UILabel!
     
     func fillCell(isOnline: Bool){
-        onlineStreamIndicatorView.layer.cornerRadius = 50
+        onlineStreamIndicatorView.layer.cornerRadius = 35
         onlineStreamIndicatorView.isHidden = !isOnline
         let randomNum:UInt32 = arc4random_uniform(10) + 1
         let someInt:Int = Int(randomNum)
