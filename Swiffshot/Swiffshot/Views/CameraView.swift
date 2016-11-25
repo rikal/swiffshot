@@ -25,26 +25,25 @@ class CameraView: UIView {
     }
 
     func showHideAlphaView(isHide: Bool){
-        if isHide{
-            UIView.animate(withDuration: 1.5, animations: {
-                    self.alphaView.alpha = 0.0
-                }, completion: { (finished) in
-                    self.alphaView.isHidden = true
-            })
-        } else {
-            self.alphaView.isHidden = false
-            UIView.animate(withDuration: 1.5, animations: {
-                self.alphaView.alpha = 5.5
-            })
-        }
+        var alpha: Float = 0.0
+        if isHide { alpha = 0.0 } else { alpha = 0.55 }
+        
+        UIView.animate(withDuration: 1.5, animations: {
+            self.alphaView.alpha = CGFloat(alpha)
+            }, completion: { (finished) in
+                self.alphaView.isHidden = isHide
+        })
     }
    
     @IBAction func shootVideo(_ sender: AnyObject) {
+        print("SHOOTING")
     }
 
     @IBAction func cancelPressed(_ sender: AnyObject) {
+        showHideAlphaView(isHide: false)
     }
     
     @IBAction func changeCameraPressed(_ sender: AnyObject) {
+        print("CHANGING")
     }
 }

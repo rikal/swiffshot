@@ -17,6 +17,8 @@ class MainViewController: CameraViewController, UIGestureRecognizerDelegate {
     
     var allVideos = [[String]]()
     
+    //MARK: - SYSTEMS METHODS
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         addTapGesture()
@@ -26,14 +28,7 @@ class MainViewController: CameraViewController, UIGestureRecognizerDelegate {
         super.viewDidAppear(true)
     }
     
-    override func viewDidLayoutSubviews() {
-        visualEffects()
-    }
-    
-    private func visualEffects(){
-        
-    }
-    
+    //MARK: - ADD TAPGESTURE for collection view
     private func addTapGesture(){
         let tap = UITapGestureRecognizer(target: self, action: #selector(MainViewController.handleTap(sender:)))
         tap.delegate = self
@@ -43,7 +38,21 @@ class MainViewController: CameraViewController, UIGestureRecognizerDelegate {
     
     @objc(handleTap:)
     private func handleTap(sender: UITapGestureRecognizer){
-        print("TAPPED")
+        hideShowCollectionView(isHide: true)
+        cameraView.showHideAlphaView(isHide: true)
+    }
+    
+    //MARK: - HIDE/SHOW Collectionview
+    
+    func hideShowCollectionView(isHide: Bool){
+        var alpha: Float = 0.0
+        if isHide { alpha = 0.0 } else { alpha = 1.0 }
+        
+        UIView.animate(withDuration: 1.5, animations: {
+            self.collectionView.alpha = CGFloat(alpha)
+            }, completion: { (finished) in
+                self.collectionView.isHidden = isHide
+        })
     }
 
 }
