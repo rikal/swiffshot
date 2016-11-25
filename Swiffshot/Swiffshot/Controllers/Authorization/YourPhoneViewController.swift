@@ -14,10 +14,6 @@ class YourPhoneViewController: AuthorizationViewController {
     @IBOutlet weak var phoneTxt: UITextField!
     @IBOutlet weak var separator: UIView!
     @IBOutlet weak var sendCodeBtn: UIButton!
-    @IBOutlet weak var errorView: UIView!
-    @IBOutlet weak var errorLbl: UILabel!
-    @IBOutlet weak var errorBgView: UIView!
-    @IBOutlet weak var errorViewTopConstraint: NSLayoutConstraint!
     @IBOutlet weak var buttonBottomConstraint: NSLayoutConstraint!
     
     override func viewDidLoad() {

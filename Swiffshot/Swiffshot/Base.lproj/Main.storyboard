@@ -31,7 +31,7 @@
                         <viewControllerLayoutGuide type="bottom" id="vha-0T-o3W"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="th8-bo-Hgw">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome to SwiffShot! Please, enter your phone number to sing up!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PrT-4k-Hhq">
@@ -107,28 +107,9 @@
                         <viewControllerLayoutGuide type="bottom" id="uCK-Jo-xZR"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Ell-VG-afj">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TzW-2q-t3v">
-                                <color key="backgroundColor" red="0.71372549019999998" green="0.71372549019999998" blue="0.71372549019999998" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="60" id="AOf-SQ-uTc"/>
-                                    <constraint firstAttribute="height" constant="60" id="AtK-Lr-XqY"/>
-                                </constraints>
-                                <connections>
-                                    <action selector="takePhotoPressed:" destination="m8y-4k-Z6C" eventType="touchUpInside" id="560-Ll-0aA"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l78-qL-sJ3">
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="60" id="fDd-8o-xOo"/>
-                                    <constraint firstAttribute="height" constant="30" id="v6A-h4-IfP"/>
-                                </constraints>
-                                <state key="normal" title="&lt; Close">
-                                    <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                            </button>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="f8Q-nZ-xAV">
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="Ldz-hc-fs1">
@@ -172,7 +153,7 @@
                                     </collectionViewCell>
                                 </cells>
                                 <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="HeaderView" id="LRM-CD-f3a" customClass="HeaderView" customModule="Swiffshot" customModuleProvider="target">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="40"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="40"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Caption" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="51l-FP-n1s">
@@ -197,23 +178,18 @@
                                 </connections>
                             </collectionView>
                         </subviews>
-                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="f8Q-nZ-xAV" firstAttribute="leading" secondItem="Ell-VG-afj" secondAttribute="leading" id="8Ae-cg-r3F"/>
-                            <constraint firstItem="TzW-2q-t3v" firstAttribute="centerX" secondItem="Ell-VG-afj" secondAttribute="centerX" id="MB1-Lp-XOG"/>
-                            <constraint firstItem="f8Q-nZ-xAV" firstAttribute="top" secondItem="Ell-VG-afj" secondAttribute="top" constant="70" id="Q0J-q1-26E"/>
-                            <constraint firstItem="uCK-Jo-xZR" firstAttribute="top" secondItem="TzW-2q-t3v" secondAttribute="bottom" constant="34" id="avd-Ni-xzF"/>
+                            <constraint firstItem="f8Q-nZ-xAV" firstAttribute="top" secondItem="Ell-VG-afj" secondAttribute="top" constant="20" id="Q0J-q1-26E"/>
                             <constraint firstItem="uCK-Jo-xZR" firstAttribute="top" secondItem="f8Q-nZ-xAV" secondAttribute="bottom" id="bVZ-NE-PVx"/>
                             <constraint firstAttribute="trailing" secondItem="f8Q-nZ-xAV" secondAttribute="trailing" id="rQa-h0-WB1"/>
-                            <constraint firstItem="l78-qL-sJ3" firstAttribute="top" secondItem="bSU-rj-iwC" secondAttribute="bottom" id="ryw-92-aOe"/>
-                            <constraint firstItem="l78-qL-sJ3" firstAttribute="leading" secondItem="Ell-VG-afj" secondAttribute="leading" constant="16" id="wDh-Pv-vYE"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="P4M-CM-7Yj"/>
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
                         <outlet property="collectionView" destination="f8Q-nZ-xAV" id="97c-k6-uVo"/>
-                        <outlet property="takePhotoBtn" destination="TzW-2q-t3v" id="YbD-fv-1ya"/>
                         <segue destination="iNZ-Vp-gYR" kind="presentation" identifier="fromMainToAuth" id="aI1-sl-afV"/>
                     </connections>
                 </viewController>
@@ -246,7 +222,7 @@
                         <viewControllerLayoutGuide type="bottom" id="kHX-lf-hYJ"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="VHE-wO-Ipu">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please, enter your code that you've got on your phone!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PFm-s5-zLk">
@@ -352,7 +328,7 @@
                         <viewControllerLayoutGuide type="bottom" id="qSo-NP-Tko"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="ZCh-sj-FeI">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KCf-NE-tDO">

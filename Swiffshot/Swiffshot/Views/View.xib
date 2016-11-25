@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11521.1" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11517.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="CameraView" customModule="Swiffshot" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iBA-bD-c1e">
+                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="60" id="I0o-e5-z6K"/>
+                        <constraint firstAttribute="height" constant="60" id="adx-qm-rSF"/>
+                    </constraints>
+                    <connections>
+                        <action selector="shootVideo:" destination="iN0-l3-epB" eventType="touchUpInside" id="FGG-ZL-JSR"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i3T-iN-iCf">
+                    <constraints>
+                        <constraint firstAttribute="width" constant="30" id="Ssc-h8-HIi"/>
+                        <constraint firstAttribute="height" constant="30" id="pav-7H-fpt"/>
+                    </constraints>
+                    <state key="normal" title="Rev"/>
+                    <connections>
+                        <action selector="changeCameraPressed:" destination="iN0-l3-epB" eventType="touchUpInside" id="gdg-jG-HnI"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qJW-7F-3tl">
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="Jn0-Ir-ag2"/>
+                        <constraint firstAttribute="width" constant="63" id="Yfm-pC-DQd"/>
+                    </constraints>
+                    <state key="normal" title="Cancel"/>
+                    <connections>
+                        <action selector="cancelPressed:" destination="iN0-l3-epB" eventType="touchUpInside" id="hsl-Pz-zIH"/>
+                    </connections>
+                </button>
+                <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ih1-dK-CYO">
+                    <color key="backgroundColor" red="0.71372549019999998" green="0.71372549019999998" blue="0.71372549019999998" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="128" id="Lqz-7v-9cs"/>
+                    </constraints>
+                </view>
+                <view alpha="0.59999999999999998" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mf1-ok-Kx9">
+                    <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                </view>
+            </subviews>
+            <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="ih1-dK-CYO" secondAttribute="bottom" id="9lj-te-zdy"/>
+                <constraint firstItem="iBA-bD-c1e" firstAttribute="centerY" secondItem="ih1-dK-CYO" secondAttribute="centerY" id="A9b-C9-7Bi"/>
+                <constraint firstItem="qJW-7F-3tl" firstAttribute="centerY" secondItem="iBA-bD-c1e" secondAttribute="centerY" id="Etg-Y6-E16"/>
+                <constraint firstItem="mf1-ok-Kx9" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="NxV-pm-Rgp"/>
+                <constraint firstItem="i3T-iN-iCf" firstAttribute="leading" secondItem="iBA-bD-c1e" secondAttribute="trailing" constant="43" id="Wnz-d1-vCn"/>
+                <constraint firstAttribute="trailing" secondItem="ih1-dK-CYO" secondAttribute="trailing" id="XYh-GV-wcv"/>
+                <constraint firstItem="mf1-ok-Kx9" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="c6Y-gg-h7W"/>
+                <constraint firstAttribute="trailing" secondItem="mf1-ok-Kx9" secondAttribute="trailing" id="cXd-p3-uNA"/>
+                <constraint firstItem="ih1-dK-CYO" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="fg1-Qv-4kW"/>
+                <constraint firstItem="iBA-bD-c1e" firstAttribute="centerX" secondItem="ih1-dK-CYO" secondAttribute="centerX" id="hqy-zv-tay"/>
+                <constraint firstAttribute="bottom" secondItem="mf1-ok-Kx9" secondAttribute="bottom" id="nWQ-2v-n1M"/>
+                <constraint firstItem="i3T-iN-iCf" firstAttribute="centerY" secondItem="iBA-bD-c1e" secondAttribute="centerY" id="qv5-AO-pWm"/>
+                <constraint firstItem="iBA-bD-c1e" firstAttribute="leading" secondItem="qJW-7F-3tl" secondAttribute="trailing" constant="34" id="z4s-mR-WiM"/>
+            </constraints>
+            <connections>
+                <outlet property="alphaView" destination="mf1-ok-Kx9" id="gcg-yw-T1s"/>
+                <outlet property="cancelBtn" destination="qJW-7F-3tl" id="xah-V3-kQg"/>
+                <outlet property="changeCameraBtn" destination="i3T-iN-iCf" id="Pkr-id-WV1"/>
+                <outlet property="shootBtn" destination="iBA-bD-c1e" id="5oJ-hH-BkB"/>
+            </connections>
+        </view>
+    </objects>
+</document>

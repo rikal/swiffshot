@@ -12,6 +12,9 @@
 		0A63224C1DE5B89F006A0644 /* NoNavBarNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A63224A1DE5B89F006A0644 /* NoNavBarNavigationController.swift */; };
 		0A6322521DE6D4D6006A0644 /* LatestStreamCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A6322511DE6D4D6006A0644 /* LatestStreamCollectionViewCell.swift */; };
 		0A6322541DE6E399006A0644 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A6322531DE6E399006A0644 /* HeaderView.swift */; };
+		0A6322561DE7987A006A0644 /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A6322551DE7987A006A0644 /* CameraViewController.swift */; };
+		0A6322591DE79FF7006A0644 /* CameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A6322581DE79FF7006A0644 /* CameraView.swift */; };
+		0A63225B1DE7A007006A0644 /* View.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A63225A1DE7A007006A0644 /* View.xib */; };
 		0AA596091DE4E9CB0005336D /* Defaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AA596081DE4E9CB0005336D /* Defaults.swift */; };
 		0ABB902F1DE422C2009E39E5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ABB902E1DE422C2009E39E5 /* AppDelegate.swift */; };
 		0ABB90341DE422C2009E39E5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0ABB90321DE422C2009E39E5 /* Main.storyboard */; };
@@ -30,6 +33,9 @@
 		0A63224A1DE5B89F006A0644 /* NoNavBarNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NoNavBarNavigationController.swift; path = Controllers/MainScreen/NoNavBarNavigationController.swift; sourceTree = "<group>"; };
 		0A6322511DE6D4D6006A0644 /* LatestStreamCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LatestStreamCollectionViewCell.swift; path = Controllers/MainScreen/LatestStreamCollectionViewCell.swift; sourceTree = "<group>"; };
 		0A6322531DE6E399006A0644 /* HeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HeaderView.swift; path = Controllers/MainScreen/HeaderView.swift; sourceTree = "<group>"; };
+		0A6322551DE7987A006A0644 /* CameraViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CameraViewController.swift; path = Controllers/MainScreen/CameraViewController.swift; sourceTree = "<group>"; };
+		0A6322581DE79FF7006A0644 /* CameraView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CameraView.swift; path = Views/CameraView.swift; sourceTree = "<group>"; };
+		0A63225A1DE7A007006A0644 /* View.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = View.xib; path = Views/View.xib; sourceTree = "<group>"; };
 		0AA596081DE4E9CB0005336D /* Defaults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Defaults.swift; path = Utilities/Defaults.swift; sourceTree = "<group>"; };
 		0ABB902B1DE422C2009E39E5 /* Swiffshot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Swiffshot.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0ABB902E1DE422C2009E39E5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -65,8 +71,18 @@
 				0A63224A1DE5B89F006A0644 /* NoNavBarNavigationController.swift */,
 				0A6322511DE6D4D6006A0644 /* LatestStreamCollectionViewCell.swift */,
 				0A6322531DE6E399006A0644 /* HeaderView.swift */,
+				0A6322551DE7987A006A0644 /* CameraViewController.swift */,
 			);
 			name = MainScreen;
+			sourceTree = "<group>";
+		};
+		0A6322571DE79AB6006A0644 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				0A6322581DE79FF7006A0644 /* CameraView.swift */,
+				0A63225A1DE7A007006A0644 /* View.xib */,
+			);
+			name = Views;
 			sourceTree = "<group>";
 		};
 		0AA596051DE4E7180005336D /* Utilities */ = {
@@ -99,6 +115,7 @@
 		0ABB902D1DE422C2009E39E5 /* Swiffshot */ = {
 			isa = PBXGroup;
 			children = (
+				0A6322571DE79AB6006A0644 /* Views */,
 				0ABB90421DE42634009E39E5 /* Controllers */,
 				0ABB90401DE42602009E39E5 /* Resources */,
 				0AA596051DE4E7180005336D /* Utilities */,
@@ -218,6 +235,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0A63225B1DE7A007006A0644 /* View.xib in Resources */,
 				0ABB90391DE422C2009E39E5 /* LaunchScreen.storyboard in Resources */,
 				0ABB90361DE422C2009E39E5 /* Assets.xcassets in Resources */,
 				0ABB90341DE422C2009E39E5 /* Main.storyboard in Resources */,
@@ -281,9 +299,11 @@
 			files = (
 				0ABB904D1DE439C1009E39E5 /* YourPhoneViewController.swift in Sources */,
 				0A6322441DE5A64A006A0644 /* CameraManager.swift in Sources */,
+				0A6322591DE79FF7006A0644 /* CameraView.swift in Sources */,
 				0A63224C1DE5B89F006A0644 /* NoNavBarNavigationController.swift in Sources */,
 				0A6322521DE6D4D6006A0644 /* LatestStreamCollectionViewCell.swift in Sources */,
 				0ABB90471DE433F5009E39E5 /* CheckCodeViewController.swift in Sources */,
+				0A6322561DE7987A006A0644 /* CameraViewController.swift in Sources */,
 				0ABB90491DE4340E009E39E5 /* FillProfileViewController.swift in Sources */,
 				0AA596091DE4E9CB0005336D /* Defaults.swift in Sources */,
 				0A6322541DE6E399006A0644 /* HeaderView.swift in Sources */,

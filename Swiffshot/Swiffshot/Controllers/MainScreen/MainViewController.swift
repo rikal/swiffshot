@@ -7,14 +7,9 @@
 //
 
 import UIKit
-import AVFoundation
 
-class MainViewController: UIViewController {
-    @IBOutlet weak var takePhotoBtn: UIButton!
+class MainViewController: CameraViewController, UIGestureRecognizerDelegate {
     @IBOutlet weak var collectionView: UICollectionView!
-    
-    var previewLayer : AVCaptureVideoPreviewLayer?
-    let camera = CameraManager.sharedCamera
     
     var latestVideos = [String]()
     var trendingVideos = [String]()
@@ -24,11 +19,11 @@ class MainViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        addTapGesture()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-//        previewLayer = camera.beginSession()
-//        self.view.layer.insertSublayer(previewLayer!, below: cameraButtonsView.layer)
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
     }
     
     override func viewDidLayoutSubviews() {
@@ -36,13 +31,22 @@ class MainViewController: UIViewController {
     }
     
     private func visualEffects(){
-        takePhotoBtn.layer.cornerRadius = takePhotoBtn.frame.size.height/2
         let spacing = (self.collectionView.frame.size.width/2 - 100)/2
         collectionView.contentInset = UIEdgeInsets(top: 0, left: spacing, bottom: 0, right: spacing)
     }
     
-    @IBAction func takePhotoPressed(_ sender: AnyObject) {
+    private func addTapGesture(){
+        let tap = UITapGestureRecognizer(target: self, action: #selector(MainViewController.handleTap(sender:)))
+        tap.delegate = self
+        collectionView.backgroundView = UIView()
+        collectionView.backgroundView?.addGestureRecognizer(tap)
     }
+    
+    @objc(handleTap:)
+    private func handleTap(sender: UITapGestureRecognizer){
+        print("TAPPED")
+    }
+
 }
 
 extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSource{
@@ -86,5 +90,9 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
         }
         
         return header
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        print("SELECTED")
     }
 }
