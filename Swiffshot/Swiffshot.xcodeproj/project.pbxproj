@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0A6322441DE5A64A006A0644 /* CameraManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A6322431DE5A64A006A0644 /* CameraManager.swift */; };
 		0A63224B1DE5B89F006A0644 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A6322491DE5B89F006A0644 /* MainViewController.swift */; };
 		0A63224C1DE5B89F006A0644 /* NoNavBarNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A63224A1DE5B89F006A0644 /* NoNavBarNavigationController.swift */; };
 		0A6322521DE6D4D6006A0644 /* LatestStreamCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A6322511DE6D4D6006A0644 /* LatestStreamCollectionViewCell.swift */; };
@@ -30,7 +29,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		0A6322431DE5A64A006A0644 /* CameraManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CameraManager.swift; path = Utilities/CameraManager.swift; sourceTree = "<group>"; };
 		0A6322491DE5B89F006A0644 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MainViewController.swift; path = Controllers/MainScreen/MainViewController.swift; sourceTree = "<group>"; };
 		0A63224A1DE5B89F006A0644 /* NoNavBarNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NoNavBarNavigationController.swift; path = Controllers/MainScreen/NoNavBarNavigationController.swift; sourceTree = "<group>"; };
 		0A6322511DE6D4D6006A0644 /* LatestStreamCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LatestStreamCollectionViewCell.swift; path = Controllers/MainScreen/LatestStreamCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -95,7 +93,6 @@
 			isa = PBXGroup;
 			children = (
 				0AA596081DE4E9CB0005336D /* Defaults.swift */,
-				0A6322431DE5A64A006A0644 /* CameraManager.swift */,
 			);
 			name = Utilities;
 			sourceTree = "<group>";
@@ -305,7 +302,6 @@
 			files = (
 				0A63225F1DE8421D006A0644 /* SmallCollectionViewCell.swift in Sources */,
 				0ABB904D1DE439C1009E39E5 /* YourPhoneViewController.swift in Sources */,
-				0A6322441DE5A64A006A0644 /* CameraManager.swift in Sources */,
 				0A6322591DE79FF7006A0644 /* CameraView.swift in Sources */,
 				0A63224C1DE5B89F006A0644 /* NoNavBarNavigationController.swift in Sources */,
 				0A6322611DE852E0006A0644 /* MainLayout.swift in Sources */,

@@ -44,13 +44,14 @@ class MainViewController: CameraViewController, UIGestureRecognizerDelegate {
     
     //MARK: - HIDE/SHOW Collectionview
     
-    func hideShowCollectionView(isHide: Bool){
+    private func hideShowCollectionView(isHide: Bool){
         var alpha: Float = 0.0
         if isHide { alpha = 0.0 } else { alpha = 1.0 }
         
         UIView.animate(withDuration: 1.5, animations: {
             self.collectionView.alpha = CGFloat(alpha)
             }, completion: { (finished) in
+                self.turnOnCamera()
                 self.collectionView.isHidden = isHide
         })
     }
