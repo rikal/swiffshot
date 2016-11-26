@@ -8,12 +8,23 @@
 
 import UIKit
 
+protocol CameraViewDelegate {
+    func startStopRecordingVideo(isStart: Bool)
+    func cancelCameraView()
+    func changeCamera(isBackCamera: Bool)
+}
+
 class CameraView: UIView {
 
     @IBOutlet weak var shootBtn: UIButton!
     @IBOutlet weak var changeCameraBtn: UIButton!
     @IBOutlet weak var cancelBtn: UIButton!
     @IBOutlet weak var alphaView: UIView!
+    
+    var delegate : CameraViewDelegate?
+    var isStartToRecord : Bool = false
+    var isBackCamera : Bool = true
+    
 
     class func instanceFromNib() -> CameraView {
         return UINib(nibName: "View", bundle: nil).instantiate(withOwner: nil, options: nil)[0] as! CameraView
@@ -36,14 +47,17 @@ class CameraView: UIView {
     }
    
     @IBAction func shootVideo(_ sender: AnyObject) {
-        print("SHOOTING")
+        isStartToRecord = !isStartToRecord
+        delegate?.startStopRecordingVideo(isStart: isStartToRecord)
     }
 
     @IBAction func cancelPressed(_ sender: AnyObject) {
         showHideAlphaView(isHide: false)
+        delegate?.cancelCameraView()
     }
     
     @IBAction func changeCameraPressed(_ sender: AnyObject) {
-        print("CHANGING")
+        delegate?.changeCamera(isBackCamera: isBackCamera)
+        isBackCamera = !isBackCamera
     }
 }

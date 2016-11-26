@@ -12,6 +12,12 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ih1-dK-CYO">
+                    <color key="backgroundColor" red="0.71372549019999998" green="0.71372549019999998" blue="0.71372549019999998" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="128" id="Lqz-7v-9cs"/>
+                    </constraints>
+                </view>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iBA-bD-c1e">
                     <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
@@ -42,12 +48,6 @@
                         <action selector="cancelPressed:" destination="iN0-l3-epB" eventType="touchUpInside" id="hsl-Pz-zIH"/>
                     </connections>
                 </button>
-                <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ih1-dK-CYO">
-                    <color key="backgroundColor" red="0.71372549019999998" green="0.71372549019999998" blue="0.71372549019999998" alpha="1" colorSpace="calibratedRGB"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="128" id="Lqz-7v-9cs"/>
-                    </constraints>
-                </view>
                 <view alpha="0.59999999999999998" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mf1-ok-Kx9">
                     <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                 </view>

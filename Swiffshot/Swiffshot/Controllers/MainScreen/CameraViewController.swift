@@ -9,7 +9,7 @@
 import UIKit
 import AVFoundation
 
-class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate, AVCaptureFileOutputRecordingDelegate {
+class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate, AVCaptureFileOutputRecordingDelegate, CameraViewDelegate {
 
     var previewLayer : AVCaptureVideoPreviewLayer?
     var cameraView : CameraView!
@@ -19,11 +19,13 @@ class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        pathTosave()
     }
 
     override func viewDidAppear(_ animated: Bool) {
         cameraView = CameraView.instanceFromNib()
         cameraView.frame = self.view.frame
+        cameraView.delegate = self
         self.view.insertSubview(cameraView, at: 0)
     }
 
@@ -117,6 +119,18 @@ class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
         print("capture did finish")
         print(captureOutput)
         print(outputFileURL)
+    }
+    
+    func startStopRecordingVideo(isStart: Bool){
+        srartStopRecord(isStart: isStart)
+    }
+    
+    func cancelCameraView(){
+        
+    }
+    
+    func changeCamera(isBackCamera: Bool){
+        
     }
 
 }
