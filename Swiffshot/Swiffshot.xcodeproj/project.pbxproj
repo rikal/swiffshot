@@ -17,6 +17,8 @@
 		0A63225F1DE8421D006A0644 /* SmallCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A63225E1DE8421D006A0644 /* SmallCollectionViewCell.swift */; };
 		0A6322611DE852E0006A0644 /* MainLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A6322601DE852E0006A0644 /* MainLayout.swift */; };
 		0A6322641DEB41EA006A0644 /* VideoPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A6322631DEB41EA006A0644 /* VideoPlayerViewController.swift */; };
+		0A6322681DEB5798006A0644 /* ProfileHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A6322671DEB5798006A0644 /* ProfileHeaderView.swift */; };
+		0A63226A1DEB57C0006A0644 /* ProfilesVideosCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A6322691DEB57C0006A0644 /* ProfilesVideosCollectionViewCell.swift */; };
 		0AA596091DE4E9CB0005336D /* Defaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AA596081DE4E9CB0005336D /* Defaults.swift */; };
 		0ABB902F1DE422C2009E39E5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ABB902E1DE422C2009E39E5 /* AppDelegate.swift */; };
 		0ABB90341DE422C2009E39E5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0ABB90321DE422C2009E39E5 /* Main.storyboard */; };
@@ -40,6 +42,8 @@
 		0A63225E1DE8421D006A0644 /* SmallCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SmallCollectionViewCell.swift; path = Controllers/MainScreen/SmallCollectionViewCell.swift; sourceTree = "<group>"; };
 		0A6322601DE852E0006A0644 /* MainLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MainLayout.swift; path = Controllers/MainScreen/MainLayout.swift; sourceTree = "<group>"; };
 		0A6322631DEB41EA006A0644 /* VideoPlayerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VideoPlayerViewController.swift; path = Controllers/VideoPlayer/VideoPlayerViewController.swift; sourceTree = "<group>"; };
+		0A6322671DEB5798006A0644 /* ProfileHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProfileHeaderView.swift; path = Controllers/VideoPlayer/ProfileHeaderView.swift; sourceTree = "<group>"; };
+		0A6322691DEB57C0006A0644 /* ProfilesVideosCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProfilesVideosCollectionViewCell.swift; path = Controllers/VideoPlayer/ProfilesVideosCollectionViewCell.swift; sourceTree = "<group>"; };
 		0AA596081DE4E9CB0005336D /* Defaults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Defaults.swift; path = Utilities/Defaults.swift; sourceTree = "<group>"; };
 		0ABB902B1DE422C2009E39E5 /* Swiffshot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Swiffshot.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0ABB902E1DE422C2009E39E5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -95,6 +99,8 @@
 			isa = PBXGroup;
 			children = (
 				0A6322631DEB41EA006A0644 /* VideoPlayerViewController.swift */,
+				0A6322671DEB5798006A0644 /* ProfileHeaderView.swift */,
+				0A6322691DEB57C0006A0644 /* ProfilesVideosCollectionViewCell.swift */,
 			);
 			name = VideoPlayer;
 			sourceTree = "<group>";
@@ -318,9 +324,11 @@
 				0A6322611DE852E0006A0644 /* MainLayout.swift in Sources */,
 				0A6322521DE6D4D6006A0644 /* LatestStreamCollectionViewCell.swift in Sources */,
 				0ABB90471DE433F5009E39E5 /* CheckCodeViewController.swift in Sources */,
+				0A6322681DEB5798006A0644 /* ProfileHeaderView.swift in Sources */,
 				0A6322561DE7987A006A0644 /* CameraViewController.swift in Sources */,
 				0ABB90491DE4340E009E39E5 /* FillProfileViewController.swift in Sources */,
 				0AA596091DE4E9CB0005336D /* Defaults.swift in Sources */,
+				0A63226A1DEB57C0006A0644 /* ProfilesVideosCollectionViewCell.swift in Sources */,
 				0A6322541DE6E399006A0644 /* HeaderView.swift in Sources */,
 				0ABB904F1DE44C08009E39E5 /* AuthorizationViewController.swift in Sources */,
 				0A6322641DEB41EA006A0644 /* VideoPlayerViewController.swift in Sources */,
