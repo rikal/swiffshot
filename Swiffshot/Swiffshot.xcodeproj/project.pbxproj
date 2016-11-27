@@ -17,7 +17,6 @@
 		0A63225F1DE8421D006A0644 /* SmallCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A63225E1DE8421D006A0644 /* SmallCollectionViewCell.swift */; };
 		0A6322611DE852E0006A0644 /* MainLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A6322601DE852E0006A0644 /* MainLayout.swift */; };
 		0A6322641DEB41EA006A0644 /* VideoPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A6322631DEB41EA006A0644 /* VideoPlayerViewController.swift */; };
-		0A6322661DEB48DF006A0644 /* video_2016-11-23_16-35-23.mov in Resources */ = {isa = PBXBuildFile; fileRef = 0A6322651DEB48DF006A0644 /* video_2016-11-23_16-35-23.mov */; };
 		0AA596091DE4E9CB0005336D /* Defaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AA596081DE4E9CB0005336D /* Defaults.swift */; };
 		0ABB902F1DE422C2009E39E5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ABB902E1DE422C2009E39E5 /* AppDelegate.swift */; };
 		0ABB90341DE422C2009E39E5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0ABB90321DE422C2009E39E5 /* Main.storyboard */; };
@@ -41,7 +40,6 @@
 		0A63225E1DE8421D006A0644 /* SmallCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SmallCollectionViewCell.swift; path = Controllers/MainScreen/SmallCollectionViewCell.swift; sourceTree = "<group>"; };
 		0A6322601DE852E0006A0644 /* MainLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MainLayout.swift; path = Controllers/MainScreen/MainLayout.swift; sourceTree = "<group>"; };
 		0A6322631DEB41EA006A0644 /* VideoPlayerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VideoPlayerViewController.swift; path = Controllers/VideoPlayer/VideoPlayerViewController.swift; sourceTree = "<group>"; };
-		0A6322651DEB48DF006A0644 /* video_2016-11-23_16-35-23.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = "video_2016-11-23_16-35-23.mov"; sourceTree = "<group>"; };
 		0AA596081DE4E9CB0005336D /* Defaults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Defaults.swift; path = Utilities/Defaults.swift; sourceTree = "<group>"; };
 		0ABB902B1DE422C2009E39E5 /* Swiffshot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Swiffshot.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0ABB902E1DE422C2009E39E5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -144,7 +142,6 @@
 		0ABB90401DE42602009E39E5 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				0A6322651DEB48DF006A0644 /* video_2016-11-23_16-35-23.mov */,
 				0ABB90351DE422C2009E39E5 /* Assets.xcassets */,
 			);
 			name = Resources;
@@ -253,7 +250,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				0A63225B1DE7A007006A0644 /* View.xib in Resources */,
-				0A6322661DEB48DF006A0644 /* video_2016-11-23_16-35-23.mov in Resources */,
 				0ABB90391DE422C2009E39E5 /* LaunchScreen.storyboard in Resources */,
 				0ABB90361DE422C2009E39E5 /* Assets.xcassets in Resources */,
 				0ABB90341DE422C2009E39E5 /* Main.storyboard in Resources */,
