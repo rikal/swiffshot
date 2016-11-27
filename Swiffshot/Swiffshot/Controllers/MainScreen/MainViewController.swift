@@ -127,6 +127,6 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print("SELECTED")
+        performSegue(withIdentifier: "fromMainToVideo", sender: self)
     }
 }
