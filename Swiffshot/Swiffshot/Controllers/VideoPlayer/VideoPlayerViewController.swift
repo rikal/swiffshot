@@ -10,7 +10,7 @@ import UIKit
 import AVKit
 import AVFoundation
 
-class VideoPlayerViewController: CameraViewController, UIGestureRecognizerDelegate {
+class VideoPlayerViewController: CameraViewController, UIGestureRecognizerDelegate, CameraViewDelegate {
     
     @IBOutlet weak var collectionView: UICollectionView!
     
@@ -18,24 +18,18 @@ class VideoPlayerViewController: CameraViewController, UIGestureRecognizerDelega
     var player : AVPlayer!
     var url:NSURL!
 
+    //MARK: - SYSTEMS METHODS
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         addTapGesture()
         startPlayingVideo()
     }
-
-    func startPlayingVideo(){
-        url = NSURL(string: "http://clips.vorwaerts-gmbh.de/VfE_html5.mp4")!
-        
-        player = AVPlayer(url: url as URL)
-        
-        playerViewController.player = player
-        playerViewController.showsPlaybackControls = true
-        self.present(playerViewController, animated: true){
-            print("PLAYING")
-            self.playerViewController.player?.play()
-        }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+        cameraView.delegate = self
     }
     
     //MARK: - ADD TAPGESTURE for collection view
@@ -52,6 +46,21 @@ class VideoPlayerViewController: CameraViewController, UIGestureRecognizerDelega
         cameraView.showHideAlphaView(isHide: true)
     }
     
+    //MARK: - VIDEO METHODS
+
+    func startPlayingVideo(){
+        url = NSURL(string: "http://clips.vorwaerts-gmbh.de/VfE_html5.mp4")!
+        
+        player = AVPlayer(url: url as URL)
+        
+        playerViewController.player = player
+        playerViewController.showsPlaybackControls = true
+        self.present(playerViewController, animated: true){
+            print("PLAYING")
+            self.playerViewController.player?.play()
+        }
+    }
+    
     //MARK: - HIDE/SHOW Collectionview
     
     private func hideShowCollectionView(isHide: Bool){
@@ -61,9 +70,24 @@ class VideoPlayerViewController: CameraViewController, UIGestureRecognizerDelega
         UIView.animate(withDuration: 1.5, animations: {
             self.collectionView.alpha = CGFloat(alpha)
             }, completion: { (finished) in
-                self.turnOnCamera()
+                if isHide { self.turnOnCamera() }
                 self.collectionView.isHidden = isHide
         })
+    }
+    
+    //MARK: - CAMERA VIEW delegate
+    
+    func startStopRecordingVideo(isStart: Bool){
+        srartStopRecord(isStart: isStart)
+    }
+    
+    func cancelCameraView(){
+        hideShowCollectionView(isHide: false)
+        removePreviewLayer()
+    }
+    
+    func changeCamera(){
+        turnOnCamera()
     }
 }
 

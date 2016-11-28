@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MainViewController: CameraViewController, UIGestureRecognizerDelegate {
+class MainViewController: CameraViewController, UIGestureRecognizerDelegate, CameraViewDelegate {
     @IBOutlet weak var collectionView: UICollectionView!
     
     var latestVideos = [String]()
@@ -26,6 +26,7 @@ class MainViewController: CameraViewController, UIGestureRecognizerDelegate {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
+        cameraView.delegate = self
     }
     
     //MARK: - ADD TAPGESTURE for collection view
@@ -51,9 +52,25 @@ class MainViewController: CameraViewController, UIGestureRecognizerDelegate {
         UIView.animate(withDuration: 1.5, animations: {
             self.collectionView.alpha = CGFloat(alpha)
             }, completion: { (finished) in
-                self.turnOnCamera()
+                if isHide { self.turnOnCamera() }
                 self.collectionView.isHidden = isHide
         })
+    }
+    
+    //MARK: - CAMERA VIEW delegate
+    
+    func startStopRecordingVideo(isStart: Bool){
+        srartStopRecord(isStart: isStart)
+    }
+    
+    func cancelCameraView(){
+        hideShowCollectionView(isHide: false)
+        removePreviewLayer()
+    }
+    
+    func changeCamera(){
+        removePreviewLayer()
+        turnOnCamera()
     }
 
 }

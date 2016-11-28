@@ -11,7 +11,7 @@ import UIKit
 protocol CameraViewDelegate {
     func startStopRecordingVideo(isStart: Bool)
     func cancelCameraView()
-    func changeCamera(isBackCamera: Bool)
+    func changeCamera()
 }
 
 class CameraView: UIView {
@@ -23,7 +23,6 @@ class CameraView: UIView {
     
     var delegate : CameraViewDelegate?
     var isStartToRecord : Bool = false
-    var isBackCamera : Bool = true
     
 
     class func instanceFromNib() -> CameraView {
@@ -37,7 +36,7 @@ class CameraView: UIView {
 
     func showHideAlphaView(isHide: Bool){
         var alpha: Float = 0.0
-        if isHide { alpha = 0.0 } else { alpha = 0.55 }
+        if isHide { alpha = 0.0 } else { alpha = 0.6 }
         
         UIView.animate(withDuration: 1.5, animations: {
             self.alphaView.alpha = CGFloat(alpha)
@@ -57,7 +56,6 @@ class CameraView: UIView {
     }
     
     @IBAction func changeCameraPressed(_ sender: AnyObject) {
-        delegate?.changeCamera(isBackCamera: isBackCamera)
-        isBackCamera = !isBackCamera
+        delegate?.changeCamera()
     }
 }

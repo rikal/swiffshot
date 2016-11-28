@@ -9,13 +9,14 @@
 import UIKit
 import AVFoundation
 
-class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate, AVCaptureFileOutputRecordingDelegate, CameraViewDelegate {
+class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate, AVCaptureFileOutputRecordingDelegate {
 
     var previewLayer : AVCaptureVideoPreviewLayer?
     var cameraView : CameraView!
     let captureSession = AVCaptureSession()
     var captureDevice : AVCaptureDevice?
     var filePath : URL?
+    var isBackCamera = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,7 +26,6 @@ class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
     override func viewDidAppear(_ animated: Bool) {
         cameraView = CameraView.instanceFromNib()
         cameraView.frame = self.view.frame
-        cameraView.delegate = self
         self.view.insertSubview(cameraView, at: 0)
     }
 
@@ -34,18 +34,24 @@ class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
         let devices = AVCaptureDevice.devices()
         for device in devices! {
             if ((device as AnyObject).hasMediaType(AVMediaTypeVideo)) {
-                if((device as AnyObject).position == AVCaptureDevicePosition.back) {
+                if((device as AnyObject).position == AVCaptureDevicePosition.back && isBackCamera) {
                     captureDevice = device as? AVCaptureDevice
                     if captureDevice != nil {
-                        print("Capture device found")
+                        print("Capture device back camera found")
+                        break
+                    }
+                } else if((device as AnyObject).position == AVCaptureDevicePosition.front && !isBackCamera) {
+                    captureDevice = device as? AVCaptureDevice
+                    if captureDevice != nil {
+                        print("Capture device front camera found")
                         break
                     }
                 }
             }
         }
-        
         previewLayer = beginSession()
         self.view.layer.addSublayer(previewLayer!)
+        isBackCamera = !isBackCamera
     }
     
     private func pathTosave(){
@@ -62,7 +68,7 @@ class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
             } catch {
                 return
             }
-            device.focusMode = .locked
+            if isBackCamera { device.focusMode = .continuousAutoFocus }
             device.unlockForConfiguration()
         }
         
@@ -103,6 +109,10 @@ class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
         return previewLayer!
     }
     
+    func removePreviewLayer(){
+        previewLayer?.removeFromSuperlayer()
+    }
+    
     func srartStopRecord(isStart: Bool){
         let videoFileOutput = AVCaptureMovieFileOutput()
         if isStart{
@@ -120,17 +130,4 @@ class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
         print(captureOutput)
         print(outputFileURL)
     }
-    
-    func startStopRecordingVideo(isStart: Bool){
-        srartStopRecord(isStart: isStart)
-    }
-    
-    func cancelCameraView(){
-        
-    }
-    
-    func changeCamera(isBackCamera: Bool){
-        
-    }
-
 }
