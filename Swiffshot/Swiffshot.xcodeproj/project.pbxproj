@@ -15,10 +15,12 @@
 		0A6322591DE79FF7006A0644 /* CameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A6322581DE79FF7006A0644 /* CameraView.swift */; };
 		0A63225B1DE7A007006A0644 /* View.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A63225A1DE7A007006A0644 /* View.xib */; };
 		0A63225F1DE8421D006A0644 /* SmallCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A63225E1DE8421D006A0644 /* SmallCollectionViewCell.swift */; };
-		0A6322611DE852E0006A0644 /* MainLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A6322601DE852E0006A0644 /* MainLayout.swift */; };
 		0A6322641DEB41EA006A0644 /* VideoPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A6322631DEB41EA006A0644 /* VideoPlayerViewController.swift */; };
 		0A6322681DEB5798006A0644 /* ProfileHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A6322671DEB5798006A0644 /* ProfileHeaderView.swift */; };
 		0A63226A1DEB57C0006A0644 /* ProfilesVideosCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A6322691DEB57C0006A0644 /* ProfilesVideosCollectionViewCell.swift */; };
+		0A6322701DEDE8EB006A0644 /* CategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A63226F1DEDE8EB006A0644 /* CategoryCell.swift */; };
+		0A6322721DEE0630006A0644 /* LatestStreamCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A6322711DEE0630006A0644 /* LatestStreamCollectionViewCell.xib */; };
+		0A6322741DEE076E006A0644 /* SmallCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A6322731DEE076E006A0644 /* SmallCollectionViewCell.xib */; };
 		0AA596091DE4E9CB0005336D /* Defaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AA596081DE4E9CB0005336D /* Defaults.swift */; };
 		0ABB902F1DE422C2009E39E5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ABB902E1DE422C2009E39E5 /* AppDelegate.swift */; };
 		0ABB90341DE422C2009E39E5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0ABB90321DE422C2009E39E5 /* Main.storyboard */; };
@@ -40,10 +42,12 @@
 		0A6322581DE79FF7006A0644 /* CameraView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CameraView.swift; path = Views/CameraView.swift; sourceTree = "<group>"; };
 		0A63225A1DE7A007006A0644 /* View.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = View.xib; path = Views/View.xib; sourceTree = "<group>"; };
 		0A63225E1DE8421D006A0644 /* SmallCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SmallCollectionViewCell.swift; path = Controllers/MainScreen/SmallCollectionViewCell.swift; sourceTree = "<group>"; };
-		0A6322601DE852E0006A0644 /* MainLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MainLayout.swift; path = Controllers/MainScreen/MainLayout.swift; sourceTree = "<group>"; };
 		0A6322631DEB41EA006A0644 /* VideoPlayerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VideoPlayerViewController.swift; path = Controllers/VideoPlayer/VideoPlayerViewController.swift; sourceTree = "<group>"; };
 		0A6322671DEB5798006A0644 /* ProfileHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProfileHeaderView.swift; path = Controllers/VideoPlayer/ProfileHeaderView.swift; sourceTree = "<group>"; };
 		0A6322691DEB57C0006A0644 /* ProfilesVideosCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProfilesVideosCollectionViewCell.swift; path = Controllers/VideoPlayer/ProfilesVideosCollectionViewCell.swift; sourceTree = "<group>"; };
+		0A63226F1DEDE8EB006A0644 /* CategoryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CategoryCell.swift; path = Controllers/MainScreen/CategoryCell.swift; sourceTree = "<group>"; };
+		0A6322711DEE0630006A0644 /* LatestStreamCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LatestStreamCollectionViewCell.xib; path = Controllers/MainScreen/LatestStreamCollectionViewCell.xib; sourceTree = "<group>"; };
+		0A6322731DEE076E006A0644 /* SmallCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SmallCollectionViewCell.xib; path = Controllers/MainScreen/SmallCollectionViewCell.xib; sourceTree = "<group>"; };
 		0AA596081DE4E9CB0005336D /* Defaults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Defaults.swift; path = Utilities/Defaults.swift; sourceTree = "<group>"; };
 		0ABB902B1DE422C2009E39E5 /* Swiffshot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Swiffshot.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0ABB902E1DE422C2009E39E5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -77,11 +81,13 @@
 			children = (
 				0A6322491DE5B89F006A0644 /* MainViewController.swift */,
 				0A63224A1DE5B89F006A0644 /* NoNavBarNavigationController.swift */,
-				0A6322511DE6D4D6006A0644 /* LatestStreamCollectionViewCell.swift */,
 				0A6322531DE6E399006A0644 /* HeaderView.swift */,
 				0A6322551DE7987A006A0644 /* CameraViewController.swift */,
+				0A63226F1DEDE8EB006A0644 /* CategoryCell.swift */,
 				0A63225E1DE8421D006A0644 /* SmallCollectionViewCell.swift */,
-				0A6322601DE852E0006A0644 /* MainLayout.swift */,
+				0A6322731DEE076E006A0644 /* SmallCollectionViewCell.xib */,
+				0A6322511DE6D4D6006A0644 /* LatestStreamCollectionViewCell.swift */,
+				0A6322711DEE0630006A0644 /* LatestStreamCollectionViewCell.xib */,
 			);
 			name = MainScreen;
 			sourceTree = "<group>";
@@ -259,6 +265,8 @@
 				0ABB90391DE422C2009E39E5 /* LaunchScreen.storyboard in Resources */,
 				0ABB90361DE422C2009E39E5 /* Assets.xcassets in Resources */,
 				0ABB90341DE422C2009E39E5 /* Main.storyboard in Resources */,
+				0A6322741DEE076E006A0644 /* SmallCollectionViewCell.xib in Resources */,
+				0A6322721DEE0630006A0644 /* LatestStreamCollectionViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -321,7 +329,6 @@
 				0ABB904D1DE439C1009E39E5 /* YourPhoneViewController.swift in Sources */,
 				0A6322591DE79FF7006A0644 /* CameraView.swift in Sources */,
 				0A63224C1DE5B89F006A0644 /* NoNavBarNavigationController.swift in Sources */,
-				0A6322611DE852E0006A0644 /* MainLayout.swift in Sources */,
 				0A6322521DE6D4D6006A0644 /* LatestStreamCollectionViewCell.swift in Sources */,
 				0ABB90471DE433F5009E39E5 /* CheckCodeViewController.swift in Sources */,
 				0A6322681DEB5798006A0644 /* ProfileHeaderView.swift in Sources */,
@@ -334,6 +341,7 @@
 				0A6322641DEB41EA006A0644 /* VideoPlayerViewController.swift in Sources */,
 				0ABB902F1DE422C2009E39E5 /* AppDelegate.swift in Sources */,
 				0A63224B1DE5B89F006A0644 /* MainViewController.swift in Sources */,
+				0A6322701DEDE8EB006A0644 /* CategoryCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
