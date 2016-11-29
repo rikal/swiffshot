@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CategoryCell: UICollectionViewCell, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
+class CategoryCell: UICollectionViewCell, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UIGestureRecognizerDelegate{
     
     var globalIndexSection = 0
     private let cellId = "cellId"
@@ -44,6 +44,16 @@ class CategoryCell: UICollectionViewCell, UICollectionViewDelegate, UICollection
         
         addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[v0]|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0": videosCollectionView]))
         addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[v0]|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0": videosCollectionView]))
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(CategoryCell.handleTap(sender:)))
+        tap.delegate = self
+        videosCollectionView.backgroundView = UIView()
+        videosCollectionView.backgroundView?.addGestureRecognizer(tap)
+    }
+    
+    @objc(handleTap:)
+    private func handleTap(sender: UITapGestureRecognizer){
+            print("TAPPED")
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -92,20 +102,7 @@ class CategoryCell: UICollectionViewCell, UICollectionViewDelegate, UICollection
         }
     }
     
-    
-}
-
-class VideoCell: UICollectionViewCell{
-    override init(frame: CGRect){
-        super.init(frame: frame)
-        setupView()
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-
-    func setupView(){
-        backgroundColor = UIColor.red
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        print("SELECTED")
     }
 }

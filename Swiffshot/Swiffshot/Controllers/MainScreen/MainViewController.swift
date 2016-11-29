@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MainViewController: CameraViewController, UIGestureRecognizerDelegate, CameraViewDelegate {
+class MainViewController: CameraViewController, CameraViewDelegate {
 
     @IBOutlet weak var collectionView: UICollectionView!
     
@@ -41,37 +41,34 @@ class MainViewController: CameraViewController, UIGestureRecognizerDelegate, Cam
     //MARK: - PREPEARE CollectionView
     
     private func prepareCollectionView(){
-        addTapGesture()
         collectionView.register(CategoryCell.self, forCellWithReuseIdentifier: cellId)
+        collectionView.register(UINib(nibName: "MainHeader", bundle: nil), forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "mainHeader");
     }
     
     //MARK: - ADD TAPGESTURE for collection view
-    private func addTapGesture(){
-        let tap = UITapGestureRecognizer(target: self, action: #selector(MainViewController.handleTap(sender:)))
-        tap.delegate = self
-//        collectionView.backgroundView = UIView()
-//        collectionView.backgroundView?.addGestureRecognizer(tap)
-    }
+//    private func addTapGesture(){
+//        
+//    }
     
-    @objc(handleTap:)
-    private func handleTap(sender: UITapGestureRecognizer){
+//    @objc(handleTap:)
+//    private func handleTap(sender: UITapGestureRecognizer){
 //        hideShowCollectionView(isHide: true)
-        cameraView.showHideAlphaView(isHide: true)
-    }
+//        cameraView.showHideAlphaView(isHide: true)
+//    }
     
     //MARK: - HIDE/SHOW Collectionview
     
-//    private func hideShowCollectionView(isHide: Bool){
-//        var alpha: Float = 0.0
-//        if isHide { alpha = 0.0 } else { alpha = 1.0 }
-//        
-//        UIView.animate(withDuration: 1.5, animations: {
-//            self.collectionView.alpha = CGFloat(alpha)
-//            }, completion: { (finished) in
-//                if isHide { self.turnOnCamera() }
-//                self.collectionView.isHidden = isHide
-//        })
-//    }
+    private func hideShowCollectionView(isHide: Bool){
+        var alpha: Float = 0.0
+        if isHide { alpha = 0.0 } else { alpha = 1.0 }
+        
+        UIView.animate(withDuration: 1.5, animations: {
+            self.collectionView.alpha = CGFloat(alpha)
+            }, completion: { (finished) in
+                if isHide { self.turnOnCamera() }
+                self.collectionView.isHidden = isHide
+        })
+    }
     
     //MARK: - CAMERA VIEW delegate
     
@@ -80,7 +77,7 @@ class MainViewController: CameraViewController, UIGestureRecognizerDelegate, Cam
     }
     
     func cancelCameraView(){
-//        hideShowCollectionView(isHide: false)
+        hideShowCollectionView(isHide: false)
         removePreviewLayer()
     }
     
@@ -114,5 +111,31 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 1
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+        return CGSize(width: self.collectionView.frame.width, height: 50)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        var reusableView : UICollectionReusableView? = nil
+        
+        if (kind == UICollectionElementKindSectionHeader) {
+            let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "mainHeader", for: indexPath) as! MainHeader
+            switch indexPath.section {
+            case 0:
+                headerView.fillHeader(title: "FRIENDS")
+            case 1:
+                headerView.fillHeader(title: "TRENDS")
+            default:
+                headerView.fillHeader(title: "DISCOVERING")
+            }
+            reusableView = headerView
+        }
+        return reusableView!
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "fromMainToVideo", sender: self)
     }
 }

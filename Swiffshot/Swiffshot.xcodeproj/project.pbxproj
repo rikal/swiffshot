@@ -10,7 +10,6 @@
 		0A63224B1DE5B89F006A0644 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A6322491DE5B89F006A0644 /* MainViewController.swift */; };
 		0A63224C1DE5B89F006A0644 /* NoNavBarNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A63224A1DE5B89F006A0644 /* NoNavBarNavigationController.swift */; };
 		0A6322521DE6D4D6006A0644 /* LatestStreamCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A6322511DE6D4D6006A0644 /* LatestStreamCollectionViewCell.swift */; };
-		0A6322541DE6E399006A0644 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A6322531DE6E399006A0644 /* HeaderView.swift */; };
 		0A6322561DE7987A006A0644 /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A6322551DE7987A006A0644 /* CameraViewController.swift */; };
 		0A6322591DE79FF7006A0644 /* CameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A6322581DE79FF7006A0644 /* CameraView.swift */; };
 		0A63225B1DE7A007006A0644 /* View.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A63225A1DE7A007006A0644 /* View.xib */; };
@@ -21,6 +20,8 @@
 		0A6322701DEDE8EB006A0644 /* CategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A63226F1DEDE8EB006A0644 /* CategoryCell.swift */; };
 		0A6322721DEE0630006A0644 /* LatestStreamCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A6322711DEE0630006A0644 /* LatestStreamCollectionViewCell.xib */; };
 		0A6322741DEE076E006A0644 /* SmallCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A6322731DEE076E006A0644 /* SmallCollectionViewCell.xib */; };
+		0A6322771DEE22CD006A0644 /* MainHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A6322751DEE22CD006A0644 /* MainHeader.swift */; };
+		0A6322781DEE22CD006A0644 /* MainHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A6322761DEE22CD006A0644 /* MainHeader.xib */; };
 		0AA596091DE4E9CB0005336D /* Defaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AA596081DE4E9CB0005336D /* Defaults.swift */; };
 		0ABB902F1DE422C2009E39E5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ABB902E1DE422C2009E39E5 /* AppDelegate.swift */; };
 		0ABB90341DE422C2009E39E5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0ABB90321DE422C2009E39E5 /* Main.storyboard */; };
@@ -37,7 +38,6 @@
 		0A6322491DE5B89F006A0644 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MainViewController.swift; path = Controllers/MainScreen/MainViewController.swift; sourceTree = "<group>"; };
 		0A63224A1DE5B89F006A0644 /* NoNavBarNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NoNavBarNavigationController.swift; path = Controllers/MainScreen/NoNavBarNavigationController.swift; sourceTree = "<group>"; };
 		0A6322511DE6D4D6006A0644 /* LatestStreamCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LatestStreamCollectionViewCell.swift; path = Controllers/MainScreen/LatestStreamCollectionViewCell.swift; sourceTree = "<group>"; };
-		0A6322531DE6E399006A0644 /* HeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HeaderView.swift; path = Controllers/MainScreen/HeaderView.swift; sourceTree = "<group>"; };
 		0A6322551DE7987A006A0644 /* CameraViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CameraViewController.swift; path = Controllers/MainScreen/CameraViewController.swift; sourceTree = "<group>"; };
 		0A6322581DE79FF7006A0644 /* CameraView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CameraView.swift; path = Views/CameraView.swift; sourceTree = "<group>"; };
 		0A63225A1DE7A007006A0644 /* View.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = View.xib; path = Views/View.xib; sourceTree = "<group>"; };
@@ -48,6 +48,8 @@
 		0A63226F1DEDE8EB006A0644 /* CategoryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CategoryCell.swift; path = Controllers/MainScreen/CategoryCell.swift; sourceTree = "<group>"; };
 		0A6322711DEE0630006A0644 /* LatestStreamCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LatestStreamCollectionViewCell.xib; path = Controllers/MainScreen/LatestStreamCollectionViewCell.xib; sourceTree = "<group>"; };
 		0A6322731DEE076E006A0644 /* SmallCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SmallCollectionViewCell.xib; path = Controllers/MainScreen/SmallCollectionViewCell.xib; sourceTree = "<group>"; };
+		0A6322751DEE22CD006A0644 /* MainHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MainHeader.swift; path = Controllers/MainScreen/MainHeader.swift; sourceTree = "<group>"; };
+		0A6322761DEE22CD006A0644 /* MainHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MainHeader.xib; path = Controllers/MainScreen/MainHeader.xib; sourceTree = "<group>"; };
 		0AA596081DE4E9CB0005336D /* Defaults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Defaults.swift; path = Utilities/Defaults.swift; sourceTree = "<group>"; };
 		0ABB902B1DE422C2009E39E5 /* Swiffshot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Swiffshot.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0ABB902E1DE422C2009E39E5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -81,13 +83,14 @@
 			children = (
 				0A6322491DE5B89F006A0644 /* MainViewController.swift */,
 				0A63224A1DE5B89F006A0644 /* NoNavBarNavigationController.swift */,
-				0A6322531DE6E399006A0644 /* HeaderView.swift */,
 				0A6322551DE7987A006A0644 /* CameraViewController.swift */,
 				0A63226F1DEDE8EB006A0644 /* CategoryCell.swift */,
 				0A63225E1DE8421D006A0644 /* SmallCollectionViewCell.swift */,
 				0A6322731DEE076E006A0644 /* SmallCollectionViewCell.xib */,
 				0A6322511DE6D4D6006A0644 /* LatestStreamCollectionViewCell.swift */,
 				0A6322711DEE0630006A0644 /* LatestStreamCollectionViewCell.xib */,
+				0A6322751DEE22CD006A0644 /* MainHeader.swift */,
+				0A6322761DEE22CD006A0644 /* MainHeader.xib */,
 			);
 			name = MainScreen;
 			sourceTree = "<group>";
@@ -267,6 +270,7 @@
 				0ABB90341DE422C2009E39E5 /* Main.storyboard in Resources */,
 				0A6322741DEE076E006A0644 /* SmallCollectionViewCell.xib in Resources */,
 				0A6322721DEE0630006A0644 /* LatestStreamCollectionViewCell.xib in Resources */,
+				0A6322781DEE22CD006A0644 /* MainHeader.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -336,10 +340,10 @@
 				0ABB90491DE4340E009E39E5 /* FillProfileViewController.swift in Sources */,
 				0AA596091DE4E9CB0005336D /* Defaults.swift in Sources */,
 				0A63226A1DEB57C0006A0644 /* ProfilesVideosCollectionViewCell.swift in Sources */,
-				0A6322541DE6E399006A0644 /* HeaderView.swift in Sources */,
 				0ABB904F1DE44C08009E39E5 /* AuthorizationViewController.swift in Sources */,
 				0A6322641DEB41EA006A0644 /* VideoPlayerViewController.swift in Sources */,
 				0ABB902F1DE422C2009E39E5 /* AppDelegate.swift in Sources */,
+				0A6322771DEE22CD006A0644 /* MainHeader.swift in Sources */,
 				0A63224B1DE5B89F006A0644 /* MainViewController.swift in Sources */,
 				0A6322701DEDE8EB006A0644 /* CategoryCell.swift in Sources */,
 			);
