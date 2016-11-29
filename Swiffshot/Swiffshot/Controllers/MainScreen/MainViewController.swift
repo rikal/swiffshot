@@ -21,6 +21,11 @@ class MainViewController: CameraViewController, UIGestureRecognizerDelegate, Cam
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationController?.isNavigationBarHidden = true
+        
+        if !Defaults.sharedDefaults.userLogged{
+            performSegue(withIdentifier: "fromMainToAuth", sender: self)
+        }
         addTapGesture()
     }
     

@@ -355,7 +355,7 @@
         <!--No Nav Bar Navigation Controller-->
         <scene sceneID="X3I-NM-za8">
             <objects>
-                <navigationController navigationBarHidden="YES" id="ISQ-RF-Hi5" customClass="NoNavBarNavigationController" customModule="Swiffshot" customModuleProvider="target" sceneMemberID="viewController">
+                <navigationController id="ISQ-RF-Hi5" customClass="NoNavBarNavigationController" customModule="Swiffshot" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="QZR-L7-fZJ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
