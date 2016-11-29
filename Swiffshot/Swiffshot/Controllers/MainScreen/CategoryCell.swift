@@ -26,25 +26,24 @@ class CategoryCell: UICollectionViewCell, UICollectionViewDelegate, UICollection
         layout.scrollDirection = .horizontal
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
+        collectionView.backgroundColor = UIColor.clear
         return collectionView
     }()
     
-    func setupViews(color: UIColor, globInd: Int){
-        backgroundColor = color
+    func setupViews(globInd: Int){
         globalIndexSection = globInd
         addSubview(videosCollectionView)
         videosCollectionView.delegate = self
         videosCollectionView.dataSource = self
-        videosCollectionView.backgroundColor = UIColor.brown
+        videosCollectionView.backgroundColor = UIColor.clear
         videosCollectionView.showsHorizontalScrollIndicator = false
         if globInd == 0 { videosCollectionView.isScrollEnabled = false }
-        
-//        videosCollectionView.register(LatestStreamCollectionViewCell.self, forCellWithReuseIdentifier: "bigCell")
-//        videosCollectionView.register(SmallCollectionViewCell.self, forCellWithReuseIdentifier: "smallCell")
-        videosCollectionView.register(VideoCell.self, forCellWithReuseIdentifier: "cellId")
+
+        videosCollectionView.register(UINib(nibName: "LatestStreamCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "bigCell")
+        videosCollectionView.register(UINib(nibName: "SmallCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "smallCell")
         
         addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[v0]|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0": videosCollectionView]))
-        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-5-[v0]-5-|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0": videosCollectionView]))
+        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[v0]|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0": videosCollectionView]))
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -59,14 +58,18 @@ class CategoryCell: UICollectionViewCell, UICollectionViewDelegate, UICollection
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         var cell = UICollectionViewCell()
         
-//        switch globalIndexSection {
-//        case 0:
-//            cell = collectionView.dequeueReusableCell(withReuseIdentifier: "bigCell", for: indexPath) as! LatestStreamCollectionViewCell
-//        default:
-//            cell = collectionView.dequeueReusableCell(withReuseIdentifier: "smallCell", for: indexPath) as! SmallCollectionViewCell
-//        }
+        switch globalIndexSection {
+        case 0:
+            let bigcell = collectionView.dequeueReusableCell(withReuseIdentifier: "bigCell", for: indexPath) as! LatestStreamCollectionViewCell
+            indexPath.row == 0 ? bigcell.fillCell(isOnline: true) : bigcell.fillCell(isOnline: false)
+            cell = bigcell
+        default:
+            let smallcell = collectionView.dequeueReusableCell(withReuseIdentifier: "smallCell", for: indexPath) as! SmallCollectionViewCell
+            indexPath.row == 0 ? smallcell.fillCell(isOnline: true) : smallcell.fillCell(isOnline: false)
+            cell = smallcell
+        }
         
-        return collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath)//cell
+        return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

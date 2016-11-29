@@ -104,14 +104,7 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! CategoryCell
-        switch indexPath.section {
-        case 0:
-            cell.setupViews(color: UIColor.red, globInd: 0)
-        case 1:
-            cell.setupViews(color: UIColor.blue, globInd: 1)
-        default:
-            cell.setupViews(color: UIColor.green, globInd: 2)
-        }
+        cell.setupViews(globInd: indexPath.section)
         return cell
     }
     

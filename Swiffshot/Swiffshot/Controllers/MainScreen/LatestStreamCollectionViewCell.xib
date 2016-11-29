@@ -16,34 +16,33 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gYL-0Q-ez9">
-                        <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Ejd-pR-vjI">
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="80" id="MVQ-ZZ-ZBi"/>
-                                    <constraint firstAttribute="height" constant="80" id="Uwe-CF-TOu"/>
-                                </constraints>
-                            </imageView>
-                        </subviews>
                         <color key="backgroundColor" red="0.90588235289999997" green="0.1960784314" blue="0.1960784314" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="100" id="4jc-SB-e7m"/>
                             <constraint firstAttribute="width" constant="100" id="dHz-xy-UUu"/>
-                            <constraint firstItem="Ejd-pR-vjI" firstAttribute="centerX" secondItem="gYL-0Q-ez9" secondAttribute="centerX" id="o8r-qf-Cfh"/>
-                            <constraint firstItem="Ejd-pR-vjI" firstAttribute="centerY" secondItem="gYL-0Q-ez9" secondAttribute="centerY" id="otp-WC-gMO"/>
                         </constraints>
                     </view>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Ejd-pR-vjI">
+                        <constraints>
+                            <constraint firstAttribute="width" constant="80" id="OQj-KP-2Cz"/>
+                            <constraint firstAttribute="height" constant="80" id="pcv-xh-jv1"/>
+                        </constraints>
+                    </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="@userName" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rf9-iE-aLf">
-                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                        <nil key="textColor"/>
+                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
             </view>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <constraints>
+                <constraint firstItem="Ejd-pR-vjI" firstAttribute="centerY" secondItem="gYL-0Q-ez9" secondAttribute="centerY" id="0Zh-cu-oAr"/>
                 <constraint firstItem="gYL-0Q-ez9" firstAttribute="leading" secondItem="vIE-Fl-1Ol" secondAttribute="leading" id="4pb-L2-ymm"/>
                 <constraint firstItem="rf9-iE-aLf" firstAttribute="top" secondItem="gYL-0Q-ez9" secondAttribute="bottom" id="7ew-Bu-fU0"/>
                 <constraint firstItem="rf9-iE-aLf" firstAttribute="centerX" secondItem="gYL-0Q-ez9" secondAttribute="centerX" id="8xp-p2-7wl"/>
                 <constraint firstItem="gYL-0Q-ez9" firstAttribute="top" secondItem="vIE-Fl-1Ol" secondAttribute="top" id="GRf-BC-iWg"/>
+                <constraint firstItem="Ejd-pR-vjI" firstAttribute="centerX" secondItem="gYL-0Q-ez9" secondAttribute="centerX" id="uW4-L2-ssv"/>
             </constraints>
             <connections>
                 <outlet property="avatarImg" destination="Ejd-pR-vjI" id="025-J2-Rhd"/>

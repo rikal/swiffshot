@@ -13,12 +13,8 @@ class SmallCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var avatarImg: UIImageView!
     @IBOutlet weak var nameLbl: UILabel!
     
-    override init(frame: CGRect){
-        super.init(frame: frame)
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+    override func awakeFromNib() {
+        super.awakeFromNib()
     }
     
     func fillCell(isOnline: Bool){

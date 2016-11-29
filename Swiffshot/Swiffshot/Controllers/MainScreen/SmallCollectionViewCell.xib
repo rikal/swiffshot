@@ -16,32 +16,31 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="prx-oG-Fg0">
-                        <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="UAG-eZ-NFy">
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="60" id="QfU-3p-rGf"/>
-                                    <constraint firstAttribute="height" constant="60" id="fQf-Yc-BQs"/>
-                                </constraints>
-                            </imageView>
-                        </subviews>
                         <color key="backgroundColor" red="0.90588235289999997" green="0.1960784314" blue="0.1960784314" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="70" id="88e-7a-8Fe"/>
-                            <constraint firstItem="UAG-eZ-NFy" firstAttribute="centerY" secondItem="prx-oG-Fg0" secondAttribute="centerY" id="Qoy-Pk-UJm"/>
                             <constraint firstAttribute="width" constant="70" id="hDm-cT-nDS"/>
-                            <constraint firstItem="UAG-eZ-NFy" firstAttribute="centerX" secondItem="prx-oG-Fg0" secondAttribute="centerX" id="pho-q3-fLg"/>
                         </constraints>
                     </view>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="UAG-eZ-NFy">
+                        <constraints>
+                            <constraint firstAttribute="width" constant="60" id="by6-DC-TXh"/>
+                            <constraint firstAttribute="height" constant="60" id="rkE-pi-ZTv"/>
+                        </constraints>
+                    </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="@userName" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iUR-Ii-FQJ">
-                        <fontDescription key="fontDescription" type="system" pointSize="10"/>
-                        <nil key="textColor"/>
+                        <fontDescription key="fontDescription" type="boldSystem" pointSize="10"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
             </view>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="prx-oG-Fg0" firstAttribute="leading" secondItem="Mij-1i-Gh8" secondAttribute="leading" id="0wt-IN-2Xk"/>
+                <constraint firstItem="UAG-eZ-NFy" firstAttribute="centerY" secondItem="prx-oG-Fg0" secondAttribute="centerY" id="CZf-DU-me4"/>
                 <constraint firstItem="iUR-Ii-FQJ" firstAttribute="top" secondItem="prx-oG-Fg0" secondAttribute="bottom" constant="5" id="K4t-oi-QQy"/>
+                <constraint firstItem="UAG-eZ-NFy" firstAttribute="centerX" secondItem="prx-oG-Fg0" secondAttribute="centerX" id="gr1-ff-X1v"/>
                 <constraint firstItem="iUR-Ii-FQJ" firstAttribute="centerX" secondItem="prx-oG-Fg0" secondAttribute="centerX" id="jcs-jL-mrp"/>
                 <constraint firstItem="prx-oG-Fg0" firstAttribute="top" secondItem="Mij-1i-Gh8" secondAttribute="top" id="uF8-JX-ckd"/>
             </constraints>
