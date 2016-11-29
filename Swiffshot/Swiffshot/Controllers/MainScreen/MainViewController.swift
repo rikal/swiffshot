@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MainViewController: CameraViewController, CameraViewDelegate {
+class MainViewController: CameraViewController, CameraViewDelegate, CategoryCellDelegate {
 
     @IBOutlet weak var collectionView: UICollectionView!
     
@@ -45,16 +45,16 @@ class MainViewController: CameraViewController, CameraViewDelegate {
         collectionView.register(UINib(nibName: "MainHeader", bundle: nil), forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "mainHeader");
     }
     
-    //MARK: - ADD TAPGESTURE for collection view
-//    private func addTapGesture(){
-//        
-//    }
+    //MARK: - CATEGORY Cell delegate
     
-//    @objc(handleTap:)
-//    private func handleTap(sender: UITapGestureRecognizer){
-//        hideShowCollectionView(isHide: true)
-//        cameraView.showHideAlphaView(isHide: true)
-//    }
+    func moveToCamera() {
+        hideShowCollectionView(isHide: true)
+        cameraView.showHideAlphaView(isHide: true)
+    }
+    
+    func moveToStream() {
+        performSegue(withIdentifier: "fromMainToVideo", sender: self)
+    }
     
     //MARK: - HIDE/SHOW Collectionview
     
@@ -102,6 +102,7 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! CategoryCell
         cell.setupViews(globInd: indexPath.section)
+        cell.delegate = self
         return cell
     }
     
@@ -133,9 +134,5 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
             reusableView = headerView
         }
         return reusableView!
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        performSegue(withIdentifier: "fromMainToVideo", sender: self)
     }
 }

@@ -8,8 +8,14 @@
 
 import UIKit
 
+protocol CategoryCellDelegate: class {
+    func moveToStream()
+    func moveToCamera()
+}
+
 class CategoryCell: UICollectionViewCell, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UIGestureRecognizerDelegate{
     
+    weak var delegate: CategoryCellDelegate?
     var globalIndexSection = 0
     private let cellId = "cellId"
     
@@ -53,7 +59,7 @@ class CategoryCell: UICollectionViewCell, UICollectionViewDelegate, UICollection
     
     @objc(handleTap:)
     private func handleTap(sender: UITapGestureRecognizer){
-            print("TAPPED")
+            delegate?.moveToCamera()
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -103,6 +109,6 @@ class CategoryCell: UICollectionViewCell, UICollectionViewDelegate, UICollection
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print("SELECTED")
+        delegate?.moveToStream()
     }
 }
