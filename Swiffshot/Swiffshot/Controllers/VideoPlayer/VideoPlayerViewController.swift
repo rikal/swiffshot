@@ -17,7 +17,8 @@ class VideoPlayerViewController: CameraViewController, UIGestureRecognizerDelega
     @IBOutlet weak var videoContainerView: UIView!
     
     var playerViewController = AVPlayerViewController()
-    var player : AVPlayer!
+    var player : AVPlayer?
+    var videoLayer : AVPlayerLayer?
     var url:NSURL!
 
     let videosCollectionView: UICollectionView = {
@@ -35,6 +36,7 @@ class VideoPlayerViewController: CameraViewController, UIGestureRecognizerDelega
         super.viewDidLoad()
         
         addTapGesture()
+        createPlayer()
         startPlayingVideo()
     }
     
@@ -55,6 +57,8 @@ class VideoPlayerViewController: CameraViewController, UIGestureRecognizerDelega
     }
     
     override func viewDidLayoutSubviews() {
+        videoThumbs.layer.cornerRadius = videoThumbs.frame.size.height/2
+        videoThumbs.layer.masksToBounds  = true
         videosCollectionView.frame = CGRect(x: 0, y: videoContainerView.frame.size.height + 64, width: self.view.frame.size.width, height: 150)
     }
     
@@ -72,6 +76,16 @@ class VideoPlayerViewController: CameraViewController, UIGestureRecognizerDelega
         tap.delegate = self
         videosCollectionView.backgroundView = UIView()
         videosCollectionView.backgroundView?.addGestureRecognizer(tap)
+        
+        let tapToVideo = UITapGestureRecognizer(target: self, action: #selector(VideoPlayerViewController.videoTap(sender:)))
+        tapToVideo.delegate = self
+        videoThumbs.addGestureRecognizer(tapToVideo)
+    }
+    
+    @objc(videoTap:)
+    private func videoTap(sender: UITapGestureRecognizer){
+        stopVideoInCircle()
+        startPlayingVideo()
     }
     
     @objc(handleTap:)
@@ -81,17 +95,37 @@ class VideoPlayerViewController: CameraViewController, UIGestureRecognizerDelega
     }
     
     //MARK: - VIDEO METHODS
+    
+    func createPlayer(){
+        url = NSURL(string: "http://clips.vorwaerts-gmbh.de/VfE_html5.mp4")!
+        player = AVPlayer(url: url as URL)
+    }
+    
+    func playVideoInCircle(){
+        player?.actionAtItemEnd = .none
+        videoLayer = AVPlayerLayer(player: player)
+        videoLayer?.frame = videoThumbs.bounds
+        videoLayer?.videoGravity = AVLayerVideoGravityResizeAspectFill
+        videoThumbs.layer.addSublayer(videoLayer!)
+        DispatchQueue.main.async {
+            self.player?.play()
+        }
+    }
+    
+    func stopVideoInCircle(){
+        player?.pause()
+        player?.actionAtItemEnd = .none
+        videoLayer?.removeFromSuperlayer()
+    }
 
     func startPlayingVideo(){
-        url = NSURL(string: "http://clips.vorwaerts-gmbh.de/VfE_html5.mp4")!
-        
-        player = AVPlayer(url: url as URL)
-        
         playerViewController.player = player
         playerViewController.showsPlaybackControls = true
         self.present(playerViewController, animated: true){
             print("PLAYING")
-            self.playerViewController.player?.play()
+            DispatchQueue.main.async {
+                self.playerViewController.player?.play()
+            }
         }
     }
     
@@ -160,6 +194,7 @@ extension VideoPlayerViewController: UICollectionViewDelegate, UICollectionViewD
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        startPlayingVideo()
+//        createPlayer()
+        playVideoInCircle()
     }
 }
