@@ -8,9 +8,15 @@
 
 import UIKit
 
+protocol MainHeaderDelegate: class {
+    func headerTapped()
+}
+
 class MainHeader: UICollectionReusableView {
 
     @IBOutlet weak var headerBtn: UIButton!
+    
+    weak var delegate: MainHeaderDelegate?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -21,6 +27,6 @@ class MainHeader: UICollectionReusableView {
     }
     
     @IBAction func headerPressed(_ sender: AnyObject) {
-        print("Header")
+        delegate?.headerTapped()
     }
 }

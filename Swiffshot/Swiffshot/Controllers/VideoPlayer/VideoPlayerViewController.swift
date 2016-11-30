@@ -13,6 +13,7 @@ import AVFoundation
 class VideoPlayerViewController: CameraViewController, UIGestureRecognizerDelegate, CameraViewDelegate {
     
 //    @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var bottomViewContainer: UIView!
     @IBOutlet weak var videoThumbs: UIView!
     @IBOutlet weak var videoContainerView: UIView!
     
@@ -72,10 +73,12 @@ class VideoPlayerViewController: CameraViewController, UIGestureRecognizerDelega
         
         videosCollectionView.register(UINib(nibName: "LatestStreamCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "bigCell")
         
-        let tap = UITapGestureRecognizer(target: self, action: #selector(VideoPlayerViewController.handleTap(sender:)))
-        tap.delegate = self
-        videosCollectionView.backgroundView = UIView()
-        videosCollectionView.backgroundView?.addGestureRecognizer(tap)
+        let tap1 = UITapGestureRecognizer(target: self, action: #selector(VideoPlayerViewController.handleTap(sender:)))
+        let tap2 = UITapGestureRecognizer(target: self, action: #selector(VideoPlayerViewController.handleTap(sender:)))
+        tap1.delegate = self
+        tap2.delegate = self
+        videoContainerView.addGestureRecognizer(tap1)
+        bottomViewContainer.addGestureRecognizer(tap2)
         
         let tapToVideo = UITapGestureRecognizer(target: self, action: #selector(VideoPlayerViewController.videoTap(sender:)))
         tapToVideo.delegate = self
@@ -137,9 +140,11 @@ class VideoPlayerViewController: CameraViewController, UIGestureRecognizerDelega
         
         UIView.animate(withDuration: 1.5, animations: {
             self.videosCollectionView.alpha = CGFloat(alpha)
+            self.videoContainerView.alpha = CGFloat(alpha)
             }, completion: { (finished) in
                 if isHide { self.turnOnCamera() }
                 self.videosCollectionView.isHidden = isHide
+                self.videoContainerView.isHidden = isHide
         })
     }
     

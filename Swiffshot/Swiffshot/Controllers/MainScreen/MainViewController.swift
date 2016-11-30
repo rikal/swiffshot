@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MainViewController: CameraViewController, CameraViewDelegate, CategoryCellDelegate {
+class MainViewController: CameraViewController, CameraViewDelegate, CategoryCellDelegate, MainHeaderDelegate {
 
     @IBOutlet weak var collectionView: UICollectionView!
     
@@ -86,6 +86,12 @@ class MainViewController: CameraViewController, CameraViewDelegate, CategoryCell
         removePreviewLayer()
         turnOnCamera()
     }
+    
+    //MARK: - Header delegate
+    
+    func headerTapped(){
+        performSegue(withIdentifier: "fromMainToExpandable", sender: self)
+    }
 
 }
 
@@ -124,6 +130,7 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
         
         if (kind == UICollectionElementKindSectionHeader) {
             let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "mainHeader", for: indexPath) as! MainHeader
+            headerView.delegate = self
             switch indexPath.section {
             case 0:
                 headerView.fillHeader(title: "FRIENDS")
