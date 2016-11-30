@@ -22,6 +22,7 @@
 		0A6322741DEE076E006A0644 /* SmallCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A6322731DEE076E006A0644 /* SmallCollectionViewCell.xib */; };
 		0A6322771DEE22CD006A0644 /* MainHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A6322751DEE22CD006A0644 /* MainHeader.swift */; };
 		0A6322781DEE22CD006A0644 /* MainHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A6322761DEE22CD006A0644 /* MainHeader.xib */; };
+		0A63227B1DEE43CD006A0644 /* ExpandedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A63227A1DEE43CD006A0644 /* ExpandedViewController.swift */; };
 		0AA596091DE4E9CB0005336D /* Defaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AA596081DE4E9CB0005336D /* Defaults.swift */; };
 		0ABB902F1DE422C2009E39E5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ABB902E1DE422C2009E39E5 /* AppDelegate.swift */; };
 		0ABB90341DE422C2009E39E5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0ABB90321DE422C2009E39E5 /* Main.storyboard */; };
@@ -50,6 +51,7 @@
 		0A6322731DEE076E006A0644 /* SmallCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SmallCollectionViewCell.xib; path = Controllers/MainScreen/SmallCollectionViewCell.xib; sourceTree = "<group>"; };
 		0A6322751DEE22CD006A0644 /* MainHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MainHeader.swift; path = Controllers/MainScreen/MainHeader.swift; sourceTree = "<group>"; };
 		0A6322761DEE22CD006A0644 /* MainHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MainHeader.xib; path = Controllers/MainScreen/MainHeader.xib; sourceTree = "<group>"; };
+		0A63227A1DEE43CD006A0644 /* ExpandedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ExpandedViewController.swift; path = Controllers/ExpandedCategories/ExpandedViewController.swift; sourceTree = "<group>"; };
 		0AA596081DE4E9CB0005336D /* Defaults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Defaults.swift; path = Utilities/Defaults.swift; sourceTree = "<group>"; };
 		0ABB902B1DE422C2009E39E5 /* Swiffshot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Swiffshot.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0ABB902E1DE422C2009E39E5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -114,6 +116,14 @@
 			name = VideoPlayer;
 			sourceTree = "<group>";
 		};
+		0A6322791DEE439C006A0644 /* ExpandedCategories */ = {
+			isa = PBXGroup;
+			children = (
+				0A63227A1DEE43CD006A0644 /* ExpandedViewController.swift */,
+			);
+			name = ExpandedCategories;
+			sourceTree = "<group>";
+		};
 		0AA596051DE4E7180005336D /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
@@ -165,6 +175,7 @@
 		0ABB90421DE42634009E39E5 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				0A6322791DEE439C006A0644 /* ExpandedCategories */,
 				0A6322621DEB41A7006A0644 /* VideoPlayer */,
 				0A6322481DE5B864006A0644 /* MainScreen */,
 				0ABB90431DE4338E009E39E5 /* Authorization */,
@@ -338,6 +349,7 @@
 				0A6322681DEB5798006A0644 /* ProfileHeaderView.swift in Sources */,
 				0A6322561DE7987A006A0644 /* CameraViewController.swift in Sources */,
 				0ABB90491DE4340E009E39E5 /* FillProfileViewController.swift in Sources */,
+				0A63227B1DEE43CD006A0644 /* ExpandedViewController.swift in Sources */,
 				0AA596091DE4E9CB0005336D /* Defaults.swift in Sources */,
 				0A63226A1DEB57C0006A0644 /* ProfilesVideosCollectionViewCell.swift in Sources */,
 				0ABB904F1DE44C08009E39E5 /* AuthorizationViewController.swift in Sources */,

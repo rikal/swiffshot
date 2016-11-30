@@ -101,10 +101,10 @@ class CategoryCell: UICollectionViewCell, UICollectionViewDelegate, UICollection
         switch globalIndexSection {
         case 0:
             let spacing = (collectionView.frame.size.width/2 - 100)
-            return UIEdgeInsets(top: 10, left: spacing, bottom: 0, right: spacing)
+            return UIEdgeInsets(top: 20, left: spacing, bottom: 20, right: spacing)
 
         default:
-            return UIEdgeInsetsMake(10, 10, 0, 10)
+            return UIEdgeInsets(top: 20, left: 10, bottom: 20, right: 10)
         }
     }
     

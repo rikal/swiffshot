@@ -27,6 +27,7 @@ class MainViewController: CameraViewController, CameraViewDelegate, CategoryCell
         super.viewDidLoad()
         self.navigationController?.isNavigationBarHidden = true
         
+        //if first time - go to authorization
         if !Defaults.sharedDefaults.userLogged{
             performSegue(withIdentifier: "fromMainToAuth", sender: self)
         }

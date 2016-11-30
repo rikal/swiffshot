@@ -12,9 +12,7 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
             <autoresizingMask key="autoresizingMask"/>
             <subviews>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MQo-IK-JR8">
-                    <frame key="frameInset" minX="6" width="314" height="50"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MQo-IK-JR8">
                     <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                     <state key="normal" title="HEADER TITLE">
                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -25,6 +23,12 @@
                 </button>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="MQo-IK-JR8" secondAttribute="trailing" id="Dih-tX-wT5"/>
+                <constraint firstItem="MQo-IK-JR8" firstAttribute="top" secondItem="U6b-Vx-4bR" secondAttribute="top" id="XUp-yT-etF"/>
+                <constraint firstAttribute="bottom" secondItem="MQo-IK-JR8" secondAttribute="bottom" id="lsw-jb-zMn"/>
+                <constraint firstItem="MQo-IK-JR8" firstAttribute="leading" secondItem="U6b-Vx-4bR" secondAttribute="leading" id="nex-d4-NsY"/>
+            </constraints>
             <connections>
                 <outlet property="headerBtn" destination="MQo-IK-JR8" id="Yki-Pq-Mjr"/>
             </connections>

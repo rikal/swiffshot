@@ -46,6 +46,7 @@ class FillProfileViewController: AuthorizationViewController, UIImagePickerContr
         imagePicker.mediaTypes = UIImagePickerController.availableMediaTypes(for: .photoLibrary)!
         imagePicker.modalPresentationStyle = .overFullScreen
         imagePicker.navigationBar.isTranslucent = false
+        imagePicker.navigationBar.barTintColor = UIColor(colorLiteralRed: 247.0/255.0, green: 247.0/255.0, blue: 247.0/255.0, alpha: 1.0)
         present(imagePicker, animated: true, completion: nil)
     }
     
