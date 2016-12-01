@@ -15,9 +15,9 @@ class Defaults {
     private var defaults: UserDefaults
     private var token: NSObjectProtocol
     private enum Keys: String {
-        case UserName
-        case UserNick
-        case UserAvatar
+        case UserName //TODO: Replace with Model
+        case UserNick //TODO: Replace with Model
+        case UserAvatar //TODO: Replace with Model
         case UserLogged
     }
     

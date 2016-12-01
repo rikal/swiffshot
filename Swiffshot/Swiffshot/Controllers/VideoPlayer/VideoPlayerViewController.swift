@@ -12,7 +12,6 @@ import AVFoundation
 
 class VideoPlayerViewController: CameraViewController, UIGestureRecognizerDelegate, CameraViewDelegate {
     
-//    @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var bottomViewContainer: UIView!
     @IBOutlet weak var videoThumbs: UIView!
     @IBOutlet weak var videoContainerView: UIView!
@@ -37,14 +36,18 @@ class VideoPlayerViewController: CameraViewController, UIGestureRecognizerDelega
         super.viewDidLoad()
         
         addTapGesture()
-        createPlayer()
+        createVideoPlayer()
         startPlayingVideo()
     }
+    
+    //MARK: - SYSTEMS METHODS
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         navigationController?.isNavigationBarHidden = false
         navigationController?.navigationBar.barTintColor = UIColor.init(colorLiteralRed: 247.0/255.0, green: 247.0/255.0, blue: 247.0/255.0, alpha: 1.0)
+        
+        //TODO: name from profile model
         title = "@UserName"
     }
     
@@ -64,6 +67,7 @@ class VideoPlayerViewController: CameraViewController, UIGestureRecognizerDelega
     }
     
     //MARK: - ADD TAPGESTURE for collection view
+    
     private func addTapGesture(){
         self.view.addSubview(videosCollectionView)
         videosCollectionView.delegate = self
@@ -99,7 +103,7 @@ class VideoPlayerViewController: CameraViewController, UIGestureRecognizerDelega
     
     //MARK: - VIDEO METHODS
     
-    func createPlayer(){
+    func createVideoPlayer(){
         url = NSURL(string: "http://clips.vorwaerts-gmbh.de/VfE_html5.mp4")!
         player = AVPlayer(url: url as URL)
     }
@@ -199,7 +203,6 @@ extension VideoPlayerViewController: UICollectionViewDelegate, UICollectionViewD
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//        createPlayer()
         playVideoInCircle()
     }
 }

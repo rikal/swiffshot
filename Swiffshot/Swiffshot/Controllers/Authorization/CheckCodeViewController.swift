@@ -20,17 +20,19 @@ class CheckCodeViewController: AuthorizationViewController {
     @IBOutlet weak var errorTopViewConstraint: NSLayoutConstraint!
     @IBOutlet weak var buttomBottomConstraint: NSLayoutConstraint!
     
+    //MARK: - SYSTEMS METHODS
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         codeTxt.delegate = self
-        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
+    //MARK: - CHECK FOR AVALABILITY
+    
     func setEnabledButton(){
         codeTxt.text == "" ? checkBtn.setTitleColor(UIColor.lightGray, for: .normal) : checkBtn.setTitleColor(UIColor.blue, for: .normal)
         checkBtn.isUserInteractionEnabled = codeTxt.text != ""
@@ -47,10 +49,6 @@ class CheckCodeViewController: AuthorizationViewController {
             self.errorTopViewConstraint.constant = -80
             self.view.layoutIfNeeded()
         }
-    }
-    
-    private func hideError(){
-        
     }
     
     @IBAction func checkBtnPressed(_ sender: AnyObject) {

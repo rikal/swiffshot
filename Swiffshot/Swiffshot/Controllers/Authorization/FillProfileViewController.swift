@@ -18,6 +18,8 @@ class FillProfileViewController: AuthorizationViewController, UIImagePickerContr
     private let imagePicker = UIImagePickerController()
     private var imageUrl: NSURL!
     
+    //MARK: - SYSTEMS METHODS
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -26,6 +28,7 @@ class FillProfileViewController: AuthorizationViewController, UIImagePickerContr
     }
     
     override func viewDidLayoutSubviews() {
+        super.viewWillLayoutSubviews()
         visualEffects()
     }
     
@@ -34,10 +37,14 @@ class FillProfileViewController: AuthorizationViewController, UIImagePickerContr
         avatarBtn.clipsToBounds = true
     }
     
+    //MARK: - CHECK FOR AVALABILITY
+    
     func setEnabledButton(){
         (nameTxt.text == "" || nickNameTxt.text == "") ? startBtn.setTitleColor(UIColor.lightGray, for: .normal) : startBtn.setTitleColor(UIColor.blue, for: .normal)
         startBtn.isUserInteractionEnabled = (nameTxt.text != "" && nickNameTxt.text != "")
     }
+    
+    //MARK: - IB ACTIONS
     
     @IBAction func avatarBtnPressed(_ sender: AnyObject) {
         imagePicker.delegate = self

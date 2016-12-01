@@ -18,7 +18,6 @@ class MainViewController: CameraViewController, CameraViewDelegate, CategoryCell
     var globalIndexPathSection = 0
     
     var allVideos = [[String]]()
-    
     let cellId = "categoryCellId"
     
     //MARK: - SYSTEMS METHODS

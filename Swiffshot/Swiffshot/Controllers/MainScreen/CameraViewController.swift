@@ -18,17 +18,22 @@ class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
     var filePath : URL?
     var isBackCamera = true
     
+    //MARK: - SYSTEMS METHODS
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         pathTosave()
     }
 
     override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
         cameraView = CameraView.instanceFromNib()
         cameraView.frame = self.view.frame
         self.view.insertSubview(cameraView, at: 0)
     }
 
+    // MARK: - CAMERA METHODS
+    
     func turnOnCamera(){
         captureSession.sessionPreset = AVCaptureSessionPresetHigh
         let devices = AVCaptureDevice.devices()

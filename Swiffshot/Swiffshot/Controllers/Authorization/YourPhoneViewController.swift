@@ -16,21 +16,26 @@ class YourPhoneViewController: AuthorizationViewController {
     @IBOutlet weak var sendCodeBtn: UIButton!
     @IBOutlet weak var buttonBottomConstraint: NSLayoutConstraint!
     
+    //MARK: - SYSTEMS METHODS
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setEnabledButton()
         phoneTxt.delegate = self
     }
     
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+    }
+    
+    //MARK: - CHECK FOR AVALABILITY
+    
     func setEnabledButton(){
         phoneTxt.text == "" ? sendCodeBtn.setTitleColor(UIColor.lightGray, for: .normal) : sendCodeBtn.setTitleColor(UIColor.blue, for: .normal)
         sendCodeBtn.isUserInteractionEnabled = phoneTxt.text != ""
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
+    //MARK: - IB ACTIONS
     
     @IBAction func sendCodePressed(_ sender: AnyObject) {
         //TODO: Made api call with phone

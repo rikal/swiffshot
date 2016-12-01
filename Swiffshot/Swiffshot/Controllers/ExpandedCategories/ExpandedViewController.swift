@@ -14,6 +14,8 @@ class ExpandedViewController: UIViewController {
     
     var titleLbl: String?
     
+    //MARK: - SYSTEMS METHODS
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionView.register(UINib(nibName: "LatestStreamCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "bigCell")
@@ -23,7 +25,7 @@ class ExpandedViewController: UIViewController {
         super.viewWillAppear(true)
         navigationController?.isNavigationBarHidden = false
         navigationController?.navigationBar.barTintColor = UIColor.init(colorLiteralRed: 247.0/255.0, green: 247.0/255.0, blue: 247.0/255.0, alpha: 1.0)
-        navigationController?.navigationItem.hidesBackButton = false
+        //TODO: Send a name from previous screen
         title = "CATEGORY NAME"
     }
 
