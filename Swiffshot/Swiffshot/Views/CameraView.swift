@@ -12,6 +12,7 @@ protocol CameraViewDelegate {
     func startStopRecordingVideo(isStart: Bool)
     func cancelCameraView()
     func changeCamera()
+    func startStream()
 }
 
 class CameraView: UIView {
@@ -32,6 +33,10 @@ class CameraView: UIView {
     override func awakeFromNib() {
         self.layoutIfNeeded()
         shootBtn.layer.cornerRadius = 30
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(doubleTapped))
+        tap.numberOfTapsRequired = 2
+        shootBtn.addGestureRecognizer(tap)
     }
 
     func showHideAlphaView(isHide: Bool){
@@ -43,6 +48,18 @@ class CameraView: UIView {
             }, completion: { (finished) in
                 self.alphaView.isHidden = isHide
         })
+    }
+    
+    func changeShootBtn(isRed: Bool){
+        if isRed{
+            shootBtn.backgroundColor = UIColor.red
+        } else {
+            shootBtn.backgroundColor = UIColor.lightGray
+        }
+    }
+    
+    func doubleTapped() {
+        delegate?.startStream()
     }
    
     @IBAction func shootVideo(_ sender: AnyObject) {

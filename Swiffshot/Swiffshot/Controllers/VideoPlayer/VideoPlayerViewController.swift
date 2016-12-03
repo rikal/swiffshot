@@ -154,6 +154,10 @@ class VideoPlayerViewController: CameraViewController, UIGestureRecognizerDelega
     
     //MARK: - CAMERA VIEW delegate
     
+    func startStream() {
+        goStreaming()
+    }
+    
     func startStopRecordingVideo(isStart: Bool){
         srartStopRecord(isStart: isStart)
     }

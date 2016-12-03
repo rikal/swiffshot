@@ -19,6 +19,8 @@ class Defaults {
         case UserNick //TODO: Replace with Model
         case UserAvatar //TODO: Replace with Model
         case UserLogged
+        case LocalHost
+        case HostPort
     }
     
     init(defaults: UserDefaults) {
@@ -27,9 +29,8 @@ class Defaults {
             defaults.synchronize()
         }
         defaults.register(defaults: [
-            Keys.UserName.rawValue: "",
-            Keys.UserNick.rawValue: "",
-            Keys.UserAvatar.rawValue: "",
+            Keys.LocalHost.rawValue: "54.191.86.179",
+            Keys.HostPort.rawValue: 8554,
             Keys.UserLogged.rawValue: false,
         ])
     }
@@ -75,6 +76,18 @@ class Defaults {
         set {
             defaults.set(newValue, forKey: Keys.UserLogged.rawValue)
             defaults.synchronize()
+        }
+    }
+    
+    var localHost: String {
+        get {
+            return defaults.string(forKey: Keys.LocalHost.rawValue)!
+        }
+    }
+    
+    var hostPort: Int {
+        get {
+            return defaults.integer(forKey: Keys.HostPort.rawValue)
         }
     }
     

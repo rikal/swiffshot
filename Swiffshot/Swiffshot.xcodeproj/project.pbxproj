@@ -7,6 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0A4D1BAE1DF0762D00BF7CCE /* R5Streaming.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A4D1BAD1DF0762D00BF7CCE /* R5Streaming.framework */; };
+		0A4D1BB01DF09C3E00BF7CCE /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A4D1BAF1DF09C3E00BF7CCE /* CFNetwork.framework */; };
+		0A4D1BB21DF09C5200BF7CCE /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A4D1BB11DF09C5200BF7CCE /* AudioToolbox.framework */; };
+		0A4D1BB41DF09C6000BF7CCE /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A4D1BB31DF09C6000BF7CCE /* CoreMotion.framework */; };
+		0A4D1BB61DF09C6D00BF7CCE /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A4D1BB51DF09C6D00BF7CCE /* CoreText.framework */; };
+		0A4D1BB81DF09C7400BF7CCE /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A4D1BB71DF09C7400BF7CCE /* OpenAL.framework */; };
+		0A4D1BBA1DF09C8100BF7CCE /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A4D1BB91DF09C8100BF7CCE /* QuartzCore.framework */; };
+		0A4D1BBC1DF09C8700BF7CCE /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A4D1BBB1DF09C8700BF7CCE /* Security.framework */; };
+		0A4D1BBE1DF09C9C00BF7CCE /* libbz2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A4D1BBD1DF09C9C00BF7CCE /* libbz2.tbd */; };
+		0A4D1BC01DF09CB000BF7CCE /* libiconv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A4D1BBF1DF09CB000BF7CCE /* libiconv.tbd */; };
+		0A4D1BC21DF09CC700BF7CCE /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A4D1BC11DF09CC700BF7CCE /* libz.tbd */; };
+		0A4D1BC71DF0A08300BF7CCE /* PublishViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A4D1BC61DF0A08300BF7CCE /* PublishViewController.swift */; };
 		0A63224B1DE5B89F006A0644 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A6322491DE5B89F006A0644 /* MainViewController.swift */; };
 		0A63224C1DE5B89F006A0644 /* NoNavBarNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A63224A1DE5B89F006A0644 /* NoNavBarNavigationController.swift */; };
 		0A6322521DE6D4D6006A0644 /* LatestStreamCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A6322511DE6D4D6006A0644 /* LatestStreamCollectionViewCell.swift */; };
@@ -36,6 +48,18 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0A4D1BAD1DF0762D00BF7CCE /* R5Streaming.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = R5Streaming.framework; sourceTree = "<group>"; };
+		0A4D1BAF1DF09C3E00BF7CCE /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		0A4D1BB11DF09C5200BF7CCE /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		0A4D1BB31DF09C6000BF7CCE /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
+		0A4D1BB51DF09C6D00BF7CCE /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
+		0A4D1BB71DF09C7400BF7CCE /* OpenAL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenAL.framework; path = System/Library/Frameworks/OpenAL.framework; sourceTree = SDKROOT; };
+		0A4D1BB91DF09C8100BF7CCE /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		0A4D1BBB1DF09C8700BF7CCE /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		0A4D1BBD1DF09C9C00BF7CCE /* libbz2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libbz2.tbd; path = usr/lib/libbz2.tbd; sourceTree = SDKROOT; };
+		0A4D1BBF1DF09CB000BF7CCE /* libiconv.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libiconv.tbd; path = usr/lib/libiconv.tbd; sourceTree = SDKROOT; };
+		0A4D1BC11DF09CC700BF7CCE /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
+		0A4D1BC61DF0A08300BF7CCE /* PublishViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PublishViewController.swift; path = Controllers/Publisher/PublishViewController.swift; sourceTree = "<group>"; };
 		0A6322491DE5B89F006A0644 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MainViewController.swift; path = Controllers/MainScreen/MainViewController.swift; sourceTree = "<group>"; };
 		0A63224A1DE5B89F006A0644 /* NoNavBarNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NoNavBarNavigationController.swift; path = Controllers/MainScreen/NoNavBarNavigationController.swift; sourceTree = "<group>"; };
 		0A6322511DE6D4D6006A0644 /* LatestStreamCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LatestStreamCollectionViewCell.swift; path = Controllers/MainScreen/LatestStreamCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -73,6 +97,17 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0A4D1BC21DF09CC700BF7CCE /* libz.tbd in Frameworks */,
+				0A4D1BC01DF09CB000BF7CCE /* libiconv.tbd in Frameworks */,
+				0A4D1BBE1DF09C9C00BF7CCE /* libbz2.tbd in Frameworks */,
+				0A4D1BBC1DF09C8700BF7CCE /* Security.framework in Frameworks */,
+				0A4D1BBA1DF09C8100BF7CCE /* QuartzCore.framework in Frameworks */,
+				0A4D1BB81DF09C7400BF7CCE /* OpenAL.framework in Frameworks */,
+				0A4D1BB61DF09C6D00BF7CCE /* CoreText.framework in Frameworks */,
+				0A4D1BB41DF09C6000BF7CCE /* CoreMotion.framework in Frameworks */,
+				0A4D1BB21DF09C5200BF7CCE /* AudioToolbox.framework in Frameworks */,
+				0A4D1BB01DF09C3E00BF7CCE /* CFNetwork.framework in Frameworks */,
+				0A4D1BAE1DF0762D00BF7CCE /* R5Streaming.framework in Frameworks */,
 				2860D4369961437E7277572A /* Pods_Swiffshot.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -80,6 +115,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0A4D1BC31DF09F7700BF7CCE /* Publisher */ = {
+			isa = PBXGroup;
+			children = (
+				0A4D1BC61DF0A08300BF7CCE /* PublishViewController.swift */,
+			);
+			name = Publisher;
+			sourceTree = "<group>";
+		};
 		0A6322481DE5B864006A0644 /* MainScreen */ = {
 			isa = PBXGroup;
 			children = (
@@ -175,6 +218,7 @@
 		0ABB90421DE42634009E39E5 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				0A4D1BC31DF09F7700BF7CCE /* Publisher */,
 				0A6322791DEE439C006A0644 /* ExpandedCategories */,
 				0A6322621DEB41A7006A0644 /* VideoPlayer */,
 				0A6322481DE5B864006A0644 /* MainScreen */,
@@ -207,6 +251,17 @@
 		9C191BAFFDA9F2D6ABF4E91D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				0A4D1BC11DF09CC700BF7CCE /* libz.tbd */,
+				0A4D1BBF1DF09CB000BF7CCE /* libiconv.tbd */,
+				0A4D1BBD1DF09C9C00BF7CCE /* libbz2.tbd */,
+				0A4D1BBB1DF09C8700BF7CCE /* Security.framework */,
+				0A4D1BB91DF09C8100BF7CCE /* QuartzCore.framework */,
+				0A4D1BB71DF09C7400BF7CCE /* OpenAL.framework */,
+				0A4D1BB51DF09C6D00BF7CCE /* CoreText.framework */,
+				0A4D1BB31DF09C6000BF7CCE /* CoreMotion.framework */,
+				0A4D1BB11DF09C5200BF7CCE /* AudioToolbox.framework */,
+				0A4D1BAF1DF09C3E00BF7CCE /* CFNetwork.framework */,
+				0A4D1BAD1DF0762D00BF7CCE /* R5Streaming.framework */,
 				51A4CE215DC685289B805FFC /* Pods_Swiffshot.framework */,
 			);
 			name = Frameworks;
@@ -352,6 +407,7 @@
 				0A63227B1DEE43CD006A0644 /* ExpandedViewController.swift in Sources */,
 				0AA596091DE4E9CB0005336D /* Defaults.swift in Sources */,
 				0A63226A1DEB57C0006A0644 /* ProfilesVideosCollectionViewCell.swift in Sources */,
+				0A4D1BC71DF0A08300BF7CCE /* PublishViewController.swift in Sources */,
 				0ABB904F1DE44C08009E39E5 /* AuthorizationViewController.swift in Sources */,
 				0A6322641DEB41EA006A0644 /* VideoPlayerViewController.swift in Sources */,
 				0ABB902F1DE422C2009E39E5 /* AppDelegate.swift in Sources */,
@@ -480,9 +536,20 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 6EV6V6U9VX;
+				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = Swiffshot/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-framework",
+					"\"SDWebImage\"",
+					"-lstdc++",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = DK.Swiffshot;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
@@ -495,9 +562,20 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 6EV6V6U9VX;
+				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = Swiffshot/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-framework",
+					"\"SDWebImage\"",
+					"-lstdc++",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = DK.Swiffshot;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;

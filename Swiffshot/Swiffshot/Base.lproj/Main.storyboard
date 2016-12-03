@@ -146,6 +146,24 @@
             </objects>
             <point key="canvasLocation" x="1516" y="1092.5037481259371"/>
         </scene>
+        <!--Publish View Controller-->
+        <scene sceneID="fWs-6h-tmJ">
+            <objects>
+                <viewController storyboardIdentifier="publishView" id="5PE-4V-v1Y" customClass="PublishViewController" customModule="Swiffshot" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="doN-UX-9bs"/>
+                        <viewControllerLayoutGuide type="bottom" id="tXz-i6-l5e"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="lIS-of-rtz">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vpL-wr-sS2" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="800" y="1875"/>
+        </scene>
         <!--Expanded View Controller-->
         <scene sceneID="Ore-y2-NRS">
             <objects>

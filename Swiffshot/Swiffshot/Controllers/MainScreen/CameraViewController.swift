@@ -18,6 +18,9 @@ class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
     var filePath : URL?
     var isBackCamera = true
     
+    var publisher: PublishViewController!
+    var isPublishing: Bool = false
+    
     //MARK: - SYSTEMS METHODS
     
     override func viewDidLoad() {
@@ -31,6 +34,12 @@ class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
         cameraView.frame = self.view.frame
         self.view.insertSubview(cameraView, at: 0)
     }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        isPublishing = false
+    }
+
 
     // MARK: - CAMERA METHODS
     
@@ -111,6 +120,25 @@ class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
         previewLayer?.videoGravity = AVLayerVideoGravityResize
         captureSession.startRunning()
         return previewLayer!
+    }
+    
+    func goStreaming(){
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let controller = storyboard.instantiateViewController(withIdentifier: "publishView")
+        
+        //TODO: !!!!!!!
+        let frameSize = self.view.bounds
+        publisher = controller as! PublishViewController
+
+        publisher.view.layer.frame = frameSize
+        //TODO: !!!!!!!
+        
+        self.view.addSubview(publisher.view)
+        self.view.sendSubview(toBack: publisher.view)
+        
+        isPublishing ? publisher.stop() : publisher.start()
+        isPublishing = !isPublishing
+        isPublishing ? cameraView.changeShootBtn(isRed: true) : cameraView.changeShootBtn(isRed: false)
     }
     
     func removePreviewLayer(){

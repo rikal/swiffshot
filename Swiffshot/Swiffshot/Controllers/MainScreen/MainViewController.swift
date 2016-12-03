@@ -72,6 +72,10 @@ class MainViewController: CameraViewController, CameraViewDelegate, CategoryCell
     
     //MARK: - CAMERA VIEW delegate
     
+    func startStream() {
+        goStreaming()
+    }
+    
     func startStopRecordingVideo(isStart: Bool){
         srartStopRecord(isStart: isStart)
     }
