@@ -17,27 +17,38 @@ protocol CameraViewDelegate {
 
 class CameraView: UIView {
 
+    @IBOutlet weak var screenView: UIView!
+    @IBOutlet weak var leftSecBtn: UILabel!
     @IBOutlet weak var shootBtn: UIButton!
     @IBOutlet weak var changeCameraBtn: UIButton!
     @IBOutlet weak var cancelBtn: UIButton!
     @IBOutlet weak var alphaView: UIView!
+    @IBOutlet weak var shootBtnContainerView: UIView!
+    @IBOutlet weak var stopBtn: UIButton!
+    @IBOutlet weak var progressContainerView: UIView!
+    @IBOutlet weak var progressBarView: UIView!
+    @IBOutlet weak var progressBarWidthConstraint: NSLayoutConstraint!
     
     var delegate : CameraViewDelegate?
     var isStartToRecord : Bool = false
     
-
+    //MARK: SYSTEMS METHODS
+    
     class func instanceFromNib() -> CameraView {
         return UINib(nibName: "View", bundle: nil).instantiate(withOwner: nil, options: nil)[0] as! CameraView
     }
     
     override func awakeFromNib() {
         self.layoutIfNeeded()
-        shootBtn.layer.cornerRadius = 30
+        shootBtnContainerView.layer.cornerRadius = shootBtnContainerView.frame.size.width/2
+        shootBtn.layer.cornerRadius = shootBtn.frame.size.width/2
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(doubleTapped))
         tap.numberOfTapsRequired = 2
         shootBtn.addGestureRecognizer(tap)
     }
+    
+    // SHOW HIDE ALPHA VIEW
 
     func showHideAlphaView(isHide: Bool){
         var alpha: Float = 0.0
@@ -50,19 +61,27 @@ class CameraView: UIView {
         })
     }
     
-    func changeShootBtn(isRed: Bool){
-        if isRed{
-            shootBtn.backgroundColor = UIColor.red
-        } else {
-            shootBtn.backgroundColor = UIColor.lightGray
-        }
+    
+    // ACTIONS
+    
+    func changeShootBtn(isStop: Bool){
+        shootBtn.isHidden = isStop
+        stopBtn.isHidden = !isStop
     }
     
     func doubleTapped() {
+        changeShootBtn(isStop: true)
         delegate?.startStream()
+    }
+    
+    @IBAction func stopShootVideo(_ sender: AnyObject) {
+        changeShootBtn(isStop: false)
+        isStartToRecord = !isStartToRecord
+        delegate?.startStopRecordingVideo(isStart: isStartToRecord)
     }
    
     @IBAction func shootVideo(_ sender: AnyObject) {
+        changeShootBtn(isStop: true)
         isStartToRecord = !isStartToRecord
         delegate?.startStopRecordingVideo(isStart: isStartToRecord)
     }

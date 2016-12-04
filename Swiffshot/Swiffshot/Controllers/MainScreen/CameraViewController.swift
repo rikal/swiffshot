@@ -64,7 +64,7 @@ class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
             }
         }
         previewLayer = beginSession()
-        self.view.layer.addSublayer(previewLayer!)
+        cameraView.screenView.layer.addSublayer(previewLayer!)
         isBackCamera = !isBackCamera
     }
     
@@ -122,29 +122,6 @@ class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
         return previewLayer!
     }
     
-    func goStreaming(){
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let controller = storyboard.instantiateViewController(withIdentifier: "publishView")
-        
-        //TODO: !!!!!!!
-        let frameSize = self.view.bounds
-        publisher = controller as! PublishViewController
-
-        publisher.view.layer.frame = frameSize
-        //TODO: !!!!!!!
-        
-        self.view.addSubview(publisher.view)
-        self.view.sendSubview(toBack: publisher.view)
-        
-        isPublishing ? publisher.stop() : publisher.start()
-        isPublishing = !isPublishing
-        isPublishing ? cameraView.changeShootBtn(isRed: true) : cameraView.changeShootBtn(isRed: false)
-    }
-    
-    func removePreviewLayer(){
-        previewLayer?.removeFromSuperlayer()
-    }
-    
     func srartStopRecord(isStart: Bool){
         let videoFileOutput = AVCaptureMovieFileOutput()
         if isStart{
@@ -155,6 +132,28 @@ class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
         } else {
             videoFileOutput.stopRecording()
         }
+    }
+    
+    //MARK: STREAMING METHODS
+    
+    func goStreaming(){
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let controller = storyboard.instantiateViewController(withIdentifier: "publishView")
+        
+        let frameSize = self.view.bounds
+        publisher = controller as! PublishViewController
+        publisher.view.layer.frame = frameSize
+        
+        self.view.addSubview(publisher.view)
+        self.view.sendSubview(toBack: publisher.view)
+        
+        isPublishing ? publisher.stop() : publisher.start()
+        isPublishing = !isPublishing
+        isPublishing ? cameraView.changeShootBtn(isStop: true) : cameraView.changeShootBtn(isStop: false)
+    }
+    
+    func removePreviewLayer(){
+        previewLayer?.removeFromSuperlayer()
     }
     
     func capture(_ captureOutput: AVCaptureFileOutput!, didFinishRecordingToOutputFileAt outputFileURL: URL!, fromConnections connections: [Any]!, error: Error!){
