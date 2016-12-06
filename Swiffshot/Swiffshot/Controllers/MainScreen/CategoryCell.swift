@@ -9,7 +9,7 @@
 import UIKit
 
 protocol CategoryCellDelegate: class {
-    func moveToStream()
+    func moveToStream(isonline: Bool)
     func moveToCamera()
 }
 
@@ -109,6 +109,13 @@ class CategoryCell: UICollectionViewCell, UICollectionViewDelegate, UICollection
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        delegate?.moveToStream()
+        let cell = collectionView.cellForItem(at: indexPath)
+        var isOnline = false
+        if (cell?.isKind(of: LatestStreamCollectionViewCell.self))!{
+            isOnline = (cell as! LatestStreamCollectionViewCell).isOnlineCell
+        } else {
+            isOnline = (cell as! SmallCollectionViewCell).isOnlineCell
+        }
+        delegate?.moveToStream(isonline: isOnline)
     }
 }

@@ -13,7 +13,7 @@ class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
 
     var previewLayer : AVCaptureVideoPreviewLayer?
     var cameraView : CameraView!
-    let captureSession = AVCaptureSession()
+    var captureSession = AVCaptureSession()
     var captureDevice : AVCaptureDevice?
     var filePath : URL?
     var isBackCamera = true
@@ -74,20 +74,6 @@ class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
         filePath = documentsURL.appendingPathComponent(fileName)
     }
     
-    
-    private func configureDevice() {
-        if let device = captureDevice {
-            do {
-                try device.lockForConfiguration()
-            } catch {
-                return
-            }
-            if isBackCamera { device.focusMode = .continuousAutoFocus }
-            device.unlockForConfiguration()
-        }
-        
-    }
-    
     private func beginSession() -> AVCaptureVideoPreviewLayer {
         configureDevice()
         do {
@@ -122,6 +108,19 @@ class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
         return previewLayer!
     }
     
+    private func configureDevice() {
+        if let device = captureDevice {
+            do {
+                try device.lockForConfiguration()
+            } catch {
+                return
+            }
+            if isBackCamera { device.focusMode = .continuousAutoFocus }
+            device.unlockForConfiguration()
+        }
+        
+    }
+    
     func srartStopRecord(isStart: Bool){
         let videoFileOutput = AVCaptureMovieFileOutput()
         if isStart{
@@ -153,6 +152,7 @@ class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
     }
     
     func removePreviewLayer(){
+        captureSession = AVCaptureSession()
         previewLayer?.removeFromSuperlayer()
     }
     

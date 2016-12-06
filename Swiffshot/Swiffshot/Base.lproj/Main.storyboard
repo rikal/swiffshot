@@ -261,6 +261,24 @@
             </objects>
             <point key="canvasLocation" x="2308" y="1094.3028485757122"/>
         </scene>
+        <!--Subcribe View Controller-->
+        <scene sceneID="k3m-XY-jLj">
+            <objects>
+                <viewController storyboardIdentifier="subscribeView" id="IJw-ro-rWQ" customClass="SubcribeViewController" customModule="Swiffshot" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="2of-JN-qWE"/>
+                        <viewControllerLayoutGuide type="bottom" id="2cb-CC-VmG"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Q6l-VW-soE">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dbR-D9-BQU" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3033" y="1094"/>
+        </scene>
         <!--No Nav Bar Navigation Controller-->
         <scene sceneID="X3I-NM-za8">
             <objects>

@@ -20,6 +20,8 @@ class MainViewController: CameraViewController, CameraViewDelegate, CategoryCell
     var allVideos = [[String]]()
     let cellId = "categoryCellId"
     
+    var isStreamingOn: Bool = false
+    
     //MARK: - SYSTEMS METHODS
     
     override func viewDidLoad() {
@@ -52,7 +54,8 @@ class MainViewController: CameraViewController, CameraViewDelegate, CategoryCell
         cameraView.showHideAlphaView(isHide: true)
     }
     
-    func moveToStream() {
+    func moveToStream(isonline: Bool) {
+        isStreamingOn = isonline
         performSegue(withIdentifier: "fromMainToVideo", sender: self)
     }
     
@@ -96,6 +99,13 @@ class MainViewController: CameraViewController, CameraViewDelegate, CategoryCell
         performSegue(withIdentifier: "fromMainToExpandable", sender: self)
     }
 
+    //MARK: - SEGUES
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "fromMainToVideo"{
+            let controller = segue.destination as! VideoPlayerViewController
+            controller.isSubscribing = isStreamingOn
+        }
+    }
 }
 
 extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{

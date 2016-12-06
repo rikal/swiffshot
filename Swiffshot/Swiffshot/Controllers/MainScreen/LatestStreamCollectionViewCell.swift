@@ -14,11 +14,14 @@ class LatestStreamCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var avatarImg: UIImageView!
     @IBOutlet weak var nameLbl: UILabel!
     
+    var isOnlineCell: Bool = false
+    
     override func awakeFromNib() {
         super.awakeFromNib()
     }
     
     func fillCell(isOnline: Bool){
+        isOnlineCell = isOnline
         onlineStreamIndicatorView.layer.cornerRadius = 50
         onlineStreamIndicatorView.isHidden = !isOnline
         let randomNum:UInt32 = arc4random_uniform(10) + 1

@@ -20,6 +20,9 @@ class VideoPlayerViewController: CameraViewController, UIGestureRecognizerDelega
     var player : AVPlayer?
     var videoLayer : AVPlayerLayer?
     var url:NSURL!
+    
+    var subscriber: SubcribeViewController?
+    var isSubscribing: Bool = false
 
     let videosCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -36,8 +39,12 @@ class VideoPlayerViewController: CameraViewController, UIGestureRecognizerDelega
         super.viewDidLoad()
         
         addTapGesture()
-        createVideoPlayer()
-        startPlayingVideo()
+        if isSubscribing {
+            streamingPrepare()
+        } else {
+            createVideoPlayer()
+            startPlayingVideo()
+        }
     }
     
     //MARK: - SYSTEMS METHODS
@@ -150,6 +157,28 @@ class VideoPlayerViewController: CameraViewController, UIGestureRecognizerDelega
                 self.videosCollectionView.isHidden = isHide
                 self.videoContainerView.isHidden = isHide
         })
+    }
+    
+    //MARK: - STREAMING METHODS
+    
+    func streamingPrepare(){
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let controller = storyboard.instantiateViewController(withIdentifier: "subscribeView")
+        
+        let frameSize = self.view.bounds
+        subscriber?.view.layer.frame = frameSize
+        subscriber = controller as? SubcribeViewController
+        subscriber?.view.layer.frame = frameSize
+        
+        self.present(subscriber!, animated: true){
+            print("PLAYING STREAM")
+            DispatchQueue.main.async {
+                self.subscriber?.start()
+            }
+        }
+        
+//        self.view.addSubview((subscriber?.view)!)
+//        self.view.sendSubview(toBack: (subscriber?.view)!)
     }
     
     //MARK: - CAMERA VIEW delegate

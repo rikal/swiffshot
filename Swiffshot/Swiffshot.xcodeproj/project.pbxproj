@@ -36,6 +36,7 @@
 		0A6322781DEE22CD006A0644 /* MainHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A6322761DEE22CD006A0644 /* MainHeader.xib */; };
 		0A63227B1DEE43CD006A0644 /* ExpandedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A63227A1DEE43CD006A0644 /* ExpandedViewController.swift */; };
 		0AA596091DE4E9CB0005336D /* Defaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AA596081DE4E9CB0005336D /* Defaults.swift */; };
+		0AAA359D1DF6A8AD00DFD0BD /* SubcribeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AAA359C1DF6A8AD00DFD0BD /* SubcribeViewController.swift */; };
 		0ABB902F1DE422C2009E39E5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ABB902E1DE422C2009E39E5 /* AppDelegate.swift */; };
 		0ABB90341DE422C2009E39E5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0ABB90321DE422C2009E39E5 /* Main.storyboard */; };
 		0ABB90361DE422C2009E39E5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0ABB90351DE422C2009E39E5 /* Assets.xcassets */; };
@@ -77,6 +78,7 @@
 		0A6322761DEE22CD006A0644 /* MainHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MainHeader.xib; path = Controllers/MainScreen/MainHeader.xib; sourceTree = "<group>"; };
 		0A63227A1DEE43CD006A0644 /* ExpandedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ExpandedViewController.swift; path = Controllers/ExpandedCategories/ExpandedViewController.swift; sourceTree = "<group>"; };
 		0AA596081DE4E9CB0005336D /* Defaults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Defaults.swift; path = Utilities/Defaults.swift; sourceTree = "<group>"; };
+		0AAA359C1DF6A8AD00DFD0BD /* SubcribeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SubcribeViewController.swift; path = Controllers/Publisher/SubcribeViewController.swift; sourceTree = "<group>"; };
 		0ABB902B1DE422C2009E39E5 /* Swiffshot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Swiffshot.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0ABB902E1DE422C2009E39E5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0ABB90331DE422C2009E39E5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -119,6 +121,7 @@
 			isa = PBXGroup;
 			children = (
 				0A4D1BC61DF0A08300BF7CCE /* PublishViewController.swift */,
+				0AAA359C1DF6A8AD00DFD0BD /* SubcribeViewController.swift */,
 			);
 			name = Publisher;
 			sourceTree = "<group>";
@@ -412,6 +415,7 @@
 				0A6322641DEB41EA006A0644 /* VideoPlayerViewController.swift in Sources */,
 				0ABB902F1DE422C2009E39E5 /* AppDelegate.swift in Sources */,
 				0A6322771DEE22CD006A0644 /* MainHeader.swift in Sources */,
+				0AAA359D1DF6A8AD00DFD0BD /* SubcribeViewController.swift in Sources */,
 				0A63224B1DE5B89F006A0644 /* MainViewController.swift in Sources */,
 				0A6322701DEDE8EB006A0644 /* CategoryCell.swift in Sources */,
 			);
