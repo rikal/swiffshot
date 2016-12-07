@@ -64,13 +64,13 @@ class MainViewController: CameraViewController, CameraViewDelegate, CategoryCell
     private func hideShowCollectionView(isHide: Bool){
         var alpha: Float = 0.0
         if isHide { alpha = 0.0 } else { alpha = 1.0 }
-        
-        UIView.animate(withDuration: 1.5, animations: {
-            self.collectionView.alpha = CGFloat(alpha)
-            }, completion: { (finished) in
-                if isHide { self.turnOnCamera() }
-                self.collectionView.isHidden = isHide
-        })
+        DispatchQueue.main.async {
+            UIView.animate(withDuration: 1.5, animations: {
+                self.collectionView.alpha = CGFloat(alpha)
+                }, completion: { (finished) in
+                    if isHide { self.turnOnCamera() } else { self.removePreviewLayer() }
+            })
+        }
     }
     
     //MARK: - CAMERA VIEW delegate
@@ -85,7 +85,7 @@ class MainViewController: CameraViewController, CameraViewDelegate, CategoryCell
     
     func cancelCameraView(){
         hideShowCollectionView(isHide: false)
-        removePreviewLayer()
+//        removePreviewLayer()
     }
     
     func changeCamera(){

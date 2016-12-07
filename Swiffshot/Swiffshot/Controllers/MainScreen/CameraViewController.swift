@@ -44,28 +44,33 @@ class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
     // MARK: - CAMERA METHODS
     
     func turnOnCamera(){
-        captureSession.sessionPreset = AVCaptureSessionPresetHigh
-        let devices = AVCaptureDevice.devices()
-        for device in devices! {
-            if ((device as AnyObject).hasMediaType(AVMediaTypeVideo)) {
-                if((device as AnyObject).position == AVCaptureDevicePosition.back && isBackCamera) {
-                    captureDevice = device as? AVCaptureDevice
-                    if captureDevice != nil {
-                        print("Capture device back camera found")
-                        break
-                    }
-                } else if((device as AnyObject).position == AVCaptureDevicePosition.front && !isBackCamera) {
-                    captureDevice = device as? AVCaptureDevice
-                    if captureDevice != nil {
-                        print("Capture device front camera found")
-                        break
+        DispatchQueue.global().async {
+            self.captureSession.sessionPreset = AVCaptureSessionPresetHigh
+            let devices = AVCaptureDevice.devices()
+            for device in devices! {
+                if ((device as AnyObject).hasMediaType(AVMediaTypeVideo)) {
+                    if((device as AnyObject).position == AVCaptureDevicePosition.back && self.isBackCamera) {
+                        self.captureDevice = device as? AVCaptureDevice
+                        if self.captureDevice != nil {
+                            print("Capture device back camera found")
+                            break
+                        }
+                    } else if((device as AnyObject).position == AVCaptureDevicePosition.front && !self.isBackCamera) {
+                        self.captureDevice = device as? AVCaptureDevice
+                        if self.captureDevice != nil {
+                            print("Capture device front camera found")
+                            break
+                        }
                     }
                 }
             }
+            self.previewLayer = self.beginSession()
+            DispatchQueue.main.async {
+                self.cameraView.screenView.layer.addSublayer(self.previewLayer!)
+            }
+            
+            self.isBackCamera = !self.isBackCamera
         }
-        previewLayer = beginSession()
-        cameraView.screenView.layer.addSublayer(previewLayer!)
-        isBackCamera = !isBackCamera
     }
     
     private func pathTosave(){
@@ -118,7 +123,6 @@ class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
             if isBackCamera { device.focusMode = .continuousAutoFocus }
             device.unlockForConfiguration()
         }
-        
     }
     
     func srartStopRecord(isStart: Bool){

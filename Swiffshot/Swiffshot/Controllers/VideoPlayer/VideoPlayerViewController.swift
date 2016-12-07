@@ -105,7 +105,7 @@ class VideoPlayerViewController: CameraViewController, UIGestureRecognizerDelega
     @objc(handleTap:)
     private func handleTap(sender: UITapGestureRecognizer){
         hideShowCollectionView(isHide: true)
-        cameraView.showHideAlphaView(isHide: true)
+//        cameraView.showHideAlphaView(isHide: true)
     }
     
     //MARK: - VIDEO METHODS
@@ -146,14 +146,14 @@ class VideoPlayerViewController: CameraViewController, UIGestureRecognizerDelega
     //MARK: - HIDE/SHOW Collectionview
     
     private func hideShowCollectionView(isHide: Bool){
-        var alpha: Float = 0.0
+        var alpha: Float?
         if isHide { alpha = 0.0 } else { alpha = 1.0 }
         
+        if isHide { self.turnOnCamera() }
         UIView.animate(withDuration: 1.5, animations: {
-            self.videosCollectionView.alpha = CGFloat(alpha)
-            self.videoContainerView.alpha = CGFloat(alpha)
+            self.videosCollectionView.alpha = CGFloat(alpha!)
+            self.videoContainerView.alpha = CGFloat(alpha!)
             }, completion: { (finished) in
-                if isHide { self.turnOnCamera() }
                 self.videosCollectionView.isHidden = isHide
                 self.videoContainerView.isHidden = isHide
         })

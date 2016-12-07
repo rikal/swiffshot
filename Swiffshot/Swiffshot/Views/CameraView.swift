@@ -56,9 +56,7 @@ class CameraView: UIView {
         
         UIView.animate(withDuration: 1.5, animations: {
             self.alphaView.alpha = CGFloat(alpha)
-            }, completion: { (finished) in
-                self.alphaView.isHidden = isHide
-        })
+            }, completion: nil)
     }
     
     
