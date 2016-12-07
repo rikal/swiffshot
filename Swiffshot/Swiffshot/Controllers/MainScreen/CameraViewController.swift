@@ -68,8 +68,6 @@ class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
             DispatchQueue.main.async {
                 self.cameraView.screenView.layer.addSublayer(self.previewLayer!)
             }
-            
-            self.isBackCamera = !self.isBackCamera
         }
     }
     

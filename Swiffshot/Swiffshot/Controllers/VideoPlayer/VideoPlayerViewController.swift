@@ -197,6 +197,8 @@ class VideoPlayerViewController: CameraViewController, UIGestureRecognizerDelega
     }
     
     func changeCamera(){
+        removePreviewLayer()
+        self.isBackCamera = !self.isBackCamera
         turnOnCamera()
     }
 }
