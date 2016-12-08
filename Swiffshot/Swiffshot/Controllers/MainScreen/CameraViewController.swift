@@ -8,6 +8,7 @@
 
 import UIKit
 import AVFoundation
+import Photos
 
 class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate, AVCaptureFileOutputRecordingDelegate {
 
@@ -20,6 +21,8 @@ class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
     
     var publisher: PublishViewController!
     var isPublishing: Bool = false
+    
+    let videoFileOutput = AVCaptureMovieFileOutput()
     
     //MARK: - SYSTEMS METHODS
     
@@ -72,7 +75,7 @@ class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
     }
     
     private func pathTosave(){
-        let fileName = "Swiffshot.mp4";
+        let fileName = "Swiffshot.mp4"
         let documentsURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
         filePath = documentsURL.appendingPathComponent(fileName)
     }
@@ -124,7 +127,6 @@ class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
     }
     
     func srartStopRecord(isStart: Bool){
-        let videoFileOutput = AVCaptureMovieFileOutput()
         if isStart{
             self.captureSession.addOutput(videoFileOutput)
             
@@ -132,6 +134,13 @@ class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
             videoFileOutput.startRecording(toOutputFileURL: filePath, recordingDelegate: recordingDelegate)
         } else {
             videoFileOutput.stopRecording()
+            PHPhotoLibrary.shared().performChanges({
+                PHAssetChangeRequest.creationRequestForAssetFromVideo(atFileURL: self.filePath!)
+            }) { saved, error in
+                if saved {
+                    print("SAVED")
+                }
+            }
         }
     }
     
@@ -162,5 +171,9 @@ class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
         print("capture did finish")
         print(captureOutput)
         print(outputFileURL)
+    }
+    
+    func capture(_ captureOutput: AVCaptureFileOutput!, didStartRecordingToOutputFileAt fileURL: URL!, fromConnections connections: [Any]!){
+        print("capture output: started recording to \(fileURL)")
     }
 }
