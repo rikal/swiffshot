@@ -21,7 +21,6 @@ class PublishViewController : R5VideoViewController, R5StreamDelegate{
         config.host = Defaults.sharedDefaults.localHost
         config.port = Int32(Defaults.sharedDefaults.hostPort)
         config.contextName = "live"
-        self.preview()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -29,9 +28,10 @@ class PublishViewController : R5VideoViewController, R5StreamDelegate{
         self.stop()
     }
     
-    func preview() {
-        let cameraDevice: AVCaptureDevice = AVCaptureDevice.devices(withMediaType:AVMediaTypeVideo).last as! AVCaptureDevice
+    func preview(isBackCamera: Bool) {
+        let cameraDevice: AVCaptureDevice = isBackCamera ? AVCaptureDevice.devices(withMediaType:AVMediaTypeVideo).first as! AVCaptureDevice : AVCaptureDevice.devices(withMediaType:AVMediaTypeVideo).last as! AVCaptureDevice
         let camera = R5Camera(device: cameraDevice, andBitRate: 512)
+        camera?.orientation = (camera?.orientation)! + 90
         
         let audioDevice = AVCaptureDevice.defaultDevice(withMediaType: AVMediaTypeAudio)
         let microphone = R5Microphone(device: audioDevice)
@@ -55,7 +55,6 @@ class PublishViewController : R5VideoViewController, R5StreamDelegate{
     func stop() {
         stream.stop()
         stream.delegate = nil
-        self.preview()
     }
     
     func onR5StreamStatus(_ stream: R5Stream!, withStatus statusCode: Int32, withMessage msg: String!) {

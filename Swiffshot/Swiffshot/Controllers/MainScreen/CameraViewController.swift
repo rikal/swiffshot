@@ -21,6 +21,7 @@ class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
     
     var publisher: PublishViewController!
     var isPublishing: Bool = false
+    var isOnline: Bool = false
     
     let videoFileOutput = AVCaptureMovieFileOutput()
     
@@ -133,12 +134,19 @@ class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
             let recordingDelegate:AVCaptureFileOutputRecordingDelegate? = self
             videoFileOutput.startRecording(toOutputFileURL: filePath, recordingDelegate: recordingDelegate)
         } else {
-            videoFileOutput.stopRecording()
-            PHPhotoLibrary.shared().performChanges({
-                PHAssetChangeRequest.creationRequestForAssetFromVideo(atFileURL: self.filePath!)
-            }) { saved, error in
-                if saved {
-                    print("SAVED")
+            if isOnline{
+                publisher.stop()
+                isOnline = false
+            } else {
+                videoFileOutput.stopRecording()
+                PHPhotoLibrary.shared().performChanges({
+                    PHAssetChangeRequest.creationRequestForAssetFromVideo(atFileURL: self.filePath!)
+                }) { saved, error in
+                    if saved {
+                        print("SAVED")
+                    } else if (error != nil) {
+                        print(error?.localizedDescription)
+                    }
                 }
             }
         }
@@ -150,16 +158,17 @@ class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let controller = storyboard.instantiateViewController(withIdentifier: "publishView")
         
-        let frameSize = self.view.bounds
+        let frameSize = cameraView.screenView.bounds
         publisher = controller as! PublishViewController
         publisher.view.layer.frame = frameSize
+        publisher.preview(isBackCamera: isBackCamera)
         
-        self.view.addSubview(publisher.view)
-        self.view.sendSubview(toBack: publisher.view)
+        cameraView.screenView.addSubview(publisher.view)
         
         isPublishing ? publisher.stop() : publisher.start()
         isPublishing = !isPublishing
         isPublishing ? cameraView.changeShootBtn(isStop: true) : cameraView.changeShootBtn(isStop: false)
+        isOnline = true
     }
     
     func removePreviewLayer(){

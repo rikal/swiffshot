@@ -70,6 +70,7 @@ class CameraView: UIView {
     func doubleTapped() {
         changeShootBtn(isStop: true)
         delegate?.startStream()
+        isStartToRecord = !isStartToRecord
     }
     
     @IBAction func stopShootVideo(_ sender: AnyObject) {
