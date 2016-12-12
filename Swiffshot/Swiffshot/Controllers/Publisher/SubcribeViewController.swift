@@ -29,12 +29,12 @@ class SubcribeViewController : R5VideoViewController{
         stream.stop()
     }
     
-    func start() {
+    func start(streamName: String) {
         let connection = R5Connection(config: config)
         
         stream = R5Stream(connection: connection)
         self.attach(stream)
-        stream.play("red5prostream")
+        stream.play(streamName)
     }
     
     func stop() {

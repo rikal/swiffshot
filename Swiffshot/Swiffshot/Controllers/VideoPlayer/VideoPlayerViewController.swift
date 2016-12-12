@@ -105,7 +105,7 @@ class VideoPlayerViewController: CameraViewController, UIGestureRecognizerDelega
     @objc(handleTap:)
     private func handleTap(sender: UITapGestureRecognizer){
         hideShowCollectionView(isHide: true)
-//        cameraView.showHideAlphaView(isHide: true)
+        cameraView.showHideAlphaView(isHide: true)
     }
     
     //MARK: - VIDEO METHODS
@@ -173,12 +173,9 @@ class VideoPlayerViewController: CameraViewController, UIGestureRecognizerDelega
         self.present(subscriber!, animated: true){
             print("PLAYING STREAM")
             DispatchQueue.main.async {
-                self.subscriber?.start()
+                self.subscriber?.start(streamName: "testStream")
             }
         }
-        
-//        self.view.addSubview((subscriber?.view)!)
-//        self.view.sendSubview(toBack: (subscriber?.view)!)
     }
     
     //MARK: - CAMERA VIEW delegate
@@ -238,6 +235,8 @@ extension VideoPlayerViewController: UICollectionViewDelegate, UICollectionViewD
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        stopVideoInCircle()
+        createVideoPlayer()
         playVideoInCircle()
     }
 }
