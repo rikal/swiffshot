@@ -13,6 +13,8 @@ import AVFoundation
 class PlayerViewController: AVPlayerViewController {
 
     var url:NSURL!
+    var cameraView: UIView?
+    var isCircle: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,7 +31,22 @@ class PlayerViewController: AVPlayerViewController {
     }
     
     func additionalCameraPressed(sender: UIButton!) {
-        print("Button tapped")
+        isCircle = !isCircle
+        cameraView?.removeFromSuperview()
+        cameraView = UIView(frame: CGRect(x: self.view.frame.width - 120, y: self.view.frame.height - 210, width: 0, height: 0))
+        cameraView!.backgroundColor = UIColor.redColor()
+        self.view.addSubview(cameraView!)
+        
+        self.view.layoutIfNeeded()
+        
+        UIView.animateWithDuration(1.0, animations: { () -> Void in
+            self.cameraView!.frame.size.height = 100
+            self.cameraView!.frame.size.width = 100
+            if self.isCircle {
+                self.cameraView!.layer.cornerRadius = self.cameraView!.frame.size.width/2
+            }
+            self.view.layoutIfNeeded()
+        })
     }
     
     func createVideoPlayer(videourl: NSURL){
