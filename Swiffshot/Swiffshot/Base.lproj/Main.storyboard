@@ -234,7 +234,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kdY-3u-DOg">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="216"/>
+                                <rect key="frame" x="0.0" y="64" width="320" height="216"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mQM-VK-VlK">
                                         <rect key="frame" x="80" y="28" width="160" height="160"/>
@@ -257,7 +257,7 @@
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="Pzo-ck-4rc" secondAttribute="trailing" id="2c1-Uj-Y3C"/>
                             <constraint firstItem="kdY-3u-DOg" firstAttribute="leading" secondItem="Gfh-zu-HEf" secondAttribute="leading" id="6kQ-74-AbA"/>
-                            <constraint firstItem="kdY-3u-DOg" firstAttribute="top" secondItem="Gfh-zu-HEf" secondAttribute="top" id="aM4-lS-Z4R"/>
+                            <constraint firstItem="kdY-3u-DOg" firstAttribute="top" secondItem="Gfh-zu-HEf" secondAttribute="top" constant="64" id="aM4-lS-Z4R"/>
                             <constraint firstItem="Pzo-ck-4rc" firstAttribute="leading" secondItem="Gfh-zu-HEf" secondAttribute="leading" id="gVS-nf-RJY"/>
                             <constraint firstAttribute="trailing" secondItem="kdY-3u-DOg" secondAttribute="trailing" id="nXk-3F-k8D"/>
                             <constraint firstItem="kHI-kp-F2d" firstAttribute="top" secondItem="Pzo-ck-4rc" secondAttribute="bottom" id="wyO-fK-2NO"/>

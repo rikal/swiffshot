@@ -202,11 +202,11 @@ class VideoPlayerViewController: CameraViewController, UIGestureRecognizerDelega
 
 extension VideoPlayerViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
     
-    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int{
+    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 25
     }
     
-    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell{
+    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         
         var cell: UICollectionViewCell?
         let bigcell = collectionView.dequeueReusableCellWithReuseIdentifier("bigCell", forIndexPath: indexPath) as! LatestStreamCollectionViewCell
@@ -215,7 +215,7 @@ extension VideoPlayerViewController: UICollectionViewDelegate, UICollectionViewD
         return cell!
     }
     
-    func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: NSIndexPath) -> UICollectionReusableView{
+    func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {
         var header = UICollectionReusableView()
         
         if kind == UICollectionElementKindSectionHeader{
@@ -230,11 +230,11 @@ extension VideoPlayerViewController: UICollectionViewDelegate, UICollectionViewD
         return header
     }
     
-    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: NSIndexPath) -> CGSize {
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
         return CGSize(width: 100, height: 120)
     }
     
-    func collectionView(collectionView: UICollectionView, didSelectItemAt indexPath: NSIndexPath) {
+    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         stopVideoInCircle()
         createVideoPlayer()
         playVideoInCircle()

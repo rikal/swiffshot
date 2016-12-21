@@ -62,6 +62,8 @@ class CategoryCell: UICollectionViewCell, UICollectionViewDelegate, UICollection
             delegate?.moveToCamera()
     }
     
+    //MARK: COLLECTION VIEW DELEGATE METHODS
+    
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         switch globalIndexSection {
         case 0:
@@ -88,7 +90,7 @@ class CategoryCell: UICollectionViewCell, UICollectionViewDelegate, UICollection
         return cell
     }
     
-    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: NSIndexPath) -> CGSize {
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
         switch globalIndexSection {
         case 0:
             return CGSize(width: 100, height: 120)
@@ -97,18 +99,18 @@ class CategoryCell: UICollectionViewCell, UICollectionViewDelegate, UICollection
         }
     }
     
-    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAtIndex section: Int) -> UIEdgeInsets {
         switch globalIndexSection {
         case 0:
             let spacing = (collectionView.frame.size.width/2 - 100)
             return UIEdgeInsets(top: 20, left: spacing, bottom: 20, right: spacing)
-
+            
         default:
             return UIEdgeInsets(top: 20, left: 10, bottom: 20, right: 10)
         }
     }
     
-    func collectionView(collectionView: UICollectionView, didSelectItemAt indexPath: NSIndexPath) {
+    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         let cell = collectionView.cellForItemAtIndexPath(indexPath)
         var isOnline = false
         if (cell?.isKindOfClass(LatestStreamCollectionViewCell.self))!{

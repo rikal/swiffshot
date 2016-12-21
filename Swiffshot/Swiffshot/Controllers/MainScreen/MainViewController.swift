@@ -114,7 +114,7 @@ class MainViewController: CameraViewController, CameraViewDelegate, CategoryCell
 
 extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
     
-    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: NSIndexPath) -> CGSize {
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
         switch indexPath.section {
         case 0:
             return CGSize(width: self.collectionView.frame.size.width, height: 300)
@@ -130,7 +130,7 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
         return cell
     }
     
-    func numberOfSections(in collectionView: UICollectionView) -> Int {
+    func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
         return 3
     }
     
@@ -142,7 +142,7 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
         return CGSize(width: self.collectionView.frame.width, height: 50)
     }
     
-    func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: NSIndexPath) -> UICollectionReusableView {
+    func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {
         var reusableView : UICollectionReusableView? = nil
         
         if (kind == UICollectionElementKindSectionHeader) {
