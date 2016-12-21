@@ -178,6 +178,8 @@ class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
         previewLayer?.removeFromSuperlayer()
     }
     
+    //MARK: - LOAD VIDEO
+    
     func loadVideo(){
         removePreviewLayer()
         
