@@ -27,6 +27,7 @@ class CameraView: UIView {
     @IBOutlet weak var stopBtn: UIButton!
     @IBOutlet weak var progressContainerView: UIView!
     @IBOutlet weak var progressBarView: UIView!
+    @IBOutlet weak var useVideoBtn: UIButton!
     @IBOutlet weak var progressBarWidthConstraint: NSLayoutConstraint!
     
     var delegate : CameraViewDelegate?
