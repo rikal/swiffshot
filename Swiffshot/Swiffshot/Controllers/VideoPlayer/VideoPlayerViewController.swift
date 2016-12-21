@@ -10,7 +10,7 @@ import UIKit
 import AVKit
 import AVFoundation
 
-class VideoPlayerViewController: CameraViewController, UIGestureRecognizerDelegate, CameraViewDelegate {
+class VideoPlayerViewController: CameraViewController, UIGestureRecognizerDelegate, CameraViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     @IBOutlet weak var bottomViewContainer: UIView!
     @IBOutlet weak var videoThumbs: UIView!
@@ -42,7 +42,7 @@ class VideoPlayerViewController: CameraViewController, UIGestureRecognizerDelega
         if isSubscribing {
             streamingPrepare()
         } else {
-            createVideoPlayer()
+            createVideoPlayer(NSURL(string: "http://clips.vorwaerts-gmbh.de/VfE_html5.mp4")!)
             startPlayingVideo()
         }
     }
@@ -110,8 +110,8 @@ class VideoPlayerViewController: CameraViewController, UIGestureRecognizerDelega
     
     //MARK: - VIDEO METHODS
     
-    func createVideoPlayer(){
-        url = NSURL(string: "http://clips.vorwaerts-gmbh.de/VfE_html5.mp4")!
+    func createVideoPlayer(videourl: NSURL){
+        url = videourl
         player = AVPlayer(URL: url as NSURL)
     }
     
@@ -198,6 +198,38 @@ class VideoPlayerViewController: CameraViewController, UIGestureRecognizerDelega
         self.isBackCamera = !self.isBackCamera
         turnOnCamera()
     }
+    
+    func chooseVideo(){
+        removePreviewLayer()
+        
+        let imagePicker = UIImagePickerController()
+        imagePicker.delegate = self
+        imagePicker.allowsEditing = false
+        imagePicker.sourceType = .PhotoLibrary
+        imagePicker.mediaTypes = UIImagePickerController.availableMediaTypesForSourceType(.PhotoLibrary)!
+        imagePicker.modalPresentationStyle = .OverFullScreen
+        imagePicker.navigationBar.translucent = false
+        imagePicker.navigationBar.barTintColor = UIColor(colorLiteralRed: 247.0/255.0, green: 247.0/255.0, blue: 247.0/255.0, alpha: 1.0)
+        presentViewController(imagePicker, animated: true, completion: nil)
+    }
+    
+    //MARK: - IMAGE PICKER METHODS
+    
+    @objc func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
+        
+        dismissViewControllerAnimated(true, completion: nil)
+        let mediaType = info[UIImagePickerControllerMediaType] as! String
+        if mediaType == "public.movie"{
+            let videoURL = info[UIImagePickerControllerMediaURL] as! NSURL
+            createVideoPlayer(videoURL)
+            startPlayingVideo()
+        }
+    }
+    
+    func imagePickerControllerDidCancel(picker: UIImagePickerController) {
+        dismissViewControllerAnimated(true, completion: nil)
+    }
+    
 }
 
 extension VideoPlayerViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
@@ -236,7 +268,7 @@ extension VideoPlayerViewController: UICollectionViewDelegate, UICollectionViewD
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         stopVideoInCircle()
-        createVideoPlayer()
+        createVideoPlayer(NSURL(string: "http://clips.vorwaerts-gmbh.de/VfE_html5.mp4")!)
         playVideoInCircle()
     }
 }

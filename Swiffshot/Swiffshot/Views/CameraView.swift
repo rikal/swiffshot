@@ -13,6 +13,7 @@ protocol CameraViewDelegate {
     func cancelCameraView()
     func changeCamera()
     func startStream()
+    func chooseVideo()
 }
 
 class CameraView: UIView {
@@ -93,5 +94,9 @@ class CameraView: UIView {
     
     @IBAction func changeCameraPressed(sender: AnyObject) {
         delegate?.changeCamera()
+    }
+    
+    @IBAction func loadVideoPressed(sender: AnyObject) {
+        delegate?.chooseVideo()
     }
 }
