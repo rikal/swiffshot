@@ -97,6 +97,10 @@ class MainViewController: CameraViewController, CameraViewDelegate, CategoryCell
         turnOnCamera()
     }
     
+    func chooseVideo(){
+        loadVideo()
+    }
+    
     //MARK: - Header delegate
     
     func headerTapped(){

@@ -10,20 +10,18 @@ import UIKit
 import AVKit
 import AVFoundation
 
-class VideoPlayerViewController: CameraViewController, UIGestureRecognizerDelegate, CameraViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class VideoPlayerViewController: CameraViewController, UIGestureRecognizerDelegate, CameraViewDelegate {
     
     @IBOutlet weak var bottomViewContainer: UIView!
     @IBOutlet weak var videoThumbs: UIView!
     @IBOutlet weak var videoContainerView: UIView!
     
-    var playerViewController = PlayerViewController()
     var player : AVPlayer?
     var videoLayer : AVPlayerLayer?
-    var url:NSURL!
-    
     var subscriber: SubcribeViewController?
     var isSubscribing: Bool = false
 
+    let videoUrl = NSURL(string: "http://clips.vorwaerts-gmbh.de/VfE_html5.mp4")!
     let videosCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .Horizontal
@@ -42,8 +40,8 @@ class VideoPlayerViewController: CameraViewController, UIGestureRecognizerDelega
         if isSubscribing {
             streamingPrepare()
         } else {
-            createVideoPlayer(NSURL(string: "http://clips.vorwaerts-gmbh.de/VfE_html5.mp4")!)
-            startPlayingVideo()
+            playerViewController.createVideoPlayer(videoUrl)
+            showPlayer()
         }
     }
     
@@ -99,7 +97,8 @@ class VideoPlayerViewController: CameraViewController, UIGestureRecognizerDelega
     @objc(videoTap:)
     private func videoTap(sender: UITapGestureRecognizer){
         stopVideoInCircle()
-        startPlayingVideo()
+        playerViewController.createVideoPlayer(videoUrl)
+        showPlayer()
     }
     
     @objc(handleTap:)
@@ -108,14 +107,8 @@ class VideoPlayerViewController: CameraViewController, UIGestureRecognizerDelega
         cameraView.showHideAlphaView(true)
     }
     
-    //MARK: - VIDEO METHODS
-    
-    func createVideoPlayer(videourl: NSURL){
-        url = videourl
-        player = AVPlayer(URL: url as NSURL)
-    }
-    
     func playVideoInCircle(){
+        player = AVPlayer(URL: videoUrl)
         player?.actionAtItemEnd = .None
         videoLayer = AVPlayerLayer(player: player)
         videoLayer?.frame = videoThumbs.bounds
@@ -131,17 +124,7 @@ class VideoPlayerViewController: CameraViewController, UIGestureRecognizerDelega
         player?.actionAtItemEnd = .None
         videoLayer?.removeFromSuperlayer()
     }
-
-    func startPlayingVideo(){
-        playerViewController.player = player
-        playerViewController.showsPlaybackControls = true
-        self.presentViewController(playerViewController, animated: true){
-            print("PLAYING")
-            dispatch_async(dispatch_get_main_queue()) {
-                self.playerViewController.player?.play()
-            }
-        }
-    }
+    
     
     //MARK: - HIDE/SHOW Collectionview
     
@@ -200,34 +183,7 @@ class VideoPlayerViewController: CameraViewController, UIGestureRecognizerDelega
     }
     
     func chooseVideo(){
-        removePreviewLayer()
-        
-        let imagePicker = UIImagePickerController()
-        imagePicker.delegate = self
-        imagePicker.allowsEditing = false
-        imagePicker.sourceType = .PhotoLibrary
-        imagePicker.mediaTypes = UIImagePickerController.availableMediaTypesForSourceType(.PhotoLibrary)!
-        imagePicker.modalPresentationStyle = .OverFullScreen
-        imagePicker.navigationBar.translucent = false
-        imagePicker.navigationBar.barTintColor = UIColor(colorLiteralRed: 247.0/255.0, green: 247.0/255.0, blue: 247.0/255.0, alpha: 1.0)
-        presentViewController(imagePicker, animated: true, completion: nil)
-    }
-    
-    //MARK: - IMAGE PICKER METHODS
-    
-    @objc func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
-        
-        dismissViewControllerAnimated(true, completion: nil)
-        let mediaType = info[UIImagePickerControllerMediaType] as! String
-        if mediaType == "public.movie"{
-            let videoURL = info[UIImagePickerControllerMediaURL] as! NSURL
-            createVideoPlayer(videoURL)
-            startPlayingVideo()
-        }
-    }
-    
-    func imagePickerControllerDidCancel(picker: UIImagePickerController) {
-        dismissViewControllerAnimated(true, completion: nil)
+        loadVideo()
     }
     
 }
@@ -268,7 +224,6 @@ extension VideoPlayerViewController: UICollectionViewDelegate, UICollectionViewD
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         stopVideoInCircle()
-        createVideoPlayer(NSURL(string: "http://clips.vorwaerts-gmbh.de/VfE_html5.mp4")!)
         playVideoInCircle()
     }
 }

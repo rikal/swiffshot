@@ -64,19 +64,6 @@ class FillProfileViewController: AuthorizationViewController, UIImagePickerContr
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     
-    // MARK: - UIImagePickerControllerDelegate Methods
-    @objc func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
-        let chosenImage = info[UIImagePickerControllerOriginalImage] as! UIImage
-        avatarBtn.setBackgroundImage(UIImage(), forState: .Normal)
-        avatarBtn.contentMode = .ScaleAspectFit
-        avatarBtn.setImage(chosenImage, forState: .Normal)
-        dismissViewControllerAnimated(true, completion: nil)
-    }
-    
-    func imagePickerControllerDidCancel(picker: UIImagePickerController) {
-        dismissViewControllerAnimated(true, completion: nil)
-    }
-    
 }
 
 extension FillProfileViewController: UITextFieldDelegate{

@@ -10,7 +10,7 @@ import UIKit
 import AVFoundation
 import Photos
 
-class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate, AVCaptureFileOutputRecordingDelegate {
+class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate, AVCaptureFileOutputRecordingDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
     var previewLayer : AVCaptureVideoPreviewLayer?
     var cameraView : CameraView!
@@ -18,10 +18,10 @@ class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
     var captureDevice : AVCaptureDevice?
     var filePath : NSURL?
     var isBackCamera = true
-    
     var publisher: PublishViewController!
     var isPublishing: Bool = false
     var isOnline: Bool = false
+    var playerViewController = PlayerViewController()
     
     let videoFileOutput = AVCaptureMovieFileOutput()
     
@@ -176,6 +176,46 @@ class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
     func removePreviewLayer(){
         captureSession = AVCaptureSession()
         previewLayer?.removeFromSuperlayer()
+    }
+    
+    func loadVideo(){
+        removePreviewLayer()
+        
+        let imagePicker = UIImagePickerController()
+        imagePicker.delegate = self
+        imagePicker.allowsEditing = false
+        imagePicker.sourceType = .PhotoLibrary
+        imagePicker.mediaTypes = UIImagePickerController.availableMediaTypesForSourceType(.PhotoLibrary)!
+        imagePicker.modalPresentationStyle = .OverFullScreen
+        imagePicker.navigationBar.translucent = false
+        imagePicker.navigationBar.barTintColor = UIColor(colorLiteralRed: 247.0/255.0, green: 247.0/255.0, blue: 247.0/255.0, alpha: 1.0)
+        presentViewController(imagePicker, animated: true, completion: nil)
+    }
+    
+    //MARK: - IMAGE PICKER METHODS
+    
+    @objc func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
+        
+        dismissViewControllerAnimated(true, completion: nil)
+        let mediaType = info[UIImagePickerControllerMediaType] as! String
+        if mediaType == "public.movie"{
+            let videoURL = info[UIImagePickerControllerMediaURL] as! NSURL
+            playerViewController.createVideoPlayer(videoURL)
+            showPlayer()
+        }
+    }
+    
+    func showPlayer(){
+        self.presentViewController(playerViewController, animated: true){
+            print("PLAYING")
+            dispatch_async(dispatch_get_main_queue()) {
+                self.playerViewController.player?.play()
+            }
+        }
+    }
+    
+    func imagePickerControllerDidCancel(picker: UIImagePickerController) {
+        dismissViewControllerAnimated(true, completion: nil)
     }
     
     //MARK: CATURE DELEGATE METHODS

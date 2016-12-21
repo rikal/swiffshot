@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <deployment identifier="iOS"/>
         <development version="7000" identifier="xcode"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
@@ -65,7 +64,6 @@
                     </constraints>
                     <state key="normal" image="Album"/>
                     <connections>
-                        <action selector="changeCameraPressed:" destination="iN0-l3-epB" eventType="touchUpInside" id="7XP-gd-dQz"/>
                         <action selector="loadVideoPressed:" destination="iN0-l3-epB" eventType="touchUpInside" id="Wmc-oV-nhY"/>
                     </connections>
                 </button>
@@ -112,7 +110,7 @@
                     <color key="backgroundColor" red="0.40781933069229126" green="0.40781933069229126" blue="0.40781933069229126" alpha="1" colorSpace="calibratedRGB"/>
                 </view>
             </subviews>
-            <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+            <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="mf1-ok-Kx9" secondAttribute="trailing" id="9BZ-ON-8ZG"/>
                 <constraint firstAttribute="trailing" secondItem="XsM-HM-EbA" secondAttribute="trailing" constant="20" id="BfP-Oc-U59"/>
