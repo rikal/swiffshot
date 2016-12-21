@@ -14,8 +14,8 @@ class NoNavBarNavigationController: UINavigationController {
         super.viewDidLoad()
 
         let navigationBarAppearace = UINavigationBar.appearance()
-        navigationBarAppearace.tintColor = UIColor.clear
-        navigationBarAppearace.barTintColor = UIColor.clear
+        navigationBarAppearace.tintColor = UIColor.clearColor()
+        navigationBarAppearace.barTintColor = UIColor.clearColor()
     }
 
     override func didReceiveMemoryWarning() {

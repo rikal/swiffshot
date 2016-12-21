@@ -26,10 +26,10 @@ class VideoPlayerViewController: CameraViewController, UIGestureRecognizerDelega
 
     let videosCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
-        layout.scrollDirection = .horizontal
+        layout.scrollDirection = .Horizontal
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
-        collectionView.backgroundColor = UIColor.clear
+        collectionView.backgroundColor = UIColor.clearColor()
         return collectionView
     }()
     
@@ -49,22 +49,22 @@ class VideoPlayerViewController: CameraViewController, UIGestureRecognizerDelega
     
     //MARK: - SYSTEMS METHODS
     
-    override func viewWillAppear(_ animated: Bool) {
+    override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(true)
-        navigationController?.isNavigationBarHidden = false
+        navigationController?.navigationBarHidden = false
         navigationController?.navigationBar.barTintColor = UIColor.init(colorLiteralRed: 247.0/255.0, green: 247.0/255.0, blue: 247.0/255.0, alpha: 1.0)
         
         //TODO: name from profile model
         title = "@UserName"
     }
     
-    override func viewDidAppear(_ animated: Bool) {
+    override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(true)
         cameraView.delegate = self
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        self.navigationController?.isNavigationBarHidden = true
+    override func viewWillDisappear(animated: Bool) {
+        self.navigationController?.navigationBarHidden = true
     }
     
     override func viewDidLayoutSubviews() {
@@ -79,19 +79,19 @@ class VideoPlayerViewController: CameraViewController, UIGestureRecognizerDelega
         self.view.addSubview(videosCollectionView)
         videosCollectionView.delegate = self
         videosCollectionView.dataSource = self
-        videosCollectionView.backgroundColor = UIColor.clear
+        videosCollectionView.backgroundColor = UIColor.clearColor()
         videosCollectionView.showsHorizontalScrollIndicator = false
         
-        videosCollectionView.register(UINib(nibName: "LatestStreamCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "bigCell")
+        videosCollectionView.registerNib(UINib(nibName: "LatestStreamCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "bigCell")
         
-        let tap1 = UITapGestureRecognizer(target: self, action: #selector(VideoPlayerViewController.handleTap(sender:)))
-        let tap2 = UITapGestureRecognizer(target: self, action: #selector(VideoPlayerViewController.handleTap(sender:)))
+        let tap1 = UITapGestureRecognizer(target: self, action: #selector(VideoPlayerViewController.handleTap(_:)))
+        let tap2 = UITapGestureRecognizer(target: self, action: #selector(VideoPlayerViewController.handleTap(_:)))
         tap1.delegate = self
         tap2.delegate = self
         videoContainerView.addGestureRecognizer(tap1)
         bottomViewContainer.addGestureRecognizer(tap2)
         
-        let tapToVideo = UITapGestureRecognizer(target: self, action: #selector(VideoPlayerViewController.videoTap(sender:)))
+        let tapToVideo = UITapGestureRecognizer(target: self, action: #selector(VideoPlayerViewController.videoTap(_:)))
         tapToVideo.delegate = self
         videoThumbs.addGestureRecognizer(tapToVideo)
     }
@@ -104,40 +104,40 @@ class VideoPlayerViewController: CameraViewController, UIGestureRecognizerDelega
     
     @objc(handleTap:)
     private func handleTap(sender: UITapGestureRecognizer){
-        hideShowCollectionView(isHide: true)
-        cameraView.showHideAlphaView(isHide: true)
+        hideShowCollectionView(true)
+        cameraView.showHideAlphaView(true)
     }
     
     //MARK: - VIDEO METHODS
     
     func createVideoPlayer(){
         url = NSURL(string: "http://clips.vorwaerts-gmbh.de/VfE_html5.mp4")!
-        player = AVPlayer(url: url as URL)
+        player = AVPlayer(URL: url as NSURL)
     }
     
     func playVideoInCircle(){
-        player?.actionAtItemEnd = .none
+        player?.actionAtItemEnd = .None
         videoLayer = AVPlayerLayer(player: player)
         videoLayer?.frame = videoThumbs.bounds
         videoLayer?.videoGravity = AVLayerVideoGravityResizeAspectFill
         videoThumbs.layer.addSublayer(videoLayer!)
-        DispatchQueue.main.async {
+        dispatch_async(dispatch_get_main_queue()) {
             self.player?.play()
         }
     }
     
     func stopVideoInCircle(){
         player?.pause()
-        player?.actionAtItemEnd = .none
+        player?.actionAtItemEnd = .None
         videoLayer?.removeFromSuperlayer()
     }
 
     func startPlayingVideo(){
         playerViewController.player = player
         playerViewController.showsPlaybackControls = true
-        self.present(playerViewController, animated: true){
+        self.presentViewController(playerViewController, animated: true){
             print("PLAYING")
-            DispatchQueue.main.async {
+            dispatch_async(dispatch_get_main_queue()) {
                 self.playerViewController.player?.play()
             }
         }
@@ -150,12 +150,12 @@ class VideoPlayerViewController: CameraViewController, UIGestureRecognizerDelega
         if isHide { alpha = 0.0 } else { alpha = 1.0 }
         
         if isHide { self.turnOnCamera() }
-        UIView.animate(withDuration: 1.5, animations: {
+        UIView.animateWithDuration(1.5, animations: {
             self.videosCollectionView.alpha = CGFloat(alpha!)
             self.videoContainerView.alpha = CGFloat(alpha!)
             }, completion: { (finished) in
-                self.videosCollectionView.isHidden = isHide
-                self.videoContainerView.isHidden = isHide
+                self.videosCollectionView.hidden = isHide
+                self.videoContainerView.hidden = isHide
         })
     }
     
@@ -163,17 +163,17 @@ class VideoPlayerViewController: CameraViewController, UIGestureRecognizerDelega
     
     func streamingPrepare(){
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let controller = storyboard.instantiateViewController(withIdentifier: "subscribeView")
+        let controller = storyboard.instantiateViewControllerWithIdentifier("subscribeView")
         
         let frameSize = self.view.bounds
         subscriber?.view.layer.frame = frameSize
         subscriber = controller as? SubcribeViewController
         subscriber?.view.layer.frame = frameSize
         
-        self.present(subscriber!, animated: true){
+        self.presentViewController(subscriber!, animated: true){
             print("PLAYING STREAM")
-            DispatchQueue.main.async {
-                self.subscriber?.start(streamName: "testStream")
+            dispatch_async(dispatch_get_main_queue()) {
+                self.subscriber?.start("testStream")
             }
         }
     }
@@ -185,11 +185,11 @@ class VideoPlayerViewController: CameraViewController, UIGestureRecognizerDelega
     }
     
     func startStopRecordingVideo(isStart: Bool){
-        srartStopRecord(isStart: isStart)
+        srartStopRecord(isStart)
     }
     
     func cancelCameraView(){
-        hideShowCollectionView(isHide: false)
+        hideShowCollectionView(false)
         removePreviewLayer()
     }
     
@@ -202,25 +202,25 @@ class VideoPlayerViewController: CameraViewController, UIGestureRecognizerDelega
 
 extension VideoPlayerViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
     
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int{
+    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int{
         return 25
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell{
+    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell{
         
         var cell: UICollectionViewCell?
-        let bigcell = collectionView.dequeueReusableCell(withReuseIdentifier: "bigCell", for: indexPath) as! LatestStreamCollectionViewCell
-        indexPath.row == 0 ? bigcell.fillCell(isOnline: true) : bigcell.fillCell(isOnline: false)
+        let bigcell = collectionView.dequeueReusableCellWithReuseIdentifier("bigCell", forIndexPath: indexPath) as! LatestStreamCollectionViewCell
+        indexPath.row == 0 ? bigcell.fillCell(true) : bigcell.fillCell(false)
         cell = bigcell
         return cell!
     }
     
-    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView{
+    func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: NSIndexPath) -> UICollectionReusableView{
         var header = UICollectionReusableView()
         
         if kind == UICollectionElementKindSectionHeader{
             
-            let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "profileHeaderView", for: indexPath) as! ProfileHeaderView
+            let headerView = collectionView.dequeueReusableSupplementaryViewOfKind(kind, withReuseIdentifier: "profileHeaderView", forIndexPath: indexPath) as! ProfileHeaderView
             headerView.fillHeader()
             
             header = headerView
@@ -230,11 +230,11 @@ extension VideoPlayerViewController: UICollectionViewDelegate, UICollectionViewD
         return header
     }
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: NSIndexPath) -> CGSize {
         return CGSize(width: 100, height: 120)
     }
     
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    func collectionView(collectionView: UICollectionView, didSelectItemAt indexPath: NSIndexPath) {
         stopVideoInCircle()
         createVideoPlayer()
         playVideoInCircle()

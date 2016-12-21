@@ -31,20 +31,20 @@ class YourPhoneViewController: AuthorizationViewController {
     //MARK: - CHECK FOR AVALABILITY
     
     func setEnabledButton(){
-        phoneTxt.text == "" ? sendCodeBtn.setTitleColor(UIColor.lightGray, for: .normal) : sendCodeBtn.setTitleColor(UIColor.blue, for: .normal)
-        sendCodeBtn.isUserInteractionEnabled = phoneTxt.text != ""
+        phoneTxt.text == "" ? sendCodeBtn.setTitleColor(UIColor.lightGrayColor(), forState: .Normal) : sendCodeBtn.setTitleColor(UIColor.blueColor(), forState: .Normal)
+        sendCodeBtn.userInteractionEnabled = phoneTxt.text != ""
     }
 
     //MARK: - IB ACTIONS
     
-    @IBAction func sendCodePressed(_ sender: AnyObject) {
+    @IBAction func sendCodePressed(sender: AnyObject) {
         //TODO: Made api call with phone
-        performSegue(withIdentifier: "fromPhoneToCode", sender: self)
+        performSegueWithIdentifier("fromPhoneToCode", sender: self)
     }
 }
 
 extension YourPhoneViewController: UITextFieldDelegate{
-    func textFieldDidEndEditing(_ textField: UITextField) {
+    func textFieldDidEndEditing(textField: UITextField) {
         self.setEnabledButton()
     }
 }

@@ -23,10 +23,10 @@ class MainHeader: UICollectionReusableView {
     }
     
     func fillHeader(title: String){
-        headerBtn.setTitle(title, for: .normal)
+        headerBtn.setTitle(title, forState: .Normal)
     }
     
-    @IBAction func headerPressed(_ sender: AnyObject) {
+    @IBAction func headerPressed(sender: AnyObject) {
         delegate?.headerTapped()
     }
 }

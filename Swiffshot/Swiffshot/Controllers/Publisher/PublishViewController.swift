@@ -23,17 +23,17 @@ class PublishViewController : R5VideoViewController, R5StreamDelegate{
         config.contextName = "live"
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
+    override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
         self.stop()
     }
     
     func preview(isBackCamera: Bool) {
-        let cameraDevice: AVCaptureDevice = isBackCamera ? AVCaptureDevice.devices(withMediaType:AVMediaTypeVideo).first as! AVCaptureDevice : AVCaptureDevice.devices(withMediaType:AVMediaTypeVideo).last as! AVCaptureDevice
+        let cameraDevice: AVCaptureDevice = isBackCamera ? AVCaptureDevice.devicesWithMediaType(AVMediaTypeVideo).first as! AVCaptureDevice : AVCaptureDevice.devicesWithMediaType(AVMediaTypeVideo).last as! AVCaptureDevice
         let camera = R5Camera(device: cameraDevice, andBitRate: 512)
         camera?.orientation = (camera?.orientation)! + 90
         
-        let audioDevice = AVCaptureDevice.defaultDevice(withMediaType: AVMediaTypeAudio)
+        let audioDevice = AVCaptureDevice.defaultDeviceWithMediaType(AVMediaTypeAudio)
         let microphone = R5Microphone(device: audioDevice)
         
         let connection = R5Connection(config: config)
@@ -43,7 +43,7 @@ class PublishViewController : R5VideoViewController, R5StreamDelegate{
         stream.attachAudio(microphone)
         
         stream.delegate = self
-        self.attach(stream)
+        self.attachStream(stream)
         self.showPreview(true)
     }
     
@@ -57,7 +57,7 @@ class PublishViewController : R5VideoViewController, R5StreamDelegate{
         stream.delegate = nil
     }
     
-    func onR5StreamStatus(_ stream: R5Stream!, withStatus statusCode: Int32, withMessage msg: String!) {
+    func onR5StreamStatus(stream: R5Stream!, withStatus statusCode: Int32, withMessage msg: String!) {
         print("Stream: \(r5_string_for_status(statusCode)) - \(msg!)")
     }
 }

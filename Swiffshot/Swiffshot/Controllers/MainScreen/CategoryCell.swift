@@ -29,10 +29,10 @@ class CategoryCell: UICollectionViewCell, UICollectionViewDelegate, UICollection
     
     let videosCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
-        layout.scrollDirection = .horizontal
+        layout.scrollDirection = .Horizontal
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
-        collectionView.backgroundColor = UIColor.clear
+        collectionView.backgroundColor = UIColor.clearColor()
         return collectionView
     }()
     
@@ -41,17 +41,17 @@ class CategoryCell: UICollectionViewCell, UICollectionViewDelegate, UICollection
         addSubview(videosCollectionView)
         videosCollectionView.delegate = self
         videosCollectionView.dataSource = self
-        videosCollectionView.backgroundColor = UIColor.clear
+        videosCollectionView.backgroundColor = UIColor.clearColor()
         videosCollectionView.showsHorizontalScrollIndicator = false
-        if globInd == 0 { videosCollectionView.isScrollEnabled = false }
+        if globInd == 0 { videosCollectionView.scrollEnabled = false }
 
-        videosCollectionView.register(UINib(nibName: "LatestStreamCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "bigCell")
-        videosCollectionView.register(UINib(nibName: "SmallCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "smallCell")
+        videosCollectionView.registerNib(UINib(nibName: "LatestStreamCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "bigCell")
+        videosCollectionView.registerNib(UINib(nibName: "SmallCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "smallCell")
         
-        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[v0]|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0": videosCollectionView]))
-        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[v0]|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0": videosCollectionView]))
+        addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|[v0]|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0": videosCollectionView]))
+        addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|[v0]|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0": videosCollectionView]))
         
-        let tap = UITapGestureRecognizer(target: self, action: #selector(CategoryCell.handleTap(sender:)))
+        let tap = UITapGestureRecognizer(target: self, action: #selector(CategoryCell.handleTap(_:)))
         tap.delegate = self
         videosCollectionView.backgroundView = UIView()
         videosCollectionView.backgroundView?.addGestureRecognizer(tap)
@@ -62,7 +62,7 @@ class CategoryCell: UICollectionViewCell, UICollectionViewDelegate, UICollection
             delegate?.moveToCamera()
     }
     
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         switch globalIndexSection {
         case 0:
             return 4
@@ -71,24 +71,24 @@ class CategoryCell: UICollectionViewCell, UICollectionViewDelegate, UICollection
         }
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         var cell = UICollectionViewCell()
         
         switch globalIndexSection {
         case 0:
-            let bigcell = collectionView.dequeueReusableCell(withReuseIdentifier: "bigCell", for: indexPath) as! LatestStreamCollectionViewCell
-            indexPath.row == 0 ? bigcell.fillCell(isOnline: true) : bigcell.fillCell(isOnline: false)
+            let bigcell = collectionView.dequeueReusableCellWithReuseIdentifier("bigCell", forIndexPath: indexPath) as! LatestStreamCollectionViewCell
+            indexPath.row == 0 ? bigcell.fillCell(true) : bigcell.fillCell(false)
             cell = bigcell
         default:
-            let smallcell = collectionView.dequeueReusableCell(withReuseIdentifier: "smallCell", for: indexPath) as! SmallCollectionViewCell
-            indexPath.row == 0 ? smallcell.fillCell(isOnline: true) : smallcell.fillCell(isOnline: false)
+            let smallcell = collectionView.dequeueReusableCellWithReuseIdentifier("smallCell", forIndexPath: indexPath) as! SmallCollectionViewCell
+            indexPath.row == 0 ? smallcell.fillCell(true) : smallcell.fillCell(false)
             cell = smallcell
         }
         
         return cell
     }
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: NSIndexPath) -> CGSize {
         switch globalIndexSection {
         case 0:
             return CGSize(width: 100, height: 120)
@@ -97,7 +97,7 @@ class CategoryCell: UICollectionViewCell, UICollectionViewDelegate, UICollection
         }
     }
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         switch globalIndexSection {
         case 0:
             let spacing = (collectionView.frame.size.width/2 - 100)
@@ -108,14 +108,14 @@ class CategoryCell: UICollectionViewCell, UICollectionViewDelegate, UICollection
         }
     }
     
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let cell = collectionView.cellForItem(at: indexPath)
+    func collectionView(collectionView: UICollectionView, didSelectItemAt indexPath: NSIndexPath) {
+        let cell = collectionView.cellForItemAtIndexPath(indexPath)
         var isOnline = false
-        if (cell?.isKind(of: LatestStreamCollectionViewCell.self))!{
+        if (cell?.isKindOfClass(LatestStreamCollectionViewCell.self))!{
             isOnline = (cell as! LatestStreamCollectionViewCell).isOnlineCell
         } else {
             isOnline = (cell as! SmallCollectionViewCell).isOnlineCell
         }
-        delegate?.moveToStream(isonline: isOnline)
+        delegate?.moveToStream(isOnline)
     }
 }

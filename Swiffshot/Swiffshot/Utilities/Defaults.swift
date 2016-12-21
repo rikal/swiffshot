@@ -10,9 +10,9 @@ import UIKit
 
 
 class Defaults {
-    static let sharedDefaults = Defaults(defaults: UserDefaults.standard)
+    static let sharedDefaults = Defaults(defaults: NSUserDefaults.standardUserDefaults())
     
-    private var defaults: UserDefaults
+    private var defaults: NSUserDefaults
     private var token: NSObjectProtocol
     private enum Keys: String {
         case UserName //TODO: Replace with Model
@@ -23,12 +23,12 @@ class Defaults {
         case HostPort
     }
     
-    init(defaults: UserDefaults) {
+    init(defaults: NSUserDefaults) {
         self.defaults = defaults
-        self.token = NotificationCenter.default.addObserver(forName: NSNotification.Name.UIApplicationDidEnterBackground, object: nil, queue: nil) { _ in
+        self.token = NSNotificationCenter.defaultCenter().addObserverForName("UIApplicationDidEnterBackground", object: nil, queue: nil) { _ in
             defaults.synchronize()
         }
-        defaults.register(defaults: [
+        defaults.registerDefaults( [
             Keys.LocalHost.rawValue: "54.191.86.179",
             Keys.HostPort.rawValue: 8554,
             Keys.UserLogged.rawValue: false,
@@ -36,63 +36,63 @@ class Defaults {
     }
     
     deinit {
-        NotificationCenter.default.removeObserver(token)
+        NSNotificationCenter.defaultCenter().removeObserver(token)
     }
     
     var userName: String {
         get {
-            return defaults.string(forKey: Keys.UserName.rawValue) ?? ""
+            return defaults.stringForKey(Keys.UserName.rawValue) ?? ""
         }
         set {
-            defaults.set(newValue, forKey: Keys.UserName.rawValue)
+            defaults.setObject(newValue, forKey: Keys.UserName.rawValue)
             defaults.synchronize()
         }
     }
     
     var userNick: String {
         get {
-            return defaults.string(forKey: Keys.UserNick.rawValue) ?? ""
+            return defaults.stringForKey(Keys.UserNick.rawValue) ?? ""
         }
         set {
-            defaults.set(newValue, forKey: Keys.UserNick.rawValue)
+            defaults.setObject(newValue, forKey: Keys.UserNick.rawValue)
             defaults.synchronize()
         }
     }
     
     var userAvatar: String {
         get {
-            return defaults.string(forKey: Keys.UserAvatar.rawValue) ?? ""
+            return defaults.stringForKey(Keys.UserAvatar.rawValue) ?? ""
         }
         set {
-            defaults.set(newValue, forKey: Keys.UserAvatar.rawValue)
+            defaults.setObject(newValue, forKey: Keys.UserAvatar.rawValue)
             defaults.synchronize()
         }
     }
     
     var userLogged: Bool {
         get {
-            return defaults.bool(forKey: Keys.UserLogged.rawValue)
+            return defaults.boolForKey(Keys.UserLogged.rawValue)
         }
         set {
-            defaults.set(newValue, forKey: Keys.UserLogged.rawValue)
+            defaults.setBool(newValue, forKey: Keys.UserLogged.rawValue)
             defaults.synchronize()
         }
     }
     
     var localHost: String {
         get {
-            return defaults.string(forKey: Keys.LocalHost.rawValue)!
+            return defaults.stringForKey(Keys.LocalHost.rawValue)!
         }
     }
     
     var hostPort: Int {
         get {
-            return defaults.integer(forKey: Keys.HostPort.rawValue)
+            return defaults.integerForKey(Keys.HostPort.rawValue)
         }
     }
     
     func reset() {
-        defaults.removePersistentDomain(forName: Bundle.main.bundleIdentifier!)
+        defaults.removePersistentDomainForName(NSBundle.mainBundle().bundleIdentifier!)
         defaults.synchronize()
     }
 }

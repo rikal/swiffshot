@@ -35,7 +35,7 @@ class CameraView: UIView {
     //MARK: SYSTEMS METHODS
     
     class func instanceFromNib() -> CameraView {
-        return UINib(nibName: "View", bundle: nil).instantiate(withOwner: nil, options: nil)[0] as! CameraView
+        return UINib(nibName: "View", bundle: nil).instantiateWithOwner(nil, options: nil)[0] as! CameraView
     }
     
     override func awakeFromNib() {
@@ -54,7 +54,7 @@ class CameraView: UIView {
         var alpha: Float = 0.0
         if isHide { alpha = 0.0 } else { alpha = 0.6 }
         
-        UIView.animate(withDuration: 1.5, animations: {
+        UIView.animateWithDuration(1.5, animations: {
             self.alphaView.alpha = CGFloat(alpha)
             }, completion: nil)
     }
@@ -63,34 +63,34 @@ class CameraView: UIView {
     // ACTIONS
     
     func changeShootBtn(isStop: Bool){
-        shootBtn.isHidden = isStop
-        stopBtn.isHidden = !isStop
+        shootBtn.hidden = isStop
+        stopBtn.hidden = !isStop
     }
     
     func doubleTapped() {
-        changeShootBtn(isStop: true)
+        changeShootBtn(true)
         delegate?.startStream()
         isStartToRecord = !isStartToRecord
     }
     
-    @IBAction func stopShootVideo(_ sender: AnyObject) {
-        changeShootBtn(isStop: false)
+    @IBAction func stopShootVideo(sender: AnyObject) {
+        changeShootBtn(false)
         isStartToRecord = !isStartToRecord
-        delegate?.startStopRecordingVideo(isStart: isStartToRecord)
+        delegate?.startStopRecordingVideo(isStartToRecord)
     }
    
-    @IBAction func shootVideo(_ sender: AnyObject) {
-        changeShootBtn(isStop: true)
+    @IBAction func shootVideo(sender: AnyObject) {
+        changeShootBtn(true)
         isStartToRecord = !isStartToRecord
-        delegate?.startStopRecordingVideo(isStart: isStartToRecord)
+        delegate?.startStopRecordingVideo(isStartToRecord)
     }
 
-    @IBAction func cancelPressed(_ sender: AnyObject) {
-        showHideAlphaView(isHide: false)
+    @IBAction func cancelPressed(sender: AnyObject) {
+        showHideAlphaView(false)
         delegate?.cancelCameraView()
     }
     
-    @IBAction func changeCameraPressed(_ sender: AnyObject) {
+    @IBAction func changeCameraPressed(sender: AnyObject) {
         delegate?.changeCamera()
     }
 }

@@ -40,47 +40,47 @@ class FillProfileViewController: AuthorizationViewController, UIImagePickerContr
     //MARK: - CHECK FOR AVALABILITY
     
     func setEnabledButton(){
-        (nameTxt.text == "" || nickNameTxt.text == "") ? startBtn.setTitleColor(UIColor.lightGray, for: .normal) : startBtn.setTitleColor(UIColor.blue, for: .normal)
-        startBtn.isUserInteractionEnabled = (nameTxt.text != "" && nickNameTxt.text != "")
+        (nameTxt.text == "" || nickNameTxt.text == "") ? startBtn.setTitleColor(UIColor.lightGrayColor(), forState: .Normal) : startBtn.setTitleColor(UIColor.blueColor(), forState: .Normal)
+        startBtn.userInteractionEnabled = (nameTxt.text != "" && nickNameTxt.text != "")
     }
     
     //MARK: - IB ACTIONS
     
-    @IBAction func avatarBtnPressed(_ sender: AnyObject) {
+    @IBAction func avatarBtnPressed(sender: AnyObject) {
         imagePicker.delegate = self
         imagePicker.allowsEditing = false
-        imagePicker.sourceType = .photoLibrary
-        imagePicker.mediaTypes = UIImagePickerController.availableMediaTypes(for: .photoLibrary)!
-        imagePicker.modalPresentationStyle = .overFullScreen
-        imagePicker.navigationBar.isTranslucent = false
+        imagePicker.sourceType = .PhotoLibrary
+        imagePicker.mediaTypes = UIImagePickerController.availableMediaTypesForSourceType(.PhotoLibrary)!
+        imagePicker.modalPresentationStyle = .OverFullScreen
+        imagePicker.navigationBar.translucent = false
         imagePicker.navigationBar.barTintColor = UIColor(colorLiteralRed: 247.0/255.0, green: 247.0/255.0, blue: 247.0/255.0, alpha: 1.0)
-        present(imagePicker, animated: true, completion: nil)
+        presentViewController(imagePicker, animated: true, completion: nil)
     }
     
-    @IBAction func startBtnPressed(_ sender: AnyObject) {
+    @IBAction func startBtnPressed(sender: AnyObject) {
         Defaults.sharedDefaults.userName = nameTxt.text!
         Defaults.sharedDefaults.userNick = nickNameTxt.text!
         Defaults.sharedDefaults.userLogged = true
-        self.dismiss(animated: true, completion: nil)
+        self.dismissViewControllerAnimated(true, completion: nil)
     }
     
     // MARK: - UIImagePickerControllerDelegate Methods
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+    @objc func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
         let chosenImage = info[UIImagePickerControllerOriginalImage] as! UIImage
-        avatarBtn.setBackgroundImage(UIImage(), for: .normal)
-        avatarBtn.contentMode = .scaleAspectFit
-        avatarBtn.setImage(chosenImage, for: .normal)
-        dismiss(animated:true, completion: nil)
+        avatarBtn.setBackgroundImage(UIImage(), forState: .Normal)
+        avatarBtn.contentMode = .ScaleAspectFit
+        avatarBtn.setImage(chosenImage, forState: .Normal)
+        dismissViewControllerAnimated(true, completion: nil)
     }
     
-    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
-        dismiss(animated: true, completion: nil)
+    func imagePickerControllerDidCancel(picker: UIImagePickerController) {
+        dismissViewControllerAnimated(true, completion: nil)
     }
     
 }
 
 extension FillProfileViewController: UITextFieldDelegate{
-    func textFieldDidEndEditing(_ textField: UITextField) {
+    func textFieldDidEndEditing(textField: UITextField) {
         self.setEnabledButton()
     }
 }

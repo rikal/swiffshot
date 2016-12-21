@@ -12,6 +12,6 @@ class ProfilesVideosCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var previewImage: UIImageView!
     
     func fillCell(){
-        previewImage.backgroundColor = UIColor.gray
+        previewImage.backgroundColor = UIColor.grayColor()
     }
 }

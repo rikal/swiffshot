@@ -16,7 +16,7 @@ class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
     var cameraView : CameraView!
     var captureSession = AVCaptureSession()
     var captureDevice : AVCaptureDevice?
-    var filePath : URL?
+    var filePath : NSURL?
     var isBackCamera = true
     
     var publisher: PublishViewController!
@@ -32,14 +32,14 @@ class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
         pathTosave()
     }
 
-    override func viewDidAppear(_ animated: Bool) {
+    override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(true)
         cameraView = CameraView.instanceFromNib()
         cameraView.frame = self.view.frame
-        self.view.insertSubview(cameraView, at: 0)
+        self.view.insertSubview(cameraView, atIndex: 0)
     }
     
-    override func viewDidDisappear(_ animated: Bool) {
+    override func viewDidDisappear(animated: Bool) {
         super.viewDidDisappear(animated)
         isPublishing = false
     }
@@ -48,18 +48,19 @@ class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
     // MARK: - CAMERA METHODS
     
     func turnOnCamera(){
-        DispatchQueue.global().async {
+        
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), {
             self.captureSession.sessionPreset = AVCaptureSessionPresetHigh
             let devices = AVCaptureDevice.devices()
             for device in devices! {
                 if ((device as AnyObject).hasMediaType(AVMediaTypeVideo)) {
-                    if((device as AnyObject).position == AVCaptureDevicePosition.back && self.isBackCamera) {
+                    if((device as AnyObject).position == AVCaptureDevicePosition.Back && self.isBackCamera) {
                         self.captureDevice = device as? AVCaptureDevice
                         if self.captureDevice != nil {
                             print("Capture device back camera found")
                             break
                         }
-                    } else if((device as AnyObject).position == AVCaptureDevicePosition.front && !self.isBackCamera) {
+                    } else if((device as AnyObject).position == AVCaptureDevicePosition.Front && !self.isBackCamera) {
                         self.captureDevice = device as? AVCaptureDevice
                         if self.captureDevice != nil {
                             print("Capture device front camera found")
@@ -69,16 +70,17 @@ class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
                 }
             }
             self.previewLayer = self.beginSession()
-            DispatchQueue.main.async {
+            dispatch_async(dispatch_get_main_queue(), {
                 self.cameraView.screenView.layer.addSublayer(self.previewLayer!)
-            }
-        }
+                })
+            })
+
     }
     
     private func pathTosave(){
         let fileName = "Swiffshot.mp4"
-        let documentsURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
-        filePath = documentsURL.appendingPathComponent(fileName)
+        let documentsURL = NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask)[0]
+        filePath = documentsURL.URLByAppendingPathComponent(fileName)
     }
     
     private func beginSession() -> AVCaptureVideoPreviewLayer {
@@ -92,7 +94,7 @@ class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
             }
             
             let dataOutput = AVCaptureVideoDataOutput()
-            dataOutput.videoSettings = [(kCVPixelBufferPixelFormatTypeKey as NSString) : NSNumber(value: kCVPixelFormatType_420YpCbCr8BiPlanarFullRange as UInt32)]
+            dataOutput.videoSettings = [(kCVPixelBufferPixelFormatTypeKey as NSString) : NSNumber(unsignedInt: kCVPixelFormatType_420YpCbCr8BiPlanarFullRange as UInt32)]
             dataOutput.alwaysDiscardsLateVideoFrames = true
             
             if (captureSession.canAddOutput(dataOutput) == true) {
@@ -100,7 +102,7 @@ class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
             }
             captureSession.commitConfiguration()
             
-            let queue = DispatchQueue(label: "com.invasivecode.videoQueue")
+            let queue = dispatch_queue_create("com.invasivecode.videoQueue", nil)
             dataOutput.setSampleBufferDelegate(self, queue: queue)
             
         }
@@ -122,7 +124,7 @@ class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
             } catch {
                 return
             }
-            if isBackCamera { device.focusMode = .continuousAutoFocus }
+            if isBackCamera { device.focusMode = .ContinuousAutoFocus }
             device.unlockForConfiguration()
         }
     }
@@ -132,15 +134,15 @@ class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
             self.captureSession.addOutput(videoFileOutput)
             
             let recordingDelegate:AVCaptureFileOutputRecordingDelegate? = self
-            videoFileOutput.startRecording(toOutputFileURL: filePath, recordingDelegate: recordingDelegate)
+            videoFileOutput.startRecordingToOutputFileURL(filePath, recordingDelegate: recordingDelegate)
         } else {
             if isOnline{
                 publisher.stop()
                 isOnline = false
             } else {
                 videoFileOutput.stopRecording()
-                PHPhotoLibrary.shared().performChanges({
-                    PHAssetChangeRequest.creationRequestForAssetFromVideo(atFileURL: self.filePath!)
+                PHPhotoLibrary.sharedPhotoLibrary().performChanges({
+                    PHAssetChangeRequest.creationRequestForAssetFromVideoAtFileURL(self.filePath!)
                 }) { saved, error in
                     if saved {
                         print("SAVED")
@@ -156,18 +158,18 @@ class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
     
     func goStreaming(){
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let controller = storyboard.instantiateViewController(withIdentifier: "publishView")
+        let controller = storyboard.instantiateViewControllerWithIdentifier("publishView")
         
         let frameSize = cameraView.screenView.bounds
         publisher = controller as! PublishViewController
         publisher.view.layer.frame = frameSize
-        publisher.preview(isBackCamera: isBackCamera)
+        publisher.preview(isBackCamera)
         
         cameraView.screenView.addSubview(publisher.view)
         
         isPublishing ? publisher.stop() : publisher.start()
         isPublishing = !isPublishing
-        isPublishing ? cameraView.changeShootBtn(isStop: true) : cameraView.changeShootBtn(isStop: false)
+        isPublishing ? cameraView.changeShootBtn(true) : cameraView.changeShootBtn(false)
         isOnline = true
     }
     
@@ -176,13 +178,14 @@ class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
         previewLayer?.removeFromSuperlayer()
     }
     
-    func capture(_ captureOutput: AVCaptureFileOutput!, didFinishRecordingToOutputFileAt outputFileURL: URL!, fromConnections connections: [Any]!, error: Error!){
+    //MARK: CATURE DELEGATE METHODS
+    func captureOutput(captureOutput: AVCaptureFileOutput!, didFinishRecordingToOutputFileAtURL outputFileURL: NSURL!, fromConnections connections: [AnyObject]!, error: NSError!){
         print("capture did finish")
         print(captureOutput)
         print(outputFileURL)
     }
     
-    func capture(_ captureOutput: AVCaptureFileOutput!, didStartRecordingToOutputFileAt fileURL: URL!, fromConnections connections: [Any]!){
+    func captureOutput(captureOutput: AVCaptureFileOutput!, didStartRecordingToOutputFileAtURL fileURL: NSURL!, fromConnections connections: [AnyObject]!){
         print("capture output: started recording to \(fileURL)")
     }
 }

@@ -22,7 +22,7 @@ class SmallCollectionViewCell: UICollectionViewCell {
     func fillCell(isOnline: Bool){
         isOnlineCell = isOnline
         onlineStreamIndicatorView.layer.cornerRadius = 35
-        onlineStreamIndicatorView.isHidden = !isOnline
+        onlineStreamIndicatorView.hidden = !isOnline
         let randomNum:UInt32 = arc4random_uniform(10) + 1
         let someInt:Int = Int(randomNum)
         avatarImg.image = UIImage(named: "avatar_\(someInt)")

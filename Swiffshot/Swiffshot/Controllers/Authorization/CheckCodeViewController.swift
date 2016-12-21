@@ -34,31 +34,38 @@ class CheckCodeViewController: AuthorizationViewController {
     //MARK: - CHECK FOR AVALABILITY
     
     func setEnabledButton(){
-        codeTxt.text == "" ? checkBtn.setTitleColor(UIColor.lightGray, for: .normal) : checkBtn.setTitleColor(UIColor.blue, for: .normal)
-        checkBtn.isUserInteractionEnabled = codeTxt.text != ""
+        codeTxt.text == "" ? checkBtn.setTitleColor(UIColor.lightGrayColor(), forState: .Normal) : checkBtn.setTitleColor(UIColor.blueColor(), forState: .Normal)
+        checkBtn.userInteractionEnabled = codeTxt.text != ""
     }
     
     private func showError(){
         errorTopViewConstraint.constant = 64
-        UIView.animate(withDuration: 0.5) {
+        UIView.animateWithDuration(0.5) {
             self.view.layoutIfNeeded()
         }
         
-        let when = DispatchTime.now() + 3
-        DispatchQueue.main.asyncAfter(deadline: when) {
-            self.errorTopViewConstraint.constant = -80
-            self.view.layoutIfNeeded()
-        }
+        dispatch_after(
+            dispatch_time(
+                DISPATCH_TIME_NOW,
+                Int64(3.0 * Double(NSEC_PER_SEC))
+            ),
+            dispatch_get_main_queue(),
+            {
+                self.errorTopViewConstraint.constant = -80
+                self.view.layoutIfNeeded()
+            }
+        )
+
     }
     
-    @IBAction func checkBtnPressed(_ sender: AnyObject) {
+    @IBAction func checkBtnPressed(sender: AnyObject) {
         //TODO: Made api call with code
         // ======= DELETE ====== //
         
         if codeTxt.text == "0000"{
             showError()
         } else {
-            performSegue(withIdentifier: "fromCodeToProfile", sender: self)
+            performSegueWithIdentifier("fromCodeToProfile", sender: self)
         }
         
         // ======= DELETE ====== //
@@ -68,7 +75,7 @@ class CheckCodeViewController: AuthorizationViewController {
 }
 
 extension CheckCodeViewController: UITextFieldDelegate{
-    func textFieldDidEndEditing(_ textField: UITextField) {
+    func textFieldDidEndEditing(textField: UITextField) {
         self.setEnabledButton()
     }
 }

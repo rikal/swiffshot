@@ -26,16 +26,16 @@ class MainViewController: CameraViewController, CameraViewDelegate, CategoryCell
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationController?.isNavigationBarHidden = true
+        self.navigationController?.navigationBarHidden = true
         
         //if first time - go to authorization
         if !Defaults.sharedDefaults.userLogged{
-            performSegue(withIdentifier: "fromMainToAuth", sender: self)
+            performSegueWithIdentifier("fromMainToAuth", sender: self)
         }
         prepareCollectionView()
     }
     
-    override func viewDidAppear(_ animated: Bool) {
+    override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(true)
         cameraView.delegate = self
     }
@@ -43,20 +43,20 @@ class MainViewController: CameraViewController, CameraViewDelegate, CategoryCell
     //MARK: - PREPEARE CollectionView
     
     private func prepareCollectionView(){
-        collectionView.register(CategoryCell.self, forCellWithReuseIdentifier: cellId)
-        collectionView.register(UINib(nibName: "MainHeader", bundle: nil), forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "mainHeader");
+        collectionView.registerClass(CategoryCell.self, forCellWithReuseIdentifier: cellId)
+        collectionView.registerNib(UINib(nibName: "MainHeader", bundle: nil), forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "mainHeader");
     }
     
     //MARK: - CATEGORY Cell delegate
     
     func moveToCamera() {
-        hideShowCollectionView(isHide: true)
-        cameraView.showHideAlphaView(isHide: true)
+        hideShowCollectionView(true)
+        cameraView.showHideAlphaView(true)
     }
     
     func moveToStream(isonline: Bool) {
         isStreamingOn = isonline
-        performSegue(withIdentifier: "fromMainToVideo", sender: self)
+        performSegueWithIdentifier("fromMainToVideo", sender: self)
     }
     
     //MARK: - HIDE/SHOW Collectionview
@@ -67,8 +67,8 @@ class MainViewController: CameraViewController, CameraViewDelegate, CategoryCell
             alpha = 0.0
             self.turnOnCamera()
         } else { alpha = 1.0 }
-        DispatchQueue.main.async {
-            UIView.animate(withDuration: 1.5, animations: {
+        dispatch_async(dispatch_get_main_queue()) {
+            UIView.animateWithDuration(1.5, animations: {
                 self.collectionView.alpha = CGFloat(alpha)
                 }, completion: { (finished) in
                     if !isHide { self.removePreviewLayer() }
@@ -83,11 +83,11 @@ class MainViewController: CameraViewController, CameraViewDelegate, CategoryCell
     }
     
     func startStopRecordingVideo(isStart: Bool){
-        srartStopRecord(isStart: isStart)
+        srartStopRecord(isStart)
     }
     
     func cancelCameraView(){
-        hideShowCollectionView(isHide: false)
+        hideShowCollectionView(false)
 //        removePreviewLayer()
     }
     
@@ -100,13 +100,13 @@ class MainViewController: CameraViewController, CameraViewDelegate, CategoryCell
     //MARK: - Header delegate
     
     func headerTapped(){
-        performSegue(withIdentifier: "fromMainToExpandable", sender: self)
+        performSegueWithIdentifier("fromMainToExpandable", sender: self)
     }
 
     //MARK: - SEGUES
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "fromMainToVideo"{
-            let controller = segue.destination as! VideoPlayerViewController
+            let controller = segue.destinationViewController as! VideoPlayerViewController
             controller.isSubscribing = isStreamingOn
         }
     }
@@ -114,7 +114,7 @@ class MainViewController: CameraViewController, CameraViewDelegate, CategoryCell
 
 extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: NSIndexPath) -> CGSize {
         switch indexPath.section {
         case 0:
             return CGSize(width: self.collectionView.frame.size.width, height: 300)
@@ -123,9 +123,9 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
         }
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! CategoryCell
-        cell.setupViews(globInd: indexPath.section)
+    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(cellId, forIndexPath: indexPath) as! CategoryCell
+        cell.setupViews(indexPath.section)
         cell.delegate = self
         return cell
     }
@@ -134,27 +134,27 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
         return 3
     }
     
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 1
     }
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
         return CGSize(width: self.collectionView.frame.width, height: 50)
     }
     
-    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+    func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: NSIndexPath) -> UICollectionReusableView {
         var reusableView : UICollectionReusableView? = nil
         
         if (kind == UICollectionElementKindSectionHeader) {
-            let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "mainHeader", for: indexPath) as! MainHeader
+            let headerView = collectionView.dequeueReusableSupplementaryViewOfKind(UICollectionElementKindSectionHeader, withReuseIdentifier: "mainHeader", forIndexPath: indexPath) as! MainHeader
             headerView.delegate = self
             switch indexPath.section {
             case 0:
-                headerView.fillHeader(title: "FRIENDS")
+                headerView.fillHeader("FRIENDS")
             case 1:
-                headerView.fillHeader(title: "TRENDS")
+                headerView.fillHeader("TRENDS")
             default:
-                headerView.fillHeader(title: "DISCOVERING")
+                headerView.fillHeader("DISCOVERING")
             }
             reusableView = headerView
         }

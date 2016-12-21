@@ -23,7 +23,7 @@ class SubcribeViewController : R5VideoViewController{
         config.contextName = "live"
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
+    override func viewWillDisappear(animated: Bool) {
         super.viewDidDisappear(animated)
         
         stream.stop()
@@ -33,7 +33,7 @@ class SubcribeViewController : R5VideoViewController{
         let connection = R5Connection(config: config)
         
         stream = R5Stream(connection: connection)
-        self.attach(stream)
+        self.attachStream(stream)
         stream.play(streamName)
     }
     
