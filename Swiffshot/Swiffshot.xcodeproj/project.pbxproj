@@ -45,6 +45,7 @@
 		0ABB90491DE4340E009E39E5 /* FillProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ABB90481DE4340E009E39E5 /* FillProfileViewController.swift */; };
 		0ABB904D1DE439C1009E39E5 /* YourPhoneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ABB904C1DE439C1009E39E5 /* YourPhoneViewController.swift */; };
 		0ABB904F1DE44C08009E39E5 /* AuthorizationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ABB904E1DE44C08009E39E5 /* AuthorizationViewController.swift */; };
+		0ACD26EB1E0AC2C900C0DD82 /* PlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ACD26EA1E0AC2C900C0DD82 /* PlayerViewController.swift */; };
 		2860D4369961437E7277572A /* Pods_Swiffshot.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 51A4CE215DC685289B805FFC /* Pods_Swiffshot.framework */; };
 /* End PBXBuildFile section */
 
@@ -89,6 +90,7 @@
 		0ABB90481DE4340E009E39E5 /* FillProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FillProfileViewController.swift; path = Controllers/Authorization/FillProfileViewController.swift; sourceTree = "<group>"; };
 		0ABB904C1DE439C1009E39E5 /* YourPhoneViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = YourPhoneViewController.swift; path = Controllers/Authorization/YourPhoneViewController.swift; sourceTree = "<group>"; };
 		0ABB904E1DE44C08009E39E5 /* AuthorizationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AuthorizationViewController.swift; path = Controllers/Authorization/AuthorizationViewController.swift; sourceTree = "<group>"; };
+		0ACD26EA1E0AC2C900C0DD82 /* PlayerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PlayerViewController.swift; path = Controllers/VideoPlayer/PlayerViewController.swift; sourceTree = "<group>"; };
 		1A27AEA2574358937AA567EC /* Pods-Swiffshot.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Swiffshot.release.xcconfig"; path = "Pods/Target Support Files/Pods-Swiffshot/Pods-Swiffshot.release.xcconfig"; sourceTree = "<group>"; };
 		51A4CE215DC685289B805FFC /* Pods_Swiffshot.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Swiffshot.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D38950A16AAE54D32BCC66C1 /* Pods-Swiffshot.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Swiffshot.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Swiffshot/Pods-Swiffshot.debug.xcconfig"; sourceTree = "<group>"; };
@@ -158,6 +160,7 @@
 				0A6322631DEB41EA006A0644 /* VideoPlayerViewController.swift */,
 				0A6322671DEB5798006A0644 /* ProfileHeaderView.swift */,
 				0A6322691DEB57C0006A0644 /* ProfilesVideosCollectionViewCell.swift */,
+				0ACD26EA1E0AC2C900C0DD82 /* PlayerViewController.swift */,
 			);
 			name = VideoPlayer;
 			sourceTree = "<group>";
@@ -415,6 +418,7 @@
 				0A6322641DEB41EA006A0644 /* VideoPlayerViewController.swift in Sources */,
 				0ABB902F1DE422C2009E39E5 /* AppDelegate.swift in Sources */,
 				0A6322771DEE22CD006A0644 /* MainHeader.swift in Sources */,
+				0ACD26EB1E0AC2C900C0DD82 /* PlayerViewController.swift in Sources */,
 				0AAA359D1DF6A8AD00DFD0BD /* SubcribeViewController.swift in Sources */,
 				0A63224B1DE5B89F006A0644 /* MainViewController.swift in Sources */,
 				0A6322701DEDE8EB006A0644 /* CategoryCell.swift in Sources */,

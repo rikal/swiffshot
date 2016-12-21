@@ -16,7 +16,7 @@ class VideoPlayerViewController: CameraViewController, UIGestureRecognizerDelega
     @IBOutlet weak var videoThumbs: UIView!
     @IBOutlet weak var videoContainerView: UIView!
     
-    var playerViewController = AVPlayerViewController()
+    var playerViewController = PlayerViewController()
     var player : AVPlayer?
     var videoLayer : AVPlayerLayer?
     var url:NSURL!
