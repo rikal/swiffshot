@@ -37,6 +37,7 @@
 		0A63227B1DEE43CD006A0644 /* ExpandedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A63227A1DEE43CD006A0644 /* ExpandedViewController.swift */; };
 		0A9D4EFE1E0BF919007F9178 /* ApiManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A9D4EFD1E0BF919007F9178 /* ApiManager.swift */; };
 		0A9D4F011E0BF9F2007F9178 /* ErrorModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A9D4F001E0BF9F2007F9178 /* ErrorModel.swift */; };
+		0A9D4F031E0C015D007F9178 /* AuthMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A9D4F021E0C015D007F9178 /* AuthMainViewController.swift */; };
 		0AA596091DE4E9CB0005336D /* Defaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AA596081DE4E9CB0005336D /* Defaults.swift */; };
 		0AAA359D1DF6A8AD00DFD0BD /* SubcribeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AAA359C1DF6A8AD00DFD0BD /* SubcribeViewController.swift */; };
 		0ABB902F1DE422C2009E39E5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ABB902E1DE422C2009E39E5 /* AppDelegate.swift */; };
@@ -82,6 +83,7 @@
 		0A63227A1DEE43CD006A0644 /* ExpandedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ExpandedViewController.swift; path = Controllers/ExpandedCategories/ExpandedViewController.swift; sourceTree = "<group>"; };
 		0A9D4EFD1E0BF919007F9178 /* ApiManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ApiManager.swift; path = Utilities/API/ApiManager.swift; sourceTree = "<group>"; };
 		0A9D4F001E0BF9F2007F9178 /* ErrorModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ErrorModel.swift; path = Models/ErrorModel.swift; sourceTree = "<group>"; };
+		0A9D4F021E0C015D007F9178 /* AuthMainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AuthMainViewController.swift; path = Controllers/Authorization/AuthMainViewController.swift; sourceTree = "<group>"; };
 		0AA596081DE4E9CB0005336D /* Defaults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Defaults.swift; path = Utilities/Defaults.swift; sourceTree = "<group>"; };
 		0AAA359C1DF6A8AD00DFD0BD /* SubcribeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SubcribeViewController.swift; path = Controllers/Publisher/SubcribeViewController.swift; sourceTree = "<group>"; };
 		0ABB902B1DE422C2009E39E5 /* Swiffshot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Swiffshot.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -263,6 +265,7 @@
 				0ABB90481DE4340E009E39E5 /* FillProfileViewController.swift */,
 				0ABB904C1DE439C1009E39E5 /* YourPhoneViewController.swift */,
 				0ABB904E1DE44C08009E39E5 /* AuthorizationViewController.swift */,
+				0A9D4F021E0C015D007F9178 /* AuthMainViewController.swift */,
 			);
 			name = Authorization;
 			sourceTree = "<group>";
@@ -436,6 +439,7 @@
 				0ABB90491DE4340E009E39E5 /* FillProfileViewController.swift in Sources */,
 				0A63227B1DEE43CD006A0644 /* ExpandedViewController.swift in Sources */,
 				0AA596091DE4E9CB0005336D /* Defaults.swift in Sources */,
+				0A9D4F031E0C015D007F9178 /* AuthMainViewController.swift in Sources */,
 				0A63226A1DEB57C0006A0644 /* ProfilesVideosCollectionViewCell.swift in Sources */,
 				0A4D1BC71DF0A08300BF7CCE /* PublishViewController.swift in Sources */,
 				0ABB904F1DE44C08009E39E5 /* AuthorizationViewController.swift in Sources */,

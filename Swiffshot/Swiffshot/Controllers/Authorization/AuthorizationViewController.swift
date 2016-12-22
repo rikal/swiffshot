@@ -12,7 +12,7 @@ class AuthorizationViewController: UIViewController, UIGestureRecognizerDelegate
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationController?.navigationBarHidden = false
+        navigationController?.navigationBarHidden = true
         navigationController?.navigationBar.barTintColor = UIColor.init(colorLiteralRed: 247.0/255.0, green: 247.0/255.0, blue: 247.0/255.0, alpha: 1.0)
         addTapGesture()
         title = "SwiffShot"
