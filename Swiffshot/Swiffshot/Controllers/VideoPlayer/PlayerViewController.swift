@@ -30,7 +30,7 @@ class PlayerViewController: AVPlayerViewController {
         additionalCameraButton.setImage(UIImage(named: "AdditionalCamera"), forState: .Normal)
         additionalCameraButton.addTarget(self, action: #selector(additionalCameraPressed), forControlEvents: .TouchUpInside)
         
-        self.view.addSubview(additionalCameraButton)
+//        self.view.addSubview(additionalCameraButton)
     }
     
     //MARK: - ACTIONS

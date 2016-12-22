@@ -10,10 +10,10 @@ import UIKit
 
 class FillProfileViewController: AuthorizationViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
-    @IBOutlet weak var avatarBtn: UIButton!
     @IBOutlet weak var nameTxt: UITextField!
     @IBOutlet weak var nickNameTxt: UITextField!
     @IBOutlet weak var startBtn: UIButton!
+    @IBOutlet weak var avatar: UIImageView!
     
     private let imagePicker = UIImagePickerController()
     private var imageUrl: NSURL!
@@ -33,8 +33,8 @@ class FillProfileViewController: AuthorizationViewController, UIImagePickerContr
     }
     
     private func visualEffects(){
-        avatarBtn.layer.cornerRadius = avatarBtn.frame.size.height/2
-        avatarBtn.clipsToBounds = true
+        avatar.layer.cornerRadius = avatar.frame.size.height/2
+        avatar.clipsToBounds = true
     }
     
     //MARK: - CHECK FOR AVALABILITY
@@ -46,7 +46,7 @@ class FillProfileViewController: AuthorizationViewController, UIImagePickerContr
     
     //MARK: - IB ACTIONS
     
-    @IBAction func avatarBtnPressed(sender: AnyObject) {
+    @IBAction func chooseAvatarPressed(sender: AnyObject) {
         imagePicker.delegate = self
         imagePicker.allowsEditing = false
         imagePicker.sourceType = .PhotoLibrary
@@ -62,6 +62,17 @@ class FillProfileViewController: AuthorizationViewController, UIImagePickerContr
         Defaults.sharedDefaults.userNick = nickNameTxt.text!
         Defaults.sharedDefaults.userLogged = true
         self.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    //MARK: - IMAGE PICKER METHODS
+    
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingImage image: UIImage, editingInfo: [String : AnyObject]?) {
+        avatar.image = image
+        dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    func imagePickerControllerDidCancel(picker: UIImagePickerController) {
+        dismissViewControllerAnimated(true, completion: nil)
     }
     
 }

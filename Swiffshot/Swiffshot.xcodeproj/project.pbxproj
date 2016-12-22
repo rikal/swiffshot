@@ -35,6 +35,8 @@
 		0A6322771DEE22CD006A0644 /* MainHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A6322751DEE22CD006A0644 /* MainHeader.swift */; };
 		0A6322781DEE22CD006A0644 /* MainHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A6322761DEE22CD006A0644 /* MainHeader.xib */; };
 		0A63227B1DEE43CD006A0644 /* ExpandedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A63227A1DEE43CD006A0644 /* ExpandedViewController.swift */; };
+		0A9D4EFE1E0BF919007F9178 /* ApiManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A9D4EFD1E0BF919007F9178 /* ApiManager.swift */; };
+		0A9D4F011E0BF9F2007F9178 /* ErrorModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A9D4F001E0BF9F2007F9178 /* ErrorModel.swift */; };
 		0AA596091DE4E9CB0005336D /* Defaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AA596081DE4E9CB0005336D /* Defaults.swift */; };
 		0AAA359D1DF6A8AD00DFD0BD /* SubcribeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AAA359C1DF6A8AD00DFD0BD /* SubcribeViewController.swift */; };
 		0ABB902F1DE422C2009E39E5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ABB902E1DE422C2009E39E5 /* AppDelegate.swift */; };
@@ -78,6 +80,8 @@
 		0A6322751DEE22CD006A0644 /* MainHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MainHeader.swift; path = Controllers/MainScreen/MainHeader.swift; sourceTree = "<group>"; };
 		0A6322761DEE22CD006A0644 /* MainHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MainHeader.xib; path = Controllers/MainScreen/MainHeader.xib; sourceTree = "<group>"; };
 		0A63227A1DEE43CD006A0644 /* ExpandedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ExpandedViewController.swift; path = Controllers/ExpandedCategories/ExpandedViewController.swift; sourceTree = "<group>"; };
+		0A9D4EFD1E0BF919007F9178 /* ApiManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ApiManager.swift; path = Utilities/API/ApiManager.swift; sourceTree = "<group>"; };
+		0A9D4F001E0BF9F2007F9178 /* ErrorModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ErrorModel.swift; path = Models/ErrorModel.swift; sourceTree = "<group>"; };
 		0AA596081DE4E9CB0005336D /* Defaults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Defaults.swift; path = Utilities/Defaults.swift; sourceTree = "<group>"; };
 		0AAA359C1DF6A8AD00DFD0BD /* SubcribeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SubcribeViewController.swift; path = Controllers/Publisher/SubcribeViewController.swift; sourceTree = "<group>"; };
 		0ABB902B1DE422C2009E39E5 /* Swiffshot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Swiffshot.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -173,9 +177,26 @@
 			name = ExpandedCategories;
 			sourceTree = "<group>";
 		};
+		0A9D4EFC1E0BF909007F9178 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				0A9D4EFD1E0BF919007F9178 /* ApiManager.swift */,
+			);
+			name = API;
+			sourceTree = "<group>";
+		};
+		0A9D4EFF1E0BF9E6007F9178 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				0A9D4F001E0BF9F2007F9178 /* ErrorModel.swift */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
 		0AA596051DE4E7180005336D /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				0A9D4EFC1E0BF909007F9178 /* API */,
 				0AA596081DE4E9CB0005336D /* Defaults.swift */,
 			);
 			name = Utilities;
@@ -202,6 +223,7 @@
 		0ABB902D1DE422C2009E39E5 /* Swiffshot */ = {
 			isa = PBXGroup;
 			children = (
+				0A9D4EFF1E0BF9E6007F9178 /* Models */,
 				0A6322571DE79AB6006A0644 /* Views */,
 				0ABB90421DE42634009E39E5 /* Controllers */,
 				0ABB90401DE42602009E39E5 /* Resources */,
@@ -407,7 +429,9 @@
 				0A63224C1DE5B89F006A0644 /* NoNavBarNavigationController.swift in Sources */,
 				0A6322521DE6D4D6006A0644 /* LatestStreamCollectionViewCell.swift in Sources */,
 				0ABB90471DE433F5009E39E5 /* CheckCodeViewController.swift in Sources */,
+				0A9D4EFE1E0BF919007F9178 /* ApiManager.swift in Sources */,
 				0A6322681DEB5798006A0644 /* ProfileHeaderView.swift in Sources */,
+				0A9D4F011E0BF9F2007F9178 /* ErrorModel.swift in Sources */,
 				0A6322561DE7987A006A0644 /* CameraViewController.swift in Sources */,
 				0ABB90491DE4340E009E39E5 /* FillProfileViewController.swift in Sources */,
 				0A63227B1DEE43CD006A0644 /* ExpandedViewController.swift in Sources */,
