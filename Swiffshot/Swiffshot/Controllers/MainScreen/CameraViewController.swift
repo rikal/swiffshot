@@ -203,15 +203,15 @@ class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
         if mediaType == "public.movie"{
             let videoURL = info[UIImagePickerControllerMediaURL] as! NSURL
             playerViewController.createVideoPlayer(videoURL)
-            showPlayer()
+            showPlayer(playerViewController)
         }
     }
     
-    func showPlayer(){
-        self.presentViewController(playerViewController, animated: true){
+    func showPlayer(playerController: PlayerViewController){
+        self.presentViewController(playerController, animated: true){
             print("PLAYING")
             dispatch_async(dispatch_get_main_queue()) {
-                self.playerViewController.player?.play()
+                playerController.player?.play()
             }
         }
     }

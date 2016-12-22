@@ -65,7 +65,7 @@ class PlayerViewController: AVPlayerViewController {
     
     func createVideoPlayer(videourl: NSURL){
         url = videourl
-        self.player = AVPlayer(URL: url as NSURL)
+        self.player = AVPlayer(URL: url)
         self.showsPlaybackControls = true
     }
     

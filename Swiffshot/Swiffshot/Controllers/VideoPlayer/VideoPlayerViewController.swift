@@ -41,7 +41,7 @@ class VideoPlayerViewController: CameraViewController, UIGestureRecognizerDelega
             streamingPrepare()
         } else {
             playerViewController.createVideoPlayer(videoUrl)
-            showPlayer()
+            showPlayer(playerViewController)
         }
     }
     
@@ -98,7 +98,7 @@ class VideoPlayerViewController: CameraViewController, UIGestureRecognizerDelega
     private func videoTap(sender: UITapGestureRecognizer){
         stopVideoInCircle()
         playerViewController.createVideoPlayer(videoUrl)
-        showPlayer()
+        showPlayer(playerViewController)
     }
     
     @objc(handleTap:)
