@@ -8,7 +8,7 @@
 
 import UIKit
 
-class BirthdayViewController: UIViewController {
+class BirthdayViewController: AuthorizationViewController {
 
     @IBOutlet weak var birthdayTxt: UITextField!
     @IBOutlet weak var continueBtn: UIButton!
@@ -19,13 +19,23 @@ class BirthdayViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.navigationBarHidden = false
+        self.navigationItem.leftBarButtonItem  = getBackButton()
+        self.title = ""
         birthdayTxt.delegate = self
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        self.navigationController?.navigationBarHidden = true
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
         continueBtn.layer.cornerRadius = 10
+    }
+    
+    override func popToRoot(sender:UIBarButtonItem){
+        self.navigationController!.popViewControllerAnimated(true)
     }
     
     //MARK: - CHECK FOR AVALABILITY
