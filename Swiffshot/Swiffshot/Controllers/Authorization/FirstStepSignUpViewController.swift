@@ -26,6 +26,12 @@ class FirstStepSignUpViewController: AuthorizationViewController {
         lastNameTxt.delegate = self
     }
     
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
+        signUpBtn.layer.cornerRadius = 10
+    }
+    
     //MARK: - CHECK FOR AVALABILITY
     
     func setEnabledButton(){
@@ -37,6 +43,8 @@ class FirstStepSignUpViewController: AuthorizationViewController {
         signUpBtn.userInteractionEnabled = (nameTxt.text != "" && lastNameTxt.text != "")
     }
     
+    //MARK: - SEGUE
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "toWebView"{
             let controller = segue.destinationViewController as! WebViewController
@@ -45,8 +53,9 @@ class FirstStepSignUpViewController: AuthorizationViewController {
             let controller = segue.destinationViewController as! BirthdayViewController
             controller.userModel = userModel
         }
-        
     }
+    
+    //MARK: - IB ACTIONS
 
     @IBAction func termsPressed(sender: AnyObject) {
         urlWebView = "https://policies.yahoo.com/us/en/yahoo/privacy/index.htm"
