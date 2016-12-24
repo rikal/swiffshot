@@ -42,6 +42,7 @@
 		0A9D4F071E0D39CF007F9178 /* FirstStepSignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A9D4F061E0D39CF007F9178 /* FirstStepSignUpViewController.swift */; };
 		0A9D4F091E0D4920007F9178 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A9D4F081E0D4920007F9178 /* WebViewController.swift */; };
 		0A9D4F0B1E0D50DA007F9178 /* BirthdayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A9D4F0A1E0D50DA007F9178 /* BirthdayViewController.swift */; };
+		0A9D4F0D1E0EE585007F9178 /* UserNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A9D4F0C1E0EE585007F9178 /* UserNameViewController.swift */; };
 		0AA596091DE4E9CB0005336D /* Defaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AA596081DE4E9CB0005336D /* Defaults.swift */; };
 		0AAA359D1DF6A8AD00DFD0BD /* SubcribeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AAA359C1DF6A8AD00DFD0BD /* SubcribeViewController.swift */; };
 		0ABB902F1DE422C2009E39E5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ABB902E1DE422C2009E39E5 /* AppDelegate.swift */; };
@@ -92,6 +93,7 @@
 		0A9D4F061E0D39CF007F9178 /* FirstStepSignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FirstStepSignUpViewController.swift; path = Controllers/Authorization/FirstStepSignUpViewController.swift; sourceTree = "<group>"; };
 		0A9D4F081E0D4920007F9178 /* WebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WebViewController.swift; path = Controllers/Authorization/WebViewController.swift; sourceTree = "<group>"; };
 		0A9D4F0A1E0D50DA007F9178 /* BirthdayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BirthdayViewController.swift; path = Controllers/Authorization/BirthdayViewController.swift; sourceTree = "<group>"; };
+		0A9D4F0C1E0EE585007F9178 /* UserNameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserNameViewController.swift; path = Controllers/Authorization/UserNameViewController.swift; sourceTree = "<group>"; };
 		0AA596081DE4E9CB0005336D /* Defaults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Defaults.swift; path = Utilities/Defaults.swift; sourceTree = "<group>"; };
 		0AAA359C1DF6A8AD00DFD0BD /* SubcribeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SubcribeViewController.swift; path = Controllers/Publisher/SubcribeViewController.swift; sourceTree = "<group>"; };
 		0ABB902B1DE422C2009E39E5 /* Swiffshot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Swiffshot.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -278,6 +280,7 @@
 				0A9D4F061E0D39CF007F9178 /* FirstStepSignUpViewController.swift */,
 				0A9D4F081E0D4920007F9178 /* WebViewController.swift */,
 				0A9D4F0A1E0D50DA007F9178 /* BirthdayViewController.swift */,
+				0A9D4F0C1E0EE585007F9178 /* UserNameViewController.swift */,
 			);
 			name = Authorization;
 			sourceTree = "<group>";
@@ -444,6 +447,7 @@
 				0A6322591DE79FF7006A0644 /* CameraView.swift in Sources */,
 				0A63224C1DE5B89F006A0644 /* NoNavBarNavigationController.swift in Sources */,
 				0A6322521DE6D4D6006A0644 /* LatestStreamCollectionViewCell.swift in Sources */,
+				0A9D4F0D1E0EE585007F9178 /* UserNameViewController.swift in Sources */,
 				0A9D4F051E0D34E7007F9178 /* ProfileModel.swift in Sources */,
 				0ABB90471DE433F5009E39E5 /* CheckCodeViewController.swift in Sources */,
 				0A9D4EFE1E0BF919007F9178 /* ApiManager.swift in Sources */,

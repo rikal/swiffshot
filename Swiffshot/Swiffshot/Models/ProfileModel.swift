@@ -12,6 +12,7 @@ class ProfileModel: NSObject {
     var id: Int = 0
     var userName : String = ""
     var userLastName : String = ""
+    var userNickName: String = ""
     var userBirthday : String = ""
     var phoneNumber: String = ""
     var deviceID: String = ""
