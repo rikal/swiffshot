@@ -1,5 +1,5 @@
 //
-//  UserNameViewController.swift
+//  PasswordViewController.swift
 //  Swiffshot
 //
 //  Created by Dmitry Kuklin on 24.12.16.
@@ -8,10 +8,10 @@
 
 import UIKit
 
-class UserNameViewController: AuthorizationViewController {
+class PasswordViewController: AuthorizationViewController {
     
-    @IBOutlet weak var userNameTxt: UITextField!
     @IBOutlet weak var continueBtn: UIButton!
+    @IBOutlet weak var passwordTxt: UITextField!
     
     var userModel: ProfileModel!
     
@@ -22,7 +22,7 @@ class UserNameViewController: AuthorizationViewController {
         self.navigationController?.navigationBarHidden = false
         self.navigationItem.leftBarButtonItem  = getBackButton()
         self.title = ""
-        userNameTxt.delegate = self
+        passwordTxt.delegate = self
         setEnabledButton()
     }
     
@@ -43,12 +43,12 @@ class UserNameViewController: AuthorizationViewController {
     //MARK: - CHECK FOR AVALABILITY
     
     func setEnabledButton(){
-        if userNameTxt.text == "" {
+        if passwordTxt.text == "" {
             continueBtn.backgroundColor = UIColor.lightGrayColor()
         } else {
             continueBtn.backgroundColor = UIColor(colorLiteralRed: 63.0/255.0, green: 220.0/255.0, blue: 236.0/255.0, alpha: 1.0)
         }
-        continueBtn.userInteractionEnabled =  userNameTxt.text != ""
+        continueBtn.userInteractionEnabled =  passwordTxt.text != ""
     }
     
     //MARK: - SEGUE
@@ -61,13 +61,13 @@ class UserNameViewController: AuthorizationViewController {
     }
     
     //MARK: - IB ACTIONS
+
+
     @IBAction func continuePressed(sender: AnyObject) {
-        userModel.userNickName = userNameTxt.text!
-        performSegueWithIdentifier("toPassword", sender: self)
     }
 }
 
-extension UserNameViewController: UITextFieldDelegate{
+extension PasswordViewController: UITextFieldDelegate{
     func textFieldDidEndEditing(textField: UITextField) {
         self.setEnabledButton()
     }

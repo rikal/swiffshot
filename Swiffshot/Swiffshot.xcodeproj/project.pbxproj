@@ -43,6 +43,7 @@
 		0A9D4F091E0D4920007F9178 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A9D4F081E0D4920007F9178 /* WebViewController.swift */; };
 		0A9D4F0B1E0D50DA007F9178 /* BirthdayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A9D4F0A1E0D50DA007F9178 /* BirthdayViewController.swift */; };
 		0A9D4F0D1E0EE585007F9178 /* UserNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A9D4F0C1E0EE585007F9178 /* UserNameViewController.swift */; };
+		0A9D4F0F1E0EF3FC007F9178 /* PasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A9D4F0E1E0EF3FC007F9178 /* PasswordViewController.swift */; };
 		0AA596091DE4E9CB0005336D /* Defaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AA596081DE4E9CB0005336D /* Defaults.swift */; };
 		0AAA359D1DF6A8AD00DFD0BD /* SubcribeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AAA359C1DF6A8AD00DFD0BD /* SubcribeViewController.swift */; };
 		0ABB902F1DE422C2009E39E5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ABB902E1DE422C2009E39E5 /* AppDelegate.swift */; };
@@ -94,6 +95,7 @@
 		0A9D4F081E0D4920007F9178 /* WebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WebViewController.swift; path = Controllers/Authorization/WebViewController.swift; sourceTree = "<group>"; };
 		0A9D4F0A1E0D50DA007F9178 /* BirthdayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BirthdayViewController.swift; path = Controllers/Authorization/BirthdayViewController.swift; sourceTree = "<group>"; };
 		0A9D4F0C1E0EE585007F9178 /* UserNameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserNameViewController.swift; path = Controllers/Authorization/UserNameViewController.swift; sourceTree = "<group>"; };
+		0A9D4F0E1E0EF3FC007F9178 /* PasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PasswordViewController.swift; path = Controllers/Authorization/PasswordViewController.swift; sourceTree = "<group>"; };
 		0AA596081DE4E9CB0005336D /* Defaults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Defaults.swift; path = Utilities/Defaults.swift; sourceTree = "<group>"; };
 		0AAA359C1DF6A8AD00DFD0BD /* SubcribeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SubcribeViewController.swift; path = Controllers/Publisher/SubcribeViewController.swift; sourceTree = "<group>"; };
 		0ABB902B1DE422C2009E39E5 /* Swiffshot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Swiffshot.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -281,6 +283,7 @@
 				0A9D4F081E0D4920007F9178 /* WebViewController.swift */,
 				0A9D4F0A1E0D50DA007F9178 /* BirthdayViewController.swift */,
 				0A9D4F0C1E0EE585007F9178 /* UserNameViewController.swift */,
+				0A9D4F0E1E0EF3FC007F9178 /* PasswordViewController.swift */,
 			);
 			name = Authorization;
 			sourceTree = "<group>";
@@ -452,6 +455,7 @@
 				0ABB90471DE433F5009E39E5 /* CheckCodeViewController.swift in Sources */,
 				0A9D4EFE1E0BF919007F9178 /* ApiManager.swift in Sources */,
 				0A6322681DEB5798006A0644 /* ProfileHeaderView.swift in Sources */,
+				0A9D4F0F1E0EF3FC007F9178 /* PasswordViewController.swift in Sources */,
 				0A9D4F011E0BF9F2007F9178 /* ErrorModel.swift in Sources */,
 				0A6322561DE7987A006A0644 /* CameraViewController.swift in Sources */,
 				0ABB90491DE4340E009E39E5 /* FillProfileViewController.swift in Sources */,
