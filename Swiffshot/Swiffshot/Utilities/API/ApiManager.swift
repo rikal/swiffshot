@@ -12,7 +12,7 @@ import Photos
 
 class ApiManager {
     static let shared = ApiManager()
-    static let apiURL = "http://54.191.249.83"
+    static let apiURL = "http://35.164.86.162"
     
     // MARK: - common send request method
     
@@ -26,16 +26,14 @@ class ApiManager {
                 print("****** response data = \(responseString!)")
                 
                 if let json = try?  NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions()) as? [String: AnyObject] {
-                    if let result = json!["result"] as? [String : AnyObject] {
-                        resultHandler(result)
-                    } else if let _ = json!["result"] as? NSArray {
-                        resultHandler(json!)
-                    } else if let errorDict = json!["error"] as? [String : AnyObject] {
+                    if let errorDict = json!["error"] as? [String : AnyObject] {
                         dispatch_async(dispatch_get_main_queue()) {
                             let response = ErrorModel(json: errorDict)
                             let error = NSError(domain: "Underdog", code: response.code, userInfo: ["Description" : response.text])
                             failure(error)
                         }
+                    } else {
+                        resultHandler(json!)
                     }
                 } else {
                     dispatch_async(dispatch_get_main_queue()) {
@@ -53,26 +51,29 @@ class ApiManager {
     
     // MARK: - POST requests
     
-    //получить документ html
-//    func getDocument(documentType: DocumentType, success:(DocumentModel) -> Void, failure: NSError? -> Void) {
-//        var documentID = ""
-//        let methodName = "stat/export/underdog/get_doc.json?id=\(documentID)"
-//        let urlString = "\(ApiManager.russianBaseURL)\(methodName)"
-//        let url = NSURL(string: urlString)!
-//        
-//        let request:NSMutableURLRequest = NSMutableURLRequest(URL:url)
-//        request.HTTPMethod = "GET"
-//        request.addValue("text/plain", forHTTPHeaderField: "Content-Type")
-//        sendRequest(request, failure: failure) { json in
-//            if json["error"] == nil {
-//                dispatch_async(dispatch_get_main_queue()) {
-//                    let dict = json as [String:AnyObject]
-//                    let response = DocumentModel(json: dict)
-//                    success(response)
-//                }
-//            }
-//        }
-//    }
+    //get user with ID
+    func getUserWithId(user: ProfileModel, success:(ProfileModel) -> Void, failure: NSError? -> Void) {
+        let methodName = ":1111/user"
+        let urlString = "\(ApiManager.apiURL)\(methodName)"
+        let url = NSURL(string: urlString)!
+        
+        let params = ["userName": user.userName, "userLastName": user.userLastName, "userNickName": user.userNickName, "userBirthday": user.userBirthday, "phoneNumber": user.phoneNumber, "userEmail": user.email]
+        
+        let request:NSMutableURLRequest = NSMutableURLRequest(URL:url)
+        request.HTTPMethod = "POST"
+        request.HTTPBody = try! NSJSONSerialization.dataWithJSONObject(params, options: [])
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        
+        sendRequest(request, failure: failure) { json in
+            if json["error"] == nil {
+                dispatch_async(dispatch_get_main_queue()) {
+                    let dict = json as [String:AnyObject]
+                    let response = ProfileModel(json: dict)
+                    success(response)
+                }
+            }
+        }
+    }
     
     // MARK: - GET requests
     

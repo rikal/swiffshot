@@ -55,6 +55,8 @@
 		0ABB904D1DE439C1009E39E5 /* YourPhoneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ABB904C1DE439C1009E39E5 /* YourPhoneViewController.swift */; };
 		0ABB904F1DE44C08009E39E5 /* AuthorizationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ABB904E1DE44C08009E39E5 /* AuthorizationViewController.swift */; };
 		0ACD26EB1E0AC2C900C0DD82 /* PlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ACD26EA1E0AC2C900C0DD82 /* PlayerViewController.swift */; };
+		0AD678E21E1113FA007E2AD3 /* PhoneEmailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AD678E11E1113FA007E2AD3 /* PhoneEmailViewController.swift */; };
+		0AD678E41E1135B3007E2AD3 /* VerificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AD678E31E1135B3007E2AD3 /* VerificationViewController.swift */; };
 		2860D4369961437E7277572A /* Pods_Swiffshot.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 51A4CE215DC685289B805FFC /* Pods_Swiffshot.framework */; };
 /* End PBXBuildFile section */
 
@@ -109,6 +111,8 @@
 		0ABB904C1DE439C1009E39E5 /* YourPhoneViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = YourPhoneViewController.swift; path = Controllers/Authorization/YourPhoneViewController.swift; sourceTree = "<group>"; };
 		0ABB904E1DE44C08009E39E5 /* AuthorizationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AuthorizationViewController.swift; path = Controllers/Authorization/AuthorizationViewController.swift; sourceTree = "<group>"; };
 		0ACD26EA1E0AC2C900C0DD82 /* PlayerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PlayerViewController.swift; path = Controllers/VideoPlayer/PlayerViewController.swift; sourceTree = "<group>"; };
+		0AD678E11E1113FA007E2AD3 /* PhoneEmailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PhoneEmailViewController.swift; path = Controllers/Authorization/PhoneEmailViewController.swift; sourceTree = "<group>"; };
+		0AD678E31E1135B3007E2AD3 /* VerificationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VerificationViewController.swift; path = Controllers/Authorization/VerificationViewController.swift; sourceTree = "<group>"; };
 		1A27AEA2574358937AA567EC /* Pods-Swiffshot.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Swiffshot.release.xcconfig"; path = "Pods/Target Support Files/Pods-Swiffshot/Pods-Swiffshot.release.xcconfig"; sourceTree = "<group>"; };
 		51A4CE215DC685289B805FFC /* Pods_Swiffshot.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Swiffshot.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D38950A16AAE54D32BCC66C1 /* Pods-Swiffshot.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Swiffshot.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Swiffshot/Pods-Swiffshot.debug.xcconfig"; sourceTree = "<group>"; };
@@ -284,6 +288,8 @@
 				0A9D4F0A1E0D50DA007F9178 /* BirthdayViewController.swift */,
 				0A9D4F0C1E0EE585007F9178 /* UserNameViewController.swift */,
 				0A9D4F0E1E0EF3FC007F9178 /* PasswordViewController.swift */,
+				0AD678E11E1113FA007E2AD3 /* PhoneEmailViewController.swift */,
+				0AD678E31E1135B3007E2AD3 /* VerificationViewController.swift */,
 			);
 			name = Authorization;
 			sourceTree = "<group>";
@@ -445,6 +451,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0A63225F1DE8421D006A0644 /* SmallCollectionViewCell.swift in Sources */,
+				0AD678E21E1113FA007E2AD3 /* PhoneEmailViewController.swift in Sources */,
 				0A9D4F091E0D4920007F9178 /* WebViewController.swift in Sources */,
 				0ABB904D1DE439C1009E39E5 /* YourPhoneViewController.swift in Sources */,
 				0A6322591DE79FF7006A0644 /* CameraView.swift in Sources */,
@@ -469,6 +476,7 @@
 				0ABB904F1DE44C08009E39E5 /* AuthorizationViewController.swift in Sources */,
 				0A6322641DEB41EA006A0644 /* VideoPlayerViewController.swift in Sources */,
 				0ABB902F1DE422C2009E39E5 /* AppDelegate.swift in Sources */,
+				0AD678E41E1135B3007E2AD3 /* VerificationViewController.swift in Sources */,
 				0A6322771DEE22CD006A0644 /* MainHeader.swift in Sources */,
 				0ACD26EB1E0AC2C900C0DD82 /* PlayerViewController.swift in Sources */,
 				0AAA359D1DF6A8AD00DFD0BD /* SubcribeViewController.swift in Sources */,

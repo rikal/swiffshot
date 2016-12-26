@@ -1,20 +1,18 @@
 //
-//  PasswordViewController.swift
+//  VerificationViewController.swift
 //  Swiffshot
 //
-//  Created by Dmitry Kuklin on 24.12.16.
+//  Created by Dmitry Kuklin on 26.12.16.
 //  Copyright © 2016 Dmitry Kuklin. All rights reserved.
 //
 
 import UIKit
 
-class PasswordViewController: AuthorizationViewController {
-    
-    @IBOutlet weak var continueBtn: UIButton!
-    @IBOutlet weak var passwordTxt: UITextField!
-    
+class VerificationViewController: AuthorizationViewController {
     var userModel: ProfileModel!
     
+    @IBOutlet weak var codeTxt: UITextField!
+    @IBOutlet weak var continueBtn: UIButton!
     //MARK: - SYSTEMS METHODS
     
     override func viewDidLoad() {
@@ -22,7 +20,7 @@ class PasswordViewController: AuthorizationViewController {
         self.navigationController?.navigationBarHidden = false
         self.navigationItem.leftBarButtonItem  = getBackButton()
         self.title = ""
-        passwordTxt.delegate = self
+        codeTxt.delegate = self
         setEnabledButton()
     }
     
@@ -43,12 +41,12 @@ class PasswordViewController: AuthorizationViewController {
     //MARK: - CHECK FOR AVALABILITY
     
     func setEnabledButton(){
-        if passwordTxt.text == "" {
+        if codeTxt.text == "" {
             continueBtn.backgroundColor = UIColor.lightGrayColor()
         } else {
             continueBtn.backgroundColor = UIColor(colorLiteralRed: 63.0/255.0, green: 220.0/255.0, blue: 236.0/255.0, alpha: 1.0)
         }
-        continueBtn.userInteractionEnabled =  passwordTxt.text != ""
+        continueBtn.userInteractionEnabled =  codeTxt.text != ""
     }
     
     //MARK: - SEGUE
@@ -61,14 +59,14 @@ class PasswordViewController: AuthorizationViewController {
     }
     
     //MARK: - IB ACTIONS
-
+    
     @IBAction func continuePressed(sender: AnyObject) {
-        userModel.password = passwordTxt.text!
+        userModel.password = codeTxt.text!
         performSegueWithIdentifier("toPhoneEmail", sender: self)
     }
 }
 
-extension PasswordViewController: UITextFieldDelegate{
+extension VerificationViewController: UITextFieldDelegate{
     func textFieldDidEndEditing(textField: UITextField) {
         self.setEnabledButton()
     }

@@ -20,6 +20,8 @@ class ProfileModel: NSObject {
     var verifyCode:  String = ""
     var since: Int = 0
     var verified: Bool = false
+    var password: String = ""
+    var email: String = ""
     //contacts: Contact[]
     
     var text : String = ""
