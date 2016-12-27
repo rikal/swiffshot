@@ -13,7 +13,7 @@ class AuthorizationViewController: UIViewController, UIGestureRecognizerDelegate
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController!.navigationBarHidden = true
-        navigationController!.navigationBar.barTintColor = UIColor.init(colorLiteralRed: 247.0/255.0, green: 247.0/255.0, blue: 247.0/255.0, alpha: 1.0)
+        navigationController!.navigationBar.barTintColor = UIColor(colorLiteralRed: 247.0/255.0, green: 247.0/255.0, blue: 247.0/255.0, alpha: 1.0)
         navigationController!.navigationBar.setBackgroundImage(UIImage(), forBarMetrics: UIBarMetrics.Default)
         navigationController!.navigationBar.shadowImage = UIImage()
         navigationController!.navigationBar.translucent = true
@@ -47,6 +47,10 @@ class AuthorizationViewController: UIViewController, UIGestureRecognizerDelegate
         myBackButton.addTarget(self, action: #selector(AuthorizationViewController.popToRoot(_:)), forControlEvents: UIControlEvents.TouchUpInside)
         myBackButton.frame = CGRectMake(0, 0, 20, 30)
         return UIBarButtonItem(customView: myBackButton)
+    }
+    
+    func dissmissController(senderr:UIBarButtonItem){
+        navigationController!.dismissViewControllerAnimated(true, completion: nil)
     }
     
     func popToRoot(sender:UIBarButtonItem){

@@ -77,27 +77,39 @@ class ApiManager {
     
     // MARK: - GET requests
     
-    //получить информацию о профиле пользователя
-//    func getCodeToAuth(userId: String, success:(ProfileModel) -> Void, failure: NSError? -> Void) {
-//        getToken({ (tokenModel) in
-//            let methodName = "stat/export/underdog/user/profile.json?auth_token=\(self.token!.token)&cache_timestamp=\(Settings.betTimeStamp)"
-//            let urlString = "\(self.apiURL)\(methodName)"
-//            let url = NSURL(string: urlString)!
-//            
-//            let request:NSMutableURLRequest = NSMutableURLRequest(URL:url)
-//            request.HTTPMethod = "GET"
-//            request.addValue("text/plain", forHTTPHeaderField: "Content-Type")
-//            self.sendRequest(request, failure: failure) { json in
-//                if json["error"] == nil {
-//                    dispatch_async(dispatch_get_main_queue()) {
-//                        self.profileUpdate(json, success: success)
-//                    }
-//                }
-//            }
-//        }) { (error) in
-//            failure(error)
-//        }
-//    }
+    // get verification code
+    func getCodeToVerify(userId: String, success:(String) -> Void, failure: NSError? -> Void) {
+        let methodName = ":3333/\(userId)/sendCode"
+        let urlString = "\(ApiManager.apiURL)\(methodName)"
+        let url = NSURL(string: urlString)!
+        
+        let request:NSMutableURLRequest = NSMutableURLRequest(URL:url)
+        request.HTTPMethod = "GET"
+        request.addValue("text/plain", forHTTPHeaderField: "Content-Type")
+        self.sendRequest(request, failure: failure) { json in
+            if json["error"] == nil {
+                dispatch_async(dispatch_get_main_queue()) {
+                    success("Ok")
+                }
+            }
+        }
+    }
     
+    func checkVerificationCode(code: String, success:(String) -> Void, failure: NSError? -> Void) {
+        let methodName = ":3333/\(code)/checkCode"
+        let urlString = "\(ApiManager.apiURL)\(methodName)"
+        let url = NSURL(string: urlString)!
+        
+        let request:NSMutableURLRequest = NSMutableURLRequest(URL:url)
+        request.HTTPMethod = "GET"
+        request.addValue("text/plain", forHTTPHeaderField: "Content-Type")
+        self.sendRequest(request, failure: failure) { json in
+            if json["error"] == nil {
+                dispatch_async(dispatch_get_main_queue()) {
+                    success("Ok")
+                }
+            }
+        }
+    }
 
 }

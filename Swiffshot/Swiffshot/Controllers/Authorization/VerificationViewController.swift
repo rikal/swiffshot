@@ -49,20 +49,19 @@ class VerificationViewController: AuthorizationViewController {
         continueBtn.userInteractionEnabled =  codeTxt.text != ""
     }
     
-    //MARK: - SEGUE
-    
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "toPhoneEmail"{
-            let controller = segue.destinationViewController as! PhoneEmailViewController
-            controller.userModel = userModel
-        }
-    }
-    
     //MARK: - IB ACTIONS
     
     @IBAction func continuePressed(sender: AnyObject) {
-        userModel.password = codeTxt.text!
-        performSegueWithIdentifier("toPhoneEmail", sender: self)
+        ApiManager.shared.checkVerificationCode(codeTxt.text!, success: { (result) in
+            if result == "Ok"{
+                //TODO: SAVE USER MODEL
+                self.performSegueWithIdentifier("toGreetings", sender: self)
+            }
+        }) { (error) in
+                print(error)
+        }
+        //TODO: REMOVE
+        self.performSegueWithIdentifier("toGreetings", sender: self)
     }
 }
 
