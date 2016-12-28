@@ -51,13 +51,12 @@
 		0ABB90361DE422C2009E39E5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0ABB90351DE422C2009E39E5 /* Assets.xcassets */; };
 		0ABB90391DE422C2009E39E5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0ABB90371DE422C2009E39E5 /* LaunchScreen.storyboard */; };
 		0ABB90471DE433F5009E39E5 /* CheckCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ABB90461DE433F5009E39E5 /* CheckCodeViewController.swift */; };
-		0ABB90491DE4340E009E39E5 /* FillProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ABB90481DE4340E009E39E5 /* FillProfileViewController.swift */; };
-		0ABB904D1DE439C1009E39E5 /* YourPhoneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ABB904C1DE439C1009E39E5 /* YourPhoneViewController.swift */; };
 		0ABB904F1DE44C08009E39E5 /* AuthorizationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ABB904E1DE44C08009E39E5 /* AuthorizationViewController.swift */; };
 		0ACD26EB1E0AC2C900C0DD82 /* PlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ACD26EA1E0AC2C900C0DD82 /* PlayerViewController.swift */; };
 		0AD678E21E1113FA007E2AD3 /* PhoneEmailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AD678E11E1113FA007E2AD3 /* PhoneEmailViewController.swift */; };
 		0AD678E41E1135B3007E2AD3 /* VerificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AD678E31E1135B3007E2AD3 /* VerificationViewController.swift */; };
 		0AD678E61E12C4F9007E2AD3 /* GreetingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AD678E51E12C4F9007E2AD3 /* GreetingsViewController.swift */; };
+		0AD678E81E13D9F3007E2AD3 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AD678E71E13D9F3007E2AD3 /* LoginViewController.swift */; };
 		2860D4369961437E7277572A /* Pods_Swiffshot.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 51A4CE215DC685289B805FFC /* Pods_Swiffshot.framework */; };
 /* End PBXBuildFile section */
 
@@ -108,13 +107,12 @@
 		0ABB90381DE422C2009E39E5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0ABB903A1DE422C2009E39E5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0ABB90461DE433F5009E39E5 /* CheckCodeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CheckCodeViewController.swift; path = Controllers/Authorization/CheckCodeViewController.swift; sourceTree = "<group>"; };
-		0ABB90481DE4340E009E39E5 /* FillProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FillProfileViewController.swift; path = Controllers/Authorization/FillProfileViewController.swift; sourceTree = "<group>"; };
-		0ABB904C1DE439C1009E39E5 /* YourPhoneViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = YourPhoneViewController.swift; path = Controllers/Authorization/YourPhoneViewController.swift; sourceTree = "<group>"; };
 		0ABB904E1DE44C08009E39E5 /* AuthorizationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AuthorizationViewController.swift; path = Controllers/Authorization/AuthorizationViewController.swift; sourceTree = "<group>"; };
 		0ACD26EA1E0AC2C900C0DD82 /* PlayerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PlayerViewController.swift; path = Controllers/VideoPlayer/PlayerViewController.swift; sourceTree = "<group>"; };
 		0AD678E11E1113FA007E2AD3 /* PhoneEmailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PhoneEmailViewController.swift; path = Controllers/Authorization/PhoneEmailViewController.swift; sourceTree = "<group>"; };
 		0AD678E31E1135B3007E2AD3 /* VerificationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VerificationViewController.swift; path = Controllers/Authorization/VerificationViewController.swift; sourceTree = "<group>"; };
 		0AD678E51E12C4F9007E2AD3 /* GreetingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GreetingsViewController.swift; path = Controllers/Authorization/GreetingsViewController.swift; sourceTree = "<group>"; };
+		0AD678E71E13D9F3007E2AD3 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginViewController.swift; path = Controllers/Authorization/LoginViewController.swift; sourceTree = "<group>"; };
 		1A27AEA2574358937AA567EC /* Pods-Swiffshot.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Swiffshot.release.xcconfig"; path = "Pods/Target Support Files/Pods-Swiffshot/Pods-Swiffshot.release.xcconfig"; sourceTree = "<group>"; };
 		51A4CE215DC685289B805FFC /* Pods_Swiffshot.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Swiffshot.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D38950A16AAE54D32BCC66C1 /* Pods-Swiffshot.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Swiffshot.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Swiffshot/Pods-Swiffshot.debug.xcconfig"; sourceTree = "<group>"; };
@@ -281,8 +279,6 @@
 			isa = PBXGroup;
 			children = (
 				0ABB90461DE433F5009E39E5 /* CheckCodeViewController.swift */,
-				0ABB90481DE4340E009E39E5 /* FillProfileViewController.swift */,
-				0ABB904C1DE439C1009E39E5 /* YourPhoneViewController.swift */,
 				0ABB904E1DE44C08009E39E5 /* AuthorizationViewController.swift */,
 				0A9D4F021E0C015D007F9178 /* AuthMainViewController.swift */,
 				0A9D4F061E0D39CF007F9178 /* FirstStepSignUpViewController.swift */,
@@ -293,6 +289,7 @@
 				0AD678E11E1113FA007E2AD3 /* PhoneEmailViewController.swift */,
 				0AD678E31E1135B3007E2AD3 /* VerificationViewController.swift */,
 				0AD678E51E12C4F9007E2AD3 /* GreetingsViewController.swift */,
+				0AD678E71E13D9F3007E2AD3 /* LoginViewController.swift */,
 			);
 			name = Authorization;
 			sourceTree = "<group>";
@@ -456,7 +453,6 @@
 				0A63225F1DE8421D006A0644 /* SmallCollectionViewCell.swift in Sources */,
 				0AD678E21E1113FA007E2AD3 /* PhoneEmailViewController.swift in Sources */,
 				0A9D4F091E0D4920007F9178 /* WebViewController.swift in Sources */,
-				0ABB904D1DE439C1009E39E5 /* YourPhoneViewController.swift in Sources */,
 				0A6322591DE79FF7006A0644 /* CameraView.swift in Sources */,
 				0A63224C1DE5B89F006A0644 /* NoNavBarNavigationController.swift in Sources */,
 				0A6322521DE6D4D6006A0644 /* LatestStreamCollectionViewCell.swift in Sources */,
@@ -466,9 +462,9 @@
 				0A9D4EFE1E0BF919007F9178 /* ApiManager.swift in Sources */,
 				0A6322681DEB5798006A0644 /* ProfileHeaderView.swift in Sources */,
 				0A9D4F0F1E0EF3FC007F9178 /* PasswordViewController.swift in Sources */,
+				0AD678E81E13D9F3007E2AD3 /* LoginViewController.swift in Sources */,
 				0A9D4F011E0BF9F2007F9178 /* ErrorModel.swift in Sources */,
 				0A6322561DE7987A006A0644 /* CameraViewController.swift in Sources */,
-				0ABB90491DE4340E009E39E5 /* FillProfileViewController.swift in Sources */,
 				0A9D4F0B1E0D50DA007F9178 /* BirthdayViewController.swift in Sources */,
 				0A63227B1DEE43CD006A0644 /* ExpandedViewController.swift in Sources */,
 				0AA596091DE4E9CB0005336D /* Defaults.swift in Sources */,
