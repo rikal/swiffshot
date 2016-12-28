@@ -5,8 +5,8 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
     <customFonts key="customFonts">
-        <mutableArray key="blippo.ttf">
-            <string>Blippo-Heavy</string>
+        <mutableArray key="Blippo Black D.ttf">
+            <string>BlippoBlaD</string>
         </mutableArray>
     </customFonts>
     <scenes>
@@ -655,7 +655,7 @@ like to reset your password</string>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SWIFFSHOT" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dAR-c9-x4S">
                                         <rect key="frame" x="0.0" y="20" width="320" height="44"/>
                                         <color key="backgroundColor" red="0.96078431369999995" green="0.98823529409999999" blue="0.98823529409999999" alpha="1" colorSpace="calibratedRGB"/>
-                                        <fontDescription key="fontDescription" name="Blippo-Heavy" family="Blippo" pointSize="20"/>
+                                        <fontDescription key="fontDescription" name="BlippoBlaD" family="BlippoBlaD" pointSize="20"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
