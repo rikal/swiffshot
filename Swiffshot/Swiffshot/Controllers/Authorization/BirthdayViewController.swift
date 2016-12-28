@@ -13,6 +13,7 @@ class BirthdayViewController: AuthorizationViewController {
     @IBOutlet weak var birthdayTxt: UITextField!
     @IBOutlet weak var continueBtn: UIButton!
     var userModel: ProfileModel!
+    var isPressedBackspaceAfterSingleSpaceSymbol = false
     
     //MARK: - SYSTEMS METHODS
     
@@ -22,6 +23,7 @@ class BirthdayViewController: AuthorizationViewController {
         self.navigationItem.leftBarButtonItem  = getBackButton()
         self.title = ""
         birthdayTxt.delegate = self
+        birthdayTxt.addTarget(self, action: #selector(BirthdayViewController.textFieldDidChange(_:)), forControlEvents: UIControlEvents.EditingChanged)
         setEnabledButton()
     }
     
@@ -37,6 +39,24 @@ class BirthdayViewController: AuthorizationViewController {
     
     override func popToRoot(sender:UIBarButtonItem){
         self.navigationController!.popViewControllerAnimated(true)
+    }
+    
+    //MARK: - CHANGE TEXT FIELD
+    
+    func textFieldDidChange(textField: UITextField) {
+        if !isPressedBackspaceAfterSingleSpaceSymbol{
+            let lenght: Int = Int((textField.text?.characters.count)!)
+            switch  lenght{
+            case 2:
+                textField.text = "\(textField.text!)."
+            case 5:
+                textField.text = "\(textField.text!)."
+            case 10:
+                birthdayTxt.resignFirstResponder()
+            default:
+                textField.text = "\(textField.text!)"
+            }
+        }
     }
     
     //MARK: - CHECK FOR AVALABILITY
@@ -71,5 +91,17 @@ class BirthdayViewController: AuthorizationViewController {
 extension BirthdayViewController: UITextFieldDelegate{
     func textFieldDidEndEditing(textField: UITextField) {
         self.setEnabledButton()
+    }
+    
+    func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
+        let lenght: Int = Int((textField.text?.characters.count)!)
+        isPressedBackspaceAfterSingleSpaceSymbol = (string == "" && range.location == lenght-1 && range.length == 1)
+        if !isPressedBackspaceAfterSingleSpaceSymbol{
+            if lenght > 9{
+                return false
+            }
+        }
+        
+        return true
     }
 }
