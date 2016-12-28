@@ -19,12 +19,16 @@ class BirthdayViewController: AuthorizationViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationController?.navigationBarHidden = false
-        self.navigationItem.leftBarButtonItem  = getBackButton()
-        self.title = ""
         birthdayTxt.delegate = self
         birthdayTxt.addTarget(self, action: #selector(BirthdayViewController.textFieldDidChange(_:)), forControlEvents: UIControlEvents.EditingChanged)
         setEnabledButton()
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.navigationBarHidden = false
+        self.navigationItem.leftBarButtonItem  = getBackButton()
+        self.title = ""
     }
     
     override func viewWillDisappear(animated: Bool) {

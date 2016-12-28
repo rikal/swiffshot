@@ -17,11 +17,15 @@ class VerificationViewController: AuthorizationViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        codeTxt.delegate = self
+        setEnabledButton()
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
         self.navigationController?.navigationBarHidden = false
         self.navigationItem.leftBarButtonItem  = getBackButton()
         self.title = ""
-        codeTxt.delegate = self
-        setEnabledButton()
     }
     
     override func viewWillDisappear(animated: Bool) {

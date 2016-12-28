@@ -23,7 +23,9 @@ class FirstStepSignUpViewController: AuthorizationViewController {
         super.viewDidLoad()
         setEnabledButton()
         nameTxt.delegate = self
+        nameTxt.autocapitalizationType = .Sentences
         lastNameTxt.delegate = self
+        lastNameTxt.autocapitalizationType = .Sentences
     }
     
     override func viewDidLayoutSubviews() {

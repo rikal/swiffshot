@@ -19,11 +19,16 @@ class UserNameViewController: AuthorizationViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        userNameTxt.delegate = self
+        userNameTxt.autocapitalizationType = .Sentences
+        setEnabledButton()
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
         self.navigationController?.navigationBarHidden = false
         self.navigationItem.leftBarButtonItem  = getBackButton()
         self.title = ""
-        userNameTxt.delegate = self
-        setEnabledButton()
     }
     
     override func viewWillDisappear(animated: Bool) {

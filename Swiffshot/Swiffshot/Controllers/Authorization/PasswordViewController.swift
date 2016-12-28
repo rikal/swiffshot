@@ -19,11 +19,15 @@ class PasswordViewController: AuthorizationViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        passwordTxt.delegate = self
+        setEnabledButton()
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
         self.navigationController?.navigationBarHidden = false
         self.navigationItem.leftBarButtonItem  = getBackButton()
         self.title = ""
-        passwordTxt.delegate = self
-        setEnabledButton()
     }
     
     override func viewWillDisappear(animated: Bool) {
@@ -43,7 +47,7 @@ class PasswordViewController: AuthorizationViewController {
     //MARK: - CHECK FOR AVALABILITY
     
     func setEnabledButton(){
-        if passwordTxt.text == "" {
+        if passwordTxt.text?.characters.count < 8 {
             continueBtn.backgroundColor = UIColor.lightGrayColor()
         } else {
             continueBtn.backgroundColor = UIColor(colorLiteralRed: 63.0/255.0, green: 220.0/255.0, blue: 236.0/255.0, alpha: 1.0)

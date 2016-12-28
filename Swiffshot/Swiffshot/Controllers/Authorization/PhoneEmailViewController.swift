@@ -22,11 +22,15 @@ class PhoneEmailViewController: AuthorizationViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        phoneEmailTxt.delegate = self
+        setEnabledButton()
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
         self.navigationController?.navigationBarHidden = false
         self.navigationItem.leftBarButtonItem  = getBackButton()
         self.title = ""
-        phoneEmailTxt.delegate = self
-        setEnabledButton()
     }
     
     override func viewWillDisappear(animated: Bool) {
