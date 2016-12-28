@@ -67,7 +67,7 @@ class CategoryCell: UICollectionViewCell, UICollectionViewDelegate, UICollection
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         switch globalIndexSection {
         case 0:
-            return 4
+            return 6
         default:
             return 9
         }
@@ -102,7 +102,7 @@ class CategoryCell: UICollectionViewCell, UICollectionViewDelegate, UICollection
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAtIndex section: Int) -> UIEdgeInsets {
         switch globalIndexSection {
         case 0:
-            let spacing = (collectionView.frame.size.width/2 - 100)
+            let spacing = (collectionView.frame.size.width/3 - 100)
             return UIEdgeInsets(top: 20, left: spacing, bottom: 20, right: spacing)
             
         default:

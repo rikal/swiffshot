@@ -154,7 +154,14 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
     }
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-        return CGSize(width: self.collectionView.frame.width, height: 50)
+        switch section {
+        case 1,2:
+            return CGSize(width: self.collectionView.frame.width, height: 50)
+        default:
+            return CGSize(width: self.collectionView.frame.width, height: 0)
+        }
+            
+        
     }
     
     func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {
@@ -167,9 +174,9 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
             case 0:
                 headerView.fillHeader("FRIENDS")
             case 1:
-                headerView.fillHeader("TRENDS")
+                headerView.fillHeader("RECENT")
             default:
-                headerView.fillHeader("DISCOVERING")
+                headerView.fillHeader("Trending + Now")
             }
             reusableView = headerView
         }

@@ -15,6 +15,7 @@ protocol MainHeaderDelegate: class {
 class MainHeader: UICollectionReusableView {
 
     @IBOutlet weak var headerBtn: UIButton!
+    @IBOutlet weak var headerLbl: UILabel!
     
     weak var delegate: MainHeaderDelegate?
     
@@ -23,7 +24,7 @@ class MainHeader: UICollectionReusableView {
     }
     
     func fillHeader(title: String){
-        headerBtn.setTitle(title, forState: .Normal)
+        headerLbl.text = title
     }
     
     @IBAction func headerPressed(sender: AnyObject) {
