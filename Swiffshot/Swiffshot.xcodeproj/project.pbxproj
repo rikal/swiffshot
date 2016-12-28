@@ -113,6 +113,7 @@
 		0AD678E31E1135B3007E2AD3 /* VerificationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VerificationViewController.swift; path = Controllers/Authorization/VerificationViewController.swift; sourceTree = "<group>"; };
 		0AD678E51E12C4F9007E2AD3 /* GreetingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GreetingsViewController.swift; path = Controllers/Authorization/GreetingsViewController.swift; sourceTree = "<group>"; };
 		0AD678E71E13D9F3007E2AD3 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginViewController.swift; path = Controllers/Authorization/LoginViewController.swift; sourceTree = "<group>"; };
+		0AD678E91E13F501007E2AD3 /* blippo.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = blippo.ttf; sourceTree = "<group>"; };
 		1A27AEA2574358937AA567EC /* Pods-Swiffshot.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Swiffshot.release.xcconfig"; path = "Pods/Target Support Files/Pods-Swiffshot/Pods-Swiffshot.release.xcconfig"; sourceTree = "<group>"; };
 		51A4CE215DC685289B805FFC /* Pods_Swiffshot.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Swiffshot.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D38950A16AAE54D32BCC66C1 /* Pods-Swiffshot.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Swiffshot.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Swiffshot/Pods-Swiffshot.debug.xcconfig"; sourceTree = "<group>"; };
@@ -257,6 +258,7 @@
 		0ABB90401DE42602009E39E5 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				0AD678E91E13F501007E2AD3 /* blippo.ttf */,
 				0ABB90351DE422C2009E39E5 /* Assets.xcassets */,
 			);
 			name = Resources;

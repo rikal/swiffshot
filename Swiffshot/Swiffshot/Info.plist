@@ -2,6 +2,10 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>UIAppFonts</key>
+	<array>
+		<string>blippo.ttf</string>
+	</array>
 	<key>LSApplicationCategoryType</key>
 	<string></string>
 	<key>NSAppTransportSecurity</key>
@@ -43,11 +47,11 @@
 	<string>This app requires access to the photo library.</string>
 	<key>NSCameraUsageDescription</key>
 	<string>This app requires access to the camera.</string>
-    <key>NSMicrophoneUsageDescription</key>
-    <string>Need microphone access for uploading videos</string>
-    <key>NSLocationUsageDescription</key>
-    <string>Need location access for updating nearby friends</string>
-    <key>NSLocationWhenInUseUsageDescription</key>
-    <string>This app will use your location to show you cool stuff near you.</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>Need microphone access for uploading videos</string>
+	<key>NSLocationUsageDescription</key>
+	<string>Need location access for updating nearby friends</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>This app will use your location to show you cool stuff near you.</string>
 </dict>
 </plist>

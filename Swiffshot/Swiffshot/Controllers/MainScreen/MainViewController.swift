@@ -35,6 +35,17 @@ class MainViewController: CameraViewController, CameraViewDelegate, CategoryCell
         prepareCollectionView()
     }
     
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController!.navigationBarHidden = false
+        navigationController!.navigationBar.barTintColor = UIColor.clearColor()
+        navigationController!.navigationBar.setBackgroundImage(UIImage(), forBarMetrics: UIBarMetrics.Default)
+        //        navigationController!.navigationBar.shadowImage = UIImage()
+        navigationController!.navigationBar.translucent = true
+        navigationController!.view.backgroundColor = UIColor.clearColor()
+        title = ""
+    }
+    
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(true)
         cameraView.delegate = self
