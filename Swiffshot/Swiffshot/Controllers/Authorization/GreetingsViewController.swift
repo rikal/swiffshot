@@ -69,6 +69,7 @@ class GreetingsViewController: AuthorizationViewController {
     }
 
     @IBAction func continuePressed(sender: AnyObject) {
+        Defaults.sharedDefaults.userLogged = true
         self.navigationController?.dismissViewControllerAnimated(true, completion: nil)
     }
 }

@@ -78,6 +78,7 @@ class LoginViewController: AuthorizationViewController {
     }
     
     @IBAction func loginPressed(sender: AnyObject) {
+        Defaults.sharedDefaults.userLogged = true
         dismissViewControllerAnimated(true, completion: nil)
     }
 }
