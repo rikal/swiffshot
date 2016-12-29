@@ -7,17 +7,19 @@
 //
 
 import UIKit
+import AVFoundation
 
 protocol CameraViewDelegate {
     func startStopRecordingVideo(isStart: Bool)
+    func startStopStream(isStart: Bool)
     func cancelCameraView()
     func changeCamera()
-    func startStream()
     func chooseVideo()
 }
 
-class CameraView: UIView {
+class CameraView: UIView, UIGestureRecognizerDelegate {
 
+    @IBOutlet weak var flashBtn: UIButton!
     @IBOutlet weak var screenView: UIView!
     @IBOutlet weak var leftSecBtn: UILabel!
     @IBOutlet weak var shootBtn: UIButton!
@@ -25,14 +27,15 @@ class CameraView: UIView {
     @IBOutlet weak var cancelBtn: UIButton!
     @IBOutlet weak var alphaView: UIView!
     @IBOutlet weak var shootBtnContainerView: UIView!
-    @IBOutlet weak var stopBtn: UIButton!
+//    @IBOutlet weak var stopBtn: UIButton!
     @IBOutlet weak var progressContainerView: UIView!
     @IBOutlet weak var progressBarView: UIView!
     @IBOutlet weak var useVideoBtn: UIButton!
     @IBOutlet weak var progressBarWidthConstraint: NSLayoutConstraint!
     
     var delegate : CameraViewDelegate?
-    var isStartToRecord : Bool = false
+    var isRecording : Bool = false
+    var isStreaming: Bool = false
     
     //MARK: SYSTEMS METHODS
     
@@ -48,6 +51,10 @@ class CameraView: UIView {
         let tap = UITapGestureRecognizer(target: self, action: #selector(doubleTapped))
         tap.numberOfTapsRequired = 2
         shootBtn.addGestureRecognizer(tap)
+        
+        let hideTap = UITapGestureRecognizer(target: self, action: #selector(hideTapped))
+        hideTap.delegate = self
+        alphaView.addGestureRecognizer(hideTap)
     }
     
     // SHOW HIDE ALPHA VIEW
@@ -61,30 +68,27 @@ class CameraView: UIView {
             }, completion: nil)
     }
     
-    
     // ACTIONS
     
-    func changeShootBtn(isStop: Bool){
-        shootBtn.hidden = isStop
-        stopBtn.hidden = !isStop
+    func hideTapped(){
+        showHideAlphaView(true)
     }
     
     func doubleTapped() {
-        changeShootBtn(true)
-        delegate?.startStream()
-        isStartToRecord = !isStartToRecord
-    }
-    
-    @IBAction func stopShootVideo(sender: AnyObject) {
-        changeShootBtn(false)
-        isStartToRecord = !isStartToRecord
-        delegate?.startStopRecordingVideo(isStartToRecord)
+        if !isRecording{
+            isRecording = !isRecording
+            delegate?.startStopRecordingVideo(isRecording)
+        }
     }
    
     @IBAction func shootVideo(sender: AnyObject) {
-        changeShootBtn(true)
-        isStartToRecord = !isStartToRecord
-        delegate?.startStopRecordingVideo(isStartToRecord)
+        if isRecording{
+            isRecording = !isRecording
+            delegate?.startStopRecordingVideo(isRecording)
+            return
+        }
+        isStreaming = !isStreaming
+        delegate?.startStopStream(isStreaming)
     }
 
     @IBAction func cancelPressed(sender: AnyObject) {
@@ -94,6 +98,27 @@ class CameraView: UIView {
     
     @IBAction func changeCameraPressed(sender: AnyObject) {
         delegate?.changeCamera()
+    }
+    
+    @IBAction func flashBtnPressed(sender: AnyObject) {
+        let device = AVCaptureDevice.defaultDeviceWithMediaType(AVMediaTypeVideo)
+        if (device.hasTorch) {
+            do {
+                try device.lockForConfiguration()
+                if (device.torchMode == AVCaptureTorchMode.On) {
+                    device.torchMode = AVCaptureTorchMode.Off
+                } else {
+                    do {
+                        try device.setTorchModeOnWithLevel(1.0)
+                    } catch {
+                        print(error)
+                    }
+                }
+                device.unlockForConfiguration()
+            } catch {
+                print(error)
+            }
+        }
     }
     
     @IBAction func loadVideoPressed(sender: AnyObject) {

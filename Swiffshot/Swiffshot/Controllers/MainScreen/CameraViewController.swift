@@ -156,6 +156,10 @@ class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
     
     //MARK: STREAMING METHODS
     
+    func stopStreaming(){
+        publisher.stop()
+    }
+    
     func goStreaming(){
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let controller = storyboard.instantiateViewControllerWithIdentifier("publishView")
@@ -169,7 +173,6 @@ class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
         
         isPublishing ? publisher.stop() : publisher.start()
         isPublishing = !isPublishing
-        isPublishing ? cameraView.changeShootBtn(true) : cameraView.changeShootBtn(false)
         isOnline = true
     }
     

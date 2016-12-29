@@ -104,7 +104,7 @@ class VideoPlayerViewController: CameraViewController, UIGestureRecognizerDelega
     @objc(handleTap:)
     private func handleTap(sender: UITapGestureRecognizer){
         hideShowCollectionView(true)
-        cameraView.showHideAlphaView(true)
+//        cameraView.showHideAlphaView(true)
     }
     
     func playVideoInCircle(){
@@ -163,8 +163,8 @@ class VideoPlayerViewController: CameraViewController, UIGestureRecognizerDelega
     
     //MARK: - CAMERA VIEW delegate
     
-    func startStream() {
-        goStreaming()
+    func startStopStream(isStart: Bool) {
+        isStart ? goStreaming() : stopStreaming()
     }
     
     func startStopRecordingVideo(isStart: Bool){

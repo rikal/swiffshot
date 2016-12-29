@@ -11,6 +11,7 @@ import UIKit
 class MainViewController: CameraViewController, CameraViewDelegate, CategoryCellDelegate, MainHeaderDelegate {
 
     @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var topView: UIView!
     
     var latestVideos = [String]()
     var trendingVideos = [String]()
@@ -40,8 +41,8 @@ class MainViewController: CameraViewController, CameraViewDelegate, CategoryCell
         navigationController!.navigationBarHidden = false
         navigationController!.navigationBar.barTintColor = UIColor.clearColor()
         navigationController!.navigationBar.setBackgroundImage(UIImage(), forBarMetrics: UIBarMetrics.Default)
-        //        navigationController!.navigationBar.shadowImage = UIImage()
         navigationController!.navigationBar.translucent = true
+        navigationController!.navigationBar.shadowImage = UIImage()
         navigationController!.view.backgroundColor = UIColor.clearColor()
         title = ""
     }
@@ -62,7 +63,7 @@ class MainViewController: CameraViewController, CameraViewDelegate, CategoryCell
     
     func moveToCamera() {
         hideShowCollectionView(true)
-        cameraView.showHideAlphaView(true)
+//        cameraView.showHideAlphaView(true)
     }
     
     func moveToStream(isonline: Bool) {
@@ -81,6 +82,7 @@ class MainViewController: CameraViewController, CameraViewDelegate, CategoryCell
         dispatch_async(dispatch_get_main_queue()) {
             UIView.animateWithDuration(1.5, animations: {
                 self.collectionView.alpha = CGFloat(alpha)
+                self.topView.alpha = CGFloat(alpha)
                 }, completion: { (finished) in
                     if !isHide { self.removePreviewLayer() }
             })
@@ -89,8 +91,8 @@ class MainViewController: CameraViewController, CameraViewDelegate, CategoryCell
     
     //MARK: - CAMERA VIEW delegate
     
-    func startStream() {
-        goStreaming()
+    func startStopStream(isStart: Bool) {
+        isStart ? goStreaming() : stopStreaming()
     }
     
     func startStopRecordingVideo(isStart: Bool){
