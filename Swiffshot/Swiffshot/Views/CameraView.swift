@@ -55,11 +55,16 @@ class CameraView: UIView, UIGestureRecognizerDelegate {
         let hideTap = UITapGestureRecognizer(target: self, action: #selector(hideTapped))
         hideTap.delegate = self
         alphaView.addGestureRecognizer(hideTap)
+        
+        if Defaults.sharedDefaults.userKnowAboutCamera{
+            alphaView.hidden = true
+        }
     }
     
     // SHOW HIDE ALPHA VIEW
 
     func showHideAlphaView(isHide: Bool){
+        Defaults.sharedDefaults.userKnowAboutCamera = true
         var alpha: Float = 0.0
         if isHide { alpha = 0.0 } else { alpha = 0.6 }
         
@@ -92,7 +97,7 @@ class CameraView: UIView, UIGestureRecognizerDelegate {
     }
 
     @IBAction func cancelPressed(sender: AnyObject) {
-        showHideAlphaView(false)
+//        showHideAlphaView(false)
         delegate?.cancelCameraView()
     }
     

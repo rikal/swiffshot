@@ -21,6 +21,7 @@ class Defaults {
         case UserLogged
         case LocalHost
         case HostPort
+        case UserKnowAboutCamera
     }
     
     init(defaults: NSUserDefaults) {
@@ -32,6 +33,7 @@ class Defaults {
             Keys.LocalHost.rawValue: "54.191.86.179",
             Keys.HostPort.rawValue: 8554,
             Keys.UserLogged.rawValue: false,
+            Keys.UserKnowAboutCamera.rawValue: false,
         ])
     }
     
@@ -75,6 +77,16 @@ class Defaults {
         }
         set {
             defaults.setBool(newValue, forKey: Keys.UserLogged.rawValue)
+            defaults.synchronize()
+        }
+    }
+    
+    var userKnowAboutCamera: Bool {
+        get {
+            return defaults.boolForKey(Keys.UserKnowAboutCamera.rawValue)
+        }
+        set {
+            defaults.setBool(newValue, forKey: Keys.UserKnowAboutCamera.rawValue)
             defaults.synchronize()
         }
     }

@@ -111,7 +111,7 @@ class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
         }
         
         previewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
-        previewLayer?.frame = CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: self.view.frame.size.height - 128)
+        previewLayer?.frame = self.view.frame
         previewLayer?.videoGravity = AVLayerVideoGravityResize
         captureSession.startRunning()
         return previewLayer!
