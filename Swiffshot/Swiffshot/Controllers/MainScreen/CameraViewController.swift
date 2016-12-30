@@ -141,15 +141,7 @@ class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
                 isOnline = false
             } else {
                 videoFileOutput.stopRecording()
-                PHPhotoLibrary.sharedPhotoLibrary().performChanges({
-                    PHAssetChangeRequest.creationRequestForAssetFromVideoAtFileURL(self.filePath!)
-                }) { saved, error in
-                    if saved {
-                        print("SAVED")
-                    } else if (error != nil) {
-                        print(error?.localizedDescription)
-                    }
-                }
+                UISaveVideoAtPathToSavedPhotosAlbum((filePath?.relativePath)!,self,nil,nil);
             }
         }
     }
