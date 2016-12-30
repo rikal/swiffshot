@@ -796,37 +796,51 @@ like to reset your password</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Pzo-ck-4rc">
-                                <rect key="frame" x="0.0" y="410" width="320" height="158"/>
-                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="158" id="zR9-wJ-0aL"/>
-                                </constraints>
+                                <rect key="frame" x="0.0" y="274" width="320" height="294"/>
+                                <color key="backgroundColor" red="0.96078431369999995" green="0.98823529409999999" blue="0.98823529409999999" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kdY-3u-DOg">
-                                <rect key="frame" x="0.0" y="64" width="320" height="216"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="274"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mQM-VK-VlK">
-                                        <rect key="frame" x="80" y="28" width="160" height="160"/>
-                                        <color key="backgroundColor" red="0.72336632013320923" green="0.72336632013320923" blue="0.72336632013320923" alpha="1" colorSpace="calibratedRGB"/>
+                                        <rect key="frame" x="80" y="52" width="160" height="160"/>
+                                        <color key="backgroundColor" red="0.94117647059999998" green="0.94117647059999998" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="160" id="TQb-R5-YiV"/>
-                                            <constraint firstAttribute="height" constant="160" id="nfz-8y-4Fh"/>
+                                            <constraint firstAttribute="height" constant="160" id="Nx9-0l-rIh"/>
+                                            <constraint firstAttribute="width" constant="160" id="W6X-x0-Oz6"/>
                                         </constraints>
                                     </view>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="userName" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NDL-0C-2ir">
+                                        <rect key="frame" x="118" y="220" width="84" height="21"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0 min ago" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sRg-oX-Wwt">
+                                        <rect key="frame" x="126" y="245" width="68" height="18"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
-                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.96078431369999995" green="0.98823529409999999" blue="0.98823529409999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstItem="mQM-VK-VlK" firstAttribute="centerY" secondItem="kdY-3u-DOg" secondAttribute="centerY" id="W0X-cp-61R"/>
-                                    <constraint firstItem="mQM-VK-VlK" firstAttribute="centerX" secondItem="kdY-3u-DOg" secondAttribute="centerX" id="Wfd-p5-Frs"/>
-                                    <constraint firstAttribute="height" constant="216" id="jJi-cz-FJK"/>
+                                    <constraint firstItem="mQM-VK-VlK" firstAttribute="top" secondItem="kdY-3u-DOg" secondAttribute="top" constant="52" id="Eta-Ry-ZFk"/>
+                                    <constraint firstItem="NDL-0C-2ir" firstAttribute="top" secondItem="mQM-VK-VlK" secondAttribute="bottom" constant="8" id="Izd-Te-Zqb"/>
+                                    <constraint firstItem="sRg-oX-Wwt" firstAttribute="top" secondItem="NDL-0C-2ir" secondAttribute="bottom" constant="4" id="V49-3B-gjz"/>
+                                    <constraint firstAttribute="height" constant="274" id="jJi-cz-FJK"/>
+                                    <constraint firstItem="mQM-VK-VlK" firstAttribute="centerX" secondItem="kdY-3u-DOg" secondAttribute="centerX" id="unj-8v-d4X"/>
+                                    <constraint firstItem="NDL-0C-2ir" firstAttribute="centerX" secondItem="kdY-3u-DOg" secondAttribute="centerX" id="v6N-fu-gpL"/>
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <color key="backgroundColor" red="0.96110491071428572" green="0.9882352941176471" blue="0.9882352941176471" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="Pzo-ck-4rc" secondAttribute="trailing" id="2c1-Uj-Y3C"/>
                             <constraint firstItem="kdY-3u-DOg" firstAttribute="leading" secondItem="Gfh-zu-HEf" secondAttribute="leading" id="6kQ-74-AbA"/>
-                            <constraint firstItem="kdY-3u-DOg" firstAttribute="top" secondItem="Gfh-zu-HEf" secondAttribute="top" constant="64" id="aM4-lS-Z4R"/>
+                            <constraint firstItem="sRg-oX-Wwt" firstAttribute="centerX" secondItem="Gfh-zu-HEf" secondAttribute="centerX" id="Uxg-zT-Ept"/>
+                            <constraint firstItem="kdY-3u-DOg" firstAttribute="top" secondItem="Gfh-zu-HEf" secondAttribute="top" id="aM4-lS-Z4R"/>
+                            <constraint firstItem="Pzo-ck-4rc" firstAttribute="top" secondItem="kdY-3u-DOg" secondAttribute="bottom" id="dkq-BK-XTm"/>
                             <constraint firstItem="Pzo-ck-4rc" firstAttribute="leading" secondItem="Gfh-zu-HEf" secondAttribute="leading" id="gVS-nf-RJY"/>
                             <constraint firstAttribute="trailing" secondItem="kdY-3u-DOg" secondAttribute="trailing" id="nXk-3F-k8D"/>
                             <constraint firstItem="kHI-kp-F2d" firstAttribute="top" secondItem="Pzo-ck-4rc" secondAttribute="bottom" id="wyO-fK-2NO"/>

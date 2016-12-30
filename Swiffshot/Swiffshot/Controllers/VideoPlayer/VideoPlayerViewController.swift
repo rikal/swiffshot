@@ -51,9 +51,6 @@ class VideoPlayerViewController: CameraViewController, UIGestureRecognizerDelega
         super.viewWillAppear(true)
         navigationController?.navigationBarHidden = false
         navigationController?.navigationBar.barTintColor = UIColor.init(colorLiteralRed: 247.0/255.0, green: 247.0/255.0, blue: 247.0/255.0, alpha: 1.0)
-        
-        //TODO: name from profile model
-        title = "@UserName"
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -66,6 +63,8 @@ class VideoPlayerViewController: CameraViewController, UIGestureRecognizerDelega
     }
     
     override func viewDidLayoutSubviews() {
+        videoThumbs.layer.borderColor = UIColor.lightGrayColor().CGColor
+        videoThumbs.layer.borderWidth = 1.0
         videoThumbs.layer.cornerRadius = videoThumbs.frame.size.height/2
         videoThumbs.layer.masksToBounds  = true
         videosCollectionView.frame = CGRect(x: 0, y: videoContainerView.frame.size.height + 64, width: self.view.frame.size.width, height: 150)
