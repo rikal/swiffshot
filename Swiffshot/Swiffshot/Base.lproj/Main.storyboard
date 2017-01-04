@@ -665,6 +665,13 @@ like to reset your password</string>
                                             <constraint firstAttribute="height" constant="1" id="AF4-sH-5JR"/>
                                         </constraints>
                                     </view>
+                                    <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Logo2" translatesAutoresizingMaskIntoConstraints="NO" id="hHF-zb-jK7">
+                                        <rect key="frame" x="145" y="20" width="30" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="30" id="3Rh-ye-fvQ"/>
+                                            <constraint firstAttribute="height" constant="30" id="mZc-xK-mZ6"/>
+                                        </constraints>
+                                    </imageView>
                                 </subviews>
                                 <color key="backgroundColor" red="0.96078431369999995" green="0.98823529409999999" blue="0.98823529409999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
@@ -675,6 +682,8 @@ like to reset your password</string>
                                     <constraint firstAttribute="trailing" secondItem="dAR-c9-x4S" secondAttribute="trailing" id="T4m-on-dg0"/>
                                     <constraint firstAttribute="height" constant="64" id="UPg-xb-Kio"/>
                                     <constraint firstAttribute="bottom" secondItem="Oiu-A1-gT3" secondAttribute="bottom" id="Xm7-4f-THU"/>
+                                    <constraint firstItem="hHF-zb-jK7" firstAttribute="top" secondItem="Ic2-tb-fap" secondAttribute="top" constant="20" id="Yzy-kd-9Sc"/>
+                                    <constraint firstItem="hHF-zb-jK7" firstAttribute="centerX" secondItem="Ic2-tb-fap" secondAttribute="centerX" id="eDk-QI-QUV"/>
                                     <constraint firstAttribute="bottom" secondItem="dAR-c9-x4S" secondAttribute="bottom" id="s1A-AA-5Q9"/>
                                 </constraints>
                             </view>
@@ -1566,6 +1575,7 @@ like to reset your password</string>
     </scenes>
     <resources>
         <image name="CloseBtn" width="334" height="334"/>
+        <image name="Logo2" width="444" height="441"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
