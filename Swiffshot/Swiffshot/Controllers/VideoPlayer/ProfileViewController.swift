@@ -1,5 +1,5 @@
 //
-//  VideoPlayerViewController.swift
+//  ProfileViewController.swift
 //  Swiffshot
 //
 //  Created by Dmitry Kuklin on 27.11.16.
@@ -10,7 +10,7 @@ import UIKit
 import AVKit
 import AVFoundation
 
-class VideoPlayerViewController: CameraViewController, UIGestureRecognizerDelegate, CameraViewDelegate {
+class ProfileViewController: CameraViewController, UIGestureRecognizerDelegate, CameraViewDelegate {
     
     @IBOutlet weak var bottomViewContainer: UIView!
     @IBOutlet weak var videoThumbs: UIView!
@@ -37,24 +37,22 @@ class VideoPlayerViewController: CameraViewController, UIGestureRecognizerDelega
         super.viewDidLoad()
         
         addTapGesture()
-        if isSubscribing {
-            streamingPrepare()
-        } else {
-            playerViewController.createVideoPlayer(videoUrl)
-            showPlayer(playerViewController)
-        }
+//        if isSubscribing {
+//            streamingPrepare()
+//        } else {
+//            playerViewController.createVideoPlayer(videoUrl)
+//            showPlayer(playerViewController)
+//        }
     }
     
-    //MARK: - SYSTEMS METHODS
-    
     override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(true)
+        super.viewWillAppear(animated)
         navigationController?.navigationBarHidden = false
         navigationController?.navigationBar.barTintColor = UIColor.init(colorLiteralRed: 247.0/255.0, green: 247.0/255.0, blue: 247.0/255.0, alpha: 1.0)
     }
     
     override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(true)
+        super.viewDidAppear(animated)
         cameraView.delegate = self
     }
     
@@ -81,14 +79,14 @@ class VideoPlayerViewController: CameraViewController, UIGestureRecognizerDelega
         
         videosCollectionView.registerNib(UINib(nibName: "LatestStreamCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "bigCell")
         
-        let tap1 = UITapGestureRecognizer(target: self, action: #selector(VideoPlayerViewController.handleTap(_:)))
-        let tap2 = UITapGestureRecognizer(target: self, action: #selector(VideoPlayerViewController.handleTap(_:)))
+        let tap1 = UITapGestureRecognizer(target: self, action: #selector(ProfileViewController.handleTap(_:)))
+        let tap2 = UITapGestureRecognizer(target: self, action: #selector(ProfileViewController.handleTap(_:)))
         tap1.delegate = self
         tap2.delegate = self
         videoContainerView.addGestureRecognizer(tap1)
         bottomViewContainer.addGestureRecognizer(tap2)
         
-        let tapToVideo = UITapGestureRecognizer(target: self, action: #selector(VideoPlayerViewController.videoTap(_:)))
+        let tapToVideo = UITapGestureRecognizer(target: self, action: #selector(ProfileViewController.videoTap(_:)))
         tapToVideo.delegate = self
         videoThumbs.addGestureRecognizer(tapToVideo)
     }
@@ -97,14 +95,16 @@ class VideoPlayerViewController: CameraViewController, UIGestureRecognizerDelega
     private func videoTap(sender: UITapGestureRecognizer){
         stopVideoInCircle()
         playerViewController.createVideoPlayer(videoUrl)
-        showPlayer(playerViewController)
+        //TODO:
+//        showPlayer(playerViewController)
     }
     
     @objc(handleTap:)
     private func handleTap(sender: UITapGestureRecognizer){
         hideShowCollectionView(true)
-//        cameraView.showHideAlphaView(true)
     }
+    
+    // MARK: - VIDEO ACTIONS
     
     func playVideoInCircle(){
         player = AVPlayer(URL: videoUrl)
@@ -141,25 +141,6 @@ class VideoPlayerViewController: CameraViewController, UIGestureRecognizerDelega
         })
     }
     
-    //MARK: - STREAMING METHODS
-    
-    func streamingPrepare(){
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let controller = storyboard.instantiateViewControllerWithIdentifier("subscribeView")
-        
-        let frameSize = self.view.bounds
-        subscriber?.view.layer.frame = frameSize
-        subscriber = controller as? SubcribeViewController
-        subscriber?.view.layer.frame = frameSize
-        
-        self.presentViewController(subscriber!, animated: true){
-            print("PLAYING STREAM")
-            dispatch_async(dispatch_get_main_queue()) {
-                self.subscriber?.start("testStream")
-            }
-        }
-    }
-    
     //MARK: - CAMERA VIEW delegate
     
     func startStopStream(isStart: Bool) {
@@ -187,7 +168,7 @@ class VideoPlayerViewController: CameraViewController, UIGestureRecognizerDelega
     
 }
 
-extension VideoPlayerViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
+extension ProfileViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 25
