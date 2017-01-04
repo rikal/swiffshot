@@ -39,7 +39,7 @@ class MainViewController: CameraViewController, CameraViewDelegate, CategoryCell
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        navigationController!.navigationBarHidden = false
+        navigationController!.navigationBarHidden = true
         navigationController!.navigationBar.barTintColor = UIColor.clearColor()
         navigationController!.navigationBar.setBackgroundImage(UIImage(), forBarMetrics: UIBarMetrics.Default)
         navigationController!.navigationBar.translucent = true

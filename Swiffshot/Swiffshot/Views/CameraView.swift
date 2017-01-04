@@ -105,9 +105,9 @@ class CameraView: UIView, UIGestureRecognizerDelegate {
                 try device.lockForConfiguration()
                 if (device.torchMode == AVCaptureTorchMode.On) {
                     device.torchMode = AVCaptureTorchMode.Off
-                    flashBtn.tintColor = UIColor.whiteColor()
+                    flashBtn.setImage(UIImage(named: "Flash"), forState: .Normal)
                 } else {
-                    flashBtn.tintColor = UIColor.yellowColor()
+                    flashBtn.setImage(UIImage(named: "NoFlash"), forState: .Normal)
                     do {
                         try device.setTorchModeOnWithLevel(1.0)
                     } catch {
