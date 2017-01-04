@@ -68,7 +68,7 @@ class MainViewController: CameraViewController, CameraViewDelegate, CategoryCell
     
     func moveToStream(isonline: Bool) {
         isStreamingOn = isonline
-        performSegueWithIdentifier("fromMainToVideo", sender: self)
+        performSegueWithIdentifier("toPlayer", sender: self)
     }
     
     //MARK: - HIDE/SHOW Collectionview
@@ -122,7 +122,7 @@ class MainViewController: CameraViewController, CameraViewDelegate, CategoryCell
 
     //MARK: - SEGUES
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "fromMainToVideo"{
+        if segue.identifier == "toPlayer"{
             let controller = segue.destinationViewController as! VideoPlayerViewController
             controller.isSubscribing = isStreamingOn
         }

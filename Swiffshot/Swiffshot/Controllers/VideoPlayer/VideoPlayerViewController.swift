@@ -2,153 +2,95 @@
 //  VideoPlayerViewController.swift
 //  Swiffshot
 //
-//  Created by Dmitry Kuklin on 27.11.16.
-//  Copyright © 2016 Dmitry Kuklin. All rights reserved.
+//  Created by Dmitry Kuklin on 04.01.17.
+//  Copyright © 2017 Dmitry Kuklin. All rights reserved.
 //
 
 import UIKit
 import AVKit
 import AVFoundation
 
-class VideoPlayerViewController: CameraViewController, UIGestureRecognizerDelegate, CameraViewDelegate {
+class VideoPlayerViewController: UIViewController, UIGestureRecognizerDelegate {
     
-    @IBOutlet weak var bottomViewContainer: UIView!
-    @IBOutlet weak var videoThumbs: UIView!
-    @IBOutlet weak var videoContainerView: UIView!
+    @IBOutlet weak var userNameBtn: UIButton!
     
     var player : AVPlayer?
     var videoLayer : AVPlayerLayer?
     var subscriber: SubcribeViewController?
     var isSubscribing: Bool = false
-
+    var isPaused = false
+    var playerViewController = PlayerViewController()
+    
     let videoUrl = NSURL(string: "http://clips.vorwaerts-gmbh.de/VfE_html5.mp4")!
-    let videosCollectionView: UICollectionView = {
-        let layout = UICollectionViewFlowLayout()
-        layout.scrollDirection = .Horizontal
-        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        collectionView.translatesAutoresizingMaskIntoConstraints = false
-        collectionView.backgroundColor = UIColor.clearColor()
-        return collectionView
-    }()
     
     //MARK: - SYSTEMS METHODS
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        addTapGesture()
+        addGestures()
         if isSubscribing {
             streamingPrepare()
         } else {
-            playerViewController.createVideoPlayer(videoUrl)
-            showPlayer(playerViewController)
+            createAndPlayVideo()
         }
     }
     
-    //MARK: - SYSTEMS METHODS
-    
     override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(true)
-        navigationController?.navigationBarHidden = false
-        navigationController?.navigationBar.barTintColor = UIColor.init(colorLiteralRed: 247.0/255.0, green: 247.0/255.0, blue: 247.0/255.0, alpha: 1.0)
+        super.viewWillAppear(animated)
+        navigationController?.navigationBarHidden = true
     }
     
-    override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(true)
-        cameraView.delegate = self
-    }
+    //MARK: - ADD GESTURES
     
-    override func viewWillDisappear(animated: Bool) {
-        self.navigationController?.navigationBarHidden = true
-    }
-    
-    override func viewDidLayoutSubviews() {
-        videoThumbs.layer.borderColor = UIColor.lightGrayColor().CGColor
-        videoThumbs.layer.borderWidth = 1.0
-        videoThumbs.layer.cornerRadius = videoThumbs.frame.size.height/2
-        videoThumbs.layer.masksToBounds  = true
-        videosCollectionView.frame = CGRect(x: 0, y: videoContainerView.frame.size.height + 64, width: self.view.frame.size.width, height: 150)
-    }
-    
-    //MARK: - ADD TAPGESTURE for collection view
-    
-    private func addTapGesture(){
-        self.view.addSubview(videosCollectionView)
-        videosCollectionView.delegate = self
-        videosCollectionView.dataSource = self
-        videosCollectionView.backgroundColor = UIColor.clearColor()
-        videosCollectionView.showsHorizontalScrollIndicator = false
+    private func addGestures(){
+        let shortTap = UITapGestureRecognizer(target: self, action: #selector(VideoPlayerViewController.shortTap(_:)))
+        let hold = UILongPressGestureRecognizer(target: self, action: #selector(VideoPlayerViewController.longTap(_:)))
+        let swipeDown = UISwipeGestureRecognizer(target: self, action: #selector(VideoPlayerViewController.downSwipe(_:)))
+        swipeDown.direction = UISwipeGestureRecognizerDirection.Down
         
-        videosCollectionView.registerNib(UINib(nibName: "LatestStreamCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "bigCell")
-        
-        let tap1 = UITapGestureRecognizer(target: self, action: #selector(VideoPlayerViewController.handleTap(_:)))
-        let tap2 = UITapGestureRecognizer(target: self, action: #selector(VideoPlayerViewController.handleTap(_:)))
-        tap1.delegate = self
-        tap2.delegate = self
-        videoContainerView.addGestureRecognizer(tap1)
-        bottomViewContainer.addGestureRecognizer(tap2)
-        
-        let tapToVideo = UITapGestureRecognizer(target: self, action: #selector(VideoPlayerViewController.videoTap(_:)))
-        tapToVideo.delegate = self
-        videoThumbs.addGestureRecognizer(tapToVideo)
+        self.view.addGestureRecognizer(swipeDown)
+        self.view.addGestureRecognizer(hold)
+        self.view.addGestureRecognizer(shortTap)
     }
     
-    @objc(videoTap:)
-    private func videoTap(sender: UITapGestureRecognizer){
-        stopVideoInCircle()
-        playerViewController.createVideoPlayer(videoUrl)
-        showPlayer(playerViewController)
-    }
-    
-    @objc(handleTap:)
-    private func handleTap(sender: UITapGestureRecognizer){
-        hideShowCollectionView(true)
-//        cameraView.showHideAlphaView(true)
-    }
-    
-    func playVideoInCircle(){
+    private func createAndPlayVideo(){
         player = AVPlayer(URL: videoUrl)
         player?.actionAtItemEnd = .None
         videoLayer = AVPlayerLayer(player: player)
-        videoLayer?.frame = videoThumbs.bounds
+        videoLayer?.frame = self.view.frame
         videoLayer?.videoGravity = AVLayerVideoGravityResizeAspectFill
-        videoThumbs.layer.addSublayer(videoLayer!)
+        self.view.layer.insertSublayer(videoLayer!, below: userNameBtn.layer)
         dispatch_async(dispatch_get_main_queue()) {
             self.player?.play()
         }
     }
     
-    func stopVideoInCircle(){
+    private func stopVideo(){
         player?.pause()
         player?.actionAtItemEnd = .None
         videoLayer?.removeFromSuperlayer()
     }
     
+    private func pauseVideo(){
+        dispatch_async(dispatch_get_main_queue()) {
+            self.player?.pause()
+        }
+    }
     
-    //MARK: - HIDE/SHOW Collectionview
-    
-    private func hideShowCollectionView(isHide: Bool){
-        var alpha: Float?
-        if isHide { alpha = 0.0 } else { alpha = 1.0 }
-        
-        if isHide { self.turnOnCamera() }
-        UIView.animateWithDuration(1.5, animations: {
-            self.videosCollectionView.alpha = CGFloat(alpha!)
-            self.videoContainerView.alpha = CGFloat(alpha!)
-            }, completion: { (finished) in
-                self.videosCollectionView.hidden = isHide
-                self.videoContainerView.hidden = isHide
-        })
+    private func playVideo(){
+        dispatch_async(dispatch_get_main_queue()) {
+            self.player?.play()
+        }
     }
     
     //MARK: - STREAMING METHODS
     
-    func streamingPrepare(){
+    private func streamingPrepare(){
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let controller = storyboard.instantiateViewControllerWithIdentifier("subscribeView")
         
         let frameSize = self.view.bounds
-        subscriber?.view.layer.frame = frameSize
         subscriber = controller as? SubcribeViewController
         subscriber?.view.layer.frame = frameSize
         
@@ -160,69 +102,30 @@ class VideoPlayerViewController: CameraViewController, UIGestureRecognizerDelega
         }
     }
     
-    //MARK: - CAMERA VIEW delegate
+    //MARK: - GESTURES METHODS
     
-    func startStopStream(isStart: Bool) {
-        isStart ? goStreaming() : stopStreaming()
+    @objc(longTap:)
+    private func longTap(sender: UILongPressGestureRecognizer){
+        pauseVideo()
+        isPaused = true
     }
     
-    func startStopRecordingVideo(isStart: Bool){
-        srartStopRecord(isStart)
+    @objc(downSwipe:)
+    private func downSwipe(sender: UISwipeGestureRecognizer){
+        stopVideo()
+        self.navigationController?.popViewControllerAnimated(true)
     }
     
-    func cancelCameraView(){
-        hideShowCollectionView(false)
-        removePreviewLayer()
-    }
-    
-    func changeCamera(){
-        removePreviewLayer()
-        self.isBackCamera = !self.isBackCamera
-        turnOnCamera()
-    }
-    
-    func chooseVideo(){
-        loadVideo()
-    }
-    
-}
-
-extension VideoPlayerViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
-    
-    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 25
-    }
-    
-    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        
-        var cell: UICollectionViewCell?
-        let bigcell = collectionView.dequeueReusableCellWithReuseIdentifier("bigCell", forIndexPath: indexPath) as! LatestStreamCollectionViewCell
-        indexPath.row == 0 ? bigcell.fillCell(true) : bigcell.fillCell(false)
-        cell = bigcell
-        return cell!
-    }
-    
-    func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {
-        var header = UICollectionReusableView()
-        
-        if kind == UICollectionElementKindSectionHeader{
-            
-            let headerView = collectionView.dequeueReusableSupplementaryViewOfKind(kind, withReuseIdentifier: "profileHeaderView", forIndexPath: indexPath) as! ProfileHeaderView
-            headerView.fillHeader()
-            
-            header = headerView
-            
+    @objc(shortTap:)
+    private func shortTap(sender: UITapGestureRecognizer){
+        if isPaused {
+            playVideo()
+            isPaused = false
         }
-        
-        return header
     }
     
-    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
-        return CGSize(width: 100, height: 120)
-    }
-    
-    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        stopVideoInCircle()
-        playVideoInCircle()
+    @IBAction func userNamePressed(sender: AnyObject) {
+        stopVideo()
+        performSegueWithIdentifier("toProfile", sender: self)
     }
 }

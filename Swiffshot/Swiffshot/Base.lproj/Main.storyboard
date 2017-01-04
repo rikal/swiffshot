@@ -7,6 +7,7 @@
     <customFonts key="customFonts">
         <mutableArray key="Blippo Black D.ttf">
             <string>BlippoBlaD</string>
+            <string>BlippoBlaD</string>
         </mutableArray>
     </customFonts>
     <scenes>
@@ -720,13 +721,56 @@ like to reset your password</string>
                         <outlet property="collectionView" destination="7oV-yp-2IJ" id="jD4-HG-ieF"/>
                         <outlet property="topView" destination="Ic2-tb-fap" id="2OJ-UR-qVL"/>
                         <segue destination="iNZ-Vp-gYR" kind="modal" identifier="fromMainToAuth" id="aI1-sl-afV"/>
-                        <segue destination="noW-7V-AV4" kind="push" identifier="fromMainToVideo" id="uJj-Rr-wMG"/>
                         <segue destination="k0L-dT-x5R" kind="push" identifier="fromMainToExpandable" id="Tkw-da-Zwk"/>
+                        <segue destination="0KR-BJ-1ai" kind="push" identifier="toPlayer" id="clV-fe-hR6"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BI0-jI-UAs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="947" y="1214"/>
+        </scene>
+        <!--Video Player View Controller-->
+        <scene sceneID="Nx5-3K-Ag5">
+            <objects>
+                <viewController id="0KR-BJ-1ai" customClass="VideoPlayerViewController" customModule="Swiffshot" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="1WV-v1-abS"/>
+                        <viewControllerLayoutGuide type="bottom" id="OV4-GY-8zp"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="JOB-38-XeM">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cha-aQ-JQr">
+                                <rect key="frame" x="20" y="20" width="280" height="34"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="34" id="UEO-yc-TS2"/>
+                                    <constraint firstAttribute="width" constant="280" id="wYz-w2-Xs7"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="BlippoBlaD" family="BlippoBlaD" pointSize="17"/>
+                                <state key="normal" title="UserName">
+                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                </state>
+                                <connections>
+                                    <action selector="userNamePressed:" destination="0KR-BJ-1ai" eventType="touchUpInside" id="uTb-mG-OA1"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.96078431369999995" green="0.98823529409999999" blue="0.98823529409999999" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="Cha-aQ-JQr" firstAttribute="centerX" secondItem="JOB-38-XeM" secondAttribute="centerX" id="Gst-Jt-fSZ"/>
+                            <constraint firstItem="Cha-aQ-JQr" firstAttribute="top" secondItem="1WV-v1-abS" secondAttribute="bottom" id="iH1-zJ-Cin"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="hfr-be-qM4"/>
+                    <connections>
+                        <outlet property="userNameBtn" destination="Cha-aQ-JQr" id="sp7-Dc-Yai"/>
+                        <segue destination="noW-7V-AV4" kind="push" identifier="toProfile" id="Xjr-3g-dIl"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fdQ-gB-wZU" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1341" y="1214"/>
         </scene>
         <!--Publish View Controller-->
         <scene sceneID="fWs-6h-tmJ">
@@ -792,10 +836,10 @@ like to reset your password</string>
             </objects>
             <point key="canvasLocation" x="950" y="2083"/>
         </scene>
-        <!--Video Player View Controller-->
+        <!--Profile View Controller-->
         <scene sceneID="3nX-Uj-blB">
             <objects>
-                <viewController id="noW-7V-AV4" customClass="VideoPlayerViewController" customModule="Swiffshot" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="noW-7V-AV4" customClass="ProfileViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Ss1-b4-QC2"/>
                         <viewControllerLayoutGuide type="bottom" id="kHI-kp-F2d"/>
@@ -804,21 +848,9 @@ like to reset your password</string>
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Pzo-ck-4rc">
-                                <rect key="frame" x="0.0" y="274" width="320" height="294"/>
-                                <color key="backgroundColor" red="0.96078431369999995" green="0.98823529409999999" blue="0.98823529409999999" alpha="1" colorSpace="calibratedRGB"/>
-                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kdY-3u-DOg">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="274"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mQM-VK-VlK">
-                                        <rect key="frame" x="80" y="52" width="160" height="160"/>
-                                        <color key="backgroundColor" red="0.94117647059999998" green="0.94117647059999998" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="160" id="Nx9-0l-rIh"/>
-                                            <constraint firstAttribute="width" constant="160" id="W6X-x0-Oz6"/>
-                                        </constraints>
-                                    </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="userName" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NDL-0C-2ir">
                                         <rect key="frame" x="118" y="220" width="84" height="21"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
@@ -831,6 +863,14 @@ like to reset your password</string>
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mQM-VK-VlK">
+                                        <rect key="frame" x="80" y="52" width="160" height="160"/>
+                                        <color key="backgroundColor" red="0.94117647059999998" green="0.94117647059999998" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="160" id="Nx9-0l-rIh"/>
+                                            <constraint firstAttribute="width" constant="160" id="W6X-x0-Oz6"/>
+                                        </constraints>
+                                    </view>
                                 </subviews>
                                 <color key="backgroundColor" red="0.96078431369999995" green="0.98823529409999999" blue="0.98823529409999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
@@ -841,6 +881,10 @@ like to reset your password</string>
                                     <constraint firstItem="mQM-VK-VlK" firstAttribute="centerX" secondItem="kdY-3u-DOg" secondAttribute="centerX" id="unj-8v-d4X"/>
                                     <constraint firstItem="NDL-0C-2ir" firstAttribute="centerX" secondItem="kdY-3u-DOg" secondAttribute="centerX" id="v6N-fu-gpL"/>
                                 </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Pzo-ck-4rc">
+                                <rect key="frame" x="0.0" y="274" width="320" height="294"/>
+                                <color key="backgroundColor" red="0.96078431369999995" green="0.98823529409999999" blue="0.98823529409999999" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
                         </subviews>
                         <color key="backgroundColor" red="0.96110491071428572" green="0.9882352941176471" blue="0.9882352941176471" alpha="1" colorSpace="calibratedRGB"/>
@@ -856,15 +900,10 @@ like to reset your password</string>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Wnl-fe-KNC"/>
-                    <connections>
-                        <outlet property="bottomViewContainer" destination="Pzo-ck-4rc" id="vkP-GZ-oUd"/>
-                        <outlet property="videoContainerView" destination="kdY-3u-DOg" id="qBv-vr-M4I"/>
-                        <outlet property="videoThumbs" destination="mQM-VK-VlK" id="crl-hB-qh7"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Q2H-vy-LkD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1442" y="1216"/>
+            <point key="canvasLocation" x="1757" y="1216"/>
         </scene>
         <!--Subcribe View Controller-->
         <scene sceneID="k3m-XY-jLj">
@@ -883,7 +922,7 @@ like to reset your password</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dbR-D9-BQU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1895.625" y="1216.1633333333332"/>
+            <point key="canvasLocation" x="2319" y="1168"/>
         </scene>
         <!--No Nav Bar Navigation Controller-->
         <scene sceneID="X3I-NM-za8">

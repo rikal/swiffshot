@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0A2879061E1D650100D68DEE /* VideoPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A2879051E1D650100D68DEE /* VideoPlayerViewController.swift */; };
 		0A4D1BAE1DF0762D00BF7CCE /* R5Streaming.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A4D1BAD1DF0762D00BF7CCE /* R5Streaming.framework */; };
 		0A4D1BB01DF09C3E00BF7CCE /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A4D1BAF1DF09C3E00BF7CCE /* CFNetwork.framework */; };
 		0A4D1BB21DF09C5200BF7CCE /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A4D1BB11DF09C5200BF7CCE /* AudioToolbox.framework */; };
@@ -26,7 +27,7 @@
 		0A6322591DE79FF7006A0644 /* CameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A6322581DE79FF7006A0644 /* CameraView.swift */; };
 		0A63225B1DE7A007006A0644 /* View.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A63225A1DE7A007006A0644 /* View.xib */; };
 		0A63225F1DE8421D006A0644 /* SmallCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A63225E1DE8421D006A0644 /* SmallCollectionViewCell.swift */; };
-		0A6322641DEB41EA006A0644 /* VideoPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A6322631DEB41EA006A0644 /* VideoPlayerViewController.swift */; };
+		0A6322641DEB41EA006A0644 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A6322631DEB41EA006A0644 /* ProfileViewController.swift */; };
 		0A6322681DEB5798006A0644 /* ProfileHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A6322671DEB5798006A0644 /* ProfileHeaderView.swift */; };
 		0A63226A1DEB57C0006A0644 /* ProfilesVideosCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A6322691DEB57C0006A0644 /* ProfilesVideosCollectionViewCell.swift */; };
 		0A6322701DEDE8EB006A0644 /* CategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A63226F1DEDE8EB006A0644 /* CategoryCell.swift */; };
@@ -62,6 +63,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0A2879051E1D650100D68DEE /* VideoPlayerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VideoPlayerViewController.swift; path = Controllers/VideoPlayer/VideoPlayerViewController.swift; sourceTree = "<group>"; };
 		0A4D1BAD1DF0762D00BF7CCE /* R5Streaming.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = R5Streaming.framework; sourceTree = "<group>"; };
 		0A4D1BAF1DF09C3E00BF7CCE /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		0A4D1BB11DF09C5200BF7CCE /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
@@ -81,7 +83,7 @@
 		0A6322581DE79FF7006A0644 /* CameraView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CameraView.swift; path = Views/CameraView.swift; sourceTree = "<group>"; };
 		0A63225A1DE7A007006A0644 /* View.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = View.xib; path = Views/View.xib; sourceTree = "<group>"; };
 		0A63225E1DE8421D006A0644 /* SmallCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SmallCollectionViewCell.swift; path = Controllers/MainScreen/SmallCollectionViewCell.swift; sourceTree = "<group>"; };
-		0A6322631DEB41EA006A0644 /* VideoPlayerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VideoPlayerViewController.swift; path = Controllers/VideoPlayer/VideoPlayerViewController.swift; sourceTree = "<group>"; };
+		0A6322631DEB41EA006A0644 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProfileViewController.swift; path = Controllers/VideoPlayer/ProfileViewController.swift; sourceTree = "<group>"; };
 		0A6322671DEB5798006A0644 /* ProfileHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProfileHeaderView.swift; path = Controllers/VideoPlayer/ProfileHeaderView.swift; sourceTree = "<group>"; };
 		0A6322691DEB57C0006A0644 /* ProfilesVideosCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProfilesVideosCollectionViewCell.swift; path = Controllers/VideoPlayer/ProfilesVideosCollectionViewCell.swift; sourceTree = "<group>"; };
 		0A63226F1DEDE8EB006A0644 /* CategoryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CategoryCell.swift; path = Controllers/MainScreen/CategoryCell.swift; sourceTree = "<group>"; };
@@ -181,10 +183,11 @@
 		0A6322621DEB41A7006A0644 /* VideoPlayer */ = {
 			isa = PBXGroup;
 			children = (
-				0A6322631DEB41EA006A0644 /* VideoPlayerViewController.swift */,
+				0A6322631DEB41EA006A0644 /* ProfileViewController.swift */,
 				0A6322671DEB5798006A0644 /* ProfileHeaderView.swift */,
 				0A6322691DEB57C0006A0644 /* ProfilesVideosCollectionViewCell.swift */,
 				0ACD26EA1E0AC2C900C0DD82 /* PlayerViewController.swift */,
+				0A2879051E1D650100D68DEE /* VideoPlayerViewController.swift */,
 			);
 			name = VideoPlayer;
 			sourceTree = "<group>";
@@ -472,13 +475,14 @@
 				0A9D4F0B1E0D50DA007F9178 /* BirthdayViewController.swift in Sources */,
 				0A63227B1DEE43CD006A0644 /* ExpandedViewController.swift in Sources */,
 				0AA596091DE4E9CB0005336D /* Defaults.swift in Sources */,
+				0A2879061E1D650100D68DEE /* VideoPlayerViewController.swift in Sources */,
 				0A9D4F031E0C015D007F9178 /* AuthMainViewController.swift in Sources */,
 				0A9D4F071E0D39CF007F9178 /* FirstStepSignUpViewController.swift in Sources */,
 				0A63226A1DEB57C0006A0644 /* ProfilesVideosCollectionViewCell.swift in Sources */,
 				0AD678E61E12C4F9007E2AD3 /* GreetingsViewController.swift in Sources */,
 				0A4D1BC71DF0A08300BF7CCE /* PublishViewController.swift in Sources */,
 				0ABB904F1DE44C08009E39E5 /* AuthorizationViewController.swift in Sources */,
-				0A6322641DEB41EA006A0644 /* VideoPlayerViewController.swift in Sources */,
+				0A6322641DEB41EA006A0644 /* ProfileViewController.swift in Sources */,
 				0ABB902F1DE422C2009E39E5 /* AppDelegate.swift in Sources */,
 				0AD678E41E1135B3007E2AD3 /* VerificationViewController.swift in Sources */,
 				0A6322771DEE22CD006A0644 /* MainHeader.swift in Sources */,
