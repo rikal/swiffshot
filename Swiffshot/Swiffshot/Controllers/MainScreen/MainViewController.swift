@@ -12,6 +12,7 @@ class MainViewController: CameraViewController, CameraViewDelegate, CategoryCell
 
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var topView: UIView!
+    @IBOutlet weak var allFriendsBtn: UIButton!
     
     var latestVideos = [String]()
     var trendingVideos = [String]()
@@ -120,6 +121,12 @@ class MainViewController: CameraViewController, CameraViewDelegate, CategoryCell
         performSegueWithIdentifier("fromMainToExpandable", sender: self)
     }
 
+    //MARK: - IB ACTIONS
+    
+    @IBAction func allFriendsPressed(sender: AnyObject) {
+        performSegueWithIdentifier("fromMainToExpandable", sender: self)
+    }
+    
     //MARK: - SEGUES
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "toPlayer"{

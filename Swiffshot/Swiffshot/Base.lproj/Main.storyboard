@@ -673,11 +673,24 @@ like to reset your password</string>
                                             <constraint firstAttribute="height" constant="30" id="mZc-xK-mZ6"/>
                                         </constraints>
                                     </imageView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QKx-N4-0ob">
+                                        <rect key="frame" x="266" y="27" width="30" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="30" id="Pzs-Sv-AYP"/>
+                                            <constraint firstAttribute="height" constant="30" id="cjC-Ie-Olq"/>
+                                        </constraints>
+                                        <state key="normal" image="Logo"/>
+                                        <connections>
+                                            <action selector="allFriendsPressed:" destination="m8y-4k-Z6C" eventType="touchUpInside" id="aIU-hs-Ijv"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.96078431369999995" green="0.98823529409999999" blue="0.98823529409999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstItem="dAR-c9-x4S" firstAttribute="top" secondItem="Ic2-tb-fap" secondAttribute="top" constant="20" id="9Vx-0N-EmG"/>
                                     <constraint firstItem="Oiu-A1-gT3" firstAttribute="leading" secondItem="Ic2-tb-fap" secondAttribute="leading" id="9iV-KS-f2j"/>
+                                    <constraint firstAttribute="trailing" secondItem="QKx-N4-0ob" secondAttribute="trailing" constant="24" id="AnM-v7-7MB"/>
+                                    <constraint firstItem="QKx-N4-0ob" firstAttribute="centerY" secondItem="dAR-c9-x4S" secondAttribute="centerY" id="Ch4-eg-wAx"/>
                                     <constraint firstAttribute="trailing" secondItem="Oiu-A1-gT3" secondAttribute="trailing" id="IHv-Z4-xvK"/>
                                     <constraint firstItem="dAR-c9-x4S" firstAttribute="leading" secondItem="Ic2-tb-fap" secondAttribute="leading" id="Nxa-jj-DW3"/>
                                     <constraint firstAttribute="trailing" secondItem="dAR-c9-x4S" secondAttribute="trailing" id="T4m-on-dg0"/>
@@ -718,6 +731,7 @@ like to reset your password</string>
                     <navigationItem key="navigationItem" id="P4M-CM-7Yj"/>
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
+                        <outlet property="allFriendsBtn" destination="QKx-N4-0ob" id="3KS-nZ-JS6"/>
                         <outlet property="collectionView" destination="7oV-yp-2IJ" id="jD4-HG-ieF"/>
                         <outlet property="topView" destination="Ic2-tb-fap" id="2OJ-UR-qVL"/>
                         <segue destination="iNZ-Vp-gYR" kind="modal" identifier="fromMainToAuth" id="aI1-sl-afV"/>
@@ -819,7 +833,7 @@ like to reset your password</string>
                                 </connections>
                             </collectionView>
                         </subviews>
-                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.96078431369999995" green="0.98823529409999999" blue="0.98823529409999999" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="2KS-Wd-jef" firstAttribute="leading" secondItem="czG-Qg-iKk" secondAttribute="leading" id="RK1-Zl-E4c"/>
                             <constraint firstItem="2KS-Wd-jef" firstAttribute="top" secondItem="czG-Qg-iKk" secondAttribute="top" id="ieE-5V-Cqo"/>
@@ -1614,6 +1628,7 @@ like to reset your password</string>
     </scenes>
     <resources>
         <image name="CloseBtn" width="334" height="334"/>
+        <image name="Logo" width="256" height="256"/>
         <image name="Logo2" width="444" height="441"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
