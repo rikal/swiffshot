@@ -11,6 +11,9 @@ import UIKit
 class ExpandedViewController: UIViewController {
 
     @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var addGroupBtn: UIButton!
+    @IBOutlet weak var addFriendBtn: UIButton!
+    @IBOutlet weak var backBtn: UIButton!
     
     var titleLbl: String?
     
@@ -23,10 +26,7 @@ class ExpandedViewController: UIViewController {
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(true)
-        navigationController?.navigationBarHidden = false
-        navigationController?.navigationBar.barTintColor = UIColor.init(colorLiteralRed: 247.0/255.0, green: 247.0/255.0, blue: 247.0/255.0, alpha: 1.0)
-        //TODO: Send a name from previous screen
-        title = "CATEGORY NAME"
+        navigationController?.navigationBarHidden = true
     }
 
     override func viewWillDisappear(animated: Bool) {
@@ -36,6 +36,27 @@ class ExpandedViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    override func viewDidLayoutSubviews() {
+        addGroupBtn.layer.borderWidth = 1.0
+        addGroupBtn.layer.borderColor = UIColor.lightGrayColor().CGColor
+        addFriendBtn.layer.borderWidth = 1.0
+        addFriendBtn.layer.borderColor = UIColor.lightGrayColor().CGColor
+        addGroupBtn.layer.cornerRadius = 5.0
+        addFriendBtn.layer.cornerRadius = 5.0
+    }
+    
+    //MARK: - IB ACTIONS
+    
+    @IBAction func backBtnPressed(sender: AnyObject) {
+        self.navigationController?.popViewControllerAnimated(true)
+    }
+    
+    @IBAction func addGroupBtnPressed(sender: AnyObject) {
+    }
+    
+    @IBAction func addFriendBtnPressed(sender: AnyObject) {
     }
 
 }
