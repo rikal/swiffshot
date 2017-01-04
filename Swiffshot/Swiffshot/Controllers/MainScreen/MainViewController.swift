@@ -62,8 +62,8 @@ class MainViewController: CameraViewController, CameraViewDelegate, CategoryCell
     //MARK: - CATEGORY Cell delegate
     
     func moveToCamera() {
+        navigationController!.navigationBarHidden = true
         hideShowCollectionView(true)
-//        cameraView.showHideAlphaView(true)
     }
     
     func moveToStream(isonline: Bool) {
@@ -100,8 +100,8 @@ class MainViewController: CameraViewController, CameraViewDelegate, CategoryCell
     }
     
     func cancelCameraView(){
+        navigationController!.navigationBarHidden = false
         hideShowCollectionView(false)
-//        removePreviewLayer()
     }
     
     func changeCamera(){

@@ -21,17 +21,11 @@ class CameraView: UIView, UIGestureRecognizerDelegate {
 
     @IBOutlet weak var flashBtn: UIButton!
     @IBOutlet weak var screenView: UIView!
-    @IBOutlet weak var leftSecBtn: UILabel!
     @IBOutlet weak var shootBtn: UIButton!
     @IBOutlet weak var changeCameraBtn: UIButton!
     @IBOutlet weak var cancelBtn: UIButton!
     @IBOutlet weak var alphaView: UIView!
     @IBOutlet weak var shootBtnContainerView: UIView!
-//    @IBOutlet weak var stopBtn: UIButton!
-    @IBOutlet weak var progressContainerView: UIView!
-    @IBOutlet weak var progressBarView: UIView!
-    @IBOutlet weak var useVideoBtn: UIButton!
-    @IBOutlet weak var progressBarWidthConstraint: NSLayoutConstraint!
     
     var delegate : CameraViewDelegate?
     var isRecording : Bool = false
@@ -97,7 +91,6 @@ class CameraView: UIView, UIGestureRecognizerDelegate {
     }
 
     @IBAction func cancelPressed(sender: AnyObject) {
-//        showHideAlphaView(false)
         delegate?.cancelCameraView()
     }
     
@@ -112,7 +105,9 @@ class CameraView: UIView, UIGestureRecognizerDelegate {
                 try device.lockForConfiguration()
                 if (device.torchMode == AVCaptureTorchMode.On) {
                     device.torchMode = AVCaptureTorchMode.Off
+                    flashBtn.tintColor = UIColor.whiteColor()
                 } else {
+                    flashBtn.tintColor = UIColor.yellowColor()
                     do {
                         try device.setTorchModeOnWithLevel(1.0)
                     } catch {
