@@ -29,16 +29,17 @@ class VideoPlayerViewController: UIViewController, UIGestureRecognizerDelegate {
         super.viewDidLoad()
         
         addGestures()
-        if isSubscribing {
-            streamingPrepare()
-        } else {
-            createAndPlayVideo()
-        }
     }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.navigationBarHidden = true
+        
+        if isSubscribing {
+            streamingPrepare()
+        } else {
+            createAndPlayVideo()
+        }
     }
     
     //MARK: - ADD GESTURES

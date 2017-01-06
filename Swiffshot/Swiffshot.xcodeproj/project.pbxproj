@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		0A2879061E1D650100D68DEE /* VideoPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A2879051E1D650100D68DEE /* VideoPlayerViewController.swift */; };
+		0A28790A1E1FBB2E00D68DEE /* ProfileVideosCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A2879091E1FBB2E00D68DEE /* ProfileVideosCell.swift */; };
+		0A28790C1E1FBB5400D68DEE /* ProfileVideosCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A28790B1E1FBB5400D68DEE /* ProfileVideosCell.xib */; };
 		0A4D1BAE1DF0762D00BF7CCE /* R5Streaming.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A4D1BAD1DF0762D00BF7CCE /* R5Streaming.framework */; };
 		0A4D1BB01DF09C3E00BF7CCE /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A4D1BAF1DF09C3E00BF7CCE /* CFNetwork.framework */; };
 		0A4D1BB21DF09C5200BF7CCE /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A4D1BB11DF09C5200BF7CCE /* AudioToolbox.framework */; };
@@ -64,6 +66,8 @@
 
 /* Begin PBXFileReference section */
 		0A2879051E1D650100D68DEE /* VideoPlayerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VideoPlayerViewController.swift; path = Controllers/VideoPlayer/VideoPlayerViewController.swift; sourceTree = "<group>"; };
+		0A2879091E1FBB2E00D68DEE /* ProfileVideosCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProfileVideosCell.swift; path = Controllers/VideoPlayer/ProfileVideosCell.swift; sourceTree = "<group>"; };
+		0A28790B1E1FBB5400D68DEE /* ProfileVideosCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ProfileVideosCell.xib; path = Controllers/VideoPlayer/ProfileVideosCell.xib; sourceTree = "<group>"; };
 		0A4D1BAD1DF0762D00BF7CCE /* R5Streaming.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = R5Streaming.framework; sourceTree = "<group>"; };
 		0A4D1BAF1DF09C3E00BF7CCE /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		0A4D1BB11DF09C5200BF7CCE /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
@@ -188,6 +192,8 @@
 				0A6322691DEB57C0006A0644 /* ProfilesVideosCollectionViewCell.swift */,
 				0ACD26EA1E0AC2C900C0DD82 /* PlayerViewController.swift */,
 				0A2879051E1D650100D68DEE /* VideoPlayerViewController.swift */,
+				0A2879091E1FBB2E00D68DEE /* ProfileVideosCell.swift */,
+				0A28790B1E1FBB5400D68DEE /* ProfileVideosCell.xib */,
 			);
 			name = VideoPlayer;
 			sourceTree = "<group>";
@@ -391,6 +397,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0A28790C1E1FBB5400D68DEE /* ProfileVideosCell.xib in Resources */,
 				0A63225B1DE7A007006A0644 /* View.xib in Resources */,
 				0ABB90391DE422C2009E39E5 /* LaunchScreen.storyboard in Resources */,
 				0ABB90361DE422C2009E39E5 /* Assets.xcassets in Resources */,
@@ -472,6 +479,7 @@
 				0AD678E81E13D9F3007E2AD3 /* LoginViewController.swift in Sources */,
 				0A9D4F011E0BF9F2007F9178 /* ErrorModel.swift in Sources */,
 				0A6322561DE7987A006A0644 /* CameraViewController.swift in Sources */,
+				0A28790A1E1FBB2E00D68DEE /* ProfileVideosCell.swift in Sources */,
 				0A9D4F0B1E0D50DA007F9178 /* BirthdayViewController.swift in Sources */,
 				0A63227B1DEE43CD006A0644 /* ExpandedViewController.swift in Sources */,
 				0AA596091DE4E9CB0005336D /* Defaults.swift in Sources */,

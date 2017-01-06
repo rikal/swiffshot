@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="profileVideosCell" id="Qk0-cl-RDb" customClass="ProfileVideosCell" customModule="Swiffshot" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="100" height="140"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="100" height="140"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="80x-0K-bLD">
+                        <rect key="frame" x="0.0" y="0.0" width="100" height="140"/>
+                        <color key="backgroundColor" red="0.94117647059999998" green="0.94117647059999998" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
+                    </view>
+                </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            </view>
+            <constraints>
+                <constraint firstItem="80x-0K-bLD" firstAttribute="leading" secondItem="Qk0-cl-RDb" secondAttribute="leading" id="Pka-Md-TTD"/>
+                <constraint firstAttribute="bottom" secondItem="80x-0K-bLD" secondAttribute="bottom" id="f6v-Q7-TZo"/>
+                <constraint firstAttribute="trailing" secondItem="80x-0K-bLD" secondAttribute="trailing" id="mnC-Q0-z5H"/>
+                <constraint firstItem="80x-0K-bLD" firstAttribute="top" secondItem="Qk0-cl-RDb" secondAttribute="top" id="yGe-Mv-LjO"/>
+            </constraints>
+            <size key="customSize" width="100" height="152"/>
+            <connections>
+                <outlet property="bgView" destination="80x-0K-bLD" id="ynX-8I-Uzk"/>
+            </connections>
+            <point key="canvasLocation" x="164" y="205"/>
+        </collectionViewCell>
+    </objects>
+</document>

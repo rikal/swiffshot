@@ -12,9 +12,11 @@ import AVFoundation
 
 class ProfileViewController: CameraViewController, UIGestureRecognizerDelegate, CameraViewDelegate {
     
-    @IBOutlet weak var bottomViewContainer: UIView!
-    @IBOutlet weak var videoThumbs: UIView!
-    @IBOutlet weak var videoContainerView: UIView!
+    @IBOutlet weak var bottomContainer: UIView!
+    @IBOutlet weak var videoPreview: UIView!
+    @IBOutlet weak var videoContainer: UIView!
+    @IBOutlet weak var userNameLbl: UILabel!
+    @IBOutlet weak var minutesAwayLbl: UILabel!
     
     var player : AVPlayer?
     var videoLayer : AVPlayerLayer?
@@ -24,7 +26,7 @@ class ProfileViewController: CameraViewController, UIGestureRecognizerDelegate, 
     let videoUrl = NSURL(string: "http://clips.vorwaerts-gmbh.de/VfE_html5.mp4")!
     let videosCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
-        layout.scrollDirection = .Horizontal
+        layout.scrollDirection = .Vertical
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.backgroundColor = UIColor.clearColor()
@@ -37,18 +39,12 @@ class ProfileViewController: CameraViewController, UIGestureRecognizerDelegate, 
         super.viewDidLoad()
         
         addTapGesture()
-//        if isSubscribing {
-//            streamingPrepare()
-//        } else {
-//            playerViewController.createVideoPlayer(videoUrl)
-//            showPlayer(playerViewController)
-//        }
+        addCollectionView()
     }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        navigationController?.navigationBarHidden = false
-        navigationController?.navigationBar.barTintColor = UIColor.init(colorLiteralRed: 247.0/255.0, green: 247.0/255.0, blue: 247.0/255.0, alpha: 1.0)
+        navigationController?.navigationBarHidden = true
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -61,42 +57,42 @@ class ProfileViewController: CameraViewController, UIGestureRecognizerDelegate, 
     }
     
     override func viewDidLayoutSubviews() {
-        videoThumbs.layer.borderColor = UIColor.lightGrayColor().CGColor
-        videoThumbs.layer.borderWidth = 1.0
-        videoThumbs.layer.cornerRadius = videoThumbs.frame.size.height/2
-        videoThumbs.layer.masksToBounds  = true
-        videosCollectionView.frame = CGRect(x: 0, y: videoContainerView.frame.size.height + 64, width: self.view.frame.size.width, height: 150)
+        videoPreview.layer.borderColor = UIColor.lightGrayColor().CGColor
+        videoPreview.layer.borderWidth = 1.0
+        videoPreview.layer.cornerRadius = videoPreview.frame.size.height/2
+        videoPreview.layer.masksToBounds  = true
+        videosCollectionView.frame = CGRect(x: 0, y: 10, width: self.view.frame.size.width, height: bottomContainer.frame.size.height - 10)
     }
     
     //MARK: - ADD TAPGESTURE for collection view
-    
-    private func addTapGesture(){
-        self.view.addSubview(videosCollectionView)
+    private func addCollectionView(){
+        bottomContainer.addSubview(videosCollectionView)
         videosCollectionView.delegate = self
         videosCollectionView.dataSource = self
         videosCollectionView.backgroundColor = UIColor.clearColor()
         videosCollectionView.showsHorizontalScrollIndicator = false
         
-        videosCollectionView.registerNib(UINib(nibName: "LatestStreamCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "bigCell")
-        
+        videosCollectionView.registerNib(UINib(nibName: "ProfileVideosCell", bundle: nil), forCellWithReuseIdentifier: "profileVideosCell")
+    }
+    
+    private func addTapGesture(){
         let tap1 = UITapGestureRecognizer(target: self, action: #selector(ProfileViewController.handleTap(_:)))
         let tap2 = UITapGestureRecognizer(target: self, action: #selector(ProfileViewController.handleTap(_:)))
         tap1.delegate = self
         tap2.delegate = self
-        videoContainerView.addGestureRecognizer(tap1)
-        bottomViewContainer.addGestureRecognizer(tap2)
+        videoContainer.addGestureRecognizer(tap1)
+        bottomContainer.addGestureRecognizer(tap2)
         
         let tapToVideo = UITapGestureRecognizer(target: self, action: #selector(ProfileViewController.videoTap(_:)))
         tapToVideo.delegate = self
-        videoThumbs.addGestureRecognizer(tapToVideo)
+        videoPreview.addGestureRecognizer(tapToVideo)
     }
     
     @objc(videoTap:)
     private func videoTap(sender: UITapGestureRecognizer){
         stopVideoInCircle()
-        playerViewController.createVideoPlayer(videoUrl)
-        //TODO:
-//        showPlayer(playerViewController)
+        //TODO: SEND NEW URL
+        self.navigationController?.popViewControllerAnimated(true)
     }
     
     @objc(handleTap:)
@@ -110,9 +106,9 @@ class ProfileViewController: CameraViewController, UIGestureRecognizerDelegate, 
         player = AVPlayer(URL: videoUrl)
         player?.actionAtItemEnd = .None
         videoLayer = AVPlayerLayer(player: player)
-        videoLayer?.frame = videoThumbs.bounds
+        videoLayer?.frame = videoPreview.bounds
         videoLayer?.videoGravity = AVLayerVideoGravityResizeAspectFill
-        videoThumbs.layer.addSublayer(videoLayer!)
+        videoPreview.layer.addSublayer(videoLayer!)
         dispatch_async(dispatch_get_main_queue()) {
             self.player?.play()
         }
@@ -133,11 +129,11 @@ class ProfileViewController: CameraViewController, UIGestureRecognizerDelegate, 
         
         if isHide { self.turnOnCamera() }
         UIView.animateWithDuration(1.5, animations: {
-            self.videosCollectionView.alpha = CGFloat(alpha!)
-            self.videoContainerView.alpha = CGFloat(alpha!)
+            self.bottomContainer.alpha = CGFloat(alpha!)
+            self.videoContainer.alpha = CGFloat(alpha!)
             }, completion: { (finished) in
-                self.videosCollectionView.hidden = isHide
-                self.videoContainerView.hidden = isHide
+                self.bottomContainer.hidden = isHide
+                self.videoContainer.hidden = isHide
         })
     }
     
@@ -166,6 +162,14 @@ class ProfileViewController: CameraViewController, UIGestureRecognizerDelegate, 
         loadVideo()
     }
     
+    //MARK: - IB ACTIONS
+    
+    @IBAction func backPressed(sender: AnyObject) {
+        self.navigationController?.popViewControllerAnimated(true)
+    }
+    
+    @IBAction func settingsPressed(sender: AnyObject) {
+    }
 }
 
 extension ProfileViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
@@ -177,29 +181,19 @@ extension ProfileViewController: UICollectionViewDelegate, UICollectionViewDataS
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         
         var cell: UICollectionViewCell?
-        let bigcell = collectionView.dequeueReusableCellWithReuseIdentifier("bigCell", forIndexPath: indexPath) as! LatestStreamCollectionViewCell
-        indexPath.row == 0 ? bigcell.fillCell(true) : bigcell.fillCell(false)
-        cell = bigcell
+        let profileCell = collectionView.dequeueReusableCellWithReuseIdentifier("profileVideosCell", forIndexPath: indexPath) as! ProfileVideosCell
+        profileCell.fillCell(false)
+        cell = profileCell
         return cell!
     }
     
-    func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {
-        var header = UICollectionReusableView()
-        
-        if kind == UICollectionElementKindSectionHeader{
-            
-            let headerView = collectionView.dequeueReusableSupplementaryViewOfKind(kind, withReuseIdentifier: "profileHeaderView", forIndexPath: indexPath) as! ProfileHeaderView
-            headerView.fillHeader()
-            
-            header = headerView
-            
-        }
-        
-        return header
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+        return CGSize(width: 100, height: 140)
     }
     
-    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
-        return CGSize(width: 100, height: 120)
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAtIndex section: Int) -> UIEdgeInsets {
+        let spacing = (collectionView.frame.size.width/3 - 100)
+        return UIEdgeInsets(top: 20, left: spacing, bottom: 20, right: spacing)
     }
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
