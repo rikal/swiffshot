@@ -12,9 +12,15 @@ import AVFoundation
 
 class VideoPlayerViewController: UIViewController, UIGestureRecognizerDelegate {
     
+    @IBOutlet weak var nextMessage: UILabel!
+    @IBOutlet weak var previousResponse: UILabel!
+    @IBOutlet weak var currentMessage: UILabel!
     @IBOutlet weak var userNameBtn: UIButton!
     @IBOutlet weak var messagesContainer: UIView!
     @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
+    @IBOutlet weak var textTypeTxtField: UITextView!
+    @IBOutlet weak var sendContainerView: UIView!
+    @IBOutlet weak var sendBtn: UIButton!
     
     var player : AVPlayer?
     var videoLayer : AVPlayerLayer?
@@ -22,15 +28,7 @@ class VideoPlayerViewController: UIViewController, UIGestureRecognizerDelegate {
     var isSubscribing: Bool = false
     var isPaused = false
     var playerViewController = PlayerViewController()
-    
-    let messagesCollectionView: UICollectionView = {
-        let layout = UICollectionViewFlowLayout()
-        layout.scrollDirection = .Horizontal
-        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        collectionView.translatesAutoresizingMaskIntoConstraints = false
-        collectionView.backgroundColor = UIColor.clearColor()
-        return collectionView
-    }()
+    var globalMessageIndex = 1
     
     let messages = ["How is your trip going?", "Best ever I've seen!", "Hi! How are you?", "Give your feelings", "Are you crazy man?", "Nice try!", "Come to me!"]
     
@@ -41,8 +39,13 @@ class VideoPlayerViewController: UIViewController, UIGestureRecognizerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        currentMessage.text = messages[0]
+        nextMessage.text = messages[globalMessageIndex]
+        
         addGestures()
-        addCollectionView()
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(VideoPlayerViewController.keyboardWillShow(_:)), name: UIKeyboardWillShowNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(VideoPlayerViewController.keyboardWillHide(_:)), name: UIKeyboardWillHideNotification, object: nil)
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -56,25 +59,11 @@ class VideoPlayerViewController: UIViewController, UIGestureRecognizerDelegate {
         }
     }
     
-    override func viewDidLayoutSubviews() {
-        messagesCollectionView.frame = CGRect(x: 0, y: 30, width: self.view.frame.size.width, height: messagesContainer.frame.size.height - 30)
-    }
-    
-    //MARK: - ADD COLLECTION VIEW
-    private func addCollectionView(){
-        messagesContainer.addSubview(messagesCollectionView)
-        messagesCollectionView.delegate = self
-        messagesCollectionView.dataSource = self
-        messagesCollectionView.backgroundColor = UIColor.clearColor()
-        messagesCollectionView.showsHorizontalScrollIndicator = false
-        
-        messagesCollectionView.registerNib(UINib(nibName: "MessageCentralCell", bundle: nil), forCellWithReuseIdentifier: "messageCentralCell")
-    }
-    
     //MARK: - ADD GESTURES
     
     private func addGestures(){
         let shortTap = UITapGestureRecognizer(target: self, action: #selector(VideoPlayerViewController.shortTap(_:)))
+        let shortTapMessage = UITapGestureRecognizer(target: self, action: #selector(VideoPlayerViewController.messageShortTap(_:)))
         let hold = UILongPressGestureRecognizer(target: self, action: #selector(VideoPlayerViewController.longTap(_:)))
         let swipeDown = UISwipeGestureRecognizer(target: self, action: #selector(VideoPlayerViewController.downSwipe(_:)))
         swipeDown.direction = UISwipeGestureRecognizerDirection.Down
@@ -84,11 +73,19 @@ class VideoPlayerViewController: UIViewController, UIGestureRecognizerDelegate {
         let swipeMessageUp = UISwipeGestureRecognizer(target: self, action: #selector(VideoPlayerViewController.upMessageSwipe(_:)))
         swipeMessageUp.direction = UISwipeGestureRecognizerDirection.Up
         
+        let swipeMessageLeft = UISwipeGestureRecognizer(target: self, action: #selector(VideoPlayerViewController.leftMessageSwipe(_:)))
+        swipeMessageLeft.direction = UISwipeGestureRecognizerDirection.Left
+        let swipeMessageRight = UISwipeGestureRecognizer(target: self, action: #selector(VideoPlayerViewController.rightMessageSwipe(_:)))
+        swipeMessageRight.direction = UISwipeGestureRecognizerDirection.Right
+        
         self.view.addGestureRecognizer(swipeDown)
         self.view.addGestureRecognizer(hold)
         self.view.addGestureRecognizer(shortTap)
         messagesContainer.addGestureRecognizer(swipeMessageDown)
         messagesContainer.addGestureRecognizer(swipeMessageUp)
+        messagesContainer.addGestureRecognizer(swipeMessageLeft)
+        messagesContainer.addGestureRecognizer(swipeMessageRight)
+        messagesContainer.addGestureRecognizer(shortTapMessage)
     }
     
     private func createAndPlayVideo(){
@@ -143,12 +140,14 @@ class VideoPlayerViewController: UIViewController, UIGestureRecognizerDelegate {
     
     @objc(longTap:)
     private func longTap(sender: UILongPressGestureRecognizer){
+        textTypeTxtField.resignFirstResponder()
         pauseVideo()
         isPaused = true
     }
     
     @objc(downSwipe:)
     private func downSwipe(sender: UISwipeGestureRecognizer){
+        textTypeTxtField.resignFirstResponder()
         stopVideo()
         self.navigationController?.popViewControllerAnimated(true)
     }
@@ -159,6 +158,7 @@ class VideoPlayerViewController: UIViewController, UIGestureRecognizerDelegate {
         UIView.animateWithDuration(0.5) {
             self.view.layoutIfNeeded()
         }
+        textTypeTxtField.resignFirstResponder()
     }
     
     @objc(upMessageSwipe:)
@@ -169,45 +169,78 @@ class VideoPlayerViewController: UIViewController, UIGestureRecognizerDelegate {
         }
     }
     
+    @objc(leftMessageSwipe:)
+    private func leftMessageSwipe(sender: UISwipeGestureRecognizer){
+        if globalMessageIndex > 1{
+            globalMessageIndex -= 1
+            nextMessage.text = messages[globalMessageIndex]
+            if globalMessageIndex <= 1{
+                currentMessage.text = messages[0]
+            } else {
+                currentMessage.text = messages[globalMessageIndex - 1]
+            }
+        }
+        textTypeTxtField.resignFirstResponder()
+    }
+    
+    @objc(rightMessageSwipe:)
+    private func rightMessageSwipe(sender: UISwipeGestureRecognizer){
+        if globalMessageIndex < messages.count{
+            currentMessage.text = messages[globalMessageIndex]
+            globalMessageIndex += 1
+            if globalMessageIndex < messages.count - 1{
+                nextMessage.text = messages[globalMessageIndex]
+            } else {
+                nextMessage.text = ""
+            }
+        }
+        textTypeTxtField.resignFirstResponder()
+    }
+    
     @objc(shortTap:)
     private func shortTap(sender: UITapGestureRecognizer){
         if isPaused {
             playVideo()
             isPaused = false
         }
+        textTypeTxtField.resignFirstResponder()
     }
+    
+    @objc(messageShortTap:)
+    private func messageShortTap(sender: UITapGestureRecognizer){
+        sendContainerView.hidden = false
+        textTypeTxtField.becomeFirstResponder()
+        
+    }
+    
+    //MARK: - IB ACTIONS
     
     @IBAction func userNamePressed(sender: AnyObject) {
         stopVideo()
         performSegueWithIdentifier("toProfile", sender: self)
     }
-}
-
-extension VideoPlayerViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
     
-    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return messages.count
+    @IBAction func sendPressed(sender: AnyObject) {
+    }
+    //MARK: - KEYBOARDS
+    
+    func keyboardWillShow(sender: NSNotification) {
+        if let userInfo = sender.userInfo {
+            if let keyboardHeight = userInfo[UIKeyboardFrameEndUserInfoKey]?.CGRectValue().size.height {
+                bottomConstraint.constant = keyboardHeight
+                textTypeTxtField.userInteractionEnabled = true
+                UIView.animateWithDuration(0.25, animations: { () -> Void in
+                    self.view.layoutIfNeeded()
+                })
+            }
+        }
     }
     
-    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        
-        var cell: UICollectionViewCell?
-        let profileCell = collectionView.dequeueReusableCellWithReuseIdentifier("messageCentralCell", forIndexPath: indexPath) as! MessageCentralCell
-        profileCell.fillCell(messages[indexPath.row])
-        cell = profileCell
-        return cell!
-    }
-    
-    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
-        return CGSize(width: 200, height: 100)
-    }
-    
-    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAtIndex section: Int) -> UIEdgeInsets {
-        
-        return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-    }
-    
-    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        
+    func keyboardWillHide(sender: NSNotification) {
+        bottomConstraint.constant = 0
+        sendContainerView.hidden = true
+        UIView.animateWithDuration(0.25, animations: { () -> Void in
+            self.view.layoutIfNeeded()
+        })
     }
 }
