@@ -65,6 +65,8 @@ class VerificationViewController: AuthorizationViewController {
         }) { (error) in
                 print(error)
         }
+        //TODO: REMOVE!!!!
+         self.performSegueWithIdentifier("toGreetings", sender: self)
     }
 }
 

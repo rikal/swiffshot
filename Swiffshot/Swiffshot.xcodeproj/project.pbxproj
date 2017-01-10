@@ -13,6 +13,7 @@
 		0A28790F1E1FE10200D68DEE /* MessageCentralCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A28790D1E1FE10200D68DEE /* MessageCentralCell.swift */; };
 		0A2879101E1FE10200D68DEE /* MessageCentralCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A28790E1E1FE10200D68DEE /* MessageCentralCell.xib */; };
 		0A2879121E2506AA00D68DEE /* MessageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A2879111E2506AA00D68DEE /* MessageManager.swift */; };
+		0A2879141E25401C00D68DEE /* ContactsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A2879131E25401C00D68DEE /* ContactsManager.swift */; };
 		0A4D1BAE1DF0762D00BF7CCE /* R5Streaming.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A4D1BAD1DF0762D00BF7CCE /* R5Streaming.framework */; };
 		0A4D1BB01DF09C3E00BF7CCE /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A4D1BAF1DF09C3E00BF7CCE /* CFNetwork.framework */; };
 		0A4D1BB21DF09C5200BF7CCE /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A4D1BB11DF09C5200BF7CCE /* AudioToolbox.framework */; };
@@ -74,6 +75,7 @@
 		0A28790D1E1FE10200D68DEE /* MessageCentralCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MessageCentralCell.swift; path = Controllers/VideoPlayer/MessageCentralCell.swift; sourceTree = "<group>"; };
 		0A28790E1E1FE10200D68DEE /* MessageCentralCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MessageCentralCell.xib; path = Controllers/VideoPlayer/MessageCentralCell.xib; sourceTree = "<group>"; };
 		0A2879111E2506AA00D68DEE /* MessageManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MessageManager.swift; path = Utilities/MessageManager.swift; sourceTree = "<group>"; };
+		0A2879131E25401C00D68DEE /* ContactsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactsManager.swift; sourceTree = "<group>"; };
 		0A4D1BAD1DF0762D00BF7CCE /* R5Streaming.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = R5Streaming.framework; sourceTree = "<group>"; };
 		0A4D1BAF1DF09C3E00BF7CCE /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		0A4D1BB11DF09C5200BF7CCE /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
@@ -237,6 +239,7 @@
 				0A9D4EFC1E0BF909007F9178 /* API */,
 				0AA596081DE4E9CB0005336D /* Defaults.swift */,
 				0A2879111E2506AA00D68DEE /* MessageManager.swift */,
+				0A2879131E25401C00D68DEE /* ContactsManager.swift */,
 			);
 			name = Utilities;
 			sourceTree = "<group>";
@@ -478,6 +481,7 @@
 				0AD678E21E1113FA007E2AD3 /* PhoneEmailViewController.swift in Sources */,
 				0A9D4F091E0D4920007F9178 /* WebViewController.swift in Sources */,
 				0A6322591DE79FF7006A0644 /* CameraView.swift in Sources */,
+				0A2879141E25401C00D68DEE /* ContactsManager.swift in Sources */,
 				0A63224C1DE5B89F006A0644 /* NoNavBarNavigationController.swift in Sources */,
 				0A6322521DE6D4D6006A0644 /* LatestStreamCollectionViewCell.swift in Sources */,
 				0A9D4F0D1E0EE585007F9178 /* UserNameViewController.swift in Sources */,

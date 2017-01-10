@@ -1764,12 +1764,6 @@ like to reset your password</string>
                                     <action selector="privacyBtnPressed:" destination="9D3-Nu-YVD" eventType="touchUpInside" id="kon-zb-qQg"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Find your friends" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U5e-xL-ysx">
-                                <rect key="frame" x="87" y="313" width="147" height="23"/>
-                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="19"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m6w-OE-O1O">
                                 <rect key="frame" x="44" y="344" width="233" height="33.5"/>
                                 <string key="text">See which of your contacts are on
@@ -1778,19 +1772,33 @@ like to reset your password</string>
                                 <color key="textColor" red="0.59215686270000001" green="0.59215686270000001" blue="0.59215686270000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GrV-Fo-1Fv">
+                                <rect key="frame" x="87" y="310" width="147" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="djm-uK-Pe6"/>
+                                    <constraint firstAttribute="width" constant="147" id="ftU-Ub-INW"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="19"/>
+                                <state key="normal" title="Find your friends">
+                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                </state>
+                                <connections>
+                                    <action selector="findFriends:" destination="9D3-Nu-YVD" eventType="touchUpInside" id="aXA-8N-5MM"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="m6w-OE-O1O" firstAttribute="top" secondItem="U5e-xL-ysx" secondAttribute="bottom" constant="8.5" id="3de-iA-KXI"/>
                             <constraint firstItem="XBf-av-SnG" firstAttribute="centerX" secondItem="8eh-c3-X5X" secondAttribute="centerX" id="F1J-Rz-9F7"/>
                             <constraint firstItem="IN3-af-azk" firstAttribute="centerX" secondItem="8eh-c3-X5X" secondAttribute="centerX" id="Gpd-Pr-r5d"/>
                             <constraint firstItem="XBf-av-SnG" firstAttribute="top" secondItem="0fa-l9-iGC" secondAttribute="bottom" constant="10" id="Ta9-1b-xYx"/>
-                            <constraint firstItem="U5e-xL-ysx" firstAttribute="centerX" secondItem="8eh-c3-X5X" secondAttribute="centerX" id="URf-4U-QG8"/>
                             <constraint firstItem="XBf-av-SnG" firstAttribute="top" secondItem="CvZ-IV-fLl" secondAttribute="bottom" constant="2" id="Vd2-kA-29m"/>
                             <constraint firstItem="CvZ-IV-fLl" firstAttribute="trailing" secondItem="XBf-av-SnG" secondAttribute="trailing" id="bb1-c3-Z0d"/>
                             <constraint firstItem="0fa-l9-iGC" firstAttribute="leading" secondItem="XBf-av-SnG" secondAttribute="leading" id="cXz-lB-S60"/>
                             <constraint firstItem="m6w-OE-O1O" firstAttribute="centerX" secondItem="8eh-c3-X5X" secondAttribute="centerX" id="ddT-Qd-IV9"/>
+                            <constraint firstItem="m6w-OE-O1O" firstAttribute="top" secondItem="GrV-Fo-1Fv" secondAttribute="bottom" constant="4" id="egU-gJ-RSA"/>
                             <constraint firstItem="X3O-9Z-U5q" firstAttribute="centerX" secondItem="8eh-c3-X5X" secondAttribute="centerX" id="grG-py-nGK"/>
+                            <constraint firstItem="GrV-Fo-1Fv" firstAttribute="centerX" secondItem="8eh-c3-X5X" secondAttribute="centerX" id="hCv-FT-lLj"/>
                             <constraint firstItem="uZE-PW-GiM" firstAttribute="top" secondItem="XBf-av-SnG" secondAttribute="bottom" constant="90" id="pYo-E7-ISs"/>
                             <constraint firstItem="IN3-af-azk" firstAttribute="top" secondItem="8eh-c3-X5X" secondAttribute="top" constant="100" id="qfW-97-hxi"/>
                             <constraint firstItem="X3O-9Z-U5q" firstAttribute="top" secondItem="IN3-af-azk" secondAttribute="bottom" constant="8" id="vgz-qI-Iwk"/>

@@ -14,8 +14,9 @@ class GreetingsViewController: AuthorizationViewController {
     @IBOutlet weak var searchContactLbl: UILabel!
     @IBOutlet weak var continueBtn: UIButton!
     @IBOutlet weak var privacyBtn: UIButton!
-    //MARK: - SYSTEMS METHODS
+
     
+    //MARK: - SYSTEMS METHODS
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.navigationBarHidden = false
@@ -35,6 +36,9 @@ class GreetingsViewController: AuthorizationViewController {
     override func popToRoot(sender:UIBarButtonItem){
         self.navigationController!.popViewControllerAnimated(true)
     }
+    
+    //MARK: - CONTACTS
+
     
     //MARK: - ADD TAP
     
@@ -63,6 +67,10 @@ class GreetingsViewController: AuthorizationViewController {
     }
     
     //MARK: - IB ACTIONS
+    
+    @IBAction func findFriends(sender: AnyObject) {
+        ContactsManager.shared.checkMyFriends()
+    }
     
     @IBAction func privacyBtnPressed(sender: AnyObject) {
         performSegueWithIdentifier("toPrivacy", sender: self)
