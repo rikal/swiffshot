@@ -50,10 +50,10 @@ class VideoPlayerViewController: UIViewController, UIGestureRecognizerDelegate {
         
         let currentUser = ProfileModel().loadProfile()
         
-        ApiManager.shared.getAccessTokenToChat("\(currentUser.id)", success: { (result) in
-                print(result)
+        MessageManager.shared.getAccessToken(currentUser.id, channelName: "general", success: { (token) in
+                print(token)
             }) { (error) in
-                print(error)
+                print(error?.description)
         }
     }
     

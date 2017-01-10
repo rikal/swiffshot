@@ -12,6 +12,7 @@
 		0A28790C1E1FBB5400D68DEE /* ProfileVideosCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A28790B1E1FBB5400D68DEE /* ProfileVideosCell.xib */; };
 		0A28790F1E1FE10200D68DEE /* MessageCentralCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A28790D1E1FE10200D68DEE /* MessageCentralCell.swift */; };
 		0A2879101E1FE10200D68DEE /* MessageCentralCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A28790E1E1FE10200D68DEE /* MessageCentralCell.xib */; };
+		0A2879121E2506AA00D68DEE /* MessageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A2879111E2506AA00D68DEE /* MessageManager.swift */; };
 		0A4D1BAE1DF0762D00BF7CCE /* R5Streaming.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A4D1BAD1DF0762D00BF7CCE /* R5Streaming.framework */; };
 		0A4D1BB01DF09C3E00BF7CCE /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A4D1BAF1DF09C3E00BF7CCE /* CFNetwork.framework */; };
 		0A4D1BB21DF09C5200BF7CCE /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A4D1BB11DF09C5200BF7CCE /* AudioToolbox.framework */; };
@@ -72,6 +73,7 @@
 		0A28790B1E1FBB5400D68DEE /* ProfileVideosCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ProfileVideosCell.xib; path = Controllers/VideoPlayer/ProfileVideosCell.xib; sourceTree = "<group>"; };
 		0A28790D1E1FE10200D68DEE /* MessageCentralCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MessageCentralCell.swift; path = Controllers/VideoPlayer/MessageCentralCell.swift; sourceTree = "<group>"; };
 		0A28790E1E1FE10200D68DEE /* MessageCentralCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MessageCentralCell.xib; path = Controllers/VideoPlayer/MessageCentralCell.xib; sourceTree = "<group>"; };
+		0A2879111E2506AA00D68DEE /* MessageManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MessageManager.swift; path = Utilities/MessageManager.swift; sourceTree = "<group>"; };
 		0A4D1BAD1DF0762D00BF7CCE /* R5Streaming.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = R5Streaming.framework; sourceTree = "<group>"; };
 		0A4D1BAF1DF09C3E00BF7CCE /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		0A4D1BB11DF09C5200BF7CCE /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
@@ -234,6 +236,7 @@
 			children = (
 				0A9D4EFC1E0BF909007F9178 /* API */,
 				0AA596081DE4E9CB0005336D /* Defaults.swift */,
+				0A2879111E2506AA00D68DEE /* MessageManager.swift */,
 			);
 			name = Utilities;
 			sourceTree = "<group>";
@@ -498,6 +501,7 @@
 				0AD678E61E12C4F9007E2AD3 /* GreetingsViewController.swift in Sources */,
 				0A4D1BC71DF0A08300BF7CCE /* PublishViewController.swift in Sources */,
 				0ABB904F1DE44C08009E39E5 /* AuthorizationViewController.swift in Sources */,
+				0A2879121E2506AA00D68DEE /* MessageManager.swift in Sources */,
 				0A6322641DEB41EA006A0644 /* ProfileViewController.swift in Sources */,
 				0ABB902F1DE422C2009E39E5 /* AppDelegate.swift in Sources */,
 				0AD678E41E1135B3007E2AD3 /* VerificationViewController.swift in Sources */,
