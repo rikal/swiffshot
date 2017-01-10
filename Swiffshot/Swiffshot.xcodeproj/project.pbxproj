@@ -14,6 +14,10 @@
 		0A2879101E1FE10200D68DEE /* MessageCentralCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A28790E1E1FE10200D68DEE /* MessageCentralCell.xib */; };
 		0A2879121E2506AA00D68DEE /* MessageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A2879111E2506AA00D68DEE /* MessageManager.swift */; };
 		0A2879141E25401C00D68DEE /* ContactsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A2879131E25401C00D68DEE /* ContactsManager.swift */; };
+		0A2879181E25544C00D68DEE /* LoaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A2879171E25544C00D68DEE /* LoaderView.swift */; };
+		0A28791A1E25546000D68DEE /* LoaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A2879191E25546000D68DEE /* LoaderView.xib */; };
+		0A28791C1E2557ED00D68DEE /* AlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A28791B1E2557ED00D68DEE /* AlertView.swift */; };
+		0A28791E1E25580B00D68DEE /* AlertView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A28791D1E25580B00D68DEE /* AlertView.xib */; };
 		0A4D1BAE1DF0762D00BF7CCE /* R5Streaming.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A4D1BAD1DF0762D00BF7CCE /* R5Streaming.framework */; };
 		0A4D1BB01DF09C3E00BF7CCE /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A4D1BAF1DF09C3E00BF7CCE /* CFNetwork.framework */; };
 		0A4D1BB21DF09C5200BF7CCE /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A4D1BB11DF09C5200BF7CCE /* AudioToolbox.framework */; };
@@ -76,6 +80,10 @@
 		0A28790E1E1FE10200D68DEE /* MessageCentralCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MessageCentralCell.xib; path = Controllers/VideoPlayer/MessageCentralCell.xib; sourceTree = "<group>"; };
 		0A2879111E2506AA00D68DEE /* MessageManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MessageManager.swift; path = Utilities/MessageManager.swift; sourceTree = "<group>"; };
 		0A2879131E25401C00D68DEE /* ContactsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactsManager.swift; sourceTree = "<group>"; };
+		0A2879171E25544C00D68DEE /* LoaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoaderView.swift; path = Views/LoaderView.swift; sourceTree = "<group>"; };
+		0A2879191E25546000D68DEE /* LoaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LoaderView.xib; path = Views/LoaderView.xib; sourceTree = "<group>"; };
+		0A28791B1E2557ED00D68DEE /* AlertView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AlertView.swift; path = Views/AlertView.swift; sourceTree = "<group>"; };
+		0A28791D1E25580B00D68DEE /* AlertView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = AlertView.xib; path = Views/AlertView.xib; sourceTree = "<group>"; };
 		0A4D1BAD1DF0762D00BF7CCE /* R5Streaming.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = R5Streaming.framework; sourceTree = "<group>"; };
 		0A4D1BAF1DF09C3E00BF7CCE /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		0A4D1BB11DF09C5200BF7CCE /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
@@ -188,6 +196,10 @@
 			children = (
 				0A6322581DE79FF7006A0644 /* CameraView.swift */,
 				0A63225A1DE7A007006A0644 /* View.xib */,
+				0A2879171E25544C00D68DEE /* LoaderView.swift */,
+				0A2879191E25546000D68DEE /* LoaderView.xib */,
+				0A28791B1E2557ED00D68DEE /* AlertView.swift */,
+				0A28791D1E25580B00D68DEE /* AlertView.xib */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -418,6 +430,8 @@
 				0AD678EB1E140156007E2AD3 /* Blippo Black D.ttf in Resources */,
 				0A2879101E1FE10200D68DEE /* MessageCentralCell.xib in Resources */,
 				0A6322721DEE0630006A0644 /* LatestStreamCollectionViewCell.xib in Resources */,
+				0A28791E1E25580B00D68DEE /* AlertView.xib in Resources */,
+				0A28791A1E25546000D68DEE /* LoaderView.xib in Resources */,
 				0A6322781DEE22CD006A0644 /* MainHeader.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -484,6 +498,8 @@
 				0A2879141E25401C00D68DEE /* ContactsManager.swift in Sources */,
 				0A63224C1DE5B89F006A0644 /* NoNavBarNavigationController.swift in Sources */,
 				0A6322521DE6D4D6006A0644 /* LatestStreamCollectionViewCell.swift in Sources */,
+				0A2879181E25544C00D68DEE /* LoaderView.swift in Sources */,
+				0A28791C1E2557ED00D68DEE /* AlertView.swift in Sources */,
 				0A9D4F0D1E0EE585007F9178 /* UserNameViewController.swift in Sources */,
 				0A9D4F051E0D34E7007F9178 /* ProfileModel.swift in Sources */,
 				0ABB90471DE433F5009E39E5 /* CheckCodeViewController.swift in Sources */,

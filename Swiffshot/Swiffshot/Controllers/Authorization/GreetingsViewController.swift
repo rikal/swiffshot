@@ -69,7 +69,13 @@ class GreetingsViewController: AuthorizationViewController {
     //MARK: - IB ACTIONS
     
     @IBAction func findFriends(sender: AnyObject) {
-        ContactsManager.shared.checkMyFriends()
+        LoaderView.shared.showLoaderView(self.view)
+        ContactsManager.shared.checkMyFriends({ (result) in
+                AlertView.shared.showLoaderView(self.view, message: "You've got \(result.count) friends in Swiffshot!")
+            }) { (error) in
+                print(error?.description)
+        }
+        
     }
     
     @IBAction func privacyBtnPressed(sender: AnyObject) {

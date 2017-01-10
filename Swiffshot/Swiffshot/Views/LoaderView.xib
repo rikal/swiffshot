@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="LoaderView" customModule="Swiffshot" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2xV-Yo-clK">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                    <subviews>
+                        <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="4Ht-WL-VAt">
+                            <rect key="frame" x="150" y="274" width="20" height="20"/>
+                        </activityIndicatorView>
+                    </subviews>
+                    <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <constraints>
+                        <constraint firstItem="4Ht-WL-VAt" firstAttribute="centerX" secondItem="2xV-Yo-clK" secondAttribute="centerX" id="mZ3-69-wEY"/>
+                        <constraint firstItem="4Ht-WL-VAt" firstAttribute="centerY" secondItem="2xV-Yo-clK" secondAttribute="centerY" id="xY7-4h-SpJ"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="2xV-Yo-clK" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="Aqu-ck-sfH"/>
+                <constraint firstItem="2xV-Yo-clK" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="MOM-BD-UiB"/>
+                <constraint firstAttribute="trailing" secondItem="2xV-Yo-clK" secondAttribute="trailing" id="U0Q-sV-fWf"/>
+                <constraint firstAttribute="bottom" secondItem="2xV-Yo-clK" secondAttribute="bottom" id="xKO-nV-pbq"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="loader" destination="4Ht-WL-VAt" id="XPg-Mu-cPC"/>
+            </connections>
+        </view>
+    </objects>
+</document>

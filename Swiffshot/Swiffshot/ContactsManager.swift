@@ -13,35 +13,7 @@ class ContactsManager {
     static let shared = ContactsManager()
     private var usersContacts = [CNContact]()
     
-//    private func getContacts(){
-//        let store = CNContactStore()
-//        
-//        if CNContactStore.authorizationStatusForEntityType(.Contacts) == .NotDetermined {
-//            store.requestAccessForEntityType(.Contacts, completionHandler: { (authorized: Bool, error: NSError?) -> Void in
-//                if authorized {
-//                    self.retrieveContactsWithStore(store)
-//                }
-//            })
-//        } else if CNContactStore.authorizationStatusForEntityType(.Contacts) == .Authorized {
-//            self.retrieveContactsWithStore(store)
-//        }
-//    }
-//    
-//    private func retrieveContactsWithStore(store: CNContactStore) {
-//        do {
-////            let groups = try store.groupsMatchingPredicate(nil)
-//            let predicate = CNContact.predicateForContactsMatchingName("")
-//            //let predicate = CNContact.predicateForContactsMatchingName("John")
-//            let keysToFetch = [CNContactFormatter.descriptorForRequiredKeysForStyle(.FullName), CNContactEmailAddressesKey]
-//            
-//            let contacts = try store.unifiedContactsMatchingPredicate(predicate, keysToFetch: keysToFetch)
-//            self.usersContacts = contacts
-//        } catch {
-//            print(error)
-//        }
-//    }
-    
-    func findContactsOnBackgroundThread ( completionHandler:(contacts:[CNContact]?)->()) {
+    private func findContactsOnBackgroundThread ( completionHandler:(contacts:[CNContact]?)->()) {
         
         dispatch_async(dispatch_get_global_queue(QOS_CLASS_USER_INITIATED, 0), { () -> Void in
             
@@ -61,7 +33,6 @@ class ContactsManager {
             do {
                 
                 try CNContactStore().enumerateContactsWithFetchRequest(fetchRequest) { (contact, stop) -> Void in
-                    //do something with contact
                     if contact.phoneNumbers.count > 0 {
                         contacts.append(contact)
                     }
@@ -78,7 +49,7 @@ class ContactsManager {
         })
     }
     
-    func checkMyFriends(){
+    func checkMyFriends(success:([String]) -> Void, failure: NSError? -> Void) {
         findContactsOnBackgroundThread { (contacts) in
             var allPhones = [String]()
             for contact in contacts!{
@@ -87,7 +58,9 @@ class ContactsManager {
                     allPhones.append(number.stringValue)
                 }
             }
+            LoaderView.shared.hideLoaderView()
             //TODO: send to server
+            success(allPhones)
         }
     }
 }
