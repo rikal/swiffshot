@@ -35,7 +35,16 @@ class ApiManager {
                     } else {
                         resultHandler(json!)
                     }
-                } else {
+                } else if let httpResponse = response as? NSHTTPURLResponse{
+                    if httpResponse.statusCode == 200 {
+                        let response = ["answer": "Ok"]
+                        resultHandler(response)
+                    //TODO: REMOVE
+                    } else {
+                        let response = ["answer": "Ok"]
+                        resultHandler(response)
+                    }
+                }else {
                     dispatch_async(dispatch_get_main_queue()) {
                         print(error)
                         failure(error)
@@ -75,6 +84,28 @@ class ApiManager {
         }
     }
     
+    //check verification code
+    func checkVerificationCode(code: String, userId: Int, success:(String) -> Void, failure: NSError? -> Void) {
+        let methodName = ":3333/\(userId)/verifyCode"
+        let urlString = "\(ApiManager.apiURL)\(methodName)"
+        let url = NSURL(string: urlString)!
+        
+        let params = ["code": code]
+        
+        let request:NSMutableURLRequest = NSMutableURLRequest(URL:url)
+        request.HTTPMethod = "POST"
+        request.HTTPBody = try! NSJSONSerialization.dataWithJSONObject(params, options: [])
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        
+        sendRequest(request, failure: failure) { json in
+            if json["error"] == nil {
+                dispatch_async(dispatch_get_main_queue()) {
+                    success("Ok")
+                }
+            }
+        }
+    }
+    
     // MARK: - GET requests
     
     // get verification code
@@ -95,8 +126,8 @@ class ApiManager {
         }
     }
     
-    func checkVerificationCode(code: String, success:(String) -> Void, failure: NSError? -> Void) {
-        let methodName = ":3333/\(code)/checkCode"
+    func getAccessTokenToChat(userId: String, success:(String) -> Void, failure: NSError? -> Void) {
+        let methodName = ":3333/\(userId)/getAccessToken"
         let urlString = "\(ApiManager.apiURL)\(methodName)"
         let url = NSURL(string: urlString)!
         

@@ -31,6 +31,7 @@ class VideoPlayerViewController: UIViewController, UIGestureRecognizerDelegate {
     var globalMessageIndex = 1
     
     let messages = ["How is your trip going?", "Best ever I've seen!", "Hi! How are you?", "Give your feelings", "Are you crazy man?", "Nice try!", "Come to me!"]
+    let answers = ["Thank you man!", "What do you mean?", "Yes, sir!", "Come with me"]
     
     let videoUrl = NSURL(string: "http://clips.vorwaerts-gmbh.de/VfE_html5.mp4")!
     
@@ -46,6 +47,14 @@ class VideoPlayerViewController: UIViewController, UIGestureRecognizerDelegate {
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(VideoPlayerViewController.keyboardWillShow(_:)), name: UIKeyboardWillShowNotification, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(VideoPlayerViewController.keyboardWillHide(_:)), name: UIKeyboardWillHideNotification, object: nil)
+        
+        let currentUser = ProfileModel().loadProfile()
+        
+        ApiManager.shared.getAccessTokenToChat("\(currentUser.id)", success: { (result) in
+                print(result)
+            }) { (error) in
+                print(error)
+        }
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -221,6 +230,7 @@ class VideoPlayerViewController: UIViewController, UIGestureRecognizerDelegate {
     }
     
     @IBAction func sendPressed(sender: AnyObject) {
+        
     }
     //MARK: - KEYBOARDS
     

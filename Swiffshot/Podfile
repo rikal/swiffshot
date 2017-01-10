@@ -1,9 +1,12 @@
 # Uncomment this line to define a global platform for your project
 # platform :ios, ‘8.0’
 
+source 'https://github.com/CocoaPods/Specs'
+source 'https://github.com/twilio/cocoapod-specs'
+
 target ‘Swiffshot’ do
   use_frameworks!
   
-  
+  pod 'TwilioChatClient'
   pod 'SDWebImage'
 end

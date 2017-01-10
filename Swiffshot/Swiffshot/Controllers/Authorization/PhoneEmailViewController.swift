@@ -92,7 +92,8 @@ class PhoneEmailViewController: AuthorizationViewController {
         }
         
         ApiManager.shared.getUserWithId(userModel, success: { (result) in
-            print(result.id)
+            print("PhoneEmailViewController (getUserWithId) - \(result.id)")
+            self.userModel = result
             ApiManager.shared.getCodeToVerify("\(result.id)", success: { (result) in
                 if result == "Ok"{
                     self.performSegueWithIdentifier("toVerify", sender: self)
@@ -103,8 +104,6 @@ class PhoneEmailViewController: AuthorizationViewController {
         }) { (error) in
             print(error?.description)
         }
-        //TODO: REMOVE
-        self.performSegueWithIdentifier("toVerify", sender: self)
     }
 }
 

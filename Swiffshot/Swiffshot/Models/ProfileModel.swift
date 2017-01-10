@@ -37,4 +37,42 @@ class ProfileModel: NSObject {
         if let since = json["since"] as? Int { self.since = since }
         if let verified = json["verified"] as? Bool { self.verified = verified }
     }
+    
+    func encodeWithCoder(encoder: NSCoder) {
+        //Encode properties, other class variables, etc
+        encoder.encodeObject(self.id, forKey: "id")
+        encoder.encodeObject(self.userName, forKey: "userName")
+        encoder.encodeObject(self.phoneNumber, forKey: "phoneNumber")
+        encoder.encodeObject(self.deviceID, forKey: "deviceID")
+        encoder.encodeObject(self.authToken, forKey: "authToken")
+        encoder.encodeObject(self.verifyCode, forKey: "verifyCode")
+        encoder.encodeObject(self.since, forKey: "since")
+        encoder.encodeObject(self.verified, forKey: "verified")
+    }
+    
+    func initWithCoder(decoder: NSCoder) -> ProfileModel {
+        //decode properties, other class vars
+        self.id = decoder.decodeObjectForKey("id") as! Int
+        self.userName = decoder.decodeObjectForKey("userName") as! String
+        self.phoneNumber = decoder.decodeObjectForKey("phoneNumber") as! String
+        self.deviceID = decoder.decodeObjectForKey("deviceID") as! String
+        self.authToken = decoder.decodeObjectForKey("authToken") as! String
+        self.verifyCode = decoder.decodeObjectForKey("verifyCode") as! String
+        self.since = decoder.decodeObjectForKey("since") as! Int
+        self.verified = decoder.decodeObjectForKey("verified") as! Bool
+        return self
+    }
+    
+    func saveProfile() {
+        let encodedObject = NSKeyedArchiver.archivedDataWithRootObject(self)
+        let defaults = NSUserDefaults.standardUserDefaults()
+        defaults.setObject(encodedObject, forKey: "currentUser")
+        defaults.synchronize()
+    }
+    
+    func loadProfile() -> ProfileModel {
+        let defaults = NSUserDefaults.standardUserDefaults()
+        let encodedObject = defaults.objectForKey("currentUser") as! NSData
+        return NSKeyedUnarchiver.unarchiveObjectWithData(encodedObject) as! ProfileModel
+    }
 }

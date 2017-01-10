@@ -56,16 +56,15 @@ class VerificationViewController: AuthorizationViewController {
     //MARK: - IB ACTIONS
     
     @IBAction func continuePressed(sender: AnyObject) {
-        ApiManager.shared.checkVerificationCode(codeTxt.text!, success: { (result) in
+        ApiManager.shared.checkVerificationCode(codeTxt.text!, userId: userModel.id, success: { (result) in
             if result == "Ok"{
-                //TODO: SAVE USER MODEL
+                self.userModel.verified = true
+                self.userModel.saveProfile()
                 self.performSegueWithIdentifier("toGreetings", sender: self)
             }
         }) { (error) in
                 print(error)
         }
-        //TODO: REMOVE
-        self.performSegueWithIdentifier("toGreetings", sender: self)
     }
 }
 

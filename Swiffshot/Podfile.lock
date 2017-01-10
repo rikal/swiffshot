@@ -2,13 +2,16 @@ PODS:
   - SDWebImage (3.8.2):
     - SDWebImage/Core (= 3.8.2)
   - SDWebImage/Core (3.8.2)
+  - TwilioChatClient (0.16.0)
 
 DEPENDENCIES:
   - SDWebImage
+  - TwilioChatClient
 
 SPEC CHECKSUMS:
   SDWebImage: 098e97e6176540799c27e804c96653ee0833d13c
+  TwilioChatClient: 0241ea050d042395493dea8920d1fa1ac45ca478
 
-PODFILE CHECKSUM: 915849ead1df78183f1840bff2ce061d5b7be5d6
+PODFILE CHECKSUM: 20ab0a8fe17424dd193746927d46bd688f474822
 
 COCOAPODS: 1.0.1
