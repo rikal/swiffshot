@@ -48,13 +48,13 @@ class VideoPlayerViewController: UIViewController, UIGestureRecognizerDelegate {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(VideoPlayerViewController.keyboardWillShow(_:)), name: UIKeyboardWillShowNotification, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(VideoPlayerViewController.keyboardWillHide(_:)), name: UIKeyboardWillHideNotification, object: nil)
         
-        let currentUser = ProfileModel().loadProfile()
+//        let currentUser = ProfileModel().loadProfile()
         
-        MessageManager.shared.getAccessToken(currentUser.id, channelName: "general", success: { (token) in
-                print(token)
-            }) { (error) in
-                print(error?.description)
-        }
+//        MessageManager.shared.getAccessToken(43, channelName: "general", success: { (token) in
+//                print(token)
+//            }) { (error) in
+//                print(error?.description)
+//        }
     }
     
     override func viewWillAppear(animated: Bool) {

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0A1EBA101E2CD14C0050E457 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1EBA0F1E2CD14C0050E457 /* SettingsViewController.swift */; };
 		0A2879061E1D650100D68DEE /* VideoPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A2879051E1D650100D68DEE /* VideoPlayerViewController.swift */; };
 		0A28790A1E1FBB2E00D68DEE /* ProfileVideosCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A2879091E1FBB2E00D68DEE /* ProfileVideosCell.swift */; };
 		0A28790C1E1FBB5400D68DEE /* ProfileVideosCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A28790B1E1FBB5400D68DEE /* ProfileVideosCell.xib */; };
@@ -73,6 +74,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0A1EBA0F1E2CD14C0050E457 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingsViewController.swift; path = Controllers/Settings/SettingsViewController.swift; sourceTree = "<group>"; };
 		0A2879051E1D650100D68DEE /* VideoPlayerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VideoPlayerViewController.swift; path = Controllers/VideoPlayer/VideoPlayerViewController.swift; sourceTree = "<group>"; };
 		0A2879091E1FBB2E00D68DEE /* ProfileVideosCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProfileVideosCell.swift; path = Controllers/VideoPlayer/ProfileVideosCell.swift; sourceTree = "<group>"; };
 		0A28790B1E1FBB5400D68DEE /* ProfileVideosCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ProfileVideosCell.xib; path = Controllers/VideoPlayer/ProfileVideosCell.xib; sourceTree = "<group>"; };
@@ -165,6 +167,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0A1EBA0E1E2CD1230050E457 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				0A1EBA0F1E2CD14C0050E457 /* SettingsViewController.swift */,
+			);
+			name = Settings;
+			sourceTree = "<group>";
+		};
 		0A4D1BC31DF09F7700BF7CCE /* Publisher */ = {
 			isa = PBXGroup;
 			children = (
@@ -301,6 +311,7 @@
 		0ABB90421DE42634009E39E5 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				0A1EBA0E1E2CD1230050E457 /* Settings */,
 				0A4D1BC31DF09F7700BF7CCE /* Publisher */,
 				0A6322791DEE439C006A0644 /* ExpandedCategories */,
 				0A6322621DEB41A7006A0644 /* VideoPlayer */,
@@ -514,6 +525,7 @@
 				0A63227B1DEE43CD006A0644 /* ExpandedViewController.swift in Sources */,
 				0AA596091DE4E9CB0005336D /* Defaults.swift in Sources */,
 				0A2879061E1D650100D68DEE /* VideoPlayerViewController.swift in Sources */,
+				0A1EBA101E2CD14C0050E457 /* SettingsViewController.swift in Sources */,
 				0A9D4F031E0C015D007F9178 /* AuthMainViewController.swift in Sources */,
 				0A9D4F071E0D39CF007F9178 /* FirstStepSignUpViewController.swift in Sources */,
 				0A63226A1DEB57C0006A0644 /* ProfilesVideosCollectionViewCell.swift in Sources */,

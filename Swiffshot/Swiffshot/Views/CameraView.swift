@@ -31,6 +31,9 @@ class CameraView: UIView, UIGestureRecognizerDelegate {
     var isRecording : Bool = false
     var isStreaming: Bool = false
     
+    var circleLayer: CAShapeLayer?
+    var timer: NSTimer?
+    
     //MARK: SYSTEMS METHODS
     
     class func instanceFromNib() -> CameraView {
@@ -50,10 +53,43 @@ class CameraView: UIView, UIGestureRecognizerDelegate {
         hideTap.delegate = self
         alphaView.addGestureRecognizer(hideTap)
         
+        let hold = UILongPressGestureRecognizer(target: self, action: #selector(CameraView.longTap(_:)))
+        shootBtn.addGestureRecognizer(hold)
+        
         if Defaults.sharedDefaults.userKnowAboutCamera{
             alphaView.hidden = true
         }
     }
+    
+    //MARK: - CIRcLE ANIMATION
+    
+    func createCirclePath(){
+        let circlePath = UIBezierPath(arcCenter: shootBtnContainerView.center, radius: shootBtnContainerView.frame.size.width/2, startAngle: 0.0, endAngle: CGFloat(M_PI * 2.0), clockwise: true)
+        
+        circleLayer = CAShapeLayer()
+        circleLayer!.path = circlePath.CGPath
+        circleLayer!.fillColor = UIColor.clearColor().CGColor
+        circleLayer!.strokeColor = UIColor.redColor().CGColor
+        circleLayer!.lineWidth = 3.0;
+
+        circleLayer!.strokeEnd = 0.0
+        
+        layer.addSublayer(circleLayer!)
+    }
+    
+    func animateCircle(duration: NSTimeInterval) {
+        circleLayer?.removeFromSuperlayer()
+        createCirclePath()
+        circleLayer!.strokeEnd = 0.0
+        let animation = CABasicAnimation(keyPath: "strokeEnd")
+        animation.duration = duration
+        animation.fromValue = 0
+        animation.toValue = 1
+        animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionLinear)
+        circleLayer!.strokeEnd = 1.0
+        circleLayer!.addAnimation(animation, forKey: "animateCircle")
+    }
+
     
     // SHOW HIDE ALPHA VIEW
 
@@ -74,13 +110,11 @@ class CameraView: UIView, UIGestureRecognizerDelegate {
     }
     
     func doubleTapped() {
-        if !isRecording{
-            isRecording = !isRecording
-            delegate?.startStopRecordingVideo(isRecording)
-        }
+        delegate?.chooseVideo()
     }
-   
-    @IBAction func shootVideo(sender: AnyObject) {
+    
+    @objc(longTap:)
+    private func longTap(sender: UILongPressGestureRecognizer){
         if isRecording{
             isRecording = !isRecording
             delegate?.startStopRecordingVideo(isRecording)
@@ -88,6 +122,25 @@ class CameraView: UIView, UIGestureRecognizerDelegate {
         }
         isStreaming = !isStreaming
         delegate?.startStopStream(isStreaming)
+    }
+    
+    func updateTimer() {
+        isRecording = !isRecording
+        delegate?.startStopRecordingVideo(isRecording)
+        timer?.invalidate()
+    }
+   
+    @IBAction func shootVideo(sender: AnyObject) {
+        if !isRecording{
+            timer = NSTimer.scheduledTimerWithTimeInterval(20.0, target: self, selector: #selector(CameraView.updateTimer), userInfo: nil, repeats: true)
+            animateCircle(20)
+        } else {
+            timer?.invalidate()
+            circleLayer?.removeAnimationForKey("animateCircle")
+            circleLayer!.strokeEnd = 0.0
+        }
+        isRecording = !isRecording
+        delegate?.startStopRecordingVideo(isRecording)
     }
 
     @IBAction func cancelPressed(sender: AnyObject) {
@@ -122,6 +175,6 @@ class CameraView: UIView, UIGestureRecognizerDelegate {
     }
     
     @IBAction func loadVideoPressed(sender: AnyObject) {
-        delegate?.chooseVideo()
+        
     }
 }

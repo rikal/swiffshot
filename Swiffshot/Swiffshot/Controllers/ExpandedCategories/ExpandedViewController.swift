@@ -14,6 +14,7 @@ class ExpandedViewController: UIViewController {
     @IBOutlet weak var addGroupBtn: UIButton!
     @IBOutlet weak var addFriendBtn: UIButton!
     @IBOutlet weak var backBtn: UIButton!
+    @IBOutlet weak var profileBtn: UIButton!
     
     var titleLbl: String?
     
@@ -59,6 +60,9 @@ class ExpandedViewController: UIViewController {
     @IBAction func addFriendBtnPressed(sender: AnyObject) {
     }
 
+    @IBAction func profilePressed(sender: AnyObject) {
+    }
+    
 }
 
 extension ExpandedViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{

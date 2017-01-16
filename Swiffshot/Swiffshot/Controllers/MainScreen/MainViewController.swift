@@ -13,6 +13,7 @@ class MainViewController: CameraViewController, CameraViewDelegate, CategoryCell
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var topView: UIView!
     @IBOutlet weak var allFriendsBtn: UIButton!
+    @IBOutlet weak var settingsBtn: UIButton!
     
     var latestVideos = [String]()
     var trendingVideos = [String]()

@@ -524,7 +524,7 @@
                                 <subviews>
                                     <view alpha="0.40000000000000002" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ohc-XV-uxd">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                                        <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jw9-KG-3li">
                                         <rect key="frame" x="28" y="163" width="264" height="243"/>
@@ -534,7 +534,7 @@
                                                 <string key="text">Please choose how you would
 like to reset your password</string>
                                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
-                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="srU-ep-dht">
@@ -675,7 +675,7 @@ like to reset your password</string>
                                         </constraints>
                                     </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QKx-N4-0ob">
-                                        <rect key="frame" x="273" y="32" width="23" height="20"/>
+                                        <rect key="frame" x="277" y="32" width="23" height="20"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="23" id="Pzs-Sv-AYP"/>
                                             <constraint firstAttribute="height" constant="20" id="cjC-Ie-Olq"/>
@@ -685,12 +685,23 @@ like to reset your password</string>
                                             <action selector="allFriendsPressed:" destination="m8y-4k-Z6C" eventType="touchUpInside" id="aIU-hs-Ijv"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vym-Mk-eSH">
+                                        <rect key="frame" x="20" y="32" width="20" height="20"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="20" id="TdM-8E-K10"/>
+                                            <constraint firstAttribute="height" constant="20" id="toR-AR-5wZ"/>
+                                        </constraints>
+                                        <state key="normal" image="Settings"/>
+                                        <connections>
+                                            <segue destination="ImY-V2-fqO" kind="push" id="Ey1-gC-Lrc"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.96078431369999995" green="0.98823529409999999" blue="0.98823529409999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstItem="dAR-c9-x4S" firstAttribute="top" secondItem="Ic2-tb-fap" secondAttribute="top" constant="20" id="9Vx-0N-EmG"/>
                                     <constraint firstItem="Oiu-A1-gT3" firstAttribute="leading" secondItem="Ic2-tb-fap" secondAttribute="leading" id="9iV-KS-f2j"/>
-                                    <constraint firstAttribute="trailing" secondItem="QKx-N4-0ob" secondAttribute="trailing" constant="24" id="AnM-v7-7MB"/>
+                                    <constraint firstAttribute="trailing" secondItem="QKx-N4-0ob" secondAttribute="trailing" constant="20" id="AnM-v7-7MB"/>
                                     <constraint firstItem="QKx-N4-0ob" firstAttribute="centerY" secondItem="dAR-c9-x4S" secondAttribute="centerY" id="Ch4-eg-wAx"/>
                                     <constraint firstAttribute="trailing" secondItem="Oiu-A1-gT3" secondAttribute="trailing" id="IHv-Z4-xvK"/>
                                     <constraint firstItem="dAR-c9-x4S" firstAttribute="leading" secondItem="Ic2-tb-fap" secondAttribute="leading" id="Nxa-jj-DW3"/>
@@ -699,7 +710,9 @@ like to reset your password</string>
                                     <constraint firstAttribute="bottom" secondItem="Oiu-A1-gT3" secondAttribute="bottom" id="Xm7-4f-THU"/>
                                     <constraint firstItem="hHF-zb-jK7" firstAttribute="top" secondItem="Ic2-tb-fap" secondAttribute="top" constant="20" id="Yzy-kd-9Sc"/>
                                     <constraint firstItem="hHF-zb-jK7" firstAttribute="centerX" secondItem="Ic2-tb-fap" secondAttribute="centerX" id="eDk-QI-QUV"/>
+                                    <constraint firstItem="vym-Mk-eSH" firstAttribute="leading" secondItem="Ic2-tb-fap" secondAttribute="leading" constant="20" id="iAJ-dU-Vmv"/>
                                     <constraint firstAttribute="bottom" secondItem="dAR-c9-x4S" secondAttribute="bottom" id="s1A-AA-5Q9"/>
+                                    <constraint firstItem="vym-Mk-eSH" firstAttribute="centerY" secondItem="QKx-N4-0ob" secondAttribute="centerY" id="uef-tR-ue3"/>
                                 </constraints>
                             </view>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="7oV-yp-2IJ">
@@ -734,6 +747,7 @@ like to reset your password</string>
                     <connections>
                         <outlet property="allFriendsBtn" destination="QKx-N4-0ob" id="3KS-nZ-JS6"/>
                         <outlet property="collectionView" destination="7oV-yp-2IJ" id="jD4-HG-ieF"/>
+                        <outlet property="settingsBtn" destination="vym-Mk-eSH" id="0ZQ-cE-Nia"/>
                         <outlet property="topView" destination="Ic2-tb-fap" id="2OJ-UR-qVL"/>
                         <segue destination="iNZ-Vp-gYR" kind="modal" identifier="fromMainToAuth" id="aI1-sl-afV"/>
                         <segue destination="k0L-dT-x5R" kind="push" identifier="fromMainToExpandable" id="Tkw-da-Zwk"/>
@@ -764,7 +778,7 @@ like to reset your password</string>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="BlippoBlaD" family="BlippoBlaD" pointSize="17"/>
                                 <state key="normal" title="UserName">
-                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="userNamePressed:" destination="0KR-BJ-1ai" eventType="touchUpInside" id="uTb-mG-OA1"/>
@@ -775,7 +789,7 @@ like to reset your password</string>
                                 <subviews>
                                     <view alpha="0.20000000000000001" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hU8-Nn-yRD" userLabel="BG">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="150"/>
-                                        <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TFZ-3l-tSs">
                                         <rect key="frame" x="235" y="30" width="80" height="70"/>
@@ -906,33 +920,33 @@ like to reset your password</string>
                                         </constraints>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Oiy-ra-0xv">
-                                        <rect key="frame" x="20" y="20" width="25" height="30"/>
+                                        <rect key="frame" x="20" y="20" width="25" height="20"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="25" id="Tqh-Zc-dD0"/>
-                                            <constraint firstAttribute="height" constant="30" id="jR2-SK-bSU"/>
+                                            <constraint firstAttribute="height" constant="20" id="jR2-SK-bSU"/>
                                         </constraints>
                                         <state key="normal" image="BackBtn"/>
                                         <connections>
                                             <action selector="backPressed:" destination="blv-pF-cM7" eventType="touchUpInside" id="lvb-MW-prS"/>
                                         </connections>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="UserName" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iEq-O2-UMN">
-                                        <rect key="frame" x="123" y="238" width="74" height="17"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="UserName" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iEq-O2-UMN">
+                                        <rect key="frame" x="119.5" y="238" width="81" height="20"/>
                                         <fontDescription key="fontDescription" name="BlippoBlaD" family="BlippoBlaD" pointSize="17"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0 minutes ago" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zo3-tD-C5T">
-                                        <rect key="frame" x="115.5" y="262" width="89.5" height="16"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="0 minutes ago" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zo3-tD-C5T">
+                                        <rect key="frame" x="115" y="265" width="89.5" height="16"/>
                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="13"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8z3-dm-a41">
-                                        <rect key="frame" x="270" y="20" width="30" height="30"/>
+                                        <rect key="frame" x="280" y="20" width="20" height="20"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="30" id="V08-8w-zIn"/>
-                                            <constraint firstAttribute="height" constant="30" id="gDB-Cc-y8z"/>
+                                            <constraint firstAttribute="width" constant="20" id="V08-8w-zIn"/>
+                                            <constraint firstAttribute="height" constant="20" id="gDB-Cc-y8z"/>
                                         </constraints>
                                         <state key="normal" image="Settings"/>
                                         <connections>
@@ -1041,9 +1055,9 @@ like to reset your password</string>
                                         </constraints>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NQS-TC-4wx">
-                                        <rect key="frame" x="273" y="26" width="24" height="30"/>
+                                        <rect key="frame" x="20" y="30" width="24" height="20"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="30" id="Udd-cR-aiu"/>
+                                            <constraint firstAttribute="height" constant="20" id="Udd-cR-aiu"/>
                                             <constraint firstAttribute="width" constant="24" id="Wor-yw-dsc"/>
                                         </constraints>
                                         <state key="normal" image="BackBtn"/>
@@ -1051,8 +1065,12 @@ like to reset your password</string>
                                             <action selector="backBtnPressed:" destination="k0L-dT-x5R" eventType="touchUpInside" id="boD-vR-NIE"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="be0-JW-TYy">
-                                        <rect key="frame" x="102" y="25" width="79" height="30"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="be0-JW-TYy">
+                                        <rect key="frame" x="149" y="25" width="79" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="79" id="OhW-na-20X"/>
+                                            <constraint firstAttribute="height" constant="30" id="o67-gU-fWM"/>
+                                        </constraints>
                                         <state key="normal" title="+ Group">
                                             <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
@@ -1060,8 +1078,12 @@ like to reset your password</string>
                                             <action selector="addGroupBtnPressed:" destination="k0L-dT-x5R" eventType="touchUpInside" id="UAD-Ck-6ea"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Y5-1d-JNz">
-                                        <rect key="frame" x="15" y="26" width="79" height="30"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Y5-1d-JNz">
+                                        <rect key="frame" x="62" y="25" width="79" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="79" id="1JX-Fc-duX"/>
+                                            <constraint firstAttribute="height" constant="30" id="fPS-sK-EdN"/>
+                                        </constraints>
                                         <state key="normal" title="+ Friend">
                                             <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
@@ -1069,15 +1091,32 @@ like to reset your password</string>
                                             <action selector="addFriendBtnPressed:" destination="k0L-dT-x5R" eventType="touchUpInside" id="LH2-6L-lbi"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xgq-bX-gma">
+                                        <rect key="frame" x="280" y="30" width="20" height="20"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="20" id="9DX-Qb-4y9"/>
+                                            <constraint firstAttribute="width" constant="20" id="ifZ-yD-4a0"/>
+                                        </constraints>
+                                        <state key="normal" title="Button" image="AvatarPlaceholder"/>
+                                        <connections>
+                                            <action selector="profilePressed:" destination="k0L-dT-x5R" eventType="touchUpInside" id="pEB-aJ-QWp"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.96078431369999995" green="0.98823529409999999" blue="0.98823529409999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstItem="X8I-Pz-VbX" firstAttribute="top" secondItem="NQS-TC-4wx" secondAttribute="bottom" constant="7" id="SBc-hT-WRI"/>
+                                    <constraint firstItem="X8I-Pz-VbX" firstAttribute="top" secondItem="NQS-TC-4wx" secondAttribute="bottom" constant="13" id="2OQ-KO-nml"/>
+                                    <constraint firstAttribute="trailing" secondItem="xgq-bX-gma" secondAttribute="trailing" constant="20" id="4sT-Dl-5IZ"/>
+                                    <constraint firstItem="be0-JW-TYy" firstAttribute="leading" secondItem="1Y5-1d-JNz" secondAttribute="trailing" constant="8" id="D7y-YK-QxU"/>
+                                    <constraint firstItem="NQS-TC-4wx" firstAttribute="leading" secondItem="RVm-AU-3CR" secondAttribute="leading" constant="20" id="GtO-WZ-tSb"/>
+                                    <constraint firstItem="xgq-bX-gma" firstAttribute="centerY" secondItem="be0-JW-TYy" secondAttribute="centerY" id="Mq8-u1-Nea"/>
                                     <constraint firstItem="X8I-Pz-VbX" firstAttribute="leading" secondItem="RVm-AU-3CR" secondAttribute="leading" id="alw-ys-Xyf"/>
                                     <constraint firstAttribute="bottom" secondItem="X8I-Pz-VbX" secondAttribute="bottom" id="nkL-hz-Z0n"/>
                                     <constraint firstAttribute="height" constant="64" id="sBN-8f-NPd"/>
+                                    <constraint firstItem="1Y5-1d-JNz" firstAttribute="leading" secondItem="NQS-TC-4wx" secondAttribute="trailing" constant="18" id="sKn-ID-8VD"/>
+                                    <constraint firstItem="1Y5-1d-JNz" firstAttribute="centerY" secondItem="NQS-TC-4wx" secondAttribute="centerY" id="t7w-Hd-M1W"/>
                                     <constraint firstAttribute="trailing" secondItem="X8I-Pz-VbX" secondAttribute="trailing" id="yDg-5b-msF"/>
-                                    <constraint firstAttribute="trailing" secondItem="NQS-TC-4wx" secondAttribute="trailing" constant="23" id="ywm-uo-QT5"/>
+                                    <constraint firstItem="be0-JW-TYy" firstAttribute="centerY" secondItem="1Y5-1d-JNz" secondAttribute="centerY" id="yf3-Za-E6V"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -1098,11 +1137,31 @@ like to reset your password</string>
                         <outlet property="addGroupBtn" destination="be0-JW-TYy" id="9zL-Lu-sUn"/>
                         <outlet property="backBtn" destination="NQS-TC-4wx" id="mc8-ni-Yb0"/>
                         <outlet property="collectionView" destination="2KS-Wd-jef" id="kfQ-g1-oUg"/>
+                        <outlet property="profileBtn" destination="xgq-bX-gma" id="5YA-8a-xWi"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rhA-8A-wcW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="947" y="2084"/>
+        </scene>
+        <!--Settings View Controller-->
+        <scene sceneID="EBp-qf-yEx">
+            <objects>
+                <viewController id="ImY-V2-fqO" customClass="SettingsViewController" customModule="Swiffshot" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="6tZ-Qv-COC"/>
+                        <viewControllerLayoutGuide type="bottom" id="PvE-Xl-h1j"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="wdo-UF-Cjn">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="0.96110491070000004" green="0.98823529409999999" blue="0.98823529409999999" alpha="1" colorSpace="calibratedRGB"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="MGP-v0-RLO"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9bq-nS-abf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1356" y="2084"/>
         </scene>
         <!--Subcribe View Controller-->
         <scene sceneID="k3m-XY-jLj">
@@ -1780,7 +1839,7 @@ like to reset your password</string>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="19"/>
                                 <state key="normal" title="Find your friends">
-                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="findFriends:" destination="9D3-Nu-YVD" eventType="touchUpInside" id="aXA-8N-5MM"/>
@@ -1821,7 +1880,8 @@ like to reset your password</string>
     </scenes>
     <resources>
         <image name="AllFriends" width="484" height="443"/>
-        <image name="BackBtn" width="135" height="236"/>
+        <image name="AvatarPlaceholder" width="64" height="64"/>
+        <image name="BackBtn" width="800" height="800"/>
         <image name="CloseBtn" width="334" height="334"/>
         <image name="Logo2" width="444" height="441"/>
         <image name="Send" width="209" height="209"/>

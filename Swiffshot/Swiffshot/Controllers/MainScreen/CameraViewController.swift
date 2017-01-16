@@ -23,8 +23,6 @@ class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
     var isOnline: Bool = false
     var playerViewController = PlayerViewController()
     
-    let videoFileOutput = AVCaptureMovieFileOutput()
-    
     //MARK: - SYSTEMS METHODS
     
     override func viewDidLoad() {
@@ -130,6 +128,7 @@ class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
     }
     
     func srartStopRecord(isStart: Bool){
+        let videoFileOutput = AVCaptureMovieFileOutput()
         if isStart{
             self.captureSession.addOutput(videoFileOutput)
             
@@ -141,7 +140,7 @@ class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
                 isOnline = false
             } else {
                 videoFileOutput.stopRecording()
-                UISaveVideoAtPathToSavedPhotosAlbum((filePath?.relativePath)!,self,nil,nil);
+                UISaveVideoAtPathToSavedPhotosAlbum((filePath?.relativePath)!,self,nil,nil)
             }
         }
     }
